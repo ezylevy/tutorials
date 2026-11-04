@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>בית הספר לסוכנים: Claude Code למתקדמים | מדריך בעברית · עזי לוי</title>
+<meta name="description" content="מדריך אינטראקטיבי בעברית ל-Claude Code למתקדמים: בונים חמישה סוכנים מחמישה סוגים (שרשרת, ניתוב, מקביליות, מנצח ועובדים, כותב ומבקר), מחברים אותם לכלים עם MCP ומחברים, ובונים אפליקציה שלמה, בלי לכתוב קוד. מאת עזי לוי.">
+<link rel="canonical" href="https://ezylevy.github.io/tutorials/claude-agents/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="בית הספר לסוכנים של Claude Code">
+<meta property="og:description" content="עשר משימות קצרות: חמישה סוגי סוכנים, מחברים לעולם, ואפליקציה ראשונה. בלי לכתוב קוד. מאת עזי לוי.">
+<meta property="og:url" content="https://ezylevy.github.io/tutorials/claude-agents/">
+<meta name="theme-color" content="#0d1b2a">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Assistant:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Karantina:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"איך בונים סוכני AI ואפליקציה עם Claude Code בלי לכתוב קוד","inLanguage":"he","dateModified":"2026-11-04","author":{"@type":"Person","name":"עזי לוי","url":"https://www.ezylevy.com"},"step":[{"@type":"HowToStep","name":"מבינים מה זה סוכן ומתי צריך אותו"},{"@type":"HowToStep","name":"מכינים מרחב עבודה עם CLAUDE.md ומצב תכנון"},{"@type":"HowToStep","name":"בונים חמישה סוגי סוכנים: שרשרת, ניתוב, מקביליות, מנצח ועובדים, כותב ומבקר"},{"@type":"HowToStep","name":"מחברים את הסוכנים לכלים חיצוניים עם MCP ומחברים"},{"@type":"HowToStep","name":"בונים ומעלים לאוויר אפליקציה ראשונה"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#plan">דילוג לתוכן הראשי</a>
+
+<header class="topbar">
+  <a class="brand" href="https://www.ezylevy.com" target="_blank" rel="noopener">
+    <img src="assets/img/logo.png" alt="" width="44" height="44">
+    <span><b>עזי לוי</b><small>בינה פוגשת מציאות</small></span>
+  </a>
+  <nav aria-label="קישורים">
+    <a href="../index.html">→ כל המדריכים</a>
+    <a class="hide-sm" href="../claude-code/">המדריך הבסיסי</a>
+    <a href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנאות</a>
+    <a href="https://chat.whatsapp.com/LcW2GxWIN3u0VDr8LdsnDD" target="_blank" rel="noopener">קבוצת עדכונים</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero-wrap">
+<section class="hero" aria-labelledby="title">
+  <div>
+    <p class="kicker"><bdi dir="ltr">Claude Code</bdi> למתקדמים · מדריך בעברית · מעודכן לפי המקורות ב-4.11.2026</p>
+    <h1 id="title">בית הספר <span>לסוכנים</span></h1>
+    <p class="sub">כבר התקנתם את Claude Code ועשיתם איתו משימה ראשונה? עכשיו מתחילים לעבוד ברצינות. בעשר משימות קצרות תבנו חמישה סוכנים מחמישה סוגים שונים, תחברו אותם לכלים שאתם כבר עובדים איתם, ותבנו אפליקציה שלמה שעולה לאוויר. בלי לכתוב שורת קוד אחת. כל משימה נגמרת בחידה ובסמל סוכן.</p>
+    <div class="byline">
+      <img src="assets/img/ezi.jpg" alt="עזי לוי" width="62" height="62">
+      <div><b>המדריך שלכם: עזי לוי</b><span>מנחה ויועץ לבינה מלאכותית, ומנהל מרכז למחוננים לשעבר</span></div>
+    </div>
+  </div>
+
+  <form class="dossier" id="dossier" aria-label="תיק הסוכן שלכם" onsubmit="return false">
+    <span class="tabname" dir="ltr" aria-hidden="true">FILE 03 · AGT</span>
+    <div class="lb-head">
+      <div><b>תיק סוכן</b><br><span dir="ltr">AGENT DOSSIER · CLAUDE CODE</span></div>
+      <div class="stamp" aria-hidden="true"><b>סודי ביותר</b>TOP SECRET</div>
+    </div>
+    <div class="field">
+      <label for="pName">שם קוד (לא חובה, נשמר רק בדפדפן שלכם)</label>
+      <input type="text" id="pName" autocomplete="nickname" maxlength="28" placeholder="למשל: הנשר">
+    </div>
+    <fieldset class="field">
+      <legend>איפה אתם עובדים עם Claude Code</legend>
+      <div class="seg" role="group">
+        <button type="button" data-set-route="desktop" aria-pressed="false">אפליקציית Claude<small>לשונית Code</small></button>
+        <button type="button" data-set-route="vscode" aria-pressed="false">VS Code<small>עם התוסף</small></button>
+        <button type="button" data-set-route="terminal" aria-pressed="false">טרמינל<small>שורת פקודה</small></button>
+        <button type="button" data-set-route="unsure" aria-pressed="false">עוד לא בטוח/ה<small>אראה את הכול</small></button>
+      </div>
+    </fieldset>
+    <fieldset class="field">
+      <legend>המשימה שלי</legend>
+      <div class="seg" role="group">
+        <button type="button" data-set-goal="agents" aria-pressed="false">לבנות סוכנים<small>חמשת הסוגים ומחברים</small></button>
+        <button type="button" data-set-goal="app" aria-pressed="false">לבנות אפליקציה<small>מרעיון ועד כתובת באוויר</small></button>
+        <button type="button" data-set-goal="all" aria-pressed="false">הכול<small>כל עשר המשימות</small></button>
+      </div>
+    </fieldset>
+    <a class="go" href="#st1">יוצאים למשימה הראשונה ←</a>
+    <div class="lb-foot" id="lbFoot" aria-hidden="true">AGT&lt;TBD&lt;&lt;RECRUIT&lt;&lt;BADGES&lt;0&lt;OF&lt;10&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+  </form>
+</section>
+</div>
+
+<section class="plan-wrap" id="plan" aria-labelledby="plan-t">
+  <div class="plan-inner">
+    <h2 class="plan-title" id="plan-t">לוח המשימות</h2>
+    <p class="plan-sub">קריאה של בערך 70 דקות, ועוד זמן בנייה כמה שתרצו. אפשר לעצור בכל משימה ולהמשיך מחר, הדפדפן זוכר. בחרתם משימה בתיק? המשימות שמתאימות לה מסומנות.</p>
+    <ol class="plan" id="planList">
+      <li data-st="1"><a href="#st1"><span class="no">01</span><span>תדריך: מה זה בכלל סוכן</span><span class="rec">מומלץ לכם</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="2"><a href="#st2"><span class="no">02</span><span>המפקדה: מרחב עבודה, CLAUDE.md ומצב תכנון</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="3"><a href="#st3"><span class="no">03</span><span>חדר המכונות: איך סוכן חושב</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="4"><a href="#st4"><span class="no">04</span><span>סוכן 1: פס ייצור (שרשרת)</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="5"><a href="#st5"><span class="no">05</span><span>סוכן 2: המרכזייה (ניתוב)</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="6"><a href="#st6"><span class="no">06</span><span>סוכן 3: צוות חקירה (מקביליות)</span><span class="rec">מומלץ לכם</span><span class="time">8 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="7"><a href="#st7"><span class="no">07</span><span>סוכן 4: המפקד והשטח (מנצח ועובדים)</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="8"><a href="#st8"><span class="no">08</span><span>סוכן 5: המאמן (כותב ומבקר)</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="9"><a href="#st9"><span class="no">09</span><span>קשר עם העולם: מחברים ו-MCP</span><span class="rec">מומלץ לכם</span><span class="time">8 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="10"><a href="#st10"><span class="no">10</span><span>המבצע הגדול: אפליקציה בלי קוד</span><span class="rec">מומלץ לכם</span><span class="time">10 דק׳</span><span class="status">ממתין</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<div class="journey">
+
+<!-- ========== משימה 1 ========== -->
+<section class="spread" id="st1" style="--st:#0f766e" aria-labelledby="h1">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 01</span>
+    <p class="st-num" aria-hidden="true">1</p>
+    <h2 id="h1">תדריך</h2>
+    <p class="lede">מה ההבדל בין צ׳אט לסוכן, מה זה ״תהליך״ ומה זה ״סוכן״ אצל Anthropic, ומתי בכלל לא צריך סוכן.</p>
+    <aside class="note"><p>סוכן טוב הוא לא הכי מתוחכם. הוא הכי פשוט שעדיין עושה את העבודה.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <div class="prereq">
+      <span class="pp">01</span>
+      <div><b>לפני שמתחילים: המדריך הבסיסי</b><p>המדריך הזה מניח ש-Claude Code כבר מותקן אצלכם ושעשיתם איתו משימה אחת לפחות. עוד לא? <a href="../claude-code/">עברו קודם את הדרכון ל-Claude Code</a>: התקנה, שיחה ראשונה, הרשאות, סקילים ו-MCP. ואז חזרו לכאן.</p></div>
+    </div>
+
+    <h3>שלוש רמות של עבודה עם AI</h3>
+    <p>שני הסרטונים שהמדריך מבוסס עליהם (Teacher's Tech ו-AI Master) מתחילים מאותה הבחנה, וכדאי לאמץ אותה:</p>
+    <ol class="steps">
+      <li><b>רמה 1: צ׳אט</b> שואלים, מקבלים תשובה, וזהו. רוב האנשים נשארים כאן.</li>
+      <li><b>רמה 2: בנייה</b> מבקשים מה-AI ליצור משהו (מסמך, סקריפט, אפליקציה) ומנהלים כל צעד בעצמכם. אתם הבמאים, הוא הבונה.</li>
+      <li><b>רמה 3: סוכן</b> נותנים מטרה, לא הוראות. הוא מתכנן, בוחר כלים, משנה כיוון כשמשהו לא עובד, ושואל אתכם כשהוא לא בטוח. כמו ההבדל בין לנהל עובד חדש צעד אחר צעד, לבין לסמוך על עובד מנוסה.</li>
+    </ol>
+    <p>מה הופך משהו ל״סוכני״ באמת? לפי שני הסרטונים, שלושה דברים:</p>
+    <ul class="checks">
+      <li><b>הוא עובד לפי תהליך.</b> לא תשובה אחת, אלא שלבים: איסוף הקשר, תוכנית, ביצוע, בדיקה עצמית.</li>
+      <li><b>הוא מקבל החלטות.</b> אם כיוון אחד לא עובד, הוא משנה כיוון לפי מה שמצא.</li>
+      <li><b>הוא שואל לפני שהוא מניח.</b> שאלות הבהרה בהתחלה. לפי Teacher's Tech, השינוי הזה לבד משפר את התוצאה פי עשרה.</li>
+    </ul>
+
+    <h3>איך Anthropic מגדירים את זה</h3>
+    <p>במאמר ״Building Effective Agents״ של Anthropic יש הבחנה שמסדרת את כל המדריך הזה. הכול נקרא <b>מערכות סוכניות</b>, ויש שני סוגים:</p>
+    <div class="versus">
+      <div><b>תהליכים (Workflows)</b><p>המודל והכלים עובדים לפי מסלול שאתם קבעתם מראש. צפוי ועקבי. מתאים למשימות מוגדרות היטב.</p></div>
+      <div><b>סוכנים (Agents)</b><p>המודל מנהל בעצמו את התהליך ואת השימוש בכלים, ומחליט איך להגיע ליעד. גמיש. מתאים כשאי אפשר לחזות מראש את הצעדים.</p></div>
+    </div>
+    <p>ובשורה אחת מהמאמר: סוכנים הם בדרך כלל פשוט <b>מודל שמשתמש בכלים בלולאה, לפי מה שהוא מגלה בסביבה</b>. במשימה 3 נראה את הלולאה הזאת מבפנים.</p>
+    <div class="tip warn"><b>הכלל הכי חשוב במאמר</b>מחפשים את הפתרון הכי פשוט, ומוסיפים מורכבות רק כשצריך. מערכות סוכניות משלמות בזמן ובכסף כדי לקבל ביצועים טובים יותר. להרבה משימות, פנייה אחת טובה עם הקשר ודוגמאות מספיקה לגמרי.</div>
+
+    <h3>חמשת הסוכנים שתבנו</h3>
+    <p>המאמר מתאר חמש תבניות עבודה שחוזרות שוב ושוב אצל הלקוחות של Anthropic. לכל אחת תבנו סוכן אמיתי, בתיקייה שלכם, בעברית פשוטה:</p>
+    <div class="agent-map">
+      <a href="#st4" style="--c:#b4232c"><span class="n" dir="ltr">MISSION 04</span><b>פס ייצור</b><span class="en">Prompt chaining</span><p>שלבים קבועים ברצף. תסריט אחד הופך לשלושה סרטונים קצרים וחבילת פוסטים.</p></a>
+      <a href="#st5" style="--c:#6d28d9"><span class="n" dir="ltr">MISSION 05</span><b>המרכזייה</b><span class="en">Routing</span><p>מסווג כל פנייה ושולח אותה לטיפול המתאים. מיון תיבת דואר.</p></a>
+      <a href="#st6" style="--c:#047857"><span class="n" dir="ltr">MISSION 06</span><b>צוות חקירה</b><span class="en">Parallelization</span><p>כמה חוקרים במקביל, ואז איחוד. סוכן מחקר שמגיש דוח.</p></a>
+      <a href="#st7" style="--c:#9a3412"><span class="n" dir="ltr">MISSION 07</span><b>המפקד והשטח</b><span class="en">Orchestrator-workers</span><p>מנצח שמחליט תוך כדי מה צריך לעשות, ומחלק לעובדים. השוואת מתחרים.</p></a>
+      <a href="#st8" style="--c:#be185d"><span class="n" dir="ltr">MISSION 08</span><b>המאמן</b><span class="en">Evaluator-optimizer</span><p>אחד כותב, אחד מבקר, בלולאה. תרגום לעברית טבעית.</p></a>
+    </div>
+    <p>אחר כך תחברו אותם לעולם (משימה 9), ובמשימה 10 תבנו אפליקציה שלמה, מרעיון ועד כתובת באינטרנט.</p>
+
+    <div class="clips">
+      <div class="yt" data-id="gHB4JFG9i3k" data-t="60"><button type="button"><img src="https://i.ytimg.com/vi/gHB4JFG9i3k/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">מה זה תהליך סוכני, ושלוש הרמות<small>Teacher's Tech · מ-1:00 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="bcM9dP_uXJU" data-t="20"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">מה זה באמת סוכן AI<small>AI Master · מ-0:20 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="1">
+      <div class="slot" data-slot="1">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 01</span>
+      <p class="q">לפי Anthropic, מה ההבדל בין ״תהליך״ ל״סוכן״?</p>
+      <div class="opts">
+        <button type="button" data-why="שניהם יכולים להשתמש בכלים. ההבדל הוא מי מחליט על המסלול. נסו שוב.">בתהליך אין כלים, בסוכן יש</button>
+        <button type="button" data-ok data-why="נכון. בתהליך אתם קבעתם את המסלול מראש. בסוכן, המודל מחליט בעצמו איך להגיע ליעד.">בתהליך המסלול נקבע מראש, בסוכן המודל מחליט בעצמו</button>
+        <button type="button" data-why="להפך, המאמר ממליץ להתחיל מהפשוט. סוכן הוא לא תמיד הבחירה הנכונה. נסו שוב.">סוכן תמיד עדיף, תהליך זה לגרסאות ישנות</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 2 ========== -->
+<section class="spread" id="st2" style="--st:#b45309" aria-labelledby="h2">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 02</span>
+    <p class="st-num" aria-hidden="true">2</p>
+    <h2 id="h2">המפקדה</h2>
+    <p class="lede">כל סוכן צריך משרד. תיקייה אחת, קובץ הכרות אחד, והרגל אחד שמציל שעות: לתכנן לפני שמבצעים.</p>
+    <aside class="note"><p>שתי דקות על CLAUDE.md חוסכות שעות של ״לא, לא התכוונתי לזה״.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">פותחים תיקייה חדשה</h3>
+    <p>התיקייה היא המשרד של הסוכן. כל מה שהוא יוצר, מסדר ומשתמש בו יושב שם. כרגע היא ריקה, וזה בסדר גמור.</p>
+
+    <div data-ws="desktop">
+      <p><span class="ws-flag">אפליקציית Claude</span>כמו ב-AI Master, בלי שום התקנה נוספת:</p>
+      <ol class="steps">
+        <li><b>פותחים את אפליקציית Claude במחשב</b> ועוברים ללשונית <span class="ui">Code</span>.</li>
+        <li><b>יוצרים תיקיית פרויקט חדשה</b> ונותנים לה שם, למשל <code>agent-workspace</code>.</li>
+        <li><b>מתחילים שיחה חדשה</b> בתוך התיקייה. מכאן כל מה שתבקשו יקרה בתוכה.</li>
+      </ol>
+    </div>
+    <div data-ws="vscode">
+      <p><span class="ws-flag">VS Code</span>כמו ב-Teacher's Tech. היתרון: רואים כל קובץ שהסוכן יוצר, ברגע שהוא נוצר.</p>
+      <ol class="steps">
+        <li><b>מתקינים את התוסף</b> ב-VS Code לוחצים על <span class="ui">Extensions</span>, מחפשים <span class="ui">Claude Code</span> ולוחצים <span class="ui">Install</span>. התוסף משתמש באותה התקנה של Claude Code שכבר יש לכם.</li>
+        <li><b>פותחים תיקייה</b> <span class="ui">File</span> ואז <span class="ui">Open Folder</span>, יוצרים תיקייה חדשה, למשל <code>my-first-agent</code>, ובוחרים אותה.</li>
+        <li><b>פותחים את הפאנל של Claude Code</b> לוחצים על הסמל שלו ופותחים <span class="ui">New session</span>. משמאל סייר הקבצים, ובפאנל מדברים עם הסוכן.</li>
+      </ol>
+    </div>
+    <div data-ws="terminal">
+      <p><span class="ws-flag">טרמינל</span>שלוש פקודות:</p>
+      <div class="copy"><span class="lbl">בטרמינל</span><pre class="ltr">mkdir agent-workspace
+cd agent-workspace
+claude</pre></div>
+    </div>
+
+    <p>המבנה שנבנה לאורך המדריך. אין צורך ליצור אותו ידנית, Claude ייצור את התיקיות כשיצטרך:</p>
+<pre class="tree"><span class="h">agent-workspace/</span>
+├── <span class="c">CLAUDE.md</span>        ← ההכרות: מי אתם ואיך עובדים כאן
+├── workflows/       ← קובצי תהליך (מתכונים) בעברית פשוטה
+├── input/           ← חומרים שאתם נותנים לעבד
+├── output/          ← התוצרים הגמורים
+├── resources/       ← חומרי עזר ותבניות
+└── .claude/agents/  ← סוכני משנה (משימה 7)</pre>
+
+    <h3>CLAUDE.md: מסמך הקליטה של הסוכן</h3>
+    <p>שני הסרטונים מסכימים: זה הקובץ הכי חשוב בכל המערכת. Claude Code קורא אותו אוטומטית בכל פעם שהוא מתחיל לעבוד בתיקייה. תחשבו על מסמך קליטה לעובד חדש, רק שהעובד קורא אותו מחדש בכל בוקר. ארבעה חלקים: הקשר הפרויקט, עליכם, כללים, ומבנה התיקיות.</p>
+    <p>אפשר לכתוב אותו בעצמכם, או פשוט לבקש: <b>״צור קובץ בשם CLAUDE.md בתיקייה הראשית של הפרויקט״</b>, ואז להדביק לתוכו את מה שתבנו כאן:</p>
+
+    <div class="tool" id="mdTool">
+      <div class="tool-head"><b>מחולל CLAUDE.md</b><span dir="ltr">CLAUDE.md BUILDER</span></div>
+      <div class="tool-body">
+        <div>
+          <label class="f"><span>הקשר הפרויקט: בשביל מה התיקייה הזאת</span><textarea id="mdProject">זה מרחב העבודה שלי לסוכני AI. אני משתמש בו למחקר, ליצירת תוכן ולאוטומציה של משימות שחוזרות על עצמן.</textarea></label>
+          <label class="f"><span>עליכם: מי אתם ואיך אתם עובדים</span><textarea id="mdMe">אני [התפקיד שלכם]. אני מעדיף הסברים ברורים ומעשיים, בלי ז׳רגון.</textarea></label>
+          <label class="f"><span>למי התוצרים מיועדים</span><input type="text" id="mdAudience" value="אנשים לא טכניים שרוצים תוצאה מעשית"></label>
+          <label class="f"><span>הטון</span><select id="mdTone"><option>ידידותי וישיר, כמו עצה מחבר שמבין בתחום</option><option>מקצועי ותמציתי</option><option>חם ומעודד</option></select></label>
+          <div class="f"><span>כללים (מתוך שני הסרטונים, סמנו מה שמתאים)</span>
+            <div class="ticks" id="mdRules" style="flex-direction:column;align-items:stretch">
+              <label><input type="checkbox" checked value="לפני כל משימה מורכבת, שאל אותי לפחות שלוש שאלות הבהרה.">לשאול 3 שאלות הבהרה לפני משימה מורכבת</label>
+              <label><input type="checkbox" checked value="הצג תוכנית כתובה וחכה לאישור שלי לפני כל משימה מרובת שלבים.">להציג תוכנית ולחכות לאישור</label>
+              <label><input type="checkbox" checked value="סיכומים ודוחות: תמציתי, נקודות במקום פסקאות.">תמציתי, נקודות במקום פסקאות</label>
+              <label><input type="checkbox" checked value="שמור כל תוצר גמור בתיקיית output.">לשמור תוצרים ב-output</label>
+              <label><input type="checkbox" checked value="במחקר, ציין מקור לכל טענה.">לציין מקורות במחקר</label>
+              <label><input type="checkbox" value="אל תחרוג מהאורך שביקשתי. בלי מילוי.">לא לחרוג מהאורך שביקשתי</label>
+              <label><input type="checkbox" value="שמות קבצים: אותיות קטנות באנגלית ומקפים, בלי רווחים.">שמות קבצים באנגלית עם מקפים</label>
+              <label><input type="checkbox" checked value="ענה וכתוב בעברית, אלא אם ביקשתי אחרת.">לכתוב בעברית</label>
+            </div>
+          </div>
+          <label class="f"><span>כללים נוספים שלכם (שורה לכל כלל)</span><textarea id="mdExtra" placeholder="למשל: כשאתה לא בטוח במשהו, אמור את זה במפורש."></textarea></label>
+        </div>
+        <div>
+          <div class="out" id="mdOut" aria-live="polite"></div>
+          <div class="row-btns"><button type="button" class="btn-s" id="mdCopy">העתקה</button><button type="button" class="btn-s alt" id="mdDown">הורדת CLAUDE.md</button></div>
+          <p style="font-size:.9rem;color:var(--ink-soft);margin-top:10px">שמרו את הקובץ בתיקייה הראשית של הפרויקט, בשם CLAUDE.md בדיוק. את הקבצים הטובים שווה לשמור ולהעתיק לפרויקטים הבאים.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tip good"><b>ההוכחה של Teacher's Tech</b>אותו פרומפט, ״חקור מגמות בעבודה מרחוק״, בשתי תיקיות. בלי CLAUDE.md: קיר טקסט גנרי. עם CLAUDE.md: שאלות הבהרה, נקודות מסודרות, מקורות, והקובץ נשמר בדיוק איפה שביקשו.</div>
+
+    <h3>מצב תכנון: לחשוב לפני שעושים</h3>
+    <p>במצב תכנון Claude Code חושב ומתכנן, אבל לא משנה אף קובץ. כמו חזרה גנרלית. רואים איך הוא הבין את המטרה, אילו צעדים הוא מתכנן ואילו קבצים ייצור, מתקנים, ורק אז מאשרים. לפי AI Master, שתי דקות של בדיקת תוכנית חוסכות עשר דקות של תיקונים.</p>
+    <div data-ws="vscode terminal">
+      <ol class="steps">
+        <li><b>לוחצים <kbd>Shift</kbd>+<kbd>Tab</kbd> פעמיים</b> בתיבת הכתיבה. לחיצה ראשונה עוברת לאישור עריכות אוטומטי, השנייה למצב תכנון, והשלישית חוזרת להתחלה.</li>
+        <li><b>מתארים מטרה</b> ומקבלים תוכנית. אפשר להוסיף דרישה, והוא משלב אותה בתוכנית בלי להתחיל מאפס.</li>
+        <li><b>מאשרים</b> כשהתוכנית טובה, ובוחרים אם לאשר כל שינוי ידנית או לתת לו לרוץ.</li>
+      </ol>
+    </div>
+    <div data-ws="desktop">
+      <p><span class="ws-flag">אפליקציית Claude</span>בוחרים את מצב התכנון בתפריט המצבים שליד תיבת הכתיבה. לא מוצאים? הדרך של AI Master עובדת בכל מקום: כלל ב-CLAUDE.md (הוא כבר מסומן במחולל למעלה) שאומר לו להציג תוכנית כתובה ולחכות לאישור.</p>
+    </div>
+
+    <h3>עוד ארבעה דברים שכדאי להכיר</h3>
+    <ul class="checks">
+      <li><b>זיכרון אוטומטי.</b> לפי Teacher's Tech, Claude Code רושם לעצמו דברים שהוא לומד על הפרויקט ונזכר בהם בשיחות הבאות. ככל שעובדים יותר בתיקייה, הוא מכיר אותה טוב יותר.</li>
+      <li><b>רשימת המשימות.</b> במשימה מרובת שלבים מופיעה רשימת to-do שמראה מה הוא מתכנן ואיפה הוא נמצא. קראו אותה, זו הדרך הכי טובה לתפוס טעות מוקדם.</li>
+      <li data-ws="vscode"><b>חזרה אחורה.</b> ב-VS Code מרחפים מעל נקודה קודמת בשיחה ובוחרים לחזור אליה. זה מבטל גם את שינויי הקבצים שהסוכן עשה מאז. ולקריאה נוחה של קובצי md: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> פותח תצוגה מעוצבת.</li>
+      <li><b>רמת מאמץ.</b> הפקודה <code>/effort</code> עם <code>low</code>, <code>medium</code> או <code>high</code> קובעת כמה לעומק הוא חושב. נמוך לתיקונים קטנים, גבוה למחקר ולמשימות מרובות שלבים. לא בטוחים? השאירו ברירת מחדל.</li>
+    </ul>
+
+    <div class="clips">
+      <div class="yt" data-id="gHB4JFG9i3k" data-t="402"><button type="button"><img src="https://i.ytimg.com/vi/gHB4JFG9i3k/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">בונים CLAUDE.md, ומשווים עם ובלי<small>Teacher's Tech · מ-6:42 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="bcM9dP_uXJU" data-t="491"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">ההרגל שמכריע: מצב תכנון<small>AI Master · מ-8:11 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="2">
+      <div class="slot" data-slot="2">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 02</span>
+      <p class="q">מה קורה במצב תכנון?</p>
+      <div class="opts">
+        <button type="button" data-why="להפך, זה המצב הכי זהיר. אף קובץ לא משתנה. נסו שוב.">Claude מבצע הכול לבד בלי לשאול</button>
+        <button type="button" data-ok data-why="נכון. הוא חושב ומציג תוכנית, ולא משנה אף קובץ עד שאתם מאשרים.">Claude מתכנן ומציג תוכנית, בלי לשנות קבצים</button>
+        <button type="button" data-why="CLAUDE.md נקרא בכל מצב, תמיד. נסו שוב.">Claude מפסיק לקרוא את CLAUDE.md</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 3 ========== -->
+<section class="spread" id="st3" style="--st:#1d4ed8" aria-labelledby="h3">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 03</span>
+    <p class="st-num" aria-hidden="true">3</p>
+    <h2 id="h3">חדר המכונות</h2>
+    <p class="lede">מה קורה מאחורי הקלעים כשסוכן ״עובד לבד״. לולאה אחת פשוטה, וסימולטור שמריץ אותה מולכם.</p>
+    <aside class="note"><p>הקסם הוא לא בכלים. הקסם הוא בהוראות שאתם כותבים.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">שלוש שכבות</h3>
+    <p>שני הסרטונים מפרקים כל מערכת סוכנית לשלושה חלקים:</p>
+    <div class="anatomy">
+      <div><b>תהליך</b><span class="en">Workflow</span><p>קובץ בעברית פשוטה שמתאר את הצעדים, כמו מתכון. גר בתיקיית workflows. אתם כותבים אותו (או מבקשים מ-Claude לכתוב).</p></div>
+      <div><b>הסוכן</b><span class="en">Agent</span><p>זה Claude Code עצמו. קורא את התהליך, חושב על הצעדים ומחליט. אתם לא מתכנתים אותו, אתם נותנים לו הוראות ברורות.</p></div>
+      <div><b>כלים</b><span class="en">Tools</span><p>מה שהוא משתמש בו כדי לעשות: לקרוא ולכתוב קבצים, להריץ פקודות, לחפש ברשת. כל אלה מובנים. דרך MCP מוסיפים עוד (משימה 9).</p></div>
+    </div>
+    <div class="tip"><b>התובנה שרוב האנשים מפספסים</b>לפי שני הסרטונים, תהליך כתוב היטב עם הכלים הבסיסיים ינצח פרומפט מרושל עם כל התוספים שבעולם. החוכמה נמצאת בהוראות, וזו חדשה טובה: הוראות כל אחד יכול לכתוב.</div>
+
+    <h3>הלולאה</h3>
+    <p>המדריך הרשמי של Anthropic, ״Build a tool-using agent״, בונה סוכן יומן בחמש טבעות. לא צריך לקרוא קוד כדי להבין את העיקרון:</p>
+    <div class="flow" aria-label="תרשים: הלולאה של סוכן">
+      <span class="nd io">אתם<small>בקשה</small></span><span class="ar"></span>
+      <span class="nd ai">Claude<small>מחליט מה הצעד הבא</small></span><span class="ar"></span>
+      <span class="nd">כלי<small>רץ ומחזיר תוצאה</small></span><span class="ar"></span>
+      <span class="loopback" dir="ltr">↺ while stop_reason == tool_use</span><span class="ar"></span>
+      <span class="nd io">תשובה<small>end_turn</small></span>
+    </div>
+    <p class="flow-cap">בכל סיבוב Claude מחליט: להפעיל עוד כלי, או לענות לכם. כל עוד הוא מבקש כלים, הלולאה ממשיכה.</p>
+    <ol class="steps">
+      <li><b>Claude מבקש כלי</b> במקום לענות, הוא מחזיר בקשה מסודרת: איזה כלי ועם אילו פרטים. הסימן: <code>stop_reason: tool_use</code>.</li>
+      <li><b>הכלי רץ</b> מישהו מפעיל את הכלי באמת ומחזיר את התוצאה. ב-Claude Code, ה״מישהו״ הזה הוא Claude Code עצמו. לכן אתם לא כותבים קוד.</li>
+      <li><b>חוזרים על זה</b> עם כל ההיסטוריה, עד ש-Claude עונה במילים ולא מבקש כלי (<code>end_turn</code>).</li>
+      <li><b>כשכלי נכשל</b> לא קורסים. מחזירים לו את השגיאה מסומנת כשגיאה (<code>is_error</code>), והוא מחליט: לנסות שוב, לשאול אתכם או להסביר את המגבלה.</li>
+    </ol>
+
+    <div class="loopsim" id="loopSim">
+      <div class="ls-head">
+        <b>סימולטור: סוכן יומן</b>
+        <div class="seg" role="group" aria-label="תרחיש">
+          <button type="button" data-ls="ok" aria-pressed="true">יום רגיל</button>
+          <button type="button" data-ls="err" aria-pressed="false">עם תקלה</button>
+        </div>
+      </div>
+      <ol class="ls-feed" id="lsFeed" aria-live="polite"></ol>
+      <div class="ls-foot">
+        <span class="ls-note" id="lsNote"></span>
+        <span class="ls-turns" id="lsTurns"></span>
+        <div class="row-btns" style="margin:0"><button type="button" class="btn-s" id="lsNext">הצעד הבא ←</button><button type="button" class="btn-s alt" id="lsReset">מההתחלה</button></div>
+      </div>
+    </div>
+    <p style="font-size:.9rem;color:var(--ink-soft)">איור להמחשה. הבקשות, התוצאות והתשובות לקוחות מהטבעות 3 ו-4 במדריך הרשמי, ותורגמו לעברית.</p>
+
+    <h3>למה ההוראות לכלים חשובות כל כך</h3>
+    <p>Anthropic מספרים שכשבנו סוכן תכנות, הם השקיעו יותר זמן בשיפור הכלים מאשר בפרומפט הכללי. הסוכן טעה בנתיבי קבצים יחסיים, אז שינו את הכלי כך שיחייב נתיב מלא, ומאז הוא לא טעה. מזה יוצאים שלושה כללים שתשתמשו בהם בכל קובץ תהליך:</p>
+    <ul class="checks">
+      <li><b>שימו את עצמכם בנעליים שלו.</b> אם עובד חדש היה צריך לחשוב פעמיים כדי להבין את ההוראה, גם הסוכן יצטרך.</li>
+      <li><b>תנו דוגמה ומקרי קצה.</b> ״אם הנושא רחב מדי, אמור את זה ובקש לצמצם״ שווה יותר מפסקה של הסברים.</li>
+      <li><b>תכננו נגד טעויות.</b> קבעו פורמט קבוע, תיקייה קבועה, שמות קבועים. כמה שפחות מקום לנחש.</li>
+    </ul>
+
+    <h3>איזה סוכן אתם צריכים?</h3>
+    <div class="tool" id="pickTool">
+      <div class="tool-head"><b>בוחר התבנית</b><span dir="ltr">PATTERN PICKER</span></div>
+      <div class="tool-body one">
+        <p style="font-size:.98rem;color:var(--ink-soft)">חשבו על משימה אמיתית שחוזרת אצלכם, וענו על חמש שאלות. השאלות מבוססות על ״מתי להשתמש״ במאמר של Anthropic.</p>
+        <ul class="decide">
+          <li><span>המשימה מתפרקת לשלבים קבועים, שתמיד באים באותו סדר?</span><span class="yn" data-q="1"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>מגיעים סוגים שונים של בקשות, וכל סוג צריך טיפול אחר?</span><span class="yn" data-q="2"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>יש כמה חלקים שלא תלויים זה בזה, או שרוצים כמה דעות על אותו דבר?</span><span class="yn" data-q="3"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>אי אפשר לדעת מראש כמה תת-משימות יהיו, ומה בדיוק כל אחת?</span><span class="yn" data-q="4"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>יש קריטריונים ברורים לאיכות, ומשוב באמת משפר את התוצאה?</span><span class="yn" data-q="5"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+        </ul>
+        <div class="verdict" id="pickOut" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="clips">
+      <div class="yt" data-id="gHB4JFG9i3k" data-t="676"><button type="button"><img src="https://i.ytimg.com/vi/gHB4JFG9i3k/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">שלוש השכבות של תהליך סוכני<small>Teacher's Tech · מ-11:16 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="bcM9dP_uXJU" data-t="613"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">איך מערכות סוכנים בנויות באמת<small>AI Master · מ-10:13 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="3">
+      <div class="slot" data-slot="3">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 03</span>
+      <p class="q">מתי הלולאה של הסוכן נעצרת?</p>
+      <div class="opts">
+        <button type="button" data-why="אין מספר קבוע. הלולאה רצה פעם אחת או כמה פעמים, לפי המשימה. נסו שוב.">אחרי שלושה כלים בדיוק</button>
+        <button type="button" data-why="שגיאה לא עוצרת. מחזירים אותה ל-Claude עם is_error, והוא ממשיך להחליט. נסו שוב.">בפעם הראשונה שכלי נכשל</button>
+        <button type="button" data-ok data-why="נכון. כל עוד stop_reason הוא tool_use הלולאה ממשיכה. כש-Claude עונה במילים (end_turn), היא נגמרת.">כש-Claude עונה במילים במקום לבקש עוד כלי</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 4 ========== -->
+<section class="spread" id="st4" style="--st:#b4232c" aria-labelledby="h4">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 04</span>
+    <p class="st-num" aria-hidden="true">4</p>
+    <h2 id="h4">פס ייצור</h2>
+    <p class="lede">סוכן ראשון: שרשרת. תסריט ארוך נכנס, ויוצאים שלושה תסריטים קצרים וחבילת פוסטים, כל אחד כ-PDF.</p>
+    <aside class="note"><p>כל שלב קל יותר כשהוא לא צריך לעשות הכול בבת אחת.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">התבנית: שרשרת פרומפטים</h3>
+    <p>מפרקים משימה לשלבים קבועים, וכל שלב עובד על התוצר של הקודם. בין השלבים אפשר לשים <b>שער</b>: בדיקה שהכול עדיין במסלול. לפי Anthropic, משלמים קצת בזמן ומקבלים דיוק, כי כל שלב הוא משימה קלה יותר.</p>
+    <div class="flow" aria-label="תרשים: סוכן הפיכת תוכן בשרשרת">
+      <span class="nd io">תסריט ארוך<small>input/</small></span><span class="ar"></span>
+      <span class="nd ai">1. מאתר<small>3 רגעים חזקים</small></span><span class="ar"></span>
+      <span class="nd gate">שער<small>3 רגעים עצמאיים?</small></span><span class="ar"></span>
+      <span class="nd ai">2. כותב<small>3 שורטס, 60 שניות</small></span><span class="ar"></span>
+      <span class="nd ai">3. חבילת רשתות<small>X, לינקדאין, אינסטגרם</small></span><span class="ar"></span>
+      <span class="nd io">4 קובצי PDF<small>output/</small></span>
+    </div>
+    <p class="flow-cap">הסוכן מ-AI Master. דוגמאות נוספות מהמאמר: קופי שיווקי ואז תרגום; ראשי פרקים, בדיקה שהם עומדים בקריטריונים, ואז כתיבה.</p>
+    <div class="when-card">
+      <div><b>מתאים כש...</b><ul><li>המשימה מתפרקת בקלות לשלבים קבועים</li><li>אותו סדר עובד בכל פעם</li></ul></div>
+      <div><b>פחות מתאים כש...</b><ul><li>הצעדים תלויים במה שמגלים בדרך</li><li>פנייה אחת עושה את העבודה מספיק טוב</li></ul></div>
+    </div>
+
+    <h3>בונים אותו</h3>
+    <ol class="steps">
+      <li><b>מכינים קלט</b> שמים תסריט ארוך (של סרטון, הרצאה או פודקאסט) בתיקיית <code>input</code>. קובץ טקסט או Word.</li>
+      <li><b>עוברים למצב תכנון</b> ומתארים את המערכת, לא את המשימה. שימו לב: עוד לא נותנים לו תסריט לעבוד עליו.
+        <div class="copy"><span class="lbl">פרומפט לתכנון הסוכן</span><pre>אני רוצה לבנות תהליך להפיכת תוכן, שנריץ שוב ושוב.
+התפקיד: מומחה להפיכת תוכן ארוך לתוכן קצר.
+הקלט: תסריט ארוך אחד מתיקיית input.
+השלבים:
+1. קרא את כל התסריט ומצא את שלושת הרגעים החזקים שעומדים בפני עצמם.
+2. שער: אם אין שלושה רגעים שעומדים בפני עצמם, עצור ותגיד לי כמה מצאת ולמה.
+3. לכל רגע כתוב תסריט קצר של 60 שניות, עם הוק חדש בפתיחה ושורת סיום חזקה.
+4. כתוב חבילת רשתות: שרשור ל-X, פוסט ללינקדאין וכיתוב לאינסטגרם, בקול של הדובר.
+5. המר כל תוצר ל-PDF נקי ושמור בתיקיית output.
+לפני שאתה בונה, הראה לי תוכנית לתהליך עצמו.</pre></div></li>
+      <li><b>בודקים את התוכנית</b> חסר משהו? כותבים, והוא משלב. למשל: ״הוסף לכל שורט הצעה לכותרת על המסך.״</li>
+      <li><b>מאשרים ובונים</b> Claude כותב קובץ תהליך, משהו כמו <code>workflows/repurpose.md</code>. פתחו וקראו. הכול בשפה רגילה, ואפשר לערוך כל מילה.</li>
+      <li><b>מריצים</b> בשיחה חדשה באותה תיקייה:
+        <div class="copy"><span class="lbl">הרצה</span><pre>הרץ את תהליך הפיכת התוכן על התסריט שבתיקיית input.</pre></div></li>
+    </ol>
+    <div class="tip"><b>על ה-PDF</b>כדי להמיר ל-PDF, Claude עשוי להציע להתקין כלי קטן. זה תקין. במצב הרשאות רגיל הוא ישאל אתכם לפני. ב-AI Master כל הפלט, שלושה שורטס וחבילת רשתות, נוצר בפחות משתי דקות.</div>
+    <div class="tip good"><b>השער הוא מה שהופך את זה לסוכן אמין</b>בלי שער, אם אין בתסריט שלושה רגעים טובים, הסוכן ימציא. עם שער, הוא עוצר ומספר לכם. כל פס ייצור שתבנו צריך לפחות שער אחד.</div>
+
+    <div class="clips">
+      <div class="yt" data-id="bcM9dP_uXJU" data-t="986"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">בונים סוכן הפיכת תוכן<small>AI Master · מ-16:26 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="4">
+      <div class="slot" data-slot="4">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 04</span>
+      <p class="q">בשביל מה השער בין שלב 1 לשלב 2?</p>
+      <div class="opts">
+        <button type="button" data-ok data-why="נכון. שער הוא בדיקה באמצע הדרך. אם התוצר של שלב 1 לא עומד בתנאי, עוצרים במקום להמשיך על בסיס רעוע.">לבדוק שהשלב הקודם הצליח, ולעצור אם לא</button>
+        <button type="button" data-why="מהירות היא לא המטרה. שרשרת בכלל משלמת קצת בזמן כדי לקבל דיוק. נסו שוב.">להאיץ את הסוכן</button>
+        <button type="button" data-why="השלבים בשרשרת רצים ברצף, אחד אחרי השני. מקביליות זו תבנית אחרת (משימה 6). נסו שוב.">להריץ את שני השלבים במקביל</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 5 ========== -->
+<section class="spread" id="st5" style="--st:#6d28d9" aria-labelledby="h5">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 05</span>
+    <p class="st-num" aria-hidden="true">5</p>
+    <h2 id="h5">המרכזייה</h2>
+    <p class="lede">סוכן שני: ניתוב. כל פנייה נכנסת מסווגת ונשלחת לטיפול שמתאים לה. מיון תיבת דואר של שירות לקוחות.</p>
+    <aside class="note"><p>הסוכן מכין טיוטות. מי שלוחץ ״שלח״ זה אתם.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">התבנית: ניתוב</h3>
+    <p>מסווגים את הקלט, ומעבירים אותו למסלול מתמחה. ככה כל מסלול מקבל הוראות משלו. בלי ניתוב, שיפור הטיפול בסוג אחד של פניות פוגע לפעמים בסוגים האחרים. הדוגמה של Anthropic: שאלות כלליות, בקשות החזר ותמיכה טכנית, כל אחת לתהליך, להוראות ולכלים אחרים.</p>
+    <div class="flow" aria-label="תרשים: סוכן ניתוב פניות">
+      <span class="nd io">פנייה נכנסת<small>input/inbox</small></span><span class="ar"></span>
+      <span class="nd ai">מסווג<small>מודל קטן ומהיר</small></span><span class="ar"></span>
+      <span class="stack">
+        <span class="nd">שאלה כללית<small>תשובה מהמאגר</small></span>
+        <span class="nd">בקשת החזר<small>טיוטה + אישור אנושי</small></span>
+        <span class="nd">תמיכה טכנית<small>שאלות אבחון</small></span>
+        <span class="nd gate">לא ברור<small>מסומן לבדיקה שלכם</small></span>
+      </span><span class="ar"></span>
+      <span class="nd io">טיוטות<small>output/drafts</small></span>
+    </div>
+    <div class="when-card">
+      <div><b>מתאים כש...</b><ul><li>יש קטגוריות ברורות שעדיף לטפל בהן בנפרד</li><li>אפשר לסווג בדיוק, בעזרת מודל או כלל פשוט</li></ul></div>
+      <div><b>פחות מתאים כש...</b><ul><li>הקטגוריות מתערבבות ואי אפשר להבדיל</li><li>כל הפניות בעצם דומות</li></ul></div>
+    </div>
+
+    <h3>בונים אותו</h3>
+    <ol class="steps">
+      <li><b>מכינים דוגמאות</b> בתיקייה <code>input/inbox</code> שמים 10 עד 15 פניות אמיתיות (בלי פרטים מזהים), כל אחת בקובץ טקסט. זה גם חומר הבדיקה שלכם.</li>
+      <li><b>כותבים קובץ לכל מסלול</b> במצב תכנון:
+        <div class="copy"><span class="lbl">פרומפט לתכנון המרכזייה</span><pre>אני רוצה לבנות סוכן שממיין פניות של לקוחות.
+1. קרא כל קובץ בתיקיית input/inbox וסווג אותו לאחת מהקטגוריות: שאלה כללית, בקשת החזר, תמיכה טכנית, לא ברור.
+2. לכל קטגוריה צור קובץ תהליך משלה בתיקיית workflows/routes, עם הוראות מותאמות:
+   שאלה כללית: ענה רק לפי resources/faq.md, ואם אין שם תשובה, סמן ״לא ברור״.
+   בקשת החזר: כתוב טיוטה אדיבה, ותמיד סמן ״דורש אישור אנושי״. לעולם אל תבטיח החזר.
+   תמיכה טכנית: שאל עד שלוש שאלות אבחון, וצרף צעדים ראשונים אם יש.
+3. שמור כל טיוטה בתיקייה output/drafts/[הקטגוריה], ובסוף צור טבלת סיכום: קובץ, קטגוריה, רמת ביטחון, מה נדרש ממני.
+אל תשלח שום דבר. רק טיוטות.
+הראה לי תוכנית לפני שאתה בונה.</pre></div></li>
+      <li><b>מוסיפים סוכן משנה זול לסיווג</b> סיווג הוא משימה פשוטה. לפי Anthropic, ניתוב מאפשר לשלוח שאלות קלות למודל קטן וחסכוני ושאלות קשות למודל חזק. ב-Claude Code עושים את זה עם סוכן משנה שרץ על Haiku (על סוכני משנה נרחיב במשימה 7):
+        <div class="copy"><span class="lbl"><bdi dir="ltr">.claude/agents/classifier.md</bdi></span><pre class="ltr">---
+name: classifier
+description: Classifies one customer message into a category. Use for every message in input/inbox.
+tools: Read
+model: haiku
+---
+
+Read the message and return exactly one line:
+category | confidence (high/medium/low) | one-sentence reason
+Categories: general, refund, tech, unclear. If unsure, use unclear.</pre></div></li>
+      <li><b>מריצים ובודקים</b> ״הרץ את המרכזייה על התיקייה input/inbox״. עברו על טבלת הסיכום: האם הסיווג נכון? פניות שסווגו לא נכון הן בדיוק מה שצריך כדי לשפר את ההוראות.</li>
+    </ol>
+    <div class="tip warn"><b>פיקוח אנושי הוא חלק מהתבנית</b>Anthropic מציינים ששירות לקוחות הוא אחד התחומים שבהם סוכנים מוכיחים את עצמם, בתנאי שיש פיקוח אנושי משמעותי. פעולות כמו החזר כספי נשארות אצלכם. במשימה 9 נחבר את המרכזייה ל-Gmail, כך שהיא תקרא מיילים אמיתיים ותכין טיוטות. עדיין רק טיוטות.</div>
+
+    <div class="quiz" data-st="5">
+      <div class="slot" data-slot="5">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 05</span>
+      <p class="q">למה כדאי שהסיווג ירוץ על מודל קטן כמו Haiku?</p>
+      <div class="opts">
+        <button type="button" data-why="Haiku מהיר וחסכוני, לא ״חכם יותר״. נסו שוב.">כי מודל קטן תמיד מדויק יותר</button>
+        <button type="button" data-ok data-why="נכון. סיווג הוא משימה פשוטה, אז שולחים אותה למודל מהיר וזול, ושומרים את המודל החזק למה שקשה באמת.">כי סיווג הוא משימה פשוטה, וככה חוסכים זמן וכסף</button>
+        <button type="button" data-why="זה לא קשור להרשאות. ההרשאות נקבעות בשדה tools. נסו שוב.">כי רק Haiku מורשה לקרוא קבצים</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 6 ========== -->
+<section class="spread" id="st6" style="--st:#047857" aria-labelledby="h6">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 06</span>
+    <p class="st-num" aria-hidden="true">6</p>
+    <h2 id="h6">צוות חקירה</h2>
+    <p class="lede">סוכן שלישי: מקביליות. נותנים נושא, הוא שואל, מתכנן, שולח כמה חוקרים במקביל, ומגיש דוח מסודר עם מקורות.</p>
+    <aside class="note"><p>הסוכן הזה לבד שווה את כל המדריך. בנו אותו השבוע.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">התבנית: מקביליות</h3>
+    <p>כמה עובדים על אותה משימה באותו זמן, ואז מאחדים. לפי Anthropic, יש לזה שתי גרסאות:</p>
+    <div class="versus">
+      <div><b>חלוקה (Sectioning)</b><p>מפרקים לחלקים עצמאיים שרצים במקביל. כל חלק מקבל תשומת לב מלאה. למשל: שלושה חוקרים, כל אחד על זווית אחרת של הנושא.</p></div>
+      <div><b>הצבעה (Voting)</b><p>מריצים את אותה משימה כמה פעמים ומשווים. למשל: שלושה בודקים עצמאיים שואלים ״האם הטענה הזאת נתמכת במקור?״, ונשארים עם מה שרובם אישרו.</p></div>
+    </div>
+    <div class="flow" aria-label="תרשים: סוכן מחקר במקביל">
+      <span class="nd io">נושא<small>+ תשובות להבהרה</small></span><span class="ar"></span>
+      <span class="nd ai">תוכנית<small>3 זוויות</small></span><span class="ar"></span>
+      <span class="stack">
+        <span class="nd">חוקר א<small>מה עובד</small></span>
+        <span class="nd">חוקר ב<small>מה מוגזם</small></span>
+        <span class="nd">חוקר ג<small>לאן זה הולך</small></span>
+      </span><span class="ar"></span>
+      <span class="nd ai">מאחד<small>+ 3 בודקי עובדות</small></span><span class="ar"></span>
+      <span class="nd io">דוח<small>output/</small></span>
+    </div>
+
+    <h3>בונים אותו</h3>
+    <p>זה הסוכן ששני הסרטונים בונים, עם תוספת אחת מהתיעוד של Claude Code: חוקרים במקביל, כל אחד בסוכן משנה משלו.</p>
+    <ol class="steps">
+      <li><b>מתכננים את התהליך</b> במצב תכנון. מתארים מטרה, לא צעדים:
+        <div class="copy"><span class="lbl">פרומפט לתכנון סוכן המחקר</span><pre>אני רוצה לבנות תהליך מחקר שאוכל להריץ על כל נושא.
+כשאני נותן נושא:
+1. לפני שאתה מתחיל, שאל אותי שאלות הבהרה על היקף, קהל, עומק, טווח זמן ופורמט.
+2. כתוב תוכנית מחקר וחכה לאישור שלי.
+3. חלק את המחקר לשלוש זוויות עצמאיות, וחקור אותן במקביל, כל אחת בסוכן משנה נפרד.
+4. אחד את הממצאים לדוח מסודר: תקציר מנהלים, ממצאים לפי נושאים, ובסוף ״נקודות מפתח״ ו״צעדים מומלצים להמשך״.
+5. לפני השמירה, בדוק כל טענה מרכזית מול המקור שלה, וסמן טענות שלא נתמכות.
+6. ציין מקור לכל טענה, ושמור את הדוח בתיקיית output.
+אם הנושא רחב מדי למחקר רציני, אמור את זה ובקש לצמצם.
+הראה לי תוכנית לתהליך עצמו לפני שאתה בונה.</pre></div></li>
+      <li><b>קוראים את קובץ התהליך</b> Claude כותב משהו כמו <code>workflows/research-report.md</code>. ב-Teacher's Tech הקובץ כלל מטרה, שלב שאלות, אישור תוכנית, הנחיות מחקר (״להימנע מפוסטים של דעה בלבד״, ״להעדיף מקורות מ-12 החודשים האחרונים״), כללי כתיבה וטיפול בשגיאות.</li>
+      <li><b>שואלים ״אילו תהליכים יש לך?״</b> הוא אמור למנות את התהליך החדש ולתאר אותו. סימן שהכול במקום.</li>
+      <li><b>מריצים על נושא אמיתי</b> ועונים על השאלות כמו לעמית:
+        <div class="copy"><span class="lbl">הרצה, ותשובות לדוגמה</span><pre>תריץ את תהליך המחקר: מה המצב של סוכני AI ב-2026? במה אנשים באמת משתמשים, מה עובד, מה מוגזם, ולאן זה הולך.
+
+(ואחרי שהוא שואל:)
+תשאיר את זה רחב. אני רוצה פירוק של הייפ מול מציאות. הקהל: אנשים שמבינים בטכנולוגיה אבל לא מפתחים. עומק בינוני, עם כלים ופלטפורמות ספציפיים. רק 6 עד 12 החודשים האחרונים. פורמט: כותרות ברורות ונקודות.</pre></div></li>
+      <li><b>משפרים בלי להתחיל מחדש</b> הסוכן זוכר מה כתב. בקשות ממוקדות עובדות מהר:
+        <div class="copy"><span class="lbl">שיפורים ממוקדים</span><pre>תקציר המנהלים ארוך מדי. קצר אותו לשלוש נקודות.
+הוסף טבלת השוואה של חמשת הכלים המובילים שהזכרת בדוח.</pre></div></li>
+    </ol>
+    <div class="tip warn"><b>מקביליות עולה טוקנים</b>לפי התיעוד של Claude Code, כל סוכן משנה צורך טוקנים משלו, וכשהרבה סוכני משנה מחזירים תוצאות מפורטות, זה ממלא את השיחה הראשית. זה עובד הכי טוב כשמסלולי המחקר באמת לא תלויים זה בזה. שלושה חוקרים זה מספר טוב להתחלה.</div>
+    <div class="tip"><b>מספר שכדאי לזכור</b>בדוח שהסוכן של Teacher's Tech הפיק מופיע נתון: גם המודלים הטובים ביותר מצליחים רק ב-45.7% מהמשימות בעולם האמיתי. ג׳יימי מסיק מזה שפיקוח אנושי עדיין לא אופציונלי. קראו את הדוח לפני שאתם שולחים אותו הלאה.</div>
+
+    <div class="clips">
+      <div class="yt" data-id="gHB4JFG9i3k" data-t="765"><button type="button"><img src="https://i.ytimg.com/vi/gHB4JFG9i3k/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">בונים את סוכן המחקר במצב תכנון<small>Teacher's Tech · מ-12:45 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="gHB4JFG9i3k" data-t="1083"><button type="button"><img src="https://i.ytimg.com/vi/gHB4JFG9i3k/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">מריצים מחקר אמיתי, ומשפרים<small>Teacher's Tech · מ-18:03 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="bcM9dP_uXJU" data-t="724"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">אותו סוכן, בגרסת אפליקציית Claude<small>AI Master · מ-12:04 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="6">
+      <div class="slot" data-slot="6">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 06</span>
+      <p class="q">שלושה בודקים עצמאיים מקבלים את אותה טענה ושואלים אם היא נתמכת. איזו גרסה של מקביליות זו?</p>
+      <div class="opts">
+        <button type="button" data-why="בחלוקה כל אחד עושה חלק אחר. כאן כולם עושים את אותו דבר. נסו שוב.">חלוקה (Sectioning)</button>
+        <button type="button" data-ok data-why="נכון. אותה משימה כמה פעמים, כדי לקבל כמה דעות ותוצאה אמינה יותר.">הצבעה (Voting)</button>
+        <button type="button" data-why="כאן אין מבקר שמחזיר הערות לכותב בלולאה. זו תבנית אחרת (משימה 8). נסו שוב.">כותב ומבקר</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 7 ========== -->
+<section class="spread" id="st7" style="--st:#9a3412" aria-labelledby="h7">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 07</span>
+    <p class="st-num" aria-hidden="true">7</p>
+    <h2 id="h7">המפקד והשטח</h2>
+    <p class="lede">סוכן רביעי: מנצח ועובדים. המנצח מחליט תוך כדי מה צריך לעשות, ומחלק לעובדים מתמחים שאתם מגדירים פעם אחת.</p>
+    <aside class="note"><p>סוכן משנה טוב הוא כמו עובד טוב: יודע בדיוק מה התפקיד שלו, ולא נוגע במה שלא שלו.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">התבנית: מנצח ועובדים</h3>
+    <p>מודל מרכזי מפרק את המשימה בצורה דינמית, מחלק תת-משימות לעובדים, ומאחד את התוצאות. זה נראה דומה למקביליות, אבל לפי Anthropic ההבדל המרכזי הוא הגמישות: <b>תת-המשימות לא מוגדרות מראש</b>. המנצח קובע אותן לפי הקלט הספציפי.</p>
+    <div class="flow" aria-label="תרשים: מנצח ועובדים">
+      <span class="nd io">משימה<small>״השווה את המתחרים שלי״</small></span><span class="ar"></span>
+      <span class="nd ai">מנצח<small>מגלה כמה ומה</small></span><span class="ar"></span>
+      <span class="stack">
+        <span class="nd">עובד<small>מתחרה 1</small></span>
+        <span class="nd">עובד<small>מתחרה 2</small></span>
+        <span class="nd">עובד<small>... מתחרה n</small></span>
+      </span><span class="ar"></span>
+      <span class="nd ai">מנצח<small>מסנתז</small></span><span class="ar"></span>
+      <span class="nd io">טבלת השוואה<small>output/</small></span>
+    </div>
+    <p class="flow-cap">דוגמאות מהמאמר: שינויים בקוד שנוגעים בכמה קבצים, ומשימות חיפוש שאוספות ומנתחות מידע מכמה מקורות.</p>
+
+    <h3>סוכני משנה: העובדים שלכם</h3>
+    <p>ב-Claude Code, עובד הוא <b>סוכן משנה</b> (subagent): עוזר מתמחה שרץ בחלון הקשר משלו, עם הוראות משלו, כלים מוגבלים ולפעמים מודל אחר. הוא עושה את העבודה הכבדה בצד, ומחזיר לשיחה הראשית רק סיכום. לפי התיעוד, זה עוזר לשמור על השיחה נקייה, להגביל כלים, למחזר הגדרות בין פרויקטים, ולחסוך בעלויות.</p>
+    <div class="anatomy">
+      <div><b>name</b><span class="en">חובה</span><p>שם באנגלית, באותיות קטנות ומקפים. כך Claude ואתם קוראים לו.</p></div>
+      <div><b>description</b><span class="en">חובה</span><p>מתי להפעיל אותו. לפי זה Claude מחליט אם להעביר אליו משימה, אז כתבו בבירור ובקצרה.</p></div>
+      <div><b>tools</b><span class="en">רשות</span><p>אילו כלים מותרים. בלי השדה הזה הוא מקבל הכול. עובד שרק קורא? רק Read.</p></div>
+      <div><b>model</b><span class="en">רשות</span><p>sonnet, opus, haiku, או inherit (כמו השיחה הראשית).</p></div>
+      <div><b>ההוראות</b><span class="en">גוף הקובץ</span><p>כל מה שאחרי שורת ה-<code>---</code> השנייה. זה הפרומפט שמנחה אותו.</p></div>
+    </div>
+    <p>הקבצים יושבים ב-<code>.claude/agents/</code> בתוך הפרויקט (רק לפרויקט הזה), או ב-<code>~/.claude/agents/</code> (לכל הפרויקטים שלכם). הדרך הכי קלה: לבקש מ-Claude לכתוב אותם. או להשתמש במחולל:</p>
+
+    <div class="tool" id="agTool">
+      <div class="tool-head"><b>מחולל סוכן משנה</b><span dir="ltr">SUBAGENT BUILDER</span></div>
+      <div class="tool-body">
+        <div>
+          <label class="f"><span>שם (באנגלית, אותיות קטנות ומקפים)</span><input type="text" id="agName" value="competitor-analyst" dir="ltr"></label>
+          <label class="f"><span>מתי להפעיל אותו (description)</span><textarea id="agDesc">חוקר מתחרה אחד לעומק ומחזיר כרטיס השוואה קבוע. הפעל אותו בנפרד לכל מתחרה.</textarea></label>
+          <div class="f"><span>כלים מותרים</span>
+            <div class="ticks" id="agTools">
+              <label><input type="checkbox" value="Read" checked><span>Read</span></label>
+              <label><input type="checkbox" value="Grep"><span>Grep</span></label>
+              <label><input type="checkbox" value="Glob"><span>Glob</span></label>
+              <label><input type="checkbox" value="Write"><span>Write</span></label>
+              <label><input type="checkbox" value="Edit"><span>Edit</span></label>
+              <label><input type="checkbox" value="Bash"><span>Bash</span></label>
+              <label><input type="checkbox" value="WebSearch" checked><span>WebSearch</span></label>
+              <label><input type="checkbox" value="WebFetch" checked><span>WebFetch</span></label>
+            </div>
+            <small>עובד שרק אוסף מידע לא צריך Write או Bash. פחות כלים, פחות הפתעות.</small>
+          </div>
+          <label class="f"><span>מודל</span><select id="agModel"><option value="sonnet">sonnet</option><option value="haiku">haiku (מהיר וחסכוני)</option><option value="opus">opus (הכי חזק)</option><option value="inherit">inherit (כמו השיחה הראשית)</option></select></label>
+          <label class="f"><span>מחבר MCP שמותר לו (רשות, שם של מחבר שכבר הוספתם)</span><input type="text" id="agMcp" placeholder="למשל notion" dir="ltr"></label>
+          <label class="f"><span>ההוראות</span><textarea id="agPrompt" style="min-height:130px">אתה אנליסט מתחרים. תקבל שם של מתחרה אחד ורשימת היבטים להשוואה.
+חפש מידע עדכני, ולכל היבט כתוב שורה אחת עם מקור.
+אם לא מצאת מידע על היבט, כתוב ״לא נמצא״. אל תנחש.
+החזר רק את הכרטיס, בלי הקדמות.</textarea></label>
+        </div>
+        <div>
+          <div class="out ltr" id="agOut" aria-live="polite"></div>
+          <div class="row-btns"><button type="button" class="btn-s" id="agCopy">העתקה</button><button type="button" class="btn-s alt" id="agDown">הורדת הקובץ</button></div>
+          <p style="font-size:.9rem;color:var(--ink-soft);margin-top:10px">שמרו בנתיב <code id="agPath">.claude/agents/competitor-analyst.md</code>. אם תיקיית agents לא הייתה קיימת כשפתחתם את השיחה, הפעילו מחדש את Claude Code.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>מפעילים את המנצח</h3>
+    <div class="copy"><span class="lbl">פרומפט למנצח</span><pre>אני רוצה השוואת מתחרים לעסק שלי: [תארו את העסק בשתי שורות].
+1. קודם, חפש ומצא מי המתחרים הרלוונטיים, והצע לי רשימה ואת ההיבטים שכדאי להשוות. חכה לאישור.
+2. אחרי האישור, הפעל את הסוכן competitor-analyst בנפרד לכל מתחרה.
+3. אחד את כל הכרטיסים לטבלת השוואה אחת, הוסף מתחת שלוש תובנות ואת ההזדמנות הכי ברורה בשבילי, ושמור ב-output.</pre></div>
+    <p>שימו לב: אתם לא יודעים מראש כמה מתחרים יהיו. המנצח מגלה את זה, וזה בדיוק מה שמבדיל את התבנית ממקביליות. בשיחה תראו שורה כמו <code>competitor-analyst(...)</code> לכל הפעלה של עובד.</p>
+    <div class="tip"><b>שרשרת של סוכני משנה</b>אפשר גם לבקש מ-Claude להפעיל סוכני משנה ברצף, כשכל אחד מעביר את התוצאה לבא אחריו. למשל: ״השתמש ב-competitor-analyst כדי למצוא נקודות חולשה, ואז ב-copywriter כדי לכתוב מסר שמנצל אותן.״</div>
+
+    <div class="quiz" data-st="7">
+      <div class="slot" data-slot="7">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 07</span>
+      <p class="q">מה מבדיל ״מנצח ועובדים״ ממקביליות?</p>
+      <div class="opts">
+        <button type="button" data-why="גם במקביליות העובדים יכולים לרוץ במקביל. ההבדל במי שקובע את המשימות. נסו שוב.">שהעובדים רצים במקביל</button>
+        <button type="button" data-why="אפשר להשתמש בסוכני משנה בשתי התבניות. נסו שוב.">שרק כאן יש סוכני משנה</button>
+        <button type="button" data-ok data-why="נכון. במקביליות החלקים מוגדרים מראש. כאן המנצח מחליט תוך כדי, לפי הקלט, כמה תת-משימות יהיו ומה כל אחת.">שתת-המשימות לא מוגדרות מראש, המנצח קובע אותן</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 8 ========== -->
+<section class="spread" id="st8" style="--st:#be185d" aria-labelledby="h8">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 08</span>
+    <p class="st-num" aria-hidden="true">8</p>
+    <h2 id="h8">המאמן</h2>
+    <p class="lede">סוכן חמישי: כותב ומבקר. אחד כותב, השני מבקר לפי קריטריונים, וחוזר חלילה, עד שזה טוב או עד שנגמרים הסבבים.</p>
+    <aside class="note"><p>בלי תנאי עצירה, המאמן ימשיך ללטש לנצח. תגידו לו מתי זה מספיק.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">התבנית: כותב ומבקר</h3>
+    <p>פנייה אחת מייצרת תוצר, ופנייה שנייה מעריכה ומחזירה משוב, בלולאה. בדיוק כמו כותב אנושי שעובר כמה טיוטות. לפי Anthropic יש שני סימנים שהתבנית מתאימה: משוב אנושי מנוסח היטב משפר את התוצאה, והמודל מסוגל לתת משוב כזה בעצמו. הדוגמה שלהם מתאימה לנו במיוחד: <b>תרגום ספרותי</b>, שבו המתרגם מפספס ניואנסים שמבקר יכול לתפוס.</p>
+    <div class="flow" aria-label="תרשים: כותב ומבקר">
+      <span class="nd io">טקסט באנגלית<small>input/</small></span><span class="ar"></span>
+      <span class="nd ai">כותב<small>מתרגם לעברית</small></span><span class="ar"></span>
+      <span class="nd ai">מבקר<small>ציון והערות</small></span><span class="ar"></span>
+      <span class="loopback">↺ עד 3 סבבים, או ציון 8+</span><span class="ar"></span>
+      <span class="nd io">גרסה סופית<small>+ יומן שינויים</small></span>
+    </div>
+
+    <h3>בונים אותו</h3>
+    <ol class="steps">
+      <li><b>כותבים קריטריונים</b> זה הלב. מבקר בלי קריטריונים נותן משוב כללי. שמרו בקובץ <code>resources/translation-criteria.md</code>:
+        <div class="copy"><span class="lbl">קריטריונים לתרגום (ציון 1 עד 10 לכל אחד)</span><pre>1. נאמנות: כל רעיון במקור מופיע בתרגום. שום דבר לא נוסף ושום דבר לא נשמט.
+2. עברית טבעית: נשמע כאילו נכתב בעברית מלכתחילה. בלי מבנים של אנגלית מתורגמת.
+3. מונחים: מונח מקצועי מתורגם תמיד באותה צורה. מונח שאין לו תרגום מקובל נשאר באנגלית.
+4. טון: שומר על הטון של המקור (רציני, הומוריסטי, אישי).
+5. אורך: בטווח של 10% מהמקור.</pre></div></li>
+      <li><b>מגדירים מבקר שלא נוגע בטקסט</b> סוכן משנה עם קריאה בלבד. הוא לא מתקן, רק מבקר. ככה התפקידים לא מתערבבים:
+        <div class="copy"><span class="lbl"><bdi dir="ltr">.claude/agents/translation-critic.md</bdi></span><pre class="ltr">---
+name: translation-critic
+description: Reviews a Hebrew translation against resources/translation-criteria.md. Use after every translation draft.
+tools: Read
+model: sonnet
+---
+
+Compare the Hebrew draft with the English source.
+Score each criterion from 1 to 10.
+For every score below 8, quote the exact sentence and suggest a fix.
+Do not rewrite the text yourself.</pre></div></li>
+      <li><b>מתארים את הלולאה, כולל תנאי עצירה</b>
+        <div class="copy"><span class="lbl">פרומפט לתהליך המאמן</span><pre>בנה תהליך תרגום בשם workflows/translate.md:
+1. תרגם לעברית את הקובץ שבתיקיית input.
+2. הפעל את translation-critic על הטיוטה.
+3. תקן לפי ההערות שלו בלבד, וכתוב ביומן מה שינית ולמה.
+4. חזור על שלבים 2 ו-3 עד שכל הציונים 8 ומעלה, או עד 3 סבבים, המוקדם מביניהם.
+5. אם אחרי 3 סבבים יש ציון מתחת ל-8, עצור והראה לי מה נשאר פתוח.
+6. שמור ב-output את הגרסה הסופית ואת יומן השינויים.</pre></div></li>
+    </ol>
+    <div class="tip"><b>למה תנאי עצירה?</b>Anthropic ממליצים להוסיף לסוכנים תנאי עצירה, כמו מספר מקסימלי של סבבים, כדי לשמור על שליטה. סוכן אוטונומי פירושו גם עלויות גבוהות יותר וטעויות שמצטברות. בסוכן משנה אפשר להגביל גם עם השדה <code>maxTurns</code>.</div>
+    <p>אותה תבנית עובדת לכל דבר שיש לו קריטריונים ברורים: פוסטים ללינקדאין לפי מדריך סגנון, הצעות מחיר מול רשימת דרישות, מצגת מול מבנה קבוע. ותזכורת מהסרטונים: גם אתם יכולים להיות המבקר. משוב ממוקד (״הפתיחה ארוכה מדי, קצר לשני משפטים״) עובד הרבה יותר טוב מ״זה לא טוב״.</p>
+
+    <h3>לפני שיוצאים לשטח: חמש הטעויות</h3>
+    <p>שני הסרטונים מסיימים עם אותה רשימה כמעט מילה במילה. זה כנראה אומר משהו:</p>
+    <ol class="steps">
+      <li><b>לדלג על CLAUDE.md</b> בלעדיו כל שיחה מתחילה מאפס, והאיכות לא עקבית.</li>
+      <li><b>מטרה עמומה</b> ״תחקור על AI״ מוליד ערך ויקיפדיה. ״איך אנשי שיווק לא טכניים משתמשים בסוכנים ליצירת תוכן, עם כלים שיש להם גרסה חינמית״ מוליד משהו שאפשר לעבוד איתו.</li>
+      <li><b>לדלג על בדיקת התוכנית</b> קל יותר לתקן תוכנית מאשר תהליך שחצי ממנו כבר רץ.</li>
+      <li><b>לא לדרוש שאלות הבהרה</b> בלי הוראה מפורשת, הסוכן מניח. וההנחות הן המקור לרוב התוצרים הבינוניים.</li>
+      <li><b>לבנות הכול בבת אחת</b> חמש מערכות שעובדות חצי, שאף אחת מהן לא אמינה. סוכן אחד, עד שהוא עובד טוב, ואז הבא.</li>
+    </ol>
+    <div class="tip good"><b>סדר הגדילה של AI Master</b>מתחילים ממשימות סגורות עם קלט ופלט ברורים (דוח, סיכום). עוברים לתהליכים עם כמה סבבי שיפור. ובסוף, שרשרת של תהליכים: סוכן המחקר מגיש דוח, וסוכן תכנון תוכן קורא אותו ומציע רעיונות לסרטונים.</div>
+
+    <div class="clips">
+      <div class="yt" data-id="bcM9dP_uXJU" data-t="1073"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">חמש הטעויות שהורגות סוכנים<small>AI Master · מ-17:53 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="gHB4JFG9i3k" data-t="1342"><button type="button"><img src="https://i.ytimg.com/vi/gHB4JFG9i3k/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">חמש טעויות וטיפים מקצועיים<small>Teacher's Tech · מ-22:22 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="8">
+      <div class="slot" data-slot="8">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 08</span>
+      <p class="q">המאמן ממשיך ללטש את התרגום שוב ושוב ולא מסיים. מה חסר?</p>
+      <div class="opts">
+        <button type="button" data-why="מודל חזק יותר עדיין ימשיך, כי אף אחד לא אמר לו מתי לעצור. נסו שוב.">מודל חזק יותר</button>
+        <button type="button" data-ok data-why="נכון. ״עד 3 סבבים, או עד שכל הציונים 8 ומעלה״. כך Anthropic ממליצים לשמור על שליטה.">תנאי עצירה: מספר סבבים מקסימלי או ציון סף</button>
+        <button type="button" data-why="הרשאות כתיבה רק יאפשרו לו לשנות עוד קבצים. זה לא יעזור לו לעצור. נסו שוב.">לתת למבקר הרשאת כתיבה</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 9 ========== -->
+<section class="spread" id="st9" style="--st:#0e7490" aria-labelledby="h9">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 09</span>
+    <p class="st-num" aria-hidden="true">9</p>
+    <h2 id="h9">קשר עם העולם</h2>
+    <p class="lede">מחברים את הסוכנים ל-Gmail, ל-Notion, ליומן ולשאר הכלים שלכם. ובסוף: איך סוכן רץ בענן, בלי המחשב שלכם.</p>
+    <aside class="note"><p>מחבר הוא מפתח לבית. נותנים אותו רק למי שסומכים עליו.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">מה זה מחבר</h3>
+    <p>עד עכשיו הסוכנים עבדו עם הכלים המובנים: קבצים, פקודות וחיפוש ברשת. <b>MCP</b> (Model Context Protocol) הוא תקן פתוח שמאפשר ל-Claude להשתמש בכלים של שירותים אחרים. ב-claude.ai קוראים לשרתי MCP <b>מחברים</b> (connectors). במאמר של Anthropic זה בדיוק ה״מודל המועשר״ מאבן הבניין הראשונה: מודל עם חיפוש, כלים וזיכרון. לפי התיעוד של Claude Code, עם מחברים אפשר לבקש דברים כמו:</p>
+    <ul class="checks">
+      <li>״צור טיוטות ב-Gmail שמזמינות את עשרת האנשים האלה לשיחת משוב.״</li>
+      <li>״עדכן את תבנית המייל לפי העיצובים החדשים מ-Figma שפורסמו ב-Slack.״</li>
+      <li>״תממש את הפיצ׳ר שמתואר בכרטיס ב-Jira ותפתח PR ב-GitHub.״</li>
+    </ul>
+
+    <h3>דרך 1: מחברים מ-claude.ai (הכי קלה)</h3>
+    <ol class="steps">
+      <li><b>מוסיפים מחבר</b> ב-<a href="https://claude.ai/customize/connectors" target="_blank" rel="noopener" dir="ltr">claude.ai/customize/connectors</a>. בתוכניות Team ו-Enterprise רק מנהל יכול להוסיף.</li>
+      <li><b>מתחברים</b> משלימים את ההתחברות לשירות, שם ב-claude.ai.</li>
+      <li><b>זהו</b> אם נכנסתם ל-Claude Code עם חשבון claude.ai, המחברים זמינים בו אוטומטית. בודקים עם <code>/mcp</code>.</li>
+    </ol>
+    <p>מחברים שנבדקו אפשר למצוא ב-<a href="https://claude.ai/directory" target="_blank" rel="noopener">ספרייה של Anthropic</a>. הם עובדים על אותה תשתית כמו Claude Code.</p>
+
+    <h3>דרך 2: מוסיפים שרת בפקודה</h3>
+    <p>כשהשירות נותן כתובת של שרת MCP, מוסיפים אותו בפקודה אחת, ואז מתחברים מתוך Claude Code עם <code>/mcp</code> (נפתח דפדפן להתחברות).</p>
+    <div data-ws="vscode"><p><span class="ws-flag">VS Code</span>את הפקודה מריצים בטרמינל המובנה: <span class="ui">Terminal</span> ואז <span class="ui">New Terminal</span>.</p></div>
+    <div data-ws="desktop"><p><span class="ws-flag">אפליקציית Claude</span>הכי פשוט לכם: דרך 1. ואם השירות לא מופיע שם, אפשר לבקש מ-Claude עצמו: ״הוסף את שרת ה-MCP הזה עם הפקודה claude mcp add״, ולאשר כשהוא שואל.</p></div>
+    <div data-ws="terminal"><p><span class="ws-flag">טרמינל</span>מריצים בשורת הפקודה הרגילה, לא בתוך השיחה עם Claude.</p></div>
+
+    <div class="tool" id="mcTool">
+      <div class="tool-head"><b>בונה פקודת חיבור</b><span dir="ltr">MCP COMMAND BUILDER</span></div>
+      <div class="tool-body">
+        <div>
+          <label class="f"><span>שירות (דוגמאות מהתיעוד הרשמי)</span><select id="mcSvc"><option value="notion">Notion</option><option value="asana">Asana</option><option value="hubspot">HubSpot</option><option value="sentry">Sentry</option><option value="stripe">Stripe</option><option value="custom">שירות אחר (כתובת משלכם)</option></select></label>
+          <label class="f"><span>שם קצר</span><input type="text" id="mcName" value="notion" dir="ltr"></label>
+          <label class="f"><span>כתובת השרת (מההוראות של השירות)</span><input type="text" id="mcUrl" value="https://mcp.notion.com/mcp" dir="ltr"></label>
+          <label class="f"><span>למי זה זמין</span><select id="mcScope"><option value="local">local: רק בפרויקט הזה, רק לי</option><option value="project">project: בפרויקט, משותף לצוות</option><option value="user">user: בכל הפרויקטים שלי</option></select></label>
+        </div>
+        <div>
+          <div class="out ltr" id="mcOut" aria-live="polite" style="min-height:90px"></div>
+          <div class="row-btns"><button type="button" class="btn-s" id="mcCopy">העתקת הפקודה</button></div>
+          <p class="verdict info" id="mcVerdict" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">היקף</th><th scope="col">נטען ב</th><th scope="col">משותף לצוות</th><th scope="col">נשמר ב</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">local (ברירת מחדל)</th><td>הפרויקט הנוכחי</td><td>לא</td><td><code>~/.claude.json</code></td></tr>
+        <tr><th scope="row">project</th><td>הפרויקט הנוכחי</td><td>כן</td><td><code>.mcp.json</code> בתיקייה</td></tr>
+        <tr><th scope="row">user</th><td>כל הפרויקטים שלכם</td><td>לא</td><td><code>~/.claude.json</code></td></tr>
+      </tbody>
+    </table></div>
+    <div class="copy"><span class="lbl">ניהול השרתים (בטרמינל, חוץ מהאחרונה)</span><pre class="ltr">claude mcp list          # all servers
+claude mcp get notion    # details
+claude mcp remove notion # remove
+/mcp                     # inside Claude Code: status and sign-in</pre></div>
+    <div class="tip warn"><b>בטיחות קודם</b>התיעוד הרשמי מבקש לוודא שאתם סומכים על כל שרת לפני שמחברים אותו. שרת שמביא תוכן מבחוץ יכול לחשוף אתכם ל-prompt injection: טקסט זדוני שמנסה לתת לסוכן הוראות. התחילו ממחברים מהספרייה הרשמית, ותנו לסוכן הרשאות קריאה לפני הרשאות כתיבה.</div>
+
+    <h3>מחברים את הסוכנים שבניתם</h3>
+    <div class="anatomy">
+      <div><b>המרכזייה + Gmail</b><span class="en">Mission 05</span><p>״קרא את המיילים שלא נקראו מהיום, סווג כל אחד, והכן טיוטות ב-Gmail. אל תשלח.״</p></div>
+      <div><b>צוות החקירה + Notion</b><span class="en">Mission 06</span><p>״בסוף התהליך, צור את הדוח כעמוד חדש ב-Notion, בתוך דף המחקרים.״</p></div>
+      <div><b>המפקד + Drive</b><span class="en">Mission 07</span><p>״קרא את מסמך האסטרטגיה שלנו ב-Drive לפני שאתה מציע מתחרים.״</p></div>
+    </div>
+    <p>ואפשר לתת מחבר רק לסוכן משנה אחד: בשדה <code>mcpServers</code> בקובץ שלו כותבים את שם המחבר (יש לזה שדה במחולל של משימה 7). ככה רק העובד שצריך את Notion רואה את Notion.</p>
+
+    <h3>השלב הבא: סוכן שרץ בענן</h3>
+    <p>כל מה שבנינו רץ על המחשב שלכם, כשאתם מפעילים אותו. <b>Claude Managed Agents</b> של Anthropic מריץ סוכן בסביבה מנוהלת בענן: Claude קורא קבצים, מריץ פקודות, גולש ומריץ קוד בארגז חול מאובטח, ומתאים במיוחד למשימות ארוכות, לעבודה ברקע ולריצות לפי לוח זמנים.</p>
+    <div class="anatomy">
+      <div><b>סוכן</b><span class="en">Agent</span><p>המודל, ההוראות, הכלים, שרתי ה-MCP והסקילים. מגדירים פעם אחת.</p></div>
+      <div><b>סביבה</b><span class="en">Environment</span><p>איפה הוא רץ: ארגז חול בענן של Anthropic, או בשרתים שלכם.</p></div>
+      <div><b>סשן</b><span class="en">Session</span><p>ריצה אחת של הסוכן על משימה מסוימת.</p></div>
+      <div><b>אירועים</b><span class="en">Events</span><p>ההודעות ביניכם לבין הסוכן בזמן שהוא רץ. אפשר לכוון אותו או לעצור אותו באמצע.</p></div>
+    </div>
+    <p>בסרטון של Claude רואים לוח קנבן שמפעיל סוכן כשגוררים כרטיס, סוכן מחקר מחירים שבועי עם זיכרון, ומערכת של כמה סוכנים לטיפול בתקלות, עם אישור אנושי.</p>
+    <div class="tip"><b>נכון ל-4.11.2026, לפי התיעוד הרשמי</b>Managed Agents בבטא, זמין כברירת מחדל לכל חשבונות ה-API, ודורש מפתח API מ-Claude Console. כלומר זה כבר צעד של מפתחים, או של מי שעובד עם מפתח. Outcomes, תזמור של כמה סוכנים וזיכרון הם חלק מהבטא. בודקים את <a href="https://platform.claude.com/docs/en/managed-agents/overview" target="_blank" rel="noopener">עמוד התיעוד</a> לפני שמתכננים.</div>
+
+    <div class="clips">
+      <div class="yt" data-id="NLWiIj47IdI" data-t="0"><button type="button"><img src="https://i.ytimg.com/vi/NLWiIj47IdI/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">מה זה Claude Managed Agents<small>Claude · 3:52 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="9">
+      <div class="slot" data-slot="9">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 09</span>
+      <p class="q">הוספתם מחבר של Notion ב-claude.ai. מה צריך לעשות כדי להשתמש בו ב-Claude Code?</p>
+      <div class="opts">
+        <button type="button" data-why="לא צריך להוסיף שוב. מחברים מ-claude.ai מגיעים לבד. נסו שוב.">להוסיף אותו שוב עם claude mcp add</button>
+        <button type="button" data-ok data-why="נכון. אם נכנסתם ל-Claude Code עם חשבון claude.ai, הוא כבר שם. בודקים ב-/mcp.">כלום, אם מחוברים עם חשבון claude.ai. בודקים ב-/mcp</button>
+        <button type="button" data-why="Managed Agents הוא משהו אחר: הרצת סוכנים בענן דרך ה-API. נסו שוב.">לפתוח חשבון Managed Agents</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 10 ========== -->
+<section class="spread" id="st10" style="--st:#4d7c0f" aria-labelledby="h10">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 10</span>
+    <p class="st-num" aria-hidden="true">10</p>
+    <h2 id="h10">המבצע הגדול</h2>
+    <p class="lede">אפליקציה אמיתית, מרעיון ועד כתובת שנפתחת בטלפון. מעקב הרגלים, בשישה שלבים, בלי לכתוב קוד.</p>
+    <aside class="note"><p>אתם לא ״משתמשים ב-AI כדי לתכנת״. אתם יוצרים תוכנה. החזון שלכם.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">מה בונים</h3>
+    <p>לפי המדריך של Claude World: <b>מעקב הרגלים אישי</b>. מוסיפים הרגלים עם שם ואימוג׳י, מסמנים מה עשיתם היום, רואים רצף ימים (״🔥 7 ימים״), ותצוגה שבועית. בערך שעתיים, ובלי ידע מוקדם. השיטה נקראת vibe coding: מתארים <b>מה</b> רוצים ואיך זה צריך להרגיש, לא <b>איך</b> לבנות.</p>
+    <ul class="checks">
+      <li><b>Claude Code מותקן</b> <a href="../claude-code/">מהמדריך הבסיסי</a>, עם מנוי או גישת API.</li>
+      <li><b>Node.js</b> כדי להריץ את האפליקציה. לא בטוחים אם יש? שאלו את Claude: ״בדוק אם Node.js מותקן אצלי, ואם לא, הדרך אותי להתקין אותו.״</li>
+      <li><b>תיקייה חדשה</b> למשל <code>habit-tracker</code>, ופותחים בה את Claude Code (כמו במשימה 2).</li>
+    </ul>
+
+    <h3>שלב 1: מתארים את החזון (5 דקות)</h3>
+    <div class="copy"><span class="lbl">ההודעה הראשונה</span><pre>אני רוצה לבנות אפליקציה אישית למעקב הרגלים.
+התחושה: נקייה, מעוררת מוטיבציה, וכיפית לשימוש. כמו אפליקציות כמו Streaks או Habitify, מינימליסטית אבל משמחת.
+מה אני רוצה:
+- להוסיף הרגל חדש עם שם ואימוג׳י
+- לסמן הרגלים שעשיתי היום
+- לראות את הרצף הנוכחי של כל הרגל
+- תצוגה שבועית פשוטה של מה הושלם
+בוא נשתמש ב-React עם כלים מודרניים. קודם שיעבוד אצלי במחשב, את העלייה לאוויר נעשה אחר כך.
+תקים את הפרויקט ותראה לי ממה אנחנו מתחילים.</pre></div>
+    <p>Claude יקים פרויקט React (כנראה עם Vite), יתקין מה שצריך וייצור את הרכיבים הראשונים. רק תסתכלו ותנו לו לעבוד.</p>
+
+    <h3>שלב 2: גרסה ראשונה ותחושה (20 דקות)</h3>
+    <div class="copy"><span class="lbl">הרצה, ואז משוב על התחושה</span><pre>תריץ את האפליקציה ותראה לי מה יש לנו עד עכשיו.
+
+(ואחרי שראיתם:)
+אני רואה את המבנה הבסיסי. כמה דברים:
+1. רשימת ההרגלים צפופה, תן לה יותר מקום לנשום
+2. הכפתור להוספת הרגל צריך להיות בולט יותר
+3. כשאני מסמן הרגל, אני רוצה להרגיש את זה. הוסף אנימציה מספקת
+4. הצבעים שטוחים, תן לזה יותר חיים
+אל תשנה עדיין את הפונקציונליות, רק תגרום לזה להרגיש טוב יותר.</pre></div>
+    <div class="tip good"><b>נקודת ביקורת 1</b>אפליקציה שרצה, כרטיסי הרגל יפים, אנימציות חלקות. צלמו מסך, זה אבן הדרך הראשונה.</div>
+
+    <h3>שלב 3: הפונקציות (30 דקות)</h3>
+    <p>מבקשים כל דבר בנפרד, ובודקים אחרי כל אחד:</p>
+    <div class="copy"><span class="lbl">ארבע בקשות, אחת אחרי השנייה</span><pre>בוא נגרום להוספת הרגל לעבוד. בלחיצה על הכפתור: חלון קטן (לא עמוד חדש), בחירת אימוג׳י מרשת פשוטה, הקלדת שם, ושמירה ב-Enter או בכפתור שמירה. מהיר ומינימלי.
+
+כשאני מסמן הרגל כבוצע: התיבה מתמלאת באנימציה (לא קופצת), יש קפיצה קטנה, אולי פיצוץ קונפטי קטן בהשלמה הראשונה של היום, והכרטיס נראה ״בוצע״. אני רוצה להרגיש שהשגתי משהו.
+
+הוסף ספירת רצף לכל הרגל, מתחת לשם (כמו ״🔥 7 ימים״). הרצף סופר ימים רצופים, מתאפס אם פספסתי יום, ונראה אחרת באבני דרך של 7, 30 ו-100 ימים.
+
+כרגע הנתונים נעלמים כשמרעננים. תתקן את זה: שמור הכול ב-localStorage, כך שאם אסגור את הדפדפן ואחזור, ההרגלים וההתקדמות יהיו שם.</pre></div>
+    <div class="tip good"><b>נקודת ביקורת 2</b>הוספת הרגלים עובדת, הסימון מספק, יש רצפים, והנתונים נשמרים. עכשיו תוסיפו הרגלים אמיתיים שלכם.</div>
+
+    <h3>שלב 4: התצוגה השבועית (20 דקות)</h3>
+    <div class="copy"><span class="lbl">רשת שבועית וניווט</span><pre>הוסף תצוגה שבועית: רשת שבה השורות הן ההרגלים והעמודות הן 7 ימי השבוע. כל תא מראה אם השלמתי את ההרגל באותו יום, והיום מודגש. שיהיה קל לראות דפוסים במבט אחד.
+
+שפר את התצוגה: עיגולים במקום וי, עיגול מלא ליום שהושלם, ימים עתידיים מעומעמים, שמות הימים, ואנימציה עדינה בטעינה. שזה ייראה כמו סיכום חזותי, לא כמו גיליון אלקטרוני.
+
+הוסף מעבר בין ״היום״ ל״שבוע״ בראש המסך, עם מעבר חלק בין התצוגות.</pre></div>
+
+    <h3>שלב 5: ליטוש (15 דקות)</h3>
+    <div class="copy"><span class="lbl">מצב ריק, טלפון וכותרת</span><pre>מה קורה כשאין עדיין הרגלים? הוסף מצב ריק עם הודעה ידידותית וקריאה ברורה להוסיף את ההרגל הראשון. שזה ייראה מכוון, לא שבור.
+
+בדוק איך זה נראה בטלפון. ודא שכפתורים גדולים מספיק לאצבע, הטקסט קריא ושום דבר לא גולש. זו בעיקר אפליקציה לטלפון.
+
+הוסף כותרת פשוטה: שם האפליקציה, התאריך של היום בצורה ידידותית, ומשפט מוטיבציה קטן שמתחלף כל יום. בעדינות, ההרגלים הם הכוכבים.</pre></div>
+
+    <h3>שלב 6: באוויר (20 דקות)</h3>
+    <div class="copy"><span class="lbl">פריסה ל-Vercel</span><pre>בוא נעלה את זה לאוויר כדי שאוכל להשתמש בזה בטלפון.
+קודם ודא שהבנייה עובדת: תריץ build לייצור, תבדוק את גרסת הייצור אצלי, ותוודא שהכול עדיין עובד.
+אחר כך תדריך אותי בפריסה ל-Vercel: אילו חשבונות אני צריך לפתוח, אילו פקודות בדיוק להריץ, ואיך אני מקבל כתובת ציבורית.</pre></div>
+    <p>פותחים את הכתובת בטלפון ובודקים הכול: הוספה, סימון, תצוגה שבועית, ושהנתונים נשמרים. <b>מזל טוב, בניתם והעליתם אפליקציה.</b></p>
+
+    <h3>כשמשהו לא עובד</h3>
+    <div class="copy"><span class="lbl">ארבע הודעות שפותרות כמעט הכול</span><pre>האפליקציה לא רצה. תראה לי את השגיאה ובוא נתקן אותה.
+
+ה[הדבר הספציפי] נראה לא בסדר. תראה לי מה יכול לגרום לזה ותתקן.
+
+אני לא אוהב איך [הדבר הספציפי] עובד. בוא ננסה משהו אחר: [מה הייתם מעדיפים].
+
+יש לי רעיון לפיצ׳ר חדש: [תארו]. זה אפשרי? אם כן, בוא נוסיף.</pre></div>
+    <div class="versus">
+      <div><b>פחות טוב</b><p>״זה גרוע.״ ״אני צריך אפליקציית רשימות עם מסד נתונים SQL.״</p></div>
+      <div><b>הרבה יותר טוב</b><p>״הכפתור קטן מדי בטלפון.״ ״אני רוצה אפליקציית רשימות שמרגישה כמו לכתוב במחברת יפה.״</p></div>
+    </div>
+    <div class="tip"><b>שמרו את ההתקדמות</b>לפני הפסקה: ״תסכם מה בנינו עד עכשיו ומה המצב הנוכחי, אני רוצה לשמור את זה לפני שנמשיך.״ ועוד דבר מהמדריך: אם זה לא הולך, קומו, צאו להפסקה, תחזרו רעננים.</div>
+    <p>רעיונות לאפליקציה הבאה, מאותו מדריך: יומן אישי עם שאלות לכתיבה, מעקב הוצאות, ספר מתכונים, רשימת קריאה. ואם בא לכם לשלב: סוכן המחקר ממשימה 6 יכול לכתוב את התוכן, והאפליקציה להציג אותו.</p>
+
+    <div class="clips">
+      <div class="yt" data-id="bcM9dP_uXJU" data-t="1212"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">איך מגדילים את מערך הסוכנים לאורך זמן<small>AI Master · מ-20:12 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="10">
+      <div class="slot" data-slot="10">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 10</span>
+      <p class="q">משהו באפליקציה לא נראה טוב. איזו הודעה תביא את התוצאה הכי טובה?</p>
+      <div class="opts">
+        <button type="button" data-why="Claude לא יודע מה בדיוק מפריע לכם. בלי פרטים, הוא ינחש. נסו שוב.">״זה לא טוב, תתקן.״</button>
+        <button type="button" data-why="להתחיל מאפס מבזבז את כל מה שעבד. משוב ממוקד מהיר הרבה יותר. נסו שוב.">״בוא נמחק הכול ונתחיל מחדש.״</button>
+        <button type="button" data-ok data-why="נכון. ספציפי ומבוסס על תחושה. ״הכפתור קטן מדי בטלפון״ נותן ל-Claude בדיוק מה לתקן.">״הכפתור להוספה קטן מדי בטלפון, תגדיל אותו.״</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /journey -->
+
+<!-- ========== תעודת סוכן ========== -->
+<section class="final" id="license" aria-labelledby="lic-t">
+  <div class="final-inner">
+    <h2 id="lic-t">תעודת הסוכן שלכם</h2>
+    <p id="licIntro">כל סמל שאספתם מופיע כאן. אספו את כל העשרה, והתעודה מוכנה.</p>
+    <div class="license idcard" aria-live="polite">
+      <div>
+        <span class="sub-en" dir="ltr">CLAUDE CODE · FIELD AGENT ID</span>
+        <div class="row-top">
+          <div class="photo" id="licPhoto" aria-hidden="true">?</div>
+          <div>
+            <h3 id="licTitle">סוכן בהכשרה</h3>
+            <dl>
+              <dt>שם קוד</dt><dd id="licName">עוד לא נבחר</dd>
+              <dt>סביבה</dt><dd id="licType">לא נבחרה</dd>
+              <dt>משימה</dt><dd id="licGoal">לא נבחרה</dd>
+              <dt>סמלים</dt><dd id="licCount">0 מתוך 10</dd>
+              <dt>תאריך</dt><dd id="licDate">-</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="wingrow" id="wingRow" aria-hidden="true"></div>
+      </div>
+      <svg class="seal" id="licSeal" viewBox="0 0 150 150" aria-hidden="true"></svg>
+    </div>
+    <div class="final-cta">
+      <a class="btn wa" id="licShare" href="https://wa.me/972544266802" target="_blank" rel="noopener">ספרו לעזי בוואטסאפ איזה סוכן בניתם</a>
+      <a class="btn gold" href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנת סוכנים לצוות</a>
+    </div>
+    <button type="button" class="reset" id="resetBtn">איפוס תיק הסוכן</button>
+  </div>
+</section>
+
+<!-- ========== תקועים ========== -->
+<section class="help" id="help" aria-labelledby="help-t">
+  <h2 id="help-t">תקועים? חדר המצב</h2>
+  <p style="color:#cdd7e4">כתבו במילים שלכם מה קרה, או הדביקו את הודעת השגיאה.</p>
+  <label for="errIn" class="sr-only">חיפוש בעיה</label>
+  <input id="errIn" type="search" placeholder="למשל: לא שואל שאלות, או already exists" autocomplete="off">
+  <ul class="errs" id="errList"></ul>
+</section>
+
+<!-- ========== מקורות ========== -->
+<section class="sources" aria-labelledby="src-t">
+  <div class="sources-inner">
+    <h2 id="src-t">על מה המדריך מבוסס</h2>
+    <p>קראתי, צפיתי ועיבדתי את כל אלה לעברית. כל התודה ליוצרים. שווה לקרוא ולצפות במלואם:</p>
+    <ul class="src-list">
+      <li><b>Building Effective Agents</b><span>Anthropic, אריק ש׳ ובארי ז׳אנג. חמש התבניות, ההבחנה בין תהליך לסוכן, והטיפים לכתיבת כלים. בראש המאמר יש הערה שחלק מהכלים השתנו מאז דצמבר 2024.</span><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Tutorial: Build a tool-using agent</b><span>Claude Platform Docs. הלולאה בחמש טבעות, ומכאן הסימולטור במשימה 3.</span><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/build-a-tool-using-agent" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Claude Code: Build Your First AI Agent</b><span>Teacher's Tech (ג׳יימי), מרץ 2026, 25 דקות, אנגלית. VS Code, CLAUDE.md, מצב תכנון וסוכן מחקר.</span><a href="https://www.youtube.com/watch?v=gHB4JFG9i3k" target="_blank" rel="noopener">לצפייה</a></li>
+      <li><b>How to Build an AI Agent with Claude Code</b><span>AI Master, יוני 2026, 22 דקות, אנגלית (כולל קטעי חסות). אפליקציית Claude, סוכן מחקר וסוכן הפיכת תוכן.</span><a href="https://www.youtube.com/watch?v=bcM9dP_uXJU" target="_blank" rel="noopener">לצפייה</a></li>
+      <li><b>What is Claude Managed Agents?</b><span>Claude Academy, סרטון של 4 דקות.</span><a href="https://academy.claude.com/tutorials/what-is-claude-managed-agents" target="_blank" rel="noopener">לצפייה</a></li>
+      <li><b>Your First App tutorial</b><span>Claude World. מעקב ההרגלים של משימה 10, שלב אחר שלב.</span><a href="https://claude-world.com/articles/first-app-tutorial/" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>התיעוד הרשמי של Claude Code</b><span>MCP ומחברים, וסוכני משנה. ממנו הפקודות, ההיקפים והשדות.</span><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP</a> · <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">סוכני משנה</a></li>
+      <li><b>Claude Managed Agents overview</b><span>Claude Platform Docs. ארבעת המושגים, מתי להשתמש, ומצב הבטא.</span><a href="https://platform.claude.com/docs/en/managed-agents/overview" target="_blank" rel="noopener">לקריאה</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="guide-bio" aria-labelledby="bio-t">
+  <img src="assets/img/ezi.jpg" alt="עזי לוי" width="136" height="136" loading="lazy">
+  <h2 id="bio-t">נעים מאוד, עזי</h2>
+  <p>אני יזם, מחנך ומנטור, ומרצה ויועץ לבינה מלאכותית. מ-2022 אני מעביר סדנאות, קורסים והרצאות לארגונים, למוסדות חינוך ולמנהלים. קודם לכן ניהלתי מרכז למחוננים. תמיד בגובה העיניים ועם חיוך.</p>
+  <ul class="clients" aria-label="בין לקוחותיי">
+    <li>אוניברסיטת תל אביב</li><li>משרד האוצר</li><li>רשות המיסים</li><li>משרד החינוך</li><li>רשות מקרקעי ישראל</li><li>נציבות שירות המדינה</li><li>הלמ״ס</li><li>מכללת ספיר</li><li>מכללת אורנים</li><li>מכון מגיד</li>
+  </ul>
+  <blockquote class="quote">
+    <p>״עזי הצליח לעורר את הסקרנות ואת חדוות היצירה של המורים, שנשארו לתרגל ולהתנסות גם בהפסקה ולאחר סיום המפגש.״</p>
+    <cite>יפעת אנטמן, רכזת ההתמקצעות בהוראת מחוננים ומצטיינים, מכללת חמדת הדרום</cite>
+  </blockquote>
+  <div class="cta-row">
+    <a class="btn gold" href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנה לצוות או לארגון</a>
+    <a class="btn line" href="https://www.ezylevy.com/ai-consultant" target="_blank" rel="noopener">ייעוץ אישי 1:1</a>
+    <a class="btn wa" href="https://wa.me/972544266802" target="_blank" rel="noopener">וואטסאפ</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>© 2026 עזי לוי · <a href="tel:+972544266802" dir="ltr">054-4266802</a> · <a href="mailto:ezylevy@gmail.com">ezylevy@gmail.com</a></div>
+    <nav aria-label="קישורי תחתית">
+      <a href="https://www.ezylevy.com" target="_blank" rel="noopener">האתר של עזי</a>
+      <a href="https://www.instagram.com/ezylevy/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ezy.levy.1/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.ezylevy.com/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA" target="_blank" rel="noopener">מדיניות פרטיות</a>
+      <a href="https://www.ezylevy.com/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA" target="_blank" rel="noopener">הצהרת נגישות</a>
+    </nav>
+    <div style="flex-basis:100%;font-size:.88rem">מדריך עצמאי, ללא קשר רשמי ל-Anthropic. Claude, Claude Code ו-Claude Managed Agents הם סימנים מסחריים של Anthropic. שמות שירותים אחרים (Notion, Gmail, Vercel, VS Code ועוד) שייכים לבעליהם. המדריך מבוסס על המקורות שלמעלה, ונבדק מולם ב-4.11.2026. הכלים מתעדכנים מהר, ולכן כשיש פער, התיעוד הרשמי קובע.</div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="המשימות שלכם">
+  <span class="ct" id="dockCount">0 מתוך 10 סמלים</span>
+  <ol id="dockList">
+    <li><a href="#st1" data-d="1" aria-label="משימה 1">1</a></li>
+    <li><a href="#st2" data-d="2" aria-label="משימה 2">2</a></li>
+    <li><a href="#st3" data-d="3" aria-label="משימה 3">3</a></li>
+    <li><a href="#st4" data-d="4" aria-label="משימה 4">4</a></li>
+    <li><a href="#st5" data-d="5" aria-label="משימה 5">5</a></li>
+    <li><a href="#st6" data-d="6" aria-label="משימה 6">6</a></li>
+    <li><a href="#st7" data-d="7" aria-label="משימה 7">7</a></li>
+    <li><a href="#st8" data-d="8" aria-label="משימה 8">8</a></li>
+    <li><a href="#st9" data-d="9" aria-label="משימה 9">9</a></li>
+    <li><a href="#st10" data-d="10" aria-label="משימה 10">10</a></li>
+  </ol>
+  <a class="help-link" href="#help">תקועים?</a>
+</nav>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
