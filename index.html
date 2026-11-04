@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>טרמינל המדריכים | מדריכי AI בעברית · עזי לוי</title>
+<meta name="description" content="כל המדריכים האינטראקטיביים של עזי לוי במקום אחד: Claude Code, Microsoft Copilot ועוד בדרך. בעברית, צעד אחר צעד, עם חידות, כלים וצילומי מסך.">
+<link rel="canonical" href="https://ezylevy.github.io/tutorials/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="טרמינל המדריכים של עזי לוי">
+<meta property="og:description" content="מדריכי AI אינטראקטיביים בעברית, צעד אחר צעד. בוחרים שער ויוצאים לדרך.">
+<meta property="og:url" content="https://ezylevy.github.io/tutorials/">
+<meta name="theme-color" content="#0f1a33">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Assistant:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Karantina:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/hub.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":"מדריכי AI בעברית של עזי לוי","itemListElement":[
+{"@type":"ListItem","position":1,"url":"https://ezylevy.github.io/tutorials/claude-code/","name":"הדרכון ל-Claude Code"},
+{"@type":"ListItem","position":2,"url":"https://ezylevy.github.io/tutorials/copilot/","name":"רישיון טיס ל-Copilot"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#board">דילוג ללוח המדריכים</a>
+
+<header class="topbar">
+  <a class="brand" href="https://www.ezylevy.com" target="_blank" rel="noopener">
+    <img src="assets/img/logo.png" alt="" width="44" height="44">
+    <span><b>עזי לוי</b><small>בינה פוגשת מציאות</small></span>
+  </a>
+  <nav aria-label="קישורים חיצוניים">
+    <a href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנאות</a>
+    <a href="https://chat.whatsapp.com/LcW2GxWIN3u0VDr8LdsnDD" target="_blank" rel="noopener">קבוצת עדכונים</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero-wrap">
+<section class="hero" aria-labelledby="title">
+  <div>
+    <p class="kicker">מדריכי AI בעברית · חינם · צעד אחר צעד</p>
+    <h1 id="title">טרמינל <span>המדריכים</span></h1>
+    <p class="sub">כל מדריך כאן הוא מסע קצר עם יעד ברור: מהצעד הראשון ועד שהכלי עובד בשבילכם. בגובה העיניים, עם צילומי מסך, סרטונים, כלים שאפשר לשחק איתם וחידה בסוף כל תחנה. בוחרים שער ויוצאים לדרך.</p>
+    <div class="byline">
+      <img src="assets/img/ezi.jpg" alt="עזי לוי" width="62" height="62">
+      <div><b>המדריך שלכם: עזי לוי</b><span>מנחה ויועץ לבינה מלאכותית, ומנהל מרכז למחוננים לשעבר</span></div>
+    </div>
+  </div>
+
+  <div class="pass" aria-label="כרטיס העלייה שלכם">
+    <div class="pass-main">
+      <div class="pass-head"><b>כרטיס עלייה</b><span dir="ltr">BOARDING PASS</span></div>
+      <dl>
+        <div><dt>נוסע</dt><dd id="passName">אורח/ת</dd></div>
+        <div><dt>יעדים</dt><dd><span id="passCount">2</span> מדריכים</dd></div>
+        <div><dt>שפה</dt><dd>עברית</dd></div>
+        <div><dt>מחיר</dt><dd>חינם</dd></div>
+        <div><dt>תחנות שעברתם</dt><dd id="passDone">0</dd></div>
+        <div><dt>מושב</dt><dd>ליד החלון</dd></div>
+      </dl>
+    </div>
+    <div class="pass-stub">
+      <small dir="ltr">GATE</small>
+      <b id="passGate">01</b>
+      <div class="barcode" aria-hidden="true"></div>
+      <small dir="ltr">EZY·LEVY</small>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="board-wrap" id="board" aria-labelledby="board-t">
+  <div class="inner">
+    <h2 class="sec-title" id="board-t">לוח יציאות</h2>
+    <p class="sec-sub">ההתקדמות שלכם נשמרת בדפדפן, אז הלוח יודע איפה עצרתם. מדריך חדש נוחת כאן כל כמה זמן.</p>
+    <ol class="board" id="boardList">
+      <li class="board-head" aria-hidden="true"><span>GATE</span><span>DESTINATION</span><span>DURATION</span><span>PROGRESS</span><span>STATUS</span></li>
+      <!-- להוספת מדריך: מעתיקים שורה, משנים את הקישור, את data-key, data-field ו-data-total -->
+      <li data-key="cc-passport-v1" data-field="stamps" data-total="9"><a href="claude-code/"><span class="gate">01</span><span class="dest">Claude Code<small>הדרכון: התקנה ושימוש ראשון</small></span><span class="meta">9 תחנות · 35 דק׳</span><span class="meta prog">0/9</span><span class="status">פתוח לעלייה</span></a></li>
+      <li data-key="ezi-copilot-license-v1" data-field="wings" data-total="10"><a href="copilot/"><span class="gate">02</span><span class="dest">Microsoft Copilot<small>רישיון טיס: מהצ׳אט ועד סוכנים</small></span><span class="meta">10 שיעורים · 55 דק׳</span><span class="meta prog">0/10</span><span class="status">פתוח לעלייה</span></a></li>
+      <li><div class="soon-row"><span class="gate">03</span><span class="dest">היעד הבא<small>בהכנה</small></span><span class="meta">-</span><span class="meta">-</span><span class="status">בקרוב</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="gates-wrap" aria-labelledby="gates-t">
+  <div class="inner">
+    <h2 class="sec-title" id="gates-t">השערים</h2>
+    <p class="sec-sub">כל מדריך עם עולם משלו, אבל אותה שיטה: תחנות קצרות, הכול מתאים את עצמו אליכם, וחותמת בסוף כל אחת.</p>
+    <div class="gates">
+
+      <!-- שער 01 -->
+      <a class="gate-card" href="claude-code/" style="--accent:#b5125f" data-key="cc-passport-v1" data-field="stamps" data-total="9">
+        <div class="cover-art art-passport">
+          <span class="tag" dir="ltr">GATE 01</span>
+          <div class="book" aria-hidden="true"><img src="assets/img/logo.png" alt=""><b>דרכון</b><span>CLAUDE CODE</span></div>
+          <span class="theme">דרכון וחותמות</span>
+        </div>
+        <div class="card-body">
+          <h3>הדרכון ל-<bdi dir="ltr">Claude Code</bdi></h3>
+          <p>מהמסך השחור ועד המשימה הראשונה. המדריך מתאים את עצמו ל-Windows, ל-Mac או ל-Linux, ולאפליקציה, לטרמינל או לדפדפן.</p>
+          <ul class="chips"><li>9 תחנות</li><li>35 דקות</li><li>סימולטור טרמינל</li><li>Skills ו-MCP</li></ul>
+          <div class="progress"><div class="progress-top"><span>חותמות בדרכון</span><span class="pcount">0 מתוך 9</span></div><div class="bar"><i></i></div></div>
+          <span class="cta">יוצאים לדרך ←</span>
+        </div>
+      </a>
+
+      <!-- שער 02 -->
+      <a class="gate-card" href="copilot/" style="--accent:#b4232c" data-key="ezi-copilot-license-v1" data-field="wings" data-total="10">
+        <div class="cover-art art-flight">
+          <span class="tag" dir="ltr">GATE 02</span>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <defs><clipPath id="hc"><circle cx="50" cy="50" r="42"/></clipPath></defs>
+            <circle cx="50" cy="50" r="48" fill="#172334"/>
+            <g clip-path="url(#hc)"><g class="tilt">
+              <rect x="-20" y="-20" width="140" height="70" fill="#5aa9e6"/>
+              <rect x="-20" y="50" width="140" height="70" fill="#a0612f"/>
+              <line x1="-20" y1="50" x2="120" y2="50" stroke="#fff" stroke-width="2"/>
+              <line x1="38" y1="40" x2="62" y2="40" stroke="#fff" stroke-width="1.4"/>
+              <line x1="42" y1="30" x2="58" y2="30" stroke="#fff" stroke-width="1.4"/>
+              <line x1="38" y1="60" x2="62" y2="60" stroke="#fff" stroke-width="1.4"/>
+            </g></g>
+            <path d="M24 52h18l8 6 8-6h18" fill="none" stroke="#ffb547" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="50" cy="50" r="42" fill="none" stroke="#ffb547" stroke-width="2"/>
+          </svg>
+          <span class="theme">רישיון טיס וכנפיים</span>
+        </div>
+        <div class="card-body">
+          <h3>רישיון טיס ל-<bdi dir="ltr">Copilot</bdi></h3>
+          <p>הצ׳אט, שיחה קולית, Outlook וסיכומי פגישות ב-Teams, ואז בניית סוכנים, סקילים ו-Copilot Studio. מותאם לרישיון החינמי או לרישיון בתשלום.</p>
+          <ul class="chips"><li>10 שיעורים</li><li>55 דקות</li><li>צילומי מסך</li><li>מחולל הוראות לסוכן</li></ul>
+          <div class="progress"><div class="progress-top"><span>זוגות כנפיים</span><span class="pcount">0 מתוך 10</span></div><div class="bar"><i></i></div></div>
+          <span class="cta">ממריאים ←</span>
+        </div>
+      </a>
+
+      <!-- שער פתוח: המדריך הבא -->
+      <a class="gate-card soon" href="https://wa.me/972544266802?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%96%D7%99%2C%20%D7%94%D7%99%D7%99%D7%AA%D7%99%20%D7%A9%D7%9E%D7%97%20%D7%9C%D7%9E%D7%93%D7%A8%D7%99%D7%9A%20%D7%A2%D7%9C%20" target="_blank" rel="noopener">
+        <div class="cover-art" aria-hidden="true">?</div>
+        <div class="card-body">
+          <h3>השער הבא</h3>
+          <p>המדריך הבא כבר בהכנה. על איזה כלי הייתם רוצים מדריך? שלחו לי, והבקשות הנפוצות עולות ראשונות.</p>
+          <span class="cta">הציעו יעד בוואטסאפ</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="how" aria-labelledby="how-t">
+  <div class="inner">
+    <h2 class="sec-title" id="how-t">איך המדריכים עובדים</h2>
+    <p class="sec-sub">אותה שיטה בכל מדריך, כדי שתרגישו בבית מהרגע הראשון.</p>
+    <div class="how-grid">
+      <div><span class="ic">1</span><b>מתאים את עצמו אליכם</b><p>בוחרים בהתחלה מחשב, רישיון או מסלול, והמדריך מסתיר את מה שלא רלוונטי.</p></div>
+      <div><span class="ic">2</span><b>תחנות קצרות</b><p>3 עד 8 דקות לכל תחנה. אפשר לעצור ולהמשיך מחר, והדפדפן זוכר.</p></div>
+      <div><span class="ic">3</span><b>רואים, לא רק קוראים</b><p>צילומי מסך עם מספרים, קטעי וידאו מהדקה הנכונה וסימולטורים שאי אפשר לשבור.</p></div>
+      <div><span class="ic">4</span><b>חידה וחותמת</b><p>כל תחנה נגמרת בשאלה אחת. עונים נכון ומקבלים חותמת. בסוף יש תעודה.</p></div>
+    </div>
+    <aside class="note"><p>הכלי לא מחליף את השיקול שלכם. הוא נותן לשיקול שלכם ידיים.</p><cite>עזי</cite></aside>
+  </div>
+</section>
+
+<section class="guide-bio" aria-labelledby="bio-t">
+  <img src="assets/img/ezi.jpg" alt="עזי לוי" width="136" height="136" loading="lazy">
+  <h2 id="bio-t">נעים מאוד, עזי</h2>
+  <p>אני יזם, מחנך ומנטור, ומרצה ויועץ לבינה מלאכותית. מ-2022 אני מעביר סדנאות, קורסים והרצאות לארגונים, למוסדות חינוך ולמנהלים. קודם לכן ניהלתי מרכז למחוננים. תמיד בגובה העיניים ועם חיוך.</p>
+  <ul class="clients" aria-label="בין לקוחותיי">
+    <li>אוניברסיטת תל אביב</li><li>משרד האוצר</li><li>רשות המיסים</li><li>משרד החינוך</li><li>רשות מקרקעי ישראל</li><li>נציבות שירות המדינה</li><li>הלמ״ס</li><li>מכללת ספיר</li><li>מכללת אורנים</li><li>מכון מגיד</li>
+  </ul>
+  <blockquote class="quote">
+    <p>״עזי הצליח לעורר את הסקרנות ואת חדוות היצירה של המורים, שנשארו לתרגל ולהתנסות גם בהפסקה ולאחר סיום המפגש.״</p>
+    <cite>יפעת אנטמן, רכזת ההתמקצעות בהוראת מחוננים ומצטיינים, מכללת חמדת הדרום</cite>
+  </blockquote>
+  <div class="cta-row">
+    <a class="btn gold" href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנה לצוות או לארגון</a>
+    <a class="btn line" href="https://www.ezylevy.com/ai-consultant" target="_blank" rel="noopener">ייעוץ אישי 1:1</a>
+    <a class="btn wa" href="https://wa.me/972544266802" target="_blank" rel="noopener">וואטסאפ</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>© 2026 עזי לוי · <a href="tel:+972544266802" dir="ltr">054-4266802</a> · <a href="mailto:ezylevy@gmail.com">ezylevy@gmail.com</a></div>
+    <nav aria-label="קישורי תחתית">
+      <a href="https://www.ezylevy.com" target="_blank" rel="noopener">האתר של עזי</a>
+      <a href="https://www.instagram.com/ezylevy/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ezy.levy.1/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.ezylevy.com/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA" target="_blank" rel="noopener">מדיניות פרטיות</a>
+      <a href="https://www.ezylevy.com/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA" target="_blank" rel="noopener">הצהרת נגישות</a>
+    </nav>
+    <div style="flex-basis:100%;font-size:.88rem">מדריכים עצמאיים, ללא קשר רשמי ליצרני הכלים. כל השמות והסימנים המסחריים שייכים לבעליהם. הכלים מתעדכנים מהר, ולכן כשיש פער, התיעוד הרשמי קובע.</div>
+  </div>
+</footer>
+
+<script src="assets/js/hub.js"></script>
+</body>
+</html>

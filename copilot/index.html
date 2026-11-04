@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>רישיון טיס ל-Copilot | מדריך בעברית · עזי לוי</title>
+<meta name="description" content="מדריך אינטראקטיבי בעברית ל-Microsoft Copilot בעבודה: הצ׳אט, שיחה קולית, Outlook, סיכומי פגישות ב-Teams, בניית סוכנים ב-Agent Builder, סקילים ו-Copilot Studio. צעד אחר צעד, עם צילומי מסך, סרטונים וכלים. מאת עזי לוי.">
+<link rel="canonical" href="https://ezylevy.github.io/tutorials/copilot/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="רישיון טיס ל-Copilot">
+<meta property="og:description" content="עשרה שיעורי טיסה קצרים, מהצ׳אט הראשון ועד סוכן שעובד בשביל כל הצוות. מאת עזי לוי.">
+<meta name="theme-color" content="#0d1b2a">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Assistant:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Karantina:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"איך עובדים עם Microsoft Copilot ובונים סוכן ראשון","inLanguage":"he","dateModified":"2026-11-04","author":{"@type":"Person","name":"עזי לוי","url":"https://www.ezylevy.com"},"step":[{"@type":"HowToStep","name":"בודקים איזה רישיון Copilot יש לכם"},{"@type":"HowToStep","name":"מגדירים הוראות אישיות וזיכרון"},{"@type":"HowToStep","name":"מפעילים את Copilot ב-Outlook וב-Teams"},{"@type":"HowToStep","name":"בונים סוכן ב-Agent Builder, מחברים לו ידע וסקילים"},{"@type":"HowToStep","name":"משתפים את הסוכן, ועוברים ל-Copilot Studio כשצריך"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#plan">דילוג לתוכן הראשי</a>
+
+<header class="topbar">
+  <a class="brand" href="https://www.ezylevy.com" target="_blank" rel="noopener">
+    <img src="assets/img/logo.png" alt="" width="44" height="44">
+    <span><b>עזי לוי</b><small>בינה פוגשת מציאות</small></span>
+  </a>
+  <nav aria-label="קישורים חיצוניים">
+    <a href="../index.html">→ כל המדריכים</a>
+    <a href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנאות</a>
+    <a href="https://chat.whatsapp.com/LcW2GxWIN3u0VDr8LdsnDD" target="_blank" rel="noopener">קבוצת עדכונים</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero-wrap">
+<section class="hero" aria-labelledby="title">
+  <div>
+    <p class="kicker">מדריך בעברית · מעודכן לפי המקורות ב-4.11.2026</p>
+    <h1 id="title">רישיון הטיס שלכם <span>ל-<bdi dir="ltr">Copilot</bdi></span></h1>
+    <p class="sub">יש לכם עוזר AI מאובטח שכבר מחובר לעבודה שלכם. בעשרה שיעורי טיסה קצרים תלמדו להשתמש בו ביומיום, ב-Outlook וב-Teams, ואז לבנות סוכן משלכם שעובד בשביל כל הצוות. ממלאים את יומן הטיסה, והמדריך מתאים את עצמו לרישיון ולמטרה שלכם. כל שיעור נגמר בחידה קטנה ובזוג כנפיים.</p>
+    <div class="byline">
+      <img src="assets/img/ezi.jpg" alt="עזי לוי" width="62" height="62">
+      <div><b>המדריך שלכם: עזי לוי</b><span>מנחה ויועץ לבינה מלאכותית, ומנהל מרכז למחוננים לשעבר</span></div>
+    </div>
+  </div>
+
+  <form class="logbook" id="logbook" aria-label="יומן הטיסה שלכם" onsubmit="return false">
+    <div class="lb-head">
+      <div><b>יומן טיסה</b><br><span dir="ltr">PILOT LOGBOOK · COPILOT</span></div>
+      <svg class="horizon" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><clipPath id="hc"><circle cx="50" cy="50" r="42"/></clipPath></defs>
+        <circle cx="50" cy="50" r="48" fill="#172334"/>
+        <g clip-path="url(#hc)"><g class="tilt">
+          <rect x="-20" y="-20" width="140" height="70" fill="#5aa9e6"/>
+          <rect x="-20" y="50" width="140" height="70" fill="#a0612f"/>
+          <line x1="-20" y1="50" x2="120" y2="50" stroke="#fff" stroke-width="2"/>
+          <line x1="38" y1="40" x2="62" y2="40" stroke="#fff" stroke-width="1.4"/>
+          <line x1="42" y1="30" x2="58" y2="30" stroke="#fff" stroke-width="1.4"/>
+          <line x1="38" y1="60" x2="62" y2="60" stroke="#fff" stroke-width="1.4"/>
+        </g></g>
+        <path d="M24 52h18l8 6 8-6h18" fill="none" stroke="#ffb547" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="42" fill="none" stroke="#ffb547" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="field">
+      <label for="pName">שם הטייס (לא חובה, נשמר רק בדפדפן שלכם)</label>
+      <input type="text" id="pName" autocomplete="given-name" maxlength="28" placeholder="איך קוראים לכם?">
+    </div>
+    <fieldset class="field">
+      <legend>הרישיון שלי ב-Copilot</legend>
+      <div class="seg" role="group">
+        <button type="button" data-set-lic="free" aria-pressed="false">Copilot Chat<small>החינמי, עם חשבון העבודה</small></button>
+        <button type="button" data-set-lic="paid" aria-pressed="false">Microsoft 365 Copilot<small>תוספת בתשלום</small></button>
+        <button type="button" data-set-lic="unsure" aria-pressed="false">לא בטוח/ה<small>נבדוק ביחד בשיעור 1</small></button>
+      </div>
+    </fieldset>
+    <fieldset class="field">
+      <legend>המטרה שלי</legend>
+      <div class="seg" role="group">
+        <button type="button" data-set-goal="daily" aria-pressed="false">עבודה יומיומית<small>צ׳אט, מיילים, פגישות</small></button>
+        <button type="button" data-set-goal="agents" aria-pressed="false">בניית סוכנים<small>עוזרים שעובדים בשבילי</small></button>
+        <button type="button" data-set-goal="all" aria-pressed="false">הכול<small>את כל עשרת השיעורים</small></button>
+      </div>
+    </fieldset>
+    <a class="go" href="#st1">ממריאים לשיעור הראשון ←</a>
+    <div class="lb-foot" id="lbFoot" aria-hidden="true">CPLT&lt;LICENSE&lt;&lt;STUDENT&lt;PILOT&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+  </form>
+</section>
+</div>
+
+<section class="plan-wrap" id="plan" aria-labelledby="plan-t">
+  <div class="plan-inner">
+    <h2 class="plan-title" id="plan-t">תוכנית הטיסה</h2>
+    <p class="plan-sub">כל המסלול לוקח בערך שעה, ואפשר לנחות בכל שיעור ולהמשיך מחר. הדפדפן זוכר איפה עצרתם. בחרתם מטרה ביומן? השיעורים שמתאימים לה מסומנים.</p>
+    <ol class="plan" id="planList">
+      <li data-st="1"><a href="#st1"><span class="no">01</span><span>בדיקה לפני המראה: מה זה, ואיזה רישיון יש לי</span><span class="rec">מומלץ לכם</span><span class="time">4 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="2"><a href="#st2"><span class="no">02</span><span>תא הטייס: סיור בממשק</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="3"><a href="#st3"><span class="no">03</span><span>קשר עם המגדל: שיחה קולית ושיתוף מסך</span><span class="rec">מומלץ לכם</span><span class="time">3 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="4"><a href="#st4"><span class="no">04</span><span>דואר נכנס: Copilot ב-Outlook</span><span class="rec">מומלץ לכם</span><span class="time">4 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="5"><a href="#st5"><span class="no">05</span><span>תחקיר אחרי טיסה: סיכומי פגישות ב-Teams</span><span class="rec">מומלץ לכם</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="6"><a href="#st6"><span class="no">06</span><span>הטייס האוטומטי: בונים סוכן ראשון</span><span class="rec">מומלץ לכם</span><span class="time">8 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="7"><a href="#st7"><span class="no">07</span><span>מפות ניווט: ידע ויכולות לסוכן</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="8"><a href="#st8"><span class="no">08</span><span>ספר הנהלים: סקילים</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="9"><a href="#st9"><span class="no">09</span><span>טיסה משותפת: שיתוף, וסוכנים מוכנים</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="10"><a href="#st10"><span class="no">10</span><span>טיסה בינלאומית: Copilot Studio</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<div class="journey">
+
+<!-- ========== שיעור 1 ========== -->
+<section class="spread" id="st1" style="--st:#b4232c" aria-labelledby="h1">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 01</span>
+    <p class="st-num" aria-hidden="true">1</p>
+    <h2 id="h1">בדיקה לפני המראה</h2>
+    <p class="lede">ארבע דקות על מה זה בכלל, ועל השאלה הכי חשובה במדריך: איזה רישיון יש לכם.</p>
+    <aside class="note"><p>שימו לב לשם: הוא טייס משנה. ההגה נשאר אצלכם.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">טייס משנה, לא טייס אוטומטי</h3>
+    <p>Copilot הוא עוזר הבינה המלאכותית של מיקרוסופט לעבודה. הוא צ׳אט, ממש כמו ChatGPT, Claude או Gemini, אבל עם שלושה יתרונות שקשה להתעלם מהם בארגון:</p>
+    <ul class="checks">
+      <li><b>הוא כבר אצלכם.</b> אם בארגון יש OneDrive, SharePoint, Outlook או Teams, אתם בארגון מיקרוסופטי, וסביר שהצ׳אט כבר פתוח לכם בלי עלות נוספת.</li>
+      <li><b>הוא מאובטח.</b> אתם מחוברים עם חשבון העבודה, והמידע נשאר בתוך הסביבה של הארגון. לכן מותר (וכדאי) להשתמש בו בעבודה.</li>
+      <li><b>הוא יכול להתחבר לידע הארגוני.</b> עם הרישיון בתשלום הוא מכיר את המיילים, הקבצים, הפגישות והצ׳אטים שלכם. בשיעור 7 נראה בדיוק מה זה נותן.</li>
+    </ul>
+    <p>בהגינות: יש ביקורות על כך שהתשובות שלו לפעמים חלשות מכלים אחרים. אבל הוא נגיש, מאובטח ומחובר, וזה מה שמכריע בעבודה. וכמו שאייל מרקוס אומר: הוא לא יהיה טיפש יותר ממה שהוא היום.</p>
+
+    <h3>איפה פותחים אותו</h3>
+    <ol class="steps">
+      <li><b>בדפדפן</b> נכנסים ל-<a href="https://www.microsoft365.com" target="_blank" rel="noopener" dir="ltr">microsoft365.com</a> עם חשבון העבודה, ובוחרים Copilot בסרגל הצד.</li>
+      <li><b>בתוך האפליקציות</b> כפתור Copilot מופיע גם ב-Outlook, ב-Teams, ב-Word, ב-Excel וב-PowerPoint. זה אותו Copilot, עם ההקשר של המסמך שפתוח לפניכם.</li>
+      <li><b>שימו לב לחשבון</b> חשבון Microsoft פרטי (למשל Outlook.com) הוא Copilot אחר, לצרכנים. כל מה שבמדריך הזה עובד רק עם חשבון עבודה.</li>
+    </ol>
+
+    <h3>שני רישיונות. בודקים איזה יש לכם.</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col"></th><th scope="col">Copilot Chat <span class="lic-flag free">חינמי</span></th><th scope="col">Microsoft 365 Copilot <span class="lic-flag paid">בתשלום</span></th></tr></thead>
+      <tbody>
+        <tr><th scope="row">מה זה</th><td>מגיע עם רישיון Microsoft 365 של העבודה</td><td>תוספת שהארגון קונה ומקצה לכם</td></tr>
+        <tr><th scope="row">על מה הוא עונה</th><td>על הידע הכללי שלו, על האינטרנט ועל קבצים שאתם מעלים</td><td>כל זה, ובנוסף על המיילים, הקבצים, הפגישות והצ׳אטים שלכם (מיקרוסופט קוראת לזה Work IQ)</td></tr>
+        <tr><th scope="row">סוכנים</th><td>אפשר לבנות, עם ידע מאתרי אינטרנט בלבד</td><td>אפשר לבנות על המידע הארגוני, ויש גם את Researcher ו-Analyst</td></tr>
+      </tbody>
+    </table></div>
+
+    <ol class="steps">
+      <li><b>מסתכלים למעלה</b> רואים מתג עם שתי לשוניות, <span class="ui">Work</span> ו-<span class="ui">Web</span>? יש לכם את הרישיון בתשלום. אין שם כלום? אתם בגרסה החינמית.</li>
+      <li><b>מסתכלים למטה</b> מתחת לתיבת הכתיבה מופיע שם הרישיון: <span class="ui">Copilot Chat</span> (חינמי, ולרוב עם כפתור שדרוג לידו) או <span class="ui">Microsoft 365 Copilot</span>.</li>
+      <li><b>מעדכנים את יומן הטיסה</b> <a href="#logbook">חוזרים למעלה</a> ובוחרים את הרישיון שלכם. מעכשיו המדריך יציג רק מה שרלוונטי לכם.</li>
+    </ol>
+    <div class="tip"><b>השמות מתחלפים, הרעיון נשאר.</b> מיקרוסופט משנה שמות בתדירות גבוהה. תיתקלו גם ב-Copilot Premium וגם ב-Microsoft Copilot כשם הרישיון בתשלום. במדריך הזה: <b>חינמי</b> הוא Copilot Chat, ו<b>בתשלום</b> הוא הרישיון שמחובר למידע של העבודה.</div>
+    <div class="tip warn"><b>לא רואים משהו שמופיע כאן?</b> חלק מהיכולות תלויות במה שמנהל ה-IT איפשר בארגון. זה לא אתם. שלחו לו את המדריך.</div>
+
+    <div class="clips">
+      <div class="yt" data-id="4yQDmJ1n-dU" data-t="104"><button type="button"><img src="https://i.ytimg.com/vi/4yQDmJ1n-dU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">איך בודקים איזה רישיון יש לכם<small>ליסה קרוסבי · מ-1:44 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="1">
+      <div class="slot" data-slot="1">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 01</span>
+      <p class="q">בראש המסך של Copilot מופיע מתג Work | Web. מה זה אומר?</p>
+      <div class="opts">
+        <button type="button" data-why="אם זה היה החינמי, לא היה שם מתג בכלל. נסו שוב.">שיש לי רק את הגרסה החינמית</button>
+        <button type="button" data-ok data-why="נכון. Work פירושו תשובות מתוך המידע של העבודה, וזה קיים רק ברישיון בתשלום.">שיש לי את הרישיון בתשלום</button>
+        <button type="button" data-why="בחשבון פרטי לא תראו את זה. המתג מופיע רק בחשבון עבודה. נסו שוב.">שאני מחובר עם חשבון פרטי</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 2 ========== -->
+<section class="spread" id="st2" style="--st:#b45309" aria-labelledby="h2">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 02</span>
+    <p class="st-num" aria-hidden="true">2</p>
+    <h2 id="h2">תא הטייס</h2>
+    <p class="lede">סיור בכפתורים הגלויים ובאלה שאף אחד לא מספר לכם עליהם. לחצו על המספרים בסימולטור.</p>
+    <aside class="note"><p>תדברו איתו כמו עם בן אדם. גם בעברית. הקסם מתחיל בהודעה השנייה.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">סימולטור: לחצו על כל מספר</h3>
+    <div class="cockpit" id="cockpit">
+      <div class="ck-bar"><i></i><span>איור להמחשה, לא צילום מסך אמיתי. הממשק אצלכם עשוי להיראות קצת אחרת.</span></div>
+      <div class="ck">
+        <div class="ck-side">
+          <div class="ck-item"><span class="ico"></span>New chat <button type="button" class="hs" data-hs="1" aria-label="הסבר 1: צ׳אט חדש">1</button></div>
+          <div class="ck-item"><span class="ico"></span>Search <button type="button" class="hs" data-hs="2" aria-label="הסבר 2: חיפוש">2</button></div>
+          <div class="ck-item"><span class="ico"></span>Library <button type="button" class="hs" data-hs="3" aria-label="הסבר 3: ספרייה">3</button></div>
+          <div class="ck-item"><span class="ico"></span>Create <button type="button" class="hs" data-hs="4" aria-label="הסבר 4: יצירה">4</button></div>
+          <div class="ck-item"><span class="ico"></span>Agents <button type="button" class="hs" data-hs="5" aria-label="הסבר 5: סוכנים">5</button></div>
+          <div class="ck-item"><span class="ico"></span>Notebooks <button type="button" class="hs" data-hs="6" aria-label="הסבר 6: מחברות">6</button></div>
+          <div class="ck-chats">Chats<br>Weekly report draft<br>Q3 budget questions</div>
+          <div class="ck-lic"><span id="ckLic">Copilot Chat</span> <button type="button" class="hs" data-hs="10" aria-label="הסבר 10: שם הרישיון">10</button></div>
+        </div>
+        <div class="ck-main">
+          <div class="ck-top">
+            <span><span class="ck-toggle" data-lic="paid"><span>Work</span><span>Web</span></span> <button type="button" class="hs" data-hs="8" aria-label="הסבר 8: מתג עבודה ואינטרנט">8</button></span>
+            <span><span class="ck-dots">···</span><button type="button" class="hs" data-hs="9" aria-label="הסבר 9: הגדרות והתאמה אישית">9</button></span>
+          </div>
+          <p class="ck-hello">Hi, how can I help?</p>
+          <div class="ck-input"><span class="btnish">+</span><button type="button" class="hs" data-hs="7" aria-label="הסבר 7: הוספת קבצים ותיוג">7</button><span class="grow">Message Copilot · type / to add files, emails, people</span><span class="btnish">🎙</span></div>
+          <div class="ck-resp"><span>Copy</span><span>Edit in Pages</span><span>Schedule this prompt</span><button type="button" class="hs" data-hs="11" aria-label="הסבר 11: תזמון פרומפט">11</button></div>
+        </div>
+      </div>
+      <div class="ck-explain" id="ckExplain" role="status" aria-live="polite"><b>בחרו מספר כדי להתחיל את הסיור</b><p>כל מספר מסביר כפתור אחד: מה הוא עושה, ומתי כדאי להשתמש בו.</p></div>
+      <p class="ck-progress" id="ckProgress">גיליתם 0 מתוך 11</p>
+    </div>
+
+    <h3>שלושה דברים שמגדירים ביום הראשון</h3>
+    <ol class="steps">
+      <li><b>הוראות קבועות</b> שלוש הנקודות <span class="ui">···</span> ואז <span class="ui">Settings</span> ואז <span class="ui">Personalization</span>. כאן כותבים פעם אחת איך אתם רוצים שיענה לכם, והוא יזכור את זה בכל שיחה. מותר לכתוב בעברית:
+        <div class="copy"><span class="lbl">הוראות לדוגמה, להעתקה ולהתאמה</span><pre>ענה תמיד בעברית, אלא אם ביקשתי אחרת.
+היה תכליתי. בלי פתיחות מנומסות מדי ובלי חזרה על השאלה שלי.
+אם חסר לך מידע כדי לענות טוב, שאל אותי לפני שאתה עונה.
+אל תשתמש בקווי הפרדה ובאימוג׳ים.
+אני [התפקיד שלכם] ב[הארגון], ואני עובד בעיקר על [נושאים].</pre></div>
+      </li>
+      <li><b>זיכרון</b> באותו מסך יש גם פרופיל וזיכרונות: מה Copilot זוכר עליכם. עברו על הרשימה ומחקו מה שלא נכון או לא רלוונטי. אצל אייל, למשל, הוא זכר שהוא עובד בחברה שבה בסך הכול העביר סדנה.</li>
+      <li><b>פרומפט שרץ לבד</b> מתחת לתשובה טובה מחפשים <span class="ui">Schedule this prompt</span> וקובעים מתי הוא ירוץ שוב. ככה תשובה חד-פעמית הופכת לשגרה:
+        <div class="copy"><span class="lbl">פרומפט לתזמון, למשל כל יום ראשון ב-8:00</span><pre>עבור על המיילים שקיבלתי בשבוע האחרון ותן לי רשימה של מה שדורש ממני תגובה או החלטה, לפי סדר דחיפות. ליד כל פריט: ממי, מה מבקשים, ועד מתי.</pre></div>
+      </li>
+    </ol>
+    <div class="tip" data-lic="free"><b>ברישיון החינמי</b> חלק מהכפתורים בסימולטור לא יופיעו אצלכם, למשל המתג Work | Web ותיוג של מיילים ופגישות. העלאת קבצים מהמחשב עובדת גם בחינמי.</div>
+
+    <h3>טריק התיוג</h3>
+    <p>במקום להעתיק ולהדביק, מקלידים <code>/</code> בתיבת הכתיבה (או לוחצים על <span class="ui">+</span>) ובוחרים קובץ, מייל, פגישה או אדם. ואז פשוט כותבים: <b>״סכם את המייל הזה בשלוש שורות ותציע תשובה.״</b> לא צריך לפתוח את המייל בכלל.<span class="lic-flag paid">תיוג מיילים ופגישות: בתשלום</span></p>
+
+    <div class="clips">
+      <div class="yt" data-id="mT-wfu9c42I" data-t="0"><button type="button"><img src="https://i.ytimg.com/vi/mT-wfu9c42I/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">סיור בכפתורים של Copilot<small>אייל מרקוס · 7 דקות · עברית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="2">
+      <div class="slot" data-slot="2">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 02</span>
+      <p class="q">רוצים ש-Copilot יענה תמיד בעברית ובקצרה, בכל שיחה. מה הכי נכון?</p>
+      <div class="opts">
+        <button type="button" data-why="זה יעבוד, אבל תצטרכו לזכור לכתוב את זה כל פעם מחדש. יש דרך קלה יותר.">לכתוב את זה בתחילת כל פרומפט</button>
+        <button type="button" data-ok data-why="בדיוק. כותבים פעם אחת ב-Personalization, והוא זוכר בכל שיחה.">לכתוב את זה פעם אחת ב-Settings ואז Personalization</button>
+        <button type="button" data-why="מחברת מרכזת מקורות לפרויקט. היא לא משנה את הסגנון של כל השיחות. נסו שוב.">לפתוח Notebook חדש</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 3 ========== -->
+<section class="spread" id="st3" style="--st:#0f766e" aria-labelledby="h3">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 03</span>
+    <p class="st-num" aria-hidden="true">3</p>
+    <h2 id="h3">קשר עם המגדל</h2>
+    <p class="lede">מדברים במקום להקליד, ומראים לו את המסך כדי לקבל עזרה בזמן אמת. במחשב או בטלפון.</p>
+    <aside class="note"><p>הכי שימושי: לשתף חלון של אקסל ולשאול ״מה הנוסחה הזאת עושה?״</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">למה לדבר עם Copilot?</h3>
+    <div class="versus">
+      <div><b>לחשוב בקול רם</b><p>מספרים לו על בעיה תוך כדי הליכה, והוא שואל, מסכם ומציע כיוונים.</p></div>
+      <div><b>עזרה על מה שעל המסך</b><p>משתפים חלון, ומקבלים הסבר על גרף, טופס, הגדרה או הודעת שגיאה, בלי לצלם ולהעלות.</p></div>
+    </div>
+
+    <div class="walk" data-walk>
+      <div class="walk-head"><b>שיחה קולית ושיתוף מסך, צעד אחר צעד</b><span class="count"></span></div>
+      <div class="wstep"><figure><img src="assets/img/shots/voice-1.jpg" alt="מסך ההיכרות של השיחה הקולית ב-Copilot עם הכפתורים Next ו-Not now" loading="lazy" width="1100" height="972"><figcaption><b>מסך ההיכרות</b><ol><li>בפעם הראשונה מופיע מסך שמסביר על שיחה טבעית עם Copilot. להמשך לוחצים <span class="ui">Next</span>.</li><li>הכפתור <span class="ui">Not now</span> דוחה את ההיכרות לפעם אחרת.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/voice-2.jpg" alt="מסך השיחה הקולית עם כפתור שיתוף המסך, מיקרופון וכפתור סיום" loading="lazy" width="1332" height="898"><figcaption><b>פקדי השיחה</b><ol><li><span class="mk m1">1</span>לשיתוף מסך לוחצים על סמל השיתוף בתחתית מסך השיחה.</li><li><span class="mk m2">2</span>לצידו המיקרופון (להשתקה) וכפתור <b>X</b> לסיום השיחה.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/voice-3.jpg" alt="הודעת הפרטיות לפני שיתוף מסך עם הכפתורים Agree ו-Cancel" loading="lazy" width="969" height="950"><figcaption><b>פרטיות והסכמה</b><ol><li>קוראים את ההודעה על עיבוד התוכן והשמע שמשתפים.</li><li>לא משתפים מידע אישי רגיש, ומוודאים שיש רשות מאנשים שמופיעים בתמונה או נשמעים בשיחה.</li><li><span class="mk m1">1</span>מסכימים? לוחצים <span class="ui">Agree</span>. מתחרטים? <span class="ui">Cancel</span>.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/voice-4.jpg" alt="חלון בחירת התוכן לשיתוף, עם האפשרויות Window ו-Entire Screen" loading="lazy" width="1316" height="982"><figcaption><b>בוחרים מה לשתף</b><ol><li><span class="mk m1">1</span><span class="ui">Window</span> לחלון אחד, או <span class="ui">Entire Screen</span> למסך כולו. ההמלצה שלי: חלון אחד, כדי שלא ייחשף בטעות משהו אחר.</li><li><span class="mk m2">2</span>בוחרים את הפריט, ורק אז לוחצים <span class="ui">Share</span>. כל עוד לא בחרתם, הכפתור אפור.</li></ol></figcaption></figure></div>
+      <div class="walk-nav"><button type="button" data-prev>→ הקודם</button><div class="dots"></div><button type="button" data-next>הבא ←</button></div>
+      <p class="src-note">צילומי המסך מתוך הוובינר ״חידושים ב-Copilot בעבודה״, בהנחיית אליהו ביטון.</p>
+    </div>
+
+    <div class="copy"><span class="lbl">שלושה דברים לנסות בשיחה הקולית הראשונה</span><pre>״תעזור לי לחשוב בקול רם על איך להציג את הפרויקט שלי להנהלה.״
+״אני משתף לך את האקסל. מה הנוסחה בעמודה F עושה, ולמה יוצאת שגיאה?״
+״תתרגל איתי שיחת משוב קשה לעובד. אתה העובד, ואני המנהל.״</pre></div>
+
+    <div class="quiz" data-st="3">
+      <div class="slot" data-slot="3">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 03</span>
+      <p class="q">פתחתם את חלון השיתוף, והכפתור Share אפור. למה?</p>
+      <div class="opts">
+        <button type="button" data-why="ההסכמה באה לפני החלון הזה. אם הגעתם לכאן, כבר לחצתם Agree. נסו שוב.">עוד לא לחצתם Agree</button>
+        <button type="button" data-ok data-why="נכון. קודם בוחרים חלון או מסך, ורק אז הכפתור נדלק.">עוד לא בחרתם חלון או מסך</button>
+        <button type="button" data-why="שיתוף מסך עובד גם במחשב וגם בטלפון. נסו שוב.">שיתוף עובד רק בטלפון</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 4 ========== -->
+<section class="spread" id="st4" style="--st:#1d4ed8" aria-labelledby="h4">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 04</span>
+    <p class="st-num" aria-hidden="true">4</p>
+    <h2 id="h4">דואר נכנס</h2>
+    <p class="lede">מלמדים את Copilot ב-Outlook לכתוב טיוטות בסגנון שלכם, ולסדר לכם את הדואר הנכנס לפי חשיבות.</p>
+    <aside class="note"><p>חמש דקות הגדרה, ואחר כך כל טיוטה כבר נשמעת כמוכם.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">שתי הגדרות שונות, שמתבלבלים ביניהן</h3>
+    <div class="versus">
+      <div><b>Draft: איך הוא כותב</b><p>הנחיות לניסוח טיוטות: טון, אורך, ברכת פתיחה וחתימה.</p></div>
+      <div><b>Priority: מה חשוב לכם</b><p>תעדוף של הדואר הנכנס, תקצירים, וכללים לעדיפות גבוהה או נמוכה.</p></div>
+    </div>
+
+    <div class="walk" data-walk>
+      <div class="walk-head"><b>הגדרות Copilot ב-Outlook, צעד אחר צעד</b><span class="count"></span></div>
+      <div class="wstep"><figure><img src="assets/img/shots/outlook-1.jpg" alt="הגדרות Outlook עם Copilot בתפריט הצד והמתג Turn on Copilot" loading="lazy" width="1332" height="806"><figcaption><b>מפעילים את Copilot</b><ol><li><span class="mk m1">1</span>בהגדרות של Outlook בוחרים <span class="ui">Copilot</span> בתפריט הצד.</li><li><span class="mk m2">2</span>מפעילים את המתג <span class="ui">Turn on Copilot</span>. בצילום הוא עדיין כבוי.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/outlook-2.jpg" alt="מסך Copilot ב-Outlook עם האפשרויות Draft ו-Priority" loading="lazy" width="1332" height="742"><figcaption><b>נכנסים להעדפות הכתיבה</b><ol><li><span class="mk m1">1</span>לוחצים על <span class="ui">Draft</span> כדי להתאים את סגנון המיילים ש-Copilot מנסח.</li><li><span class="mk m2">2</span>המתג כחול, כלומר פעיל. <span class="ui">Priority</span> הוא מסלול נפרד, ונגיע אליו בצעד 4.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/outlook-3.jpg" alt="המסך Custom Instructions לכתיבת טיוטות, עם מתג ושדה טקסט" loading="lazy" width="1052" height="948"><figcaption><b>כותבים הנחיות אישיות</b><ol><li><span class="mk m1">1</span>מוודאים שהמתג <span class="ui">Use custom instructions when drafting email</span> פעיל.</li><li><span class="mk m2">2</span>בשדה כותבים את הסגנון, האורך וברכת הפתיחה (ההצעה שלי מופיעה מתחת). בסוף לוחצים <span class="ui">Apply changes</span>.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/outlook-4.jpg" alt="הגדרות תעדוף הודעות ב-Outlook עם אזור Teach" loading="lazy" width="1332" height="718"><figcaption><b>תעדוף הודעות, בנפרד</b><ol><li><span class="mk m1">1</span>כאן מפעילים תעדוף הודעות והצגת תקצירים. בצילום, הסימון של עדיפות נמוכה כבוי.</li><li><span class="mk m2">2</span>באזור <span class="ui">Teach</span> בוחרים עדיפות גבוהה או נמוכה ומוסיפים כלל, למשל ״כל מייל מהמנכ״ל בעדיפות גבוהה״. הכללים חלים על הודעות עתידיות.</li></ol></figcaption></figure></div>
+      <div class="walk-nav"><button type="button" data-prev>→ הקודם</button><div class="dots"></div><button type="button" data-next>הבא ←</button></div>
+      <p class="src-note">צילומי המסך מתוך הוובינר ״חידושים ב-Copilot בעבודה״, בהנחיית אליהו ביטון.</p>
+    </div>
+
+    <div class="copy"><span class="lbl">הנחיות לטיוטות, להדבקה בשלב 3</span><pre>כתוב בעברית, בקצרה ובטון מקצועי ונעים.
+פתח ב״היי [שם הנמען],״ ובלי ״מקווה שאתה בטוב״.
+עד חמש שורות. אם צריך יותר, חלק לנקודות.
+אם יש בקשה, כתוב אותה במשפט הראשון, עם תאריך יעד אם ידוע.
+סיים ב״תודה, [השם שלכם]״.</pre></div>
+    <div class="tip"><b>ההנחיות האלה הן רק לטיוטות.</b> ההגדרות של Priority עוסקות בדואר הנכנס, והן לא משפיעות על הניסוח. ולהפך.</div>
+
+    <div class="quiz" data-st="4">
+      <div class="slot" data-slot="4">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 04</span>
+      <p class="q">רוצים שכל טיוטה ש-Copilot מנסח תהיה קצרה ובעברית. לאן הולכים?</p>
+      <div class="opts">
+        <button type="button" data-why="Teach מלמד מה חשוב בדואר הנכנס. הוא לא נוגע בניסוח. נסו שוב.">Priority ואז Teach</button>
+        <button type="button" data-ok data-why="בדיוק. Draft ואז Custom Instructions, ובסוף Apply changes.">Draft ואז Custom Instructions</button>
+        <button type="button" data-why="זה רק מדליק את Copilot. את הסגנון מגדירים במסך אחר. נסו שוב.">רק להדליק את Turn on Copilot</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 5 ========== -->
+<section class="spread" id="st5" style="--st:#6d28d9" aria-labelledby="h5">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 05</span>
+    <p class="st-num" aria-hidden="true">5</p>
+    <h2 id="h5">תחקיר אחרי טיסה</h2>
+    <p class="lede">אחרי פגישה ב-Teams: סיכום, משימות, סיכום לפי דובר ותבנית סיכום משלכם. ואז בודקים מול התמלול.</p>
+    <aside class="note"><p>סיכום של AI הוא טיוטה ראשונה. התמלול הוא קופסה שחורה.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">חמש לשוניות, חמש דרכים לזכור פגישה</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">לשונית</th><th scope="col">מה תמצאו שם</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><span class="ui">Notes</span></th><td>הערות שנכתבו בפגישה</td></tr>
+        <tr><th scope="row"><span class="ui">AI summary</span></th><td>סיכום לפי נושאים (Meeting notes) ומשימות להמשך (Follow-up tasks)</td></tr>
+        <tr><th scope="row"><span class="ui">Custom summary</span></th><td>תבניות: דוח למנהלים, סיכום לפי דובר, או תבנית שאתם מגדירים</td></tr>
+        <tr><th scope="row"><span class="ui">Mentions</span></th><td>הפעמים שהזכירו אתכם</td></tr>
+        <tr><th scope="row"><span class="ui">Transcript</span></th><td>התמלול המלא, עם חיפוש והורדה</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="walk" data-walk>
+      <div class="walk-head"><b>סיכומי פגישות ב-Teams, צעד אחר צעד</b><span class="count"></span></div>
+      <div class="wstep"><figure><img src="assets/img/shots/teams-1.jpg" alt="מסך סיכום הפגישה ב-Teams עם הלשוניות Notes, AI summary, Custom summary ו-Transcript" loading="lazy" width="1332" height="458"><figcaption><b>מסך הסיכום</b><ol><li><span class="mk m1">1</span>בצילום פתוחה הלשונית <span class="ui">Notes</span>. לצידה סיכום AI וסיכום מותאם אישית.</li><li><span class="mk m2">2</span>הלשונית <span class="ui">Transcript</span> עוברת לתמלול של הפגישה.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/teams-2.jpg" alt="לשונית AI summary עם Meeting notes ו-Follow-up tasks" loading="lazy" width="1332" height="669"><figcaption><b>סיכום AI ומשימות</b><ol><li><span class="mk m1">1</span>בוחרים <span class="ui">AI summary</span>. באזור Meeting notes יש סיכום לפי נושאים.</li><li><span class="mk m2">2</span>באזור <span class="ui">Follow-up tasks</span> עוברים על המשימות שהמערכת זיהתה.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/teams-3.jpg" alt="לשונית Custom summary עם אריח הפלוס ותבנית Executive report" loading="lazy" width="1332" height="419"><figcaption><b>סיכום מותאם אישית</b><ol><li><span class="mk m1">1</span>פותחים את <span class="ui">Custom summary</span>.</li><li><span class="mk m2">2</span>ליצירת תבנית משלכם לוחצים על האריח עם הפלוס. יש גם תבנית מוכנה: <span class="ui">Executive report</span>, דוח למנהלים.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/teams-4.jpg" alt="שדה Describe your summary format עם הכפתור Preview" loading="lazy" width="1068" height="984"><figcaption><b>מתארים את הפורמט</b><ol><li><span class="mk m1">1</span>כותבים במילים איך הסיכום צריך להיראות (ההצעה שלי מתחת לצילומים). אפשר גם להדביק סיכום לדוגמה.</li><li><span class="mk m2">2</span>לוחצים <span class="ui">Preview</span> ובודקים את התוצאה. אם היא טובה: <span class="ui">Save and Apply</span>.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/teams-5.jpg" alt="בחירת תבנית סיכום לפי דובר בלשונית Custom summary" loading="lazy" width="1332" height="595"><figcaption><b>סיכום לפי דובר</b><ol><li><span class="mk m1">1</span>בלשונית Custom summary בוחרים את האריח של הסיכום לפי דובר. בממשק השם שלו מקוצר: <span class="ui">Speaker summ…</span></li><li><span class="mk m2">2</span>מתחת לאריחים מופיע שם הדובר שהסיכום מתייחס אליו.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/teams-6.jpg" alt="סיכום לפי דוברים עם כותרת לכל דובר" loading="lazy" width="1332" height="366"><figcaption><b>קוראים לפי דוברים</b><ol><li><span class="mk m1">1</span>גוללים וקוראים את הסעיפים שמתחת לכל שם.</li><li>בדיקה מומלצת: מוודאים שהדברים מיוחסים לדובר הנכון, ומשווים לתמלול כשצריך.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/teams-7.jpg" alt="לשונית Transcript עם שדה חיפוש ותפריט Download" loading="lazy" width="1332" height="428"><figcaption><b>חיפוש והורדה של התמלול</b><ol><li><span class="mk m1">1</span>בוחרים בלשונית <span class="ui">Transcript</span>.</li><li><span class="mk m2">2</span>מקלידים מילה או ביטוי בשדה <span class="ui">Search</span>.</li><li><span class="mk m3">3</span>תפריט <span class="ui">Download</span> מציג את אפשרויות ההורדה.</li></ol></figcaption></figure></div>
+      <div class="wstep"><figure><img src="assets/img/shots/teams-8.jpg" alt="חלונית Copilot בפגישה עם ההצעות Recap the meeting ו-List action items" loading="lazy" width="1332" height="592"><figcaption><b>בקשות מוכנות בחלונית Copilot</b><ol><li><span class="mk m1">1</span><span class="ui">Recap the meeting</span> מבקש סיכום של הפגישה.</li><li><span class="mk m2">2</span><span class="ui">List action items from the meeting</span> מבקש רשימת פעולות להמשך. יש גם הצעה לקבל את עיקרי הצ׳אט של הפגישה.</li></ol></figcaption></figure></div>
+      <div class="walk-nav"><button type="button" data-prev>→ הקודם</button><div class="dots"></div><button type="button" data-next>הבא ←</button></div>
+      <p class="src-note">צילומי המסך מתוך הוובינר ״חידושים ב-Copilot בעבודה״, בהנחיית אליהו ביטון.</p>
+    </div>
+
+    <div class="copy"><span class="lbl">תבנית סיכום, להדבקה בצעד 4</span><pre>סיכום קצר בעברית.
+שלוש שורות של עיקר הדברים.
+אחר כך: ההחלטות שהתקבלו, כל החלטה בשורה.
+בסוף: טבלת משימות עם עמודות למשימה, לאחראי ולתאריך היעד.
+אם לא נקבע אחראי או תאריך, כתוב ״לא נקבע״.</pre></div>
+    <div class="copy"><span class="lbl">שאלות לחלונית Copilot, בזמן הפגישה או אחריה</span><pre>מה הוחלט לגבי [נושא], ומי התנגד?
+אילו שאלות נשארו פתוחות?
+נסח מייל המשך לכל המשתתפים עם ההחלטות והמשימות.</pre></div>
+    <div class="tip warn"><b>תוכן שנוצר אוטומטית עלול לכלול שגיאות.</b> לפני ששולחים סיכום או מחלקים משימות, בודקים פרטים מהותיים מול התמלול או ההקלטה.</div>
+
+    <div class="quiz" data-st="5">
+      <div class="slot" data-slot="5">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 05</span>
+      <p class="q">בסיכום כתוב שדנה התחייבה להגיש דוח עד יום חמישי. איך הכי מהר לבדוק שזה באמת נאמר?</p>
+      <div class="opts">
+        <button type="button" data-why="זה יחזיר אותו סיכום. צריך לבדוק מול המקור. נסו שוב.">לבקש מ-Copilot לסכם שוב</button>
+        <button type="button" data-ok data-why="נכון. מחפשים ״דוח״ או ״חמישי״ בתמלול, וקוראים מה נאמר בדיוק.">לפתוח את Transcript ולחפש בו</button>
+        <button type="button" data-why="Executive report הוא עוד סיכום, לא המקור. נסו שוב.">לעבור ל-Executive report</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 6 ========== -->
+<section class="spread" id="st6" style="--st:#be185d" aria-labelledby="h6">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 06</span>
+    <p class="st-num" aria-hidden="true">6</p>
+    <h2 id="h6">הטייס האוטומטי</h2>
+    <p class="lede">מתי פרומפט כבר לא מספיק, ואיך בונים סוכן ראשון ב-Agent Builder בעשר דקות, בלי שורת קוד.</p>
+    <aside class="note"><p>סוכן הוא תיאור תפקיד. כתבתם תיאור טוב? גייסתם מומחה.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">פרומפט או סוכן?</h3>
+    <p>כשבונים סוכן, לא מוסיפים ל-Copilot מוח חדש. ממקדים אותו: אומרים לו מי הוא, איך לענות ועל איזה ידע לסמוך. כדאי לבנות סוכן כשעונים ״כן״ לפחות על אחת מהשאלות האלה:</p>
+    <ul class="checks">
+      <li><b>זה חוזר?</b> משימה או שאלה שאתם (או הצוות) עושים שוב ושוב.</li>
+      <li><b>יש דרך מסוימת?</b> אתם יודעים בדיוק איך התשובה צריכה להיראות, ונמאס לכם לכתוב את זה בכל פעם.</li>
+      <li><b>יש ידע מסוים?</b> התשובות צריכות להגיע ממקורות מסוימים, ולא מהידע הכללי של ה-AI.</li>
+    </ul>
+    <p>ליסה קרוסבי מציעה לחשוב על זה כמו על צוות: כל סוכן הוא מומחה קטן לנושא אחד. אפשר שיהיו לכם עשרות, והם עובדים הכי טוב כשהם ממוקדים.</p>
+
+    <h3>האנטומיה של סוכן</h3>
+    <div class="anatomy">
+      <div><b>שם ואייקון</b><span class="en">Name · Icon</span><p>אייקון מוכן, תמונה שמעלים, או תמונה ש-AI מייצר מהתיאור.</p></div>
+      <div><b>תיאור</b><span class="en">Description</span><p>משפט אחד: מה המטרה של הסוכן. כמו שורת הפתיחה בתיאור תפקיד.</p></div>
+      <div><b>הוראות</b><span class="en">Instructions</span><p>הלב: תפקיד, טון, כללים ומה עושים כשאין תשובה. עד 8,000 תווים.</p></div>
+      <div><b>סקילים</b><span class="en">Skills</span><p>יכולות קבועות שחוזרות על עצמן, כמו ״הכן מייל עדכון שבועי״. בשיעור 8.</p></div>
+      <div><b>ידע</b><span class="en">Knowledge</span><p>על מה הסוכן מתבסס: אתרים, ובתשלום גם קבצים, מיילים ופגישות. בשיעור 7.</p></div>
+      <div><b>יכולות</b><span class="en">Capabilities</span><p>האם מותר לו ליצור מסמכים, גרפים ותמונות.</p></div>
+      <div><b>פרומפטים מוצעים</b><span class="en">Suggested prompts</span><p>עד שישה כפתורי פתיחה שמופיעים למשתמש.</p></div>
+      <div><b>מודל</b><span class="en">Auto · Quick · Think deeper</span><p>תשובה מהירה או חשיבה מעמיקה. ברירת המחדל, Auto, מתאימה כמעט תמיד.</p></div>
+    </div>
+
+    <h3>בונים, צעד אחר צעד</h3>
+    <p>כך זה נראה ב-Agent Builder בממשק החדש של סתיו 2026:</p>
+    <ol class="steps">
+      <li><b>פותחים את הבונה</b> בסרגל השמאלי של Copilot מרחפים מעל <span class="ui">Agents</span> ובוחרים <span class="ui">New agent</span>. לחיצה על Agents עצמו פותחת את חנות הסוכנים.</li>
+      <li><b>מתארים במילים מה הסוכן עושה</b> אפשר להתחיל מתבנית מוכנה (למשל תדריך למנהלים, או ״תכנן לי את היום״), אבל הכי פשוט להדביק תיאור:
+        <div class="copy"><span class="lbl">תיאור לדוגמה</span><pre>אתה סוכן קליטה לעובדים חדשים. תעזור להם עם שאלות על תהליכים בארגון, משימות נפוצות ושירותים פנימיים. תענה רק מתוך המקורות שצירפתי, בעברית ובמשפטים קצרים. אם התשובה לא מופיעה במקורות, תגיד את זה ותפנה למשאבי אנוש.</pre></div>
+      </li>
+      <li><b>מצרפים מקורות</b> <span data-lic="paid">מדביקים כתובת של אתר SharePoint, או לוחצים <span class="ui">+</span> ואז <span class="ui">Add content</span> ובוחרים קבצים, פגישות, צ׳אטים וערוצים. גם <code>/</code> פותח את אותו חלון.</span><span data-lic="free">ברישיון החינמי מצרפים כתובות של אתרי אינטרנט. קבצים מ-SharePoint לא יישמרו כמקור (בשיעור 7 נראה למה).</span></li>
+      <li><b>עונים על שאלות ההבהרה</b> הבונה שואל, למשל: ״לעבוד לפי צ׳קליסט קבוע, או לענות בגמישות?״ עונים במשפט אחד.</li>
+      <li><b>קוראים את ההוראות שנכתבו</b> הבונה נותן שם, מטרה וכללים. בקשו ממנו: <b>״הצע שיפורים להוראות.״</b> אצל מייק טולפסן הוא הציע כלל של סדר עדיפות בין מקורות ופורמט קבוע לתשובה.</li>
+      <li><b>מסדרים את הפרומפטים המוצעים</b> מכבים את מה שלא מתאים, ומוסיפים כפתור משלכם.</li>
+      <li><b>מוסיפים אייקון</b> <span class="ui">Edit icon</span>: לייצר תמונה, לבחור אייקון או להעלות קובץ. קובץ שמעלים צריך להיות קטן, בערך 192 על 192 פיקסלים ועד 1MB.</li>
+      <li><b>בודקים בחלון התצוגה המקדימה</b> שואלים את השאלות שעובדים באמת ישאלו, ולוחצים על המקורות כדי לוודא שהתשובה הגיעה מהמסמך הנכון.</li>
+      <li><b>לוחצים Create</b> הסוכן נשמר. בהתחלה הוא פרטי ורק אתם רואים אותו. בשיעור 9 נשתף אותו.</li>
+    </ol>
+    <div class="tip"><b>רואים לשוניות Describe ו-Configure?</b> זה הממשק הקודם של Agent Builder. ההיגיון זהה: ב-Describe מתארים במילים, וב-Configure עורכים ידנית את השם, התיאור, ההוראות והידע.</div>
+
+    <h3>מחולל ההוראות</h3>
+    <p>רוצים לכתוב את ההוראות לבד? ממלאים, מעתיקים ומדביקים בשדה ההוראות. גם על הוראות שהבונה כתב כדאי לעבור עם הרשימה הזאת.</p>
+    <div class="tool" id="instrTool">
+      <div class="tool-head"><b>מחולל הוראות לסוכן</b><span dir="ltr">INSTRUCTIONS</span></div>
+      <div class="tool-body">
+        <div>
+          <label class="f"><span>מי הסוכן?</span><input id="iRole" value="סוכן קליטה לעובדים חדשים"></label>
+          <label class="f"><span>את מי הוא משרת, ובמה?</span><textarea id="iMission">עונה לעובדים חדשים על שאלות על נוהלי הקליטה, הטפסים והמערכות בחודש הראשון שלהם.</textarea></label>
+          <label class="f"><span>על איזה ידע הוא מתבסס?</span><input id="iSources" value="מדריך הקליטה ואתר משאבי האנוש שצירפתי"></label>
+          <label class="f"><span>טון</span><select id="iTone"><option value="חם, סבלני ומעודד, כמו עמית ותיק שעוזר לחדש">חם ומעודד</option><option value="מקצועי, נעים ותכליתי">מקצועי ונעים</option><option value="קצר וענייני, בלי הקדמות">קצר וענייני</option></select></label>
+          <label class="f"><span>מבנה תשובה</span><select id="iFormat"><option value="עד חמישה משפטים קצרים. אם יש שלבים, מספר אותם.">קצר, עם שלבים ממוספרים</option><option value="שורת תשובה אחת בהתחלה, ואחריה פירוט בנקודות.">תשובה ואז פירוט</option><option value="טבלה כשיש השוואה או כמה אפשרויות, ואחרת פסקה קצרה.">טבלה כשמתאים</option></select></label>
+          <label class="f"><span>אם אין תשובה במקורות</span><input id="iFallback" value="תגיד שאין לך מידע ותפנה לצוות משאבי אנוש"></label>
+          <label class="f"><span>נושאים רגישים (אם יש)</span><input id="iSensitive" value="שכר או תנאים אישיים: תפנה למנהל הישיר"></label>
+        </div>
+        <div>
+          <div class="out" id="iOut" aria-live="polite"></div>
+          <div class="row-btns"><button type="button" class="btn-s" id="iCopy">העתקת ההוראות</button></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>ארבעה פרומפטים לסוכן הראשון</h3>
+    <p>מיקרוסופט ממליצה להגיד ל-Copilot מה כן לעשות, ולנסח הוראות בצורת ״אם… אז…״. כך זה נראה בעברית, לפי המדריך של אייל מרקוס. אחרי התיאור הראשון, מוסיפים כל הוראה בהודעה נפרדת לבונה:</p>
+    <div class="copy"><span class="lbl">1. התיאור הראשון</span><pre>תבנה סוכן שעונה לעובדים חדשים על שאלות על נוהל הקליטה, רק מתוך המסמכים שאצרף, בעברית ובמשפטים קצרים</pre></div>
+    <div class="copy"><span class="lbl">2. מה קורה כשאין תשובה</span><pre>תוסיף הוראה: אם התשובה לא מופיעה במסמכים, תגיד שאין לך מידע ותפנה את העובד לצוות משאבי אנוש</pre></div>
+    <div class="copy"><span class="lbl">3. שאלות רגישות</span><pre>תוסיף הוראה: אם העובד שואל על שכר או על תנאים אישיים, תפנה אותו למנהל הישיר שלו</pre></div>
+    <div class="copy"><span class="lbl">4. בדיקה לפני פרסום (מריצים בצ׳אט הרגיל, ואת השאלות מעבירים לסוכן)</span><pre>תכתוב לי עשר שאלות שעובד חדש באמת ישאל על נוהל הקליטה, כולל שלוש שאין להן תשובה במסמכים</pre></div>
+
+    <h3>אחרי היצירה: משפרים תוך כדי טיסה</h3>
+    <ul class="checks">
+      <li><b>הצמדה</b> מרחפים מעל הסוכן ברשימה ובוחרים <span class="ui">Pin</span>, כדי שיהיה תמיד למעלה.</li>
+      <li><b>קריאה מכל צ׳אט</b> בצ׳אט רגיל מקלידים <code>@</code> ואת שם הסוכן, ממש כמו שמתייגים עמית.</li>
+      <li><b>שיפור</b> שלוש נקודות ליד הסוכן ואז <span class="ui">Edit</span>. משתמשים בו כמה ימים, ומתקנים מה שמעצבן. אף סוכן לא יוצא מושלם בפעם הראשונה.</li>
+    </ul>
+
+    <div class="clips">
+      <div class="yt" data-id="knOhSmOkqMM" data-t="13"><button type="button"><img src="https://i.ytimg.com/vi/knOhSmOkqMM/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">ה-Agent Builder החדש, מההתחלה<small>מייק טולפסן · מ-0:13 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="4yQDmJ1n-dU" data-t="197"><button type="button"><img src="https://i.ytimg.com/vi/4yQDmJ1n-dU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">מה זה בכלל סוכן, ולמה לבנות<small>ליסה קרוסבי · מ-3:17 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="knOhSmOkqMM" data-t="398"><button type="button"><img src="https://i.ytimg.com/vi/knOhSmOkqMM/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">בדיקה בתצוגה מקדימה ובחירת מודל<small>מייק טולפסן · מ-6:38 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="6">
+      <div class="slot" data-slot="6">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 06</span>
+      <p class="q">באיזה מקרה הכי שווה לבנות סוכן, ולא להסתפק בפרומפט?</p>
+      <div class="opts">
+        <button type="button" data-why="לשאלה חד-פעמית פרומפט מצוין. סוכן משתלם כשמשהו חוזר. נסו שוב.">שאלה חד-פעמית על נושא חדש</button>
+        <button type="button" data-ok data-why="נכון. משימה שחוזרת, בדרך קבועה ועל אותם מקורות, היא בדיוק תיאור התפקיד של סוכן.">משימה שהצוות עושה כל שבוע, באותה דרך ומאותם מסמכים</button>
+        <button type="button" data-why="מהירות היא לא הסיבה. סוכן לא עונה מהר יותר מהצ׳אט. נסו שוב.">כשצריך תשובה מהר</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 7 ========== -->
+<section class="spread" id="st7" style="--st:#047857" aria-labelledby="h7">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 07</span>
+    <p class="st-num" aria-hidden="true">7</p>
+    <h2 id="h7">מפות ניווט</h2>
+    <p class="lede">על מה הסוכן נשען כשהוא עונה, מה מותר לו לייצר, ואיפה עובר הקו בין החינמי לבתשלום.</p>
+    <aside class="note"><p>סוכן בלי מקורות ממציא בביטחון. סוכן עם מקורות מצטט.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">״מעוגן״: המילה שכדאי להכיר</h3>
+    <p>כשסוכן עונה רק מתוך מקורות מסוימים, אומרים שהוא <b>מעוגן</b> בהם (grounded). זה ההבדל בין ״עצה כללית מהאינטרנט״ לבין ״מה כתוב אצלנו בנוהל״. באזור <span class="ui">Knowledge</span> של הסוכן קובעים את המקורות.</p>
+
+    <div data-lic="free">
+      <h3>מה אפשר ברישיון החינמי <span class="lic-flag free">חינמי</span></h3>
+      <ul class="checks">
+        <li><b>אתר מסוים</b> מוסיפים כתובת, והסוכן עונה מתוכה ומכל מה שמתחתיה. מתאים לבלוג מקצועי, לאתר רגולציה, למילון מונחים של הארגון.</li>
+        <li><b>כל האינטרנט</b> מדליקים חיפוש ברשת, והסוכן מחפש מקורות בעצמו ומצרף קישורים.</li>
+        <li><b>רק מהמקורות שלי</b> המתג <span class="ui">Only use specified sources</span> מונע ממנו לענות מהידע הכללי.</li>
+      </ul>
+      <div class="tip warn"><b>המלכודת של Add content.</b> נראה שאפשר לצרף לסוכן קבצים מ-OneDrive או מ-SharePoint, אבל ברישיון החינמי הם לא נשמרים כמקור, ומופיעה אזהרה. הפתרון: מעלים את הקובץ בתוך השיחה עם הסוכן, בכל פעם שצריך.</div>
+    </div>
+    <div data-lic="paid">
+      <h3>מה נפתח ברישיון בתשלום <span class="lic-flag paid">בתשלום</span></h3>
+      <p>חוץ מאתרים, אפשר לעגן את הסוכן גם במידע של העבודה:</p>
+      <ul class="checks">
+        <li><b>קבצים</b> הקבצים האחרונים מופיעים ראשונים. כדי להוסיף תיקייה שלמה לוחצים על סמל הענן, ומהמחשב מעלים עם החץ.</li>
+        <li><b>אתרי SharePoint</b> שימו לב: בחירה ב-Sites מביאה את התוכן של דפי האתר, לא את המסמכים. בשביל המסמכים בוחרים <span class="ui">SharePoint files and folders</span>.</li>
+        <li><b>צ׳אטים, פגישות ומיילים</b> למשל צ׳אט קבוצתי ארוך שיש בו המון תשובות לשאלות שחוזרות.</li>
+        <li><b>אנשים</b> מידע מהמבנה הארגוני ומהפרופילים: מי מדווח למי, ומי עובד עם מי.</li>
+        <li><b>מערכות נוספות</b> מערכות כמו Confluence, אם מנהל ה-IT חיבר אותן.</li>
+      </ul>
+      <div class="tip"><b>תפיסה חשובה:</b> בצ׳אט הרגיל Copilot ניגש לכל המידע של העבודה שלכם. סוכן מתחיל ריק. הוא משתמש רק במה שהוספתם לו, וזה בדיוק הערך: מיקוד.</div>
+    </div>
+
+    <h3>אתרים: שני כללים שחוסכים תסכול</h3>
+    <ol class="steps">
+      <li><b>עד שתי רמות עומק</b> הכתובת שמוסיפים יכולה להיות לכל היותר שתי רמות מתחת לדומיין. <code>site.com/blog</code> עובד, אבל <code>learn.microsoft.com/en-us/copilot/microsoft-365</code> ייתן שגיאה. הפתרון: לקצר את הכתובת. הסוכן עדיין יקרא את כל מה שמתחתיה.</li>
+      <li><b>רק מה שמנוע חיפוש רואה</b> הסוכן קורא את האתר כמו מנוע חיפוש. טבלאות שנבנות ב-JavaScript, קוראי ספרים מוטמעים ותוכן שמאחורי התחברות פשוט לא קיימים מבחינתו.</li>
+    </ol>
+    <div class="tool" id="urlTool">
+      <div class="tool-head"><b>בודק כתובות לסוכן</b><span dir="ltr">URL DEPTH CHECK</span></div>
+      <div class="tool-body one">
+        <label class="f"><span>הדביקו כתובת שאתם רוצים להוסיף כמקור ידע</span><input id="urlIn" dir="ltr" placeholder="https://www.example.co.il/hr/onboarding" autocomplete="off" spellcheck="false"></label>
+        <div class="row-btns"><button type="button" class="btn-s" id="urlGo">בדיקה</button><button type="button" class="btn-s alt" data-url="https://jamesclear.com/productivity">דוגמה שעוברת</button><button type="button" class="btn-s alt" data-url="https://learn.microsoft.com/en-us/copilot/microsoft-365">דוגמה שנכשלת</button></div>
+        <div class="verdict" id="urlOut" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <h3>יכולות: מה מותר לסוכן לייצר</h3>
+    <p>מתחת לאזור הידע יש שני מתגים, וגם הם עובדים בחינמי:</p>
+    <div class="versus">
+      <div><b>מסמכים, גרפים וקוד</b><p>הסוכן כותב קוד מאחורי הקלעים, ומחזיר קובץ אמיתי, למשל מחשבון אקסל או גרף. לא צריך לדעת לתכנת.</p></div>
+      <div><b>תמונות</b><p>כבוי? הסוכן פשוט לא ייצר תמונות, גם אם יבקשו ממנו. ככה שומרים על סוכן ממוקד.</p></div>
+    </div>
+
+    <div class="clips">
+      <div class="yt" data-id="4yQDmJ1n-dU" data-t="764"><button type="button"><img src="https://i.ytimg.com/vi/4yQDmJ1n-dU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">סוכן שמעוגן באתר אינטרנט<small>ליסה קרוסבי · מ-12:44 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="4yQDmJ1n-dU" data-t="1608"><button type="button"><img src="https://i.ytimg.com/vi/4yQDmJ1n-dU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">איפה נגמר החינמי<small>ליסה קרוסבי · מ-26:48 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="4yQDmJ1n-dU" data-t="1815"><button type="button"><img src="https://i.ytimg.com/vi/4yQDmJ1n-dU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">סוכן על המיילים, הקבצים וה-Teams<small>ליסה קרוסבי · מ-30:15 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="7">
+      <div class="slot" data-slot="7">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 07</span>
+      <p class="q">הוספתם את <bdi dir="ltr">learn.microsoft.com/en-us/copilot/microsoft-365</bdi> וקיבלתם שגיאה. למה?</p>
+      <div class="opts">
+        <button type="button" data-why="אתרים כן עובדים, גם בחינמי. הבעיה בכתובת עצמה. נסו שוב.">אי אפשר להוסיף אתרים לסוכן</button>
+        <button type="button" data-ok data-why="נכון. הכתובת עמוקה מדי. מקצרים ל-learn.microsoft.com/en-us, והסוכן יקרא גם את מה שמתחת.">הכתובת עמוקה יותר משתי רמות</button>
+        <button type="button" data-why="האתר של מיקרוסופט פתוח לכולם. הבעיה במבנה הכתובת. נסו שוב.">האתר דורש התחברות</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 8 ========== -->
+<section class="spread" id="st8" style="--st:#9a3412" aria-labelledby="h8">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 08</span>
+    <p class="st-num" aria-hidden="true">8</p>
+    <h2 id="h8">ספר הנהלים</h2>
+    <p class="lede">סקילים הם ההכשרה המקצועית של הסוכן. כותבים פעם אחת, והוא יודע לעשות את זה נכון בכל פעם.</p>
+    <aside class="note"><p>הסוכן הוא המנצח. הסקיל הוא הנגן. צריך את שניהם.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">העובד המוכשר ביום הראשון</h3>
+    <p>תארו לעצמכם עובד חכם מאוד ביום הראשון שלו. הוא מסוגל כמעט להכול, אבל לא מכיר את הנהלים, את השפה המקצועית ואת התהליכים שלכם. זה בדיוק סוכן AI כללי. <b>סקיל</b> הוא חבילה של הוראות, הקשר וקבצי עזר שממוקדת במשימה אחת, והסוכן טוען אותה לבד כשהמשימה רלוונטית.</p>
+    <div class="versus">
+      <div><b>סוכן: המנצח</b><p>מנהל את כל התהליך לקראת מטרה, מקבל החלטות, מתאם כלים ומחזיק את ההקשר של כל השיחה.</p></div>
+      <div><b>סקיל: הנגן</b><p>מומחה בדבר אחד. נטען כשצריך, מבצע ויוצא. אפשר לשתף אותו בין סוכנים שונים.</p></div>
+    </div>
+    <p>למה לא פשוט לבנות עוד סוכנים? מהנדסים ב-Anthropic הציגו גישה שמסוכמת במשפט ״תפסיקו לבנות סוכנים, תתחילו לבנות סקילים״. סוכן אחד עם ספריית סקילים חוסך תיאום בין סוכנים, חוסך טוקנים ושומר את ההקשר של השיחה במלואו.</p>
+
+    <h3>שלוש שכבות, נטענות בהדרגה</h3>
+    <div class="layers">
+      <div class="layer l1"><span class="n">1</span><div><b>מטא-דאטה</b><p>שם, ותיאור של מתי להפעיל את הסקיל.</p></div><span class="when">תמיד טעון</span></div>
+      <div class="layer l2"><span class="n">2</span><div><b>הוראות</b><p>הצעדים, הכללים, האילוצים ופורמט הפלט.</p></div><span class="when">כשהסקיל מופעל</span></div>
+      <div class="layer l3"><span class="n">3</span><div><b>משאבים</b><p>קבצי עזר, סקריפטים ודוגמאות.</p></div><span class="when">רק כשצריך</span></div>
+    </div>
+    <p>לשיטה הזאת קוראים Progressive Disclosure: הסוכן רואה רק את השמות והתיאורים של כל הסקילים, ופותח את הפרטים רק כשצריך. לכן אפשר להחזיק הרבה סקילים בלי להעמיס עליו.</p>
+
+    <h3>סקילים ב-Agent Builder</h3>
+    <ol class="steps">
+      <li><b>מבקשים הצעות</b> בבונה כותבים: <b>״הצע כמה סקילים לסוכן הזה.״</b> אצל מייק טולפסן הוא הציע תוכנית קליטה לפי תפקיד, טיפול בבקשות גישה למערכות, והכנה לשיחת מנהל.</li>
+      <li><b>מאשרים</b> ״צור את שלושת הסקילים.״ הם מופיעים בצד, וכל אחד הוא פשוט הוראות: מטרה, מתי משתמשים, צעדים ופורמט פלט. אפשר לפתוח ולערוך.</li>
+      <li><b>הופכים תבנית לסקיל</b> יש לכם מסמך Word שאתם תמיד ממלאים באותה צורה? כתבו: <b>״צור סקיל של מייל עדכון שבועי, לפי התבנית הזאת״</b>, ותייגו את המסמך עם <code>/</code>.</li>
+      <li><b>מעלים סקיל קיים</b> כבר יש לכם קובץ <code>.md</code> עם סקיל? מעלים אותו ישירות.</li>
+    </ol>
+
+    <h3>מה יש בתוך סקיל</h3>
+    <p>כל סקיל מתחיל בקובץ אחד, <code>SKILL.md</code>: כותרת קצרה עם שם ותיאור, ואחריה הוראות בשפה טבעית. כשצריך, מוסיפים תיקיות עזר:</p>
+<pre class="tree"><span class="h">weekly-status/</span>
+├── SKILL.md        <span class="c"># חובה: שם, תיאור והוראות</span>
+├── references/     <span class="c"># מסמכי עזר: נהלים, תקנים, רשימות תיוג</span>
+├── scripts/        <span class="c"># סקריפטים לפעולות שחוזרות</span>
+└── examples/       <span class="c"># קלט ופלט לדוגמה: ככה נראית תוצאה טובה</span></pre>
+    <div class="tip"><b>הטיפ הכי חשוב:</b> הסוכן מחליט להפעיל סקיל לפי ה-<code>description</code>. השקיעו בו: כתבו מתי להשתמש בסקיל ובאילו מילים המשתמש יבקש אותו.</div>
+
+    <div class="tool" id="skillTool">
+      <div class="tool-head"><b>מחולל SKILL.md</b><span dir="ltr">SKILL BUILDER</span></div>
+      <div class="tool-body">
+        <div>
+          <label class="f"><span>שם הסקיל (באנגלית, באותיות קטנות ומקפים)</span><input id="sName" dir="ltr" value="weekly-status-email"></label>
+          <label class="f"><span>מתי להפעיל אותו? (זה ה-description)</span><textarea id="sDesc">כשמבקשים לנסח מייל עדכון שבועי לצוות או למנהל, או כותבים ״סטטוס שבועי״ או ״מה עשינו השבוע״.</textarea></label>
+          <label class="f"><span>הצעדים, שורה לכל צעד</span><textarea id="sSteps" style="min-height:110px">אסוף מהשיחה את המשימות שהושלמו, מה בעבודה ומה תקוע.
+אם חסר מידע, שאל עליו שאלה אחת לפני שאתה כותב.
+כתוב את המייל לפי פורמט הפלט.
+סיים בשאלה: ״לשלוח כמו שזה, או לשנות משהו?״</textarea></label>
+          <label class="f"><span>פורמט הפלט</span><textarea id="sOut">שורת נושא: ״עדכון שבועי, [תאריך]״.
+שלוש כותרות: הושלם, בעבודה, צריך עזרה. עד ארבע נקודות בכל אחת.</textarea></label>
+        </div>
+        <div>
+          <div class="out ltr" id="sOutBox" aria-live="polite" dir="ltr"></div>
+          <div class="row-btns"><button type="button" class="btn-s" id="sCopy">העתקה</button><button type="button" class="btn-s alt" id="sDown">הורדת SKILL.md</button></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>חמישה צעדים לסקיל ראשון</h3>
+    <ol class="steps">
+      <li><b>משימה אחת</b> ספציפית. לא ״עזרה במיילים״, אלא ״מייל עדכון שבועי״.</li>
+      <li><b>תיקייה</b> בשם הסקיל.</li>
+      <li><b>SKILL.md</b> עם שם, תיאור והוראות בשפה טבעית. המחולל למעלה עושה את זה בשבילכם.</li>
+      <li><b>קבצי עזר</b> רק אם צריך: תבנית, דוגמה טובה, רשימת תיוג.</li>
+      <li><b>בדיקה</b> שואלים את הסוכן בכמה ניסוחים שונים, ומוודאים שהסקיל מופעל רק כשצריך.</li>
+    </ol>
+    <div class="tip good"><b>התמונה הגדולה:</b> סקיל שצוות אחד כתב יכול לשרת את כל הסוכנים בארגון. ספריית סקילים מסודרת היא בעצם הדרך לשמור את הידע של הארגון בתוך ה-AI, ולא בראש של שלושה אנשים.</div>
+
+    <div class="clips">
+      <div class="yt" data-id="knOhSmOkqMM" data-t="221"><button type="button"><img src="https://i.ytimg.com/vi/knOhSmOkqMM/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">הוספת סקילים לסוכן<small>מייק טולפסן · מ-3:41 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="8">
+      <div class="slot" data-slot="8">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 08</span>
+      <p class="q">לפי מה הסוכן מחליט שהגיע הזמן להפעיל סקיל?</p>
+      <div class="opts">
+        <button type="button" data-ok data-why="נכון. התיאור נטען תמיד, ולפיו הסוכן מזהה שהמשימה מתאימה. תיאור מעורפל, סקיל שלא מופעל.">לפי התיאור (description) של הסקיל</button>
+        <button type="button" data-why="השם עוזר לכם לזהות את הסקיל, אבל הסוכן נשען על התיאור. נסו שוב.">לפי שם התיקייה</button>
+        <button type="button" data-why="לאורך אין קשר. ההוראות בכלל לא נטענות עד שהסקיל מופעל. נסו שוב.">לפי כמה ארוכות ההוראות</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 9 ========== -->
+<section class="spread" id="st9" style="--st:#0e7490" aria-labelledby="h9">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 09</span>
+    <p class="st-num" aria-hidden="true">9</p>
+    <h2 id="h9">טיסה משותפת</h2>
+    <p class="lede">משתפים את הסוכן עם הצוות, עוקבים אחרי השימוש, ומכירים את הסוכנים שמיקרוסופט כבר בנתה בשבילכם.</p>
+    <aside class="note"><p>שיתוף סוכן לא משתף את הקבצים. כל אחד רואה רק מה שמותר לו.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">משתפים סוכן</h3>
+    <ol class="steps">
+      <li><b>Share</b> אחרי היצירה הסוכן פרטי. לוחצים <span class="ui">Share</span> ובוחרים אנשים מסוימים, קבוצה, או כל הארגון (תלוי במה שהארגון מאפשר).</li>
+      <li><b>הרשאה</b> לכל אדם בוחרים <span class="ui">Can chat</span> (רק להשתמש) או <span class="ui">Can edit</span> (גם לערוך). ברוב המקרים מספיק Can chat.</li>
+      <li><b>קישור</b> אפשר גם להעתיק קישור ולשלוח. מי שמקבל לוחץ <span class="ui">Add</span>, והסוכן מצטרף לרשימה שלו.</li>
+    </ol>
+    <div class="tip warn"><b>הרשאות על המקורות.</b> עמית שאין לו גישה למסמך שהסוכן מעוגן בו לא יקבל ממנו תשובות. ושיתוף של סוכן שמחובר למיילים שלכם לא נותן לאף אחד גישה למיילים.</div>
+
+    <h3>לכל הארגון, ובמעקב</h3>
+    <ul class="checks">
+      <li><b>קטלוג הארגון</b> שלוש נקודות ואז <span class="ui">Submit to your org catalog</span>. הסוכן עובר לאישור מנהל, והמנהל מפרסם אותו מתוך Microsoft 365 admin center, באזור Agents.</li>
+      <li><b>מעקב</b> <span class="ui">Monitor</span> מציג כמה שיחות היו, כמה משתמשים, כמה הודעות ובאילו מקורות ידע השתמשו, ב-7, 14 או 30 הימים האחרונים. ככה יודעים אם הסוכן באמת עוזר.</li>
+      <li><b>בכל מקום</b> הסוכנים שלכם מופיעים גם בחלונית Copilot בתוך Word, Excel ו-PowerPoint, עם ההקשר של המסמך הפתוח.</li>
+    </ul>
+
+    <h3>סוכנים מוכנים מחנות הסוכנים</h3>
+    <p>בסרגל השמאלי לוחצים על <span class="ui">Agents</span> (או All agents) ומגיעים לחנות. מוסיפים סוכן עם <span class="ui">Add</span>.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">סוכן</th><th scope="col">מה הוא עושה</th><th scope="col">רישיון</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Prompt Coach</th><td>משפר פרומפטים לפי מסגרת מסודרת. אחד המועדפים של ליסה קרוסבי</td><td>חינמי</td></tr>
+        <tr><th scope="row">Idea Coach · Writing Coach</th><td>סיעור מוחות ושיפור כתיבה</td><td>חינמי</td></tr>
+        <tr><th scope="row">Researcher</th><td>מחקר עמוק ברשת ובמידע של העבודה, עם מקורות ודוח מסודר</td><td>בתשלום</td></tr>
+        <tr><th scope="row">Analyst</th><td>ניתוח נתונים, מגמות וחריגים, כולל גרפים. קורא גם קבצי PDF</td><td>בתשלום</td></tr>
+      </tbody>
+    </table></div>
+
+    <div data-lic="paid">
+      <h3>Researcher ו-Analyst בפעולה <span class="lic-flag paid">בתשלום</span></h3>
+      <p><b>Researcher</b> חושב לפני שהוא עונה ובודק כמה כיוונים, ולכן לוקח לו כמה דקות. תנו לו בעיה לפתור, לא שאלה. הוא ישאל שאלות הבהרה, ובסוף תוכלו לפתוח את הדוח ב-Word או לערוך אותו ב-Pages יחד עם עמיתים.</p>
+      <div class="copy"><span class="lbl">פרומפט ל-Researcher</span><pre>אני מכין הצגה להנהלה על [נושא]. הכן לי תדריך קצר שיעזור לי להבין כל מה שצריך: רקע, יתרונות, סיכונים, ומה עשו ארגונים דומים בישראל. צטט מקורות אמינים.</pre></div>
+      <p><b>Analyst</b> מתאים לגיליונות גדולים ולדוחות. ההקשר הוא חצי מהעבודה: הסבירו לו מה בקבצים ואיך הנתונים מסודרים.</p>
+      <div class="copy"><span class="lbl">פרומפט ל-Analyst</span><pre>הקבצים מציגים [מה הנתונים] לשנים [טווח]. כל שורה היא [יחידה], והעמודות הן [שמות העמודות].
+אילו מגמות או חריגים אתה מזהה?
+אחר כך: צור גרף של המגמה העיקרית, וכתוב לו פסקת פרשנות שאפשר להציג להנהלה.</pre></div>
+      <div class="tip"><b>מכסה.</b> לשני הסוכנים האלה יש מגבלת שימוש חודשית. בהקלטה של ליסה קרוסבי (פברואר 2026) היא עמדה על 25 שימושים בחודש לשניהם יחד, וייתכן שהשתנתה מאז. שמרו אותם לשאלות שבאמת צריכות עומק.</div>
+    </div>
+
+    <h3>סוכנים שכבר מחכים ב-SharePoint וב-OneDrive <span class="lic-flag paid">בתשלום</span></h3>
+    <ol class="steps">
+      <li><b>ספרייה שלמה</b> בספריית מסמכים ב-SharePoint לוחצים <span class="ui">Open agents</span>, ושואלים שאלות על כל המסמכים שבה. בלי לבנות כלום.</li>
+      <li><b>מסמך אחד</b> מסמנים מסמך, ואז <span class="ui">AI actions</span> ואז <span class="ui">Create an agent</span>. מקבלים סוכן שכבר מעוגן במסמך הזה. ב-OneDrive זה עובד באותה צורה.</li>
+    </ol>
+
+    <div class="clips">
+      <div class="yt" data-id="knOhSmOkqMM" data-t="461"><button type="button"><img src="https://i.ytimg.com/vi/knOhSmOkqMM/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">שיתוף ופרסום לקטלוג<small>מייק טולפסן · מ-7:41 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="4yQDmJ1n-dU" data-t="2411"><button type="button"><img src="https://i.ytimg.com/vi/4yQDmJ1n-dU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">Researcher ו-Analyst<small>ליסה קרוסבי · מ-40:11 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="4yQDmJ1n-dU" data-t="2919"><button type="button"><img src="https://i.ytimg.com/vi/4yQDmJ1n-dU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">סוכנים ב-SharePoint, ב-OneDrive וב-Word<small>ליסה קרוסבי · מ-48:39 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="9">
+      <div class="slot" data-slot="9">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 09</span>
+      <p class="q">שיתפתם עם עמית סוכן שמעוגן בתיקייה שלכם, והוא לא מקבל ממנו תשובות מהתיקייה. מה הסיבה הסבירה?</p>
+      <div class="opts">
+        <button type="button" data-why="Can chat מספיק כדי להשתמש. הבעיה במקום אחר. נסו שוב.">נתתם לו Can chat במקום Can edit</button>
+        <button type="button" data-ok data-why="נכון. הסוכן מכבד הרשאות: מי שאין לו גישה לקבצים לא יקבל מהם תשובות. משתפים את התיקייה, ולא רק את הסוכן.">אין לו הרשאה לתיקייה עצמה</button>
+        <button type="button" data-why="אין צורך לשלוח לקטלוג כדי לשתף עם אדם אחד. נסו שוב.">הסוכן לא נשלח לקטלוג הארגון</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== שיעור 10 ========== -->
+<section class="spread" id="st10" style="--st:#4d7c0f" aria-labelledby="h10">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">LESSON 10</span>
+    <p class="st-num" aria-hidden="true">10</p>
+    <h2 id="h10">טיסה בינלאומית</h2>
+    <p class="lede">Copilot Studio הוא הכלי הכבד במשפחה. מתי באמת צריך אותו, כמה הוא עולה, ומה עובד בעברית.</p>
+    <aside class="note"><p>מתחילים קטן ב-Agent Builder. עוברים לסטודיו רק כשנגמר המסלול.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">שני כלים, שני קהלים</h3>
+    <div class="versus">
+      <div><b>Agent Builder</b><p>לעובדים מהשורה, בתוך הצ׳אט של Copilot, בשפה טבעית. סוכן בשבילכם או בשביל צוות קטן. מנוהל ב-Microsoft 365 admin center.</p></div>
+      <div><b>Copilot Studio</b><p>ליוצרים (makers) ולמפתחים. סוכן למחלקה, לארגון או ללקוחות, עם תהליכים וחיבורים למערכות. מנוהל ב-Power Platform admin center.</p></div>
+    </div>
+
+    <div class="tool" id="decideTool">
+      <div class="tool-head"><b>צריך את סטודיו?</b><span dir="ltr">BUILDER OR STUDIO</span></div>
+      <div class="tool-body one">
+        <ul class="decide">
+          <li><span>הסוכן ישרת מחלקה שלמה, את כל הארגון, או לקוחות מבחוץ?</span><span class="yn" data-q="1"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>יש תהליך של כמה שלבים ברצף (למשל: לקבל טופס, לבדוק, לאשר, לעדכן)?</span><span class="yn" data-q="2"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>צריך לחבר אותו למערכת עסקית (CRM, מערכת שכר, מערכת קריאות)?</span><span class="yn" data-q="3"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>הוא צריך להתחיל לעבוד לבד, לפי לוח זמנים או כשקורה משהו?</span><span class="yn" data-q="4"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+        </ul>
+        <div class="verdict" id="decideOut" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <h3>עוברים מ-Agent Builder לסטודיו</h3>
+    <ol class="steps">
+      <li><b>מעתיקים</b> בסוכן שבניתם: שלוש נקודות ואז <span class="ui">Copy to Copilot Studio</span>, ואז <span class="ui">Get started</span>.</li>
+      <li><b>יוצרים</b> ההוראות, הידע וכל ההגדרות עוברים. לוחצים <span class="ui">Create</span>.</li>
+      <li><b>זוכרים שזה עותק</b> ההעתקה היא חד-פעמית. מעכשיו יש שני סוכנים נפרדים, ושינוי באחד לא משפיע על השני.</li>
+    </ol>
+    <div class="tip"><b>צריך הרשאה.</b> כדי לעבוד בסטודיו צריך שהארגון יאפשר לכם, ושיהיה רישיון מתאים. רישיון ניסיון מאפשר לבנות ולבדוק סוכן, אבל לא לפרסם אותו.</div>
+
+    <h3>כמה זה עולה</h3>
+    <p>נכון לספטמבר 2026, לפי המדריך של אייל מרקוס שמתבסס על המחירון של מיקרוסופט. המטבע הוא <b>Copilot Credits</b>.</p>
+    <ul class="checks">
+      <li><b>עם רישיון Microsoft 365 Copilot</b> משתמש עם רישיון שמפעיל סוכן פנימי בזהות שלו לא מחויב בנוסף, בגבולות של שימוש הוגן.</li>
+      <li><b>חבילת קיבולת</b> 25,000 קרדיטים בחודש ב-200 דולר. קרדיטים שלא נוצלו לא עוברים לחודש הבא.</li>
+      <li><b>לפי שימוש</b> 0.01 דולר לקרדיט, בחיוב בסוף החודש. צריך מינוי Azure.</li>
+      <li><b>מראש לשנה</b> חיסכון של עד 20%. מה שלא נוצל פג בסוף השנה.</li>
+    </ul>
+
+    <div class="tool" id="calcTool">
+      <div class="tool-head"><b>מחשבון קרדיטים, הערכה בלבד</b><span dir="ltr">CREDITS ESTIMATE</span></div>
+      <div class="tool-body one">
+        <p style="font-size:.98rem;color:var(--ink-soft)">כמה פעמים בחודש הסוכן יעשה כל אחד מהדברים האלה למשתמשים <b>בלי רישיון</b>? (תשובה גנרטיבית עם חיפוש בנתוני הארגון נספרת בשתי השורות.)</p>
+        <div class="calc-grid">
+          <label class="f"><span>תשובה קלאסית (מוגדרת מראש) · 1 קרדיט</span><input type="number" min="0" step="1" id="cClassic" value="0" inputmode="numeric"></label>
+          <label class="f"><span>תשובה גנרטיבית · 2 קרדיטים</span><input type="number" min="0" step="1" id="cGen" value="2000" inputmode="numeric"></label>
+          <label class="f"><span>פעולה של סוכן · 5 קרדיטים</span><input type="number" min="0" step="1" id="cAction" value="200" inputmode="numeric"></label>
+          <label class="f"><span>חיפוש בנתוני הארגון · 10 קרדיטים</span><input type="number" min="0" step="1" id="cGraph" value="1000" inputmode="numeric"></label>
+        </div>
+        <div class="calc-res">
+          <div><small>קרדיטים בחודש</small><span class="big-num" id="rCredits">0</span></div>
+          <div><small>לפי שימוש</small><span class="big-num" id="rPayg" dir="ltr">$0</span></div>
+          <div><small>בחבילות של 25,000</small><span class="big-num" id="rPacks" dir="ltr">$0</span></div>
+        </div>
+        <div class="meter" aria-hidden="true"><i id="rMeter"></i></div>
+        <p class="verdict info" id="rNote" role="status" aria-live="polite"></p>
+        <p style="font-size:.85rem;color:var(--ink-soft);margin-top:8px">התעריפים לפי הטבלה שאייל מרקוס מצטט, ספטמבר 2026: תשובה קלאסית 1, גנרטיבית 2, פעולה 5, חיפוש בנתוני הארגון 10. בדוגמה של מיקרוסופט, פרומפט מורכב אחד לסוכן שמחובר לנתוני הארגון צרך 12 קרדיטים. מודל התמחור השתנה שוב ב-25 בספטמבר 2026, אז לפני תקצוב בודקים את עמוד המחירים של מיקרוסופט.</p>
+      </div>
+    </div>
+    <div class="tip warn"><b>שימו לב לתקרה.</b> סטודיו אוכף את הקיבולת שקניתם. כשהשימוש מגיע ל-125% ממנה, הסוכנים המותאמים מושבתים. סוכן שמפסיק לענות באמצע החודש זו לא חוויה נעימה.</div>
+
+    <h3>סטודיו בעברית: חמש מגבלות להכיר</h3>
+    <ol class="steps">
+      <li><b>אין סוכני קול בעברית</b> העברית לא מופיעה ברשימת השפות של voice.</li>
+      <li><b>טריגרים אוטומטיים רק באנגלית</b> סוכן שמתחיל לעבוד לבד כשקורה משהו (event triggers) נתמך רק באנגלית אמריקאית.</li>
+      <li><b>השפה הראשית ננעלת</b> אחרי היצירה אי אפשר לשנות אותה. מחליטים לפני שלוחצים Create.</li>
+      <li><b>הפרומפטים המוצעים נעלמים</b> בסוכן שהשפה הראשית שלו אינה אנגלית, הם לא מופיעים בערוץ של Microsoft 365 Copilot אחרי הפרסום. ב-Teams וב-Web Chat הם כן מופיעים.</li>
+      <li><b>Agent Builder וישראל</b> ישראל לא מופיעה בשם ברשימת האזורים. הזמינות תלויה באזור של סביבת Power Platform של הארגון, אז בודקים מול ה-IT.</li>
+    </ol>
+
+    <h3>צ׳קליסט לפני פרסום</h3>
+    <ul class="checks">
+      <li><b>מי ישתמש בו?</b> משתמש עם רישיון: כלול. משתמש בלי רישיון: כל תשובה ופעולה עולות קרדיטים. זו השאלה שקובעת את התקציב.</li>
+      <li><b>תקציב</b> הערכתם במחשבון, והשארתם מרווח מתחת ל-125%.</li>
+      <li><b>רישיון מתאים</b> לא רישיון ניסיון, כי איתו אי אפשר לפרסם.</li>
+      <li><b>התשובות עצמן</b> הרצתם את עשר השאלות מהפרומפט הרביעי בשיעור 6, כולל אלה שאין להן תשובה.</li>
+    </ul>
+
+    <div class="clips">
+      <div class="yt" data-id="4yQDmJ1n-dU" data-t="3160"><button type="button"><img src="https://i.ytimg.com/vi/4yQDmJ1n-dU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">מתי עוברים ל-Copilot Studio<small>ליסה קרוסבי · מ-52:40 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="10">
+      <div class="slot" data-slot="10">כאן ייכנסו הכנפיים</div>
+      <span class="quiz-tag" dir="ltr">CHECKRIDE 10</span>
+      <p class="q">מה קורה בסטודיו כשהשימוש מגיע ל-125% מהקיבולת שנקנתה?</p>
+      <div class="opts">
+        <button type="button" data-why="אין חיוב אוטומטי על החריגה. מה שקורה חמור יותר לסוכן. נסו שוב.">החשבונית פשוט גדלה</button>
+        <button type="button" data-why="אין מעבר אוטומטי לרישיון. נסו שוב.">כל המשתמשים מקבלים רישיון</button>
+        <button type="button" data-ok data-why="נכון. הסוכנים המותאמים מושבתים. לכן מתקצבים מראש ועוקבים אחרי השימוש.">הסוכנים המותאמים מושבתים</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /journey -->
+
+<!-- ========== הרישיון ========== -->
+<section class="final" id="license" aria-labelledby="lic-t">
+  <div class="final-inner">
+    <h2 id="lic-t">רישיון הטיס שלכם</h2>
+    <p id="licIntro">כל זוג כנפיים שאספתם מופיע כאן. אספו את כל עשרת הזוגות, והרישיון מוכן.</p>
+    <div class="license" aria-live="polite">
+      <div>
+        <span class="sub-en" dir="ltr">COPILOT PILOT LICENSE</span>
+        <h3 id="licTitle">רישיון טיס: בהכשרה</h3>
+        <dl>
+          <dt>שם הטייס</dt><dd id="licName">עוד לא מילאתם</dd>
+          <dt>סוג רישיון</dt><dd id="licType">לא נבחר</dd>
+          <dt>כנפיים</dt><dd id="licCount">0 מתוך 10</dd>
+          <dt>תאריך</dt><dd id="licDate">-</dd>
+        </dl>
+        <div class="wingrow" id="wingRow" aria-hidden="true"></div>
+      </div>
+      <svg class="seal" id="licSeal" viewBox="0 0 150 150" aria-hidden="true"></svg>
+    </div>
+    <div class="final-cta">
+      <a class="btn wa" id="licShare" href="https://wa.me/972544266802" target="_blank" rel="noopener">ספרו לעזי בוואטסאפ איזה סוכן בניתם</a>
+      <a class="btn gold" href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנת Copilot לצוות</a>
+    </div>
+    <button type="button" class="reset" id="resetBtn">איפוס יומן הטיסה</button>
+  </div>
+</section>
+
+<!-- ========== תקועים ========== -->
+<section class="help" id="help" aria-labelledby="help-t">
+  <h2 id="help-t">תקועים? מגדל הפיקוח</h2>
+  <p style="color:#cdd7e4">כתבו במילים שלכם מה קרה, או הדביקו את הודעת השגיאה.</p>
+  <label for="errIn" class="sr-only">חיפוש בעיה</label>
+  <input id="errIn" type="search" placeholder="למשל: לא רואה Agents, או two levels deep" autocomplete="off">
+  <ul class="errs" id="errList"></ul>
+</section>
+
+<!-- ========== מקורות ========== -->
+<section class="sources" aria-labelledby="src-t">
+  <div class="sources-inner">
+    <h2 id="src-t">על מה המדריך מבוסס</h2>
+    <p>קראתי, צפיתי ועיבדתי את כל אלה לעברית. כל התודה ליוצרים. שווה לצפות במלואם:</p>
+    <ul class="src-list">
+      <li><b>וובינר: חידושים ב-Copilot בעבודה</b><span>אליהו ביטון, אוקטובר 2026. שיחה קולית, Outlook, סיכומי פגישות ב-Teams וסקילים. מכאן צילומי המסך.</span></li>
+      <li><b>Copilot Studio: המדריך המלא בעברית</b><span>אייל מרקוס, ספטמבר 2026.</span><a href="https://eyalmarcus.com/copilot-studio-guide/" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>סרטון הדרכה לקופיילוט</b><span>אייל מרקוס, 7 דקות, עברית.</span><a href="https://www.youtube.com/watch?v=mT-wfu9c42I" target="_blank" rel="noopener">לצפייה</a></li>
+      <li><b>Build and Use Agents in Microsoft 365 Copilot</b><span>ליסה קרוסבי, 56 דקות, אנגלית. המדריך המקיף ביותר לסוכנים.</span><a href="https://www.youtube.com/watch?v=4yQDmJ1n-dU" target="_blank" rel="noopener">לצפייה</a></li>
+      <li><b>The NEW Agent Builder in Microsoft Copilot</b><span>מייק טולפסן, ספטמבר 2026, 10 דקות, אנגלית.</span><a href="https://www.youtube.com/watch?v=knOhSmOkqMM" target="_blank" rel="noopener">לצפייה</a></li>
+      <li><b>הנחיות רשמיות לכתיבת הוראות לסוכן</b><span>Microsoft Learn, אנגלית.</span><a href="https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/declarative-agent-instructions" target="_blank" rel="noopener">לקריאה</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="guide-bio" aria-labelledby="bio-t">
+  <img src="assets/img/ezi.jpg" alt="עזי לוי" width="136" height="136" loading="lazy">
+  <h2 id="bio-t">נעים מאוד, עזי</h2>
+  <p>אני יזם, מחנך ומנטור, ומרצה ויועץ לבינה מלאכותית. מ-2022 אני מעביר סדנאות, קורסים והרצאות לארגונים, למוסדות חינוך ולמנהלים. קודם לכן ניהלתי מרכז למחוננים. תמיד בגובה העיניים ועם חיוך.</p>
+  <ul class="clients" aria-label="בין לקוחותיי">
+    <li>אוניברסיטת תל אביב</li><li>משרד האוצר</li><li>רשות המיסים</li><li>משרד החינוך</li><li>רשות מקרקעי ישראל</li><li>נציבות שירות המדינה</li><li>הלמ״ס</li><li>מכללת ספיר</li><li>מכללת אורנים</li><li>מכון מגיד</li>
+  </ul>
+  <blockquote class="quote">
+    <p>״עזי הצליח לעורר את הסקרנות ואת חדוות היצירה של המורים, שנשארו לתרגל ולהתנסות גם בהפסקה ולאחר סיום המפגש.״</p>
+    <cite>יפעת אנטמן, רכזת ההתמקצעות בהוראת מחוננים ומצטיינים, מכללת חמדת הדרום</cite>
+  </blockquote>
+  <div class="cta-row">
+    <a class="btn gold" href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנה לצוות או לארגון</a>
+    <a class="btn line" href="https://www.ezylevy.com/ai-consultant" target="_blank" rel="noopener">ייעוץ אישי 1:1</a>
+    <a class="btn wa" href="https://wa.me/972544266802" target="_blank" rel="noopener">וואטסאפ</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>© 2026 עזי לוי · <a href="tel:+972544266802" dir="ltr">054-4266802</a> · <a href="mailto:ezylevy@gmail.com">ezylevy@gmail.com</a></div>
+    <nav aria-label="קישורי תחתית">
+      <a href="https://www.ezylevy.com" target="_blank" rel="noopener">האתר של עזי</a>
+      <a href="https://www.instagram.com/ezylevy/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ezy.levy.1/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.ezylevy.com/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA" target="_blank" rel="noopener">מדיניות פרטיות</a>
+      <a href="https://www.ezylevy.com/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA" target="_blank" rel="noopener">הצהרת נגישות</a>
+    </nav>
+    <div style="flex-basis:100%;font-size:.88rem">מדריך עצמאי, ללא קשר רשמי למיקרוסופט. Microsoft, Copilot, Outlook, Teams ו-SharePoint הם סימנים מסחריים של Microsoft. המדריך מבוסס על המקורות שלמעלה, נכון ל-4.11.2026. המוצר מתעדכן מהר, ולכן כשיש פער, התיעוד הרשמי של מיקרוסופט קובע.</div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="השיעורים שלכם">
+  <span class="ct" id="dockCount">0 מתוך 10 כנפיים</span>
+  <ol id="dockList">
+    <li><a href="#st1" data-d="1" aria-label="שיעור 1">1</a></li>
+    <li><a href="#st2" data-d="2" aria-label="שיעור 2">2</a></li>
+    <li><a href="#st3" data-d="3" aria-label="שיעור 3">3</a></li>
+    <li><a href="#st4" data-d="4" aria-label="שיעור 4">4</a></li>
+    <li><a href="#st5" data-d="5" aria-label="שיעור 5">5</a></li>
+    <li><a href="#st6" data-d="6" aria-label="שיעור 6">6</a></li>
+    <li><a href="#st7" data-d="7" aria-label="שיעור 7">7</a></li>
+    <li><a href="#st8" data-d="8" aria-label="שיעור 8">8</a></li>
+    <li><a href="#st9" data-d="9" aria-label="שיעור 9">9</a></li>
+    <li><a href="#st10" data-d="10" aria-label="שיעור 10">10</a></li>
+  </ol>
+  <a class="help-link" href="#help">תקועים?</a>
+</nav>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

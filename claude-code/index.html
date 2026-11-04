@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הדרכון ל-Claude Code | מדריך התקנה בעברית · עזי לוי</title>
+<meta name="description" content="מתקינים את Claude Code בעברית, גם בלי רקע טכני. מדריך אינטראקטיבי שמתאים את עצמו למחשב שלכם: Windows, Mac או Linux, באפליקציה, בטרמינל או בדפדפן. מאת עזי לוי.">
+<link rel="canonical" href="https://ezylevy.github.io/tutorials/claude-code/">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="הדרכון ל-Claude Code">
+<meta property="og:description" content="מדריך התקנה בעברית בתשע תחנות, מהמסך השחור ועד המשימה הראשונה. מאת עזי לוי.">
+<meta property="og:url" content="https://ezylevy.github.io/tutorials/claude-code/">
+<meta property="og:image" content="https://ezylevy.github.io/tutorials/claude-code/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#121d3a">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Assistant:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Karantina:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"איך מתקינים את Claude Code","inLanguage":"he","dateModified":"2026-10-31","author":{"@type":"Person","name":"עזי לוי","url":"https://www.ezylevy.com"},"step":[{"@type":"HowToStep","name":"בודקים שיש מנוי בתשלום ומחשב מתאים"},{"@type":"HowToStep","name":"מתקינים את האפליקציה, או מריצים את פקודת ההתקנה בטרמינל"},{"@type":"HowToStep","name":"מתחברים לחשבון Claude ופותחים תיקיית תרגול"},{"@type":"HowToStep","name":"נותנים את המשימה הראשונה ובודקים את התוצאה"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#board">דילוג לתוכן הראשי</a>
+
+<!-- מסנן שנותן לחותמות מראה של דיו על גומי -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".42" numOctaves="3" seed="9" result="s"/>
+    <feColorMatrix in="s" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 2.2" result="m"/>
+    <feComposite in="d" in2="m" operator="in"/>
+  </filter>
+</svg>
+
+<header class="topbar">
+  <a class="brand" href="https://www.ezylevy.com" target="_blank" rel="noopener">
+    <img src="assets/img/logo.png" alt="" width="44" height="44">
+    <span><b>עזי לוי</b><small>בינה פוגשת מציאות</small></span>
+  </a>
+  <nav aria-label="קישורים חיצוניים">
+    <a href="../index.html">→ כל המדריכים</a>
+    <a href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנאות</a>
+    <a href="https://chat.whatsapp.com/LcW2GxWIN3u0VDr8LdsnDD" target="_blank" rel="noopener">קבוצת עדכונים</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="title">
+  <div>
+    <p class="kicker">מדריך התקנה בעברית · נבדק מול התיעוד הרשמי ב-31.10.2026</p>
+    <h1 id="title">הדרכון שלכם <span>ל-<bdi dir="ltr">Claude Code</bdi></span></h1>
+    <p class="sub">מהמסך השחור ועד המשימה הראשונה: תשע תחנות קצרות, בגובה העיניים. ממלאים את הדרכון, והמדריך מתאים את עצמו למחשב ולמסלול שלכם. כל תחנה נגמרת בחידה קטנה ובחותמת.</p>
+    <div class="byline">
+      <img src="assets/img/ezi.jpg" alt="עזי לוי" width="62" height="62">
+      <div><b>המדריך שלכם: עזי לוי</b><span>מנחה ויועץ לבינה מלאכותית, ומנהל מרכז למחוננים לשעבר</span></div>
+    </div>
+  </div>
+
+  <div class="passport">
+    <div class="cover" aria-hidden="true">
+      <img src="assets/img/logo.png" alt="">
+      <b>דרכון</b>
+      <span>CLAUDE CODE</span>
+    </div>
+    <form class="datapage" id="passport" aria-label="פרטי הדרכון שלכם" onsubmit="return false">
+      <div class="dp-head"><b>פרטי הנוסע</b><span lang="en" dir="ltr">PASSPORT · CC</span></div>
+      <div class="dp-grid">
+        <div class="dp-photo"><img src="assets/img/logo.png" alt="לוגו הפיל של עזי לוי" width="100" height="120"></div>
+        <div>
+          <div class="dp-field">
+            <label for="pName">שם הנוסע (לא חובה, נשמר רק בדפדפן שלכם)</label>
+            <input type="text" id="pName" autocomplete="given-name" maxlength="28" placeholder="איך קוראים לכם?">
+          </div>
+          <fieldset class="dp-field">
+            <legend>המחשב שלי</legend>
+            <div class="seg" role="group">
+              <button type="button" data-set-os="win" aria-pressed="false">Windows</button>
+              <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+              <button type="button" data-set-os="linux" aria-pressed="false">Linux</button>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <fieldset class="dp-field wide">
+        <legend>המסלול שלי</legend>
+        <div class="seg" role="group">
+          <button type="button" data-set-route="app" aria-pressed="false">אפליקציה<small>בלי טרמינל, הכי קל</small></button>
+          <button type="button" data-set-route="terminal" aria-pressed="false">טרמינל<small>כל היכולות, מהמקלדת</small></button>
+          <button type="button" data-set-route="cloud" aria-pressed="false">דפדפן<small>בלי התקנה, דרך GitHub</small></button>
+        </div>
+      </fieldset>
+      <a class="dp-go" href="#st1">יוצאים לתחנה הראשונה ←</a>
+      <div class="mrz" id="mrz" aria-hidden="true">CC&lt;CLAUDE&lt;CODE&lt;&lt;TRAVELER&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>EZY&lt;LEVY&lt;GUIDE&lt;&lt;ROUTE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+    </form>
+  </div>
+</section>
+
+<section class="board-wrap" id="board" aria-labelledby="board-t">
+  <div class="board-inner">
+    <h2 class="board-title" id="board-t">לוח יציאות</h2>
+    <p class="board-sub">כל המסע לוקח בערך 35 דקות, ואפשר לעצור בכל תחנה. ההתקנה עצמה נגמרת כבר בתחנה 4.</p>
+    <ol class="board" id="boardList">
+      <li data-st="1"><a href="#st1"><span class="no">01</span><span>ביקורת דרכונים: מה זה ומה צריך</span><span class="time">3 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="2"><a href="#st2"><span class="no">02</span><span>הפיל שבחדר: הטרמינל</span><span class="time">4 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="3"><a href="#st3"><span class="no">03</span><span>ההתקנה</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="4"><a href="#st4"><span class="no">04</span><span>השיחה הראשונה</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="5"><a href="#st5"><span class="no">05</span><span>מי מאשר מה: הרשאות</span><span class="time">3 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="6"><a href="#st6"><span class="no">06</span><span>יומן מסע: CLAUDE.md</span><span class="time">3 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="7"><a href="#st7"><span class="no">07</span><span>ספר הנהלים: Skills</span><span class="time">4 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="8"><a href="#st8"><span class="no">08</span><span>מתאם לחו״ל: חיבורים ו-MCP</span><span class="time">3 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="9"><a href="#st9"><span class="no">09</span><span>שלוש משימות אמיתיות</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<div class="journey">
+
+<!-- ========== תחנה 1 ========== -->
+<section class="spread" id="st1" style="--st:#b5125f" aria-labelledby="h1">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 01</span>
+    <p class="st-num" aria-hidden="true">1</p>
+    <h2 id="h1">ביקורת דרכונים</h2>
+    <p class="lede">שלוש דקות על מה זה בכלל, ומה חייבים שיהיה לכם לפני שיוצאים לדרך.</p>
+    <aside class="note"><p>הכלי לא מחליף את השיקול שלכם. הוא נותן לשיקול שלכם ידיים.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">הנהג, לא המפה</h3>
+    <p>Claude Code הוא סוכן בינה מלאכותית של Anthropic שעובד ישירות על הקבצים שלכם. אתם מתארים בעברית רגילה את התוצאה שאתם רוצים, והוא פותח קבצים, עורך, בונה ומריץ פעולות עד שהיא מוכנה.</p>
+    <div class="versus">
+      <div><b>צ׳אט רגיל הוא מפה</b><p>מסביר איך מגיעים. את ההעתקה, ההדבקה והביצוע אתם עושים לבד.</p></div>
+      <div><b>Claude Code הוא נהג</b><p>לוקח אתכם לשם. אתם קובעים את היעד, והוא עוצר לשאול לפי הכללים שקבעתם.</p></div>
+    </div>
+
+    <h3>בודקים לפני הגבול</h3>
+    <ul class="checks">
+      <li><b>מנוי Claude בתשלום.</b> החשבון החינמי לא כולל את Claude Code. Pro עולה 20 דולר לחודש (17 בתשלום שנתי), Max מתחיל ב-100 ו-Ultra עולה 200. <a href="https://claude.com/pricing" target="_blank" rel="noopener">המחירון המלא</a> נבדק ב-31.10.2026. ליתר ביטחון, בדקו שם לפני שאתם משלמים.</li>
+      <li><b>מחשב מתאים.</b> Windows 10 גרסה 1809 ומעלה, macOS 13 ומעלה, או Ubuntu 20.04 / Debian 10 ומעלה. מעבד 64 ביט, 4GB זיכרון לפחות, וחיבור לאינטרנט.</li>
+      <li><b>לא צריך לדעת לתכנת.</b> גם לא צריך Node.js או הרשאות מנהל. מדריך ישן שמתחיל ב-<code>npm install</code>? ההתקנה הרשמית כבר פשוטה ממנו.</li>
+    </ul>
+
+    <h3>שלושה מסלולים. בוחרים אחד.</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">מסלול</th><th scope="col">מתאים למי ש…</th><th scope="col">שימו לב</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">אפליקציה</th><td>רוצה ממשק גרפי ועבודה על תיקייה במחשב</td><td>המלצה שלי למתחילים. Linux עדיין בבטא</td></tr>
+        <tr><th scope="row">טרמינל</th><td>רוצה את כל היכולות, אוטומציות ומהירות</td><td>פקודה אחת להתקנה, ותחנה 2 תוריד את הפחד</td></tr>
+        <tr><th scope="row">דפדפן</th><td>לא יכול להתקין, או רוצה לעבוד גם מהטלפון</td><td>רץ בענן ועובד דרך חיבור ל-GitHub, לא על הקבצים במחשב שלכם</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip"><b>ומה עם Cowork?</b> זה אותו מנוע, בלי טרמינל, למשימות משרד: מסמכים, אקסל, מצגות ומחקר. הוא נמצא באפליקציית Claude ל-Mac, ל-Windows ול-Linux (בטא) ובכל מנוי בתשלום, אז גם מי שקרא פעם שהוא ל-Mac בלבד יכול לנסות. כלל אצבע: משימת משרד הולכת ל-Cowork, ובניית משהו בתיקיית פרויקט הולכת ל-Code. <a href="https://support.claude.com/en/articles/13345190-getting-started-with-cowork" target="_blank" rel="noopener">המדריך הרשמי ל-Cowork</a></div>
+
+    <div class="quiz" data-st="1">
+      <div class="slot" data-slot="1">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 01</span>
+      <p class="q">באיזה מהחשבונות האלה Claude Code לא יעבוד?</p>
+      <div class="opts">
+        <button type="button" data-ok data-why="נכון. החשבון החינמי מצוין לצ׳אט, אבל Claude Code דורש מנוי בתשלום או חשבון Console.">Free</button>
+        <button type="button" data-why="ב-Pro הוא דווקא כלול. נסו שוב.">Pro</button>
+        <button type="button" data-why="ב-Max הוא כלול, ועם יותר שימוש. נסו שוב.">Max</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== תחנה 2 ========== -->
+<section class="spread" id="st2" style="--st:#b4480c" aria-labelledby="h2">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 02</span>
+    <p class="st-num" aria-hidden="true">2</p>
+    <h2 id="h2">הפיל שבחדר</h2>
+    <p class="lede">כולם רואים אותו ואף אחד לא רוצה לדבר עליו: המסך השחור. בואו נדבר עליו, ונתרגל בלי לשבור כלום.</p>
+    <aside class="note"><p>טרמינל הוא בסך הכול צ׳אט עם המחשב. רק שהמחשב מאוד מילולי.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <div class="tip" data-route="app"><b>בחרתם באפליקציה?</b> בשביל ההתקנה לא תצטרכו טרמינל, אז אפשר <a href="#st3">לדלג לתחנה 3</a>. עדיין כדאי להעיף מבט: בהרבה מדריכים ובחלק מהכלים תפגשו אותו.</div>
+    <div class="tip" data-route="cloud"><b>בחרתם בדפדפן?</b> בשביל ההתקנה לא תצטרכו טרמינל, אז אפשר <a href="#st3">לדלג לתחנה 3</a>. עדיין כדאי להעיף מבט: בהרבה מדריכים ובחלק מהכלים תפגשו אותו.</div>
+
+    <h3 style="margin-top:0">פותחים אותו</h3>
+    <div data-os="win"><p>לוחצים על <code>Win + X</code> ובוחרים <b>Windows PowerShell</b> או <b>Terminal</b>. אם בתחילת השורה כתוב <code>PS C:\Users\you&gt;</code>, אתם במקום הנכון. אם אין <code>PS</code>, אתם ב-CMD, שמשתמש בפקודות אחרות.</p></div>
+    <div data-os="mac"><p>לוחצים על <code>Cmd + Space</code>, מקלידים <code>Terminal</code> ולוחצים <code>Enter</code>. נפתח חלון עם סמן מהבהב, וזהו.</p></div>
+    <div data-os="linux"><p>ברוב ההפצות לוחצים על <code>Ctrl + Alt + T</code>, או מחפשים Terminal בתפריט היישומים.</p></div>
+
+    <h3>ארבעה חוקי תנועה</h3>
+    <ul class="checks">
+      <li><b>אין כאן עכבר.</b> זזים עם החצים במקלדת, ושולחים עם <code>Enter</code>.</li>
+      <li><b>הדבקה:</b>
+        <span data-os="win"><code>Ctrl + V</code> או קליק ימני.</span>
+        <span data-os="mac"><code>Cmd + V</code>.</span>
+        <span data-os="linux"><code>Ctrl + Shift + V</code>.</span>
+      </li>
+      <li><b>בלם חירום:</b> <code>Esc</code> עוצר את Claude באמצע פעולה.</li>
+      <li><b>יציאה:</b> כותבים <code>exit</code>, או לוחצים <code>Ctrl + D</code> פעמיים בשורה ריקה.</li>
+    </ul>
+
+    <h3>מגרש אימונים</h3>
+    <p>זה סימולטור בתוך הדף. הוא לא מריץ שום דבר על המחשב שלכם, אז אפשר לטעות בלי חשש. הקלידו פקודה, או לחצו על אחת מאלה:</p>
+    <div class="chips" id="simChips">
+      <button type="button">claude --version</button>
+      <button type="button">claude</button>
+      <button type="button">/help</button>
+      <button type="button">exit</button>
+      <button type="button">claude doctor</button>
+    </div>
+    <div class="sim" dir="ltr">
+      <div class="sim-bar"><i></i><span dir="rtl">סימולטור · לא מריץ כלום באמת</span></div>
+      <div class="sim-out" id="simOut" tabindex="0" role="log" aria-label="פלט הסימולטור" aria-live="polite"></div>
+      <form class="sim-form" id="simForm" autocomplete="off">
+        <label for="simIn" id="simPrompt">&gt;</label>
+        <input id="simIn" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="הקלידו פקודה לסימולטור">
+      </form>
+    </div>
+    <div class="tip"><b>עברית הפוכה על המסך?</b> בחלק מהטרמינלים עברית מוצגת הפוך או מבולגנת. זו בעיית תצוגה בלבד, ו-Claude מבין אתכם מצוין. מפריע לכם? האפליקציה או התוסף ל-VS Code נוחים יותר לעין.</div>
+
+    <div class="quiz" data-st="2">
+      <div class="slot" data-slot="2">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 02</span>
+      <p class="q">Claude התחיל לשנות קובץ שלא התכוונתם אליו. מה לוחצים?</p>
+      <div class="opts">
+        <button type="button" data-why="זה ישלח הודעה, אבל לא יעצור אותו. נסו שוב.">Enter</button>
+        <button type="button" data-ok data-why="בדיוק. Esc עוצר אותו מיד, ואז אפשר להסביר מה רציתם.">Esc</button>
+        <button type="button" data-why="זה מעביר בין מצבי הרשאות, ולא עוצר פעולה. נפגוש אותו בתחנה 5.">Shift + Tab</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== תחנה 3 ========== -->
+<section class="spread" id="st3" style="--st:#0a6a72" aria-labelledby="h3">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 03</span>
+    <p class="st-num" aria-hidden="true">3</p>
+    <h2 id="h3">ההתקנה</h2>
+    <p class="lede">התחנה הזאת מציגה רק את מה שמתאים לבחירות שלכם בדרכון. התחרטתם? מחליפים כאן.</p>
+    <aside class="note"><p>הפקודה שותקת בזמן ההורדה. שקט לא אומר שזה נתקע. משאירים את החלון פתוח ומחכים.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <div class="switcher">
+      <p class="lbl">המסלול שלי</p>
+      <div class="seg" role="group" aria-label="בחירת מסלול">
+        <button type="button" data-set-route="app" aria-pressed="false">אפליקציה</button>
+        <button type="button" data-set-route="terminal" aria-pressed="false">טרמינל</button>
+        <button type="button" data-set-route="cloud" aria-pressed="false">דפדפן</button>
+      </div>
+      <p class="lbl">המחשב שלי</p>
+      <div class="seg" role="group" aria-label="בחירת מחשב">
+        <button type="button" data-set-os="win" aria-pressed="false">Windows</button>
+        <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+        <button type="button" data-set-os="linux" aria-pressed="false">Linux</button>
+      </div>
+    </div>
+
+    <!-- אפליקציה -->
+    <div data-route="app">
+      <ol class="steps">
+        <li><b>מורידים ומתקינים</b>
+          <span data-os="win mac">נכנסים ל-<a href="https://claude.com/download" target="_blank" rel="noopener">claude.com/download</a>, מורידים ומריצים את קובץ ההתקנה כמו כל תוכנה אחרת.</span>
+          <span data-os="linux">ב-Linux מתקינים דרך apt לפי <a href="https://code.claude.com/docs/en/desktop-linux" target="_blank" rel="noopener">ההוראות הרשמיות</a>. הגרסה עדיין בבטא, ל-Ubuntu ול-Debian.</span>
+        </li>
+        <li><b>נכנסים לחשבון</b> פותחים את Claude ומתחברים עם חשבון Anthropic שלכם.</li>
+        <li><b>עוברים ללשונית Code</b> היא בראש סרגל הצד. מופיעה בקשה לשדרוג? סימן שעדיין אין לכם מנוי בתשלום.</li>
+        <li><b>בוחרים תיקייה</b> מתחת לתיבת הכתיבה בוחרים את הסביבה המקומית (Local), לוחצים על בורר התיקיות ואז על <b>Open folder…</b>. התחילו בתיקיית תרגול ריקה.</li>
+      </ol>
+      <div class="tip"><b>זהו, אין עוד שלב.</b> האפליקציה כבר כוללת את Claude Code, אז לא צריך Node.js ולא צריך את הטרמינל.</div>
+    </div>
+
+    <!-- טרמינל -->
+    <div data-route="terminal">
+      <ol class="steps">
+        <li data-os="win"><b>Git for Windows (רשות, אבל מומלץ)</b> <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">מורידים מכאן</a> ולוחצים Next בכל המסכים בלי לשנות דבר. לא צריך ללמוד Git. בלעדיו Claude Code פשוט ישתמש ב-PowerShell.</li>
+        <li><b>פותחים טרמינל</b>
+          <span data-os="win"><code>Win + X</code> ואז <b>Windows PowerShell</b> או <b>Terminal</b>. לא צריך להריץ כמנהל, ולא לבחור באפשרות שכתוב בה x86.</span>
+          <span data-os="mac"><code>Cmd + Space</code>, כותבים <code>Terminal</code>, ואז <code>Enter</code>.</span>
+          <span data-os="linux"><code>Ctrl + Alt + T</code>, או מחפשים Terminal בתפריט.</span>
+        </li>
+        <li><b>מדביקים את פקודת ההתקנה ולוחצים Enter</b>
+          <div data-os="win"><div class="cmd"><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre></div></div>
+          <div data-os="mac linux"><div class="cmd"><pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre></div></div>
+          זה מוריד ומריץ את המתקין הרשמי. בסוף תופיע ההודעה <code>Claude Code successfully installed!</code>
+        </li>
+        <li><b>פותחים חלון טרמינל חדש ובודקים</b> חלון שהיה פתוח עדיין לא מכיר את הפקודה, אז חשוב לפתוח חדש.
+          <div class="cmd"><pre><code>claude --version</code></pre></div>
+          מספר גרסה עם הכיתוב <code>(Claude Code)</code> אחריו אומר שהכול עבד. עדכונים ירדו מעכשיו לבד ברקע.
+        </li>
+      </ol>
+      <details class="more"><summary>דרכים אחרות להתקין</summary><div>
+        <div data-os="win">
+          <p><b>מתוך CMD:</b></p>
+          <div class="cmd"><pre><code>curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd</code></pre></div>
+          <p><b>WinGet</b> (מתעדכן ידנית, עם <code>winget upgrade Anthropic.ClaudeCode</code>):</p>
+          <div class="cmd"><pre><code>winget install Anthropic.ClaudeCode</code></pre></div>
+        </div>
+        <div data-os="mac">
+          <p><b>Homebrew</b> (מתעדכן ידנית, עם <code>brew upgrade claude-code</code>):</p>
+          <div class="cmd"><pre><code>brew install --cask claude-code</code></pre></div>
+        </div>
+        <div data-os="linux">
+          <p>יש גם התקנה דרך apt, dnf ו-apk, לפי <a href="https://code.claude.com/docs/en/setup#install-with-linux-package-managers" target="_blank" rel="noopener">ההוראות הרשמיות</a>.</p>
+        </div>
+        <p><b>עובדים ב-VS Code?</b> מחפשים Claude Code בחנות התוספים. התוסף מביא איתו עותק פרטי, ולכן הפקודה <code>claude</code> לא תעבוד בטרמינל עד שתתקינו גם בדרך הרגילה.</p>
+      </div></details>
+      <p>משהו השתבש? הדביקו את הודעת השגיאה ב<a href="#help">מפענח השגיאות</a>.</p>
+    </div>
+
+    <!-- דפדפן -->
+    <div data-route="cloud">
+      <ol class="steps">
+        <li><b>נכנסים לכתובת</b> <a href="https://claude.ai/code" target="_blank" rel="noopener">claude.ai/code</a> בדפדפן, או ללשונית <b>Code</b> באפליקציית Claude בטלפון.</li>
+        <li><b>מחברים את GitHub</b> ההדרכה במסך הראשון מחברת חשבון GitHub ומלווה אתכם במשימה ראשונה. אין לכם חשבון? פתיחה ב-github.com היא בחינם.</li>
+        <li><b>בוחרים פרויקט ונותנים משימה</b> המשימה רצה בענן וממשיכה גם כשסוגרים את המחשב.</li>
+      </ol>
+      <div class="warn"><b>מה לא עובד כאן:</b> הסשן רץ בענן ולא רואה את הקבצים שעל המחשב שלכם. רוצים לעבוד על תיקייה מקומית? <button type="button" class="linklike" data-set-route="app">עברו למסלול האפליקציה</button>.</div>
+    </div>
+
+    <div class="quiz" data-st="3">
+      <div class="slot" data-slot="3">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 03</span>
+      <p class="q">ההתקנה בטרמינל נגמרה, אבל המחשב טוען שהוא לא מכיר את הפקודה <code>claude</code>. מה עושים קודם?</p>
+      <div class="opts">
+        <button type="button" data-why="חבל על הזמן. ההתקנה כנראה הצליחה, ופשוט החלון עוד לא מעודכן.">מתקינים הכול מחדש</button>
+        <button type="button" data-ok data-why="נכון. חלון ישן לא מכיר את הפקודה החדשה. אם גם בחלון חדש זה לא עובד, מפענח השגיאות ייתן לכם את התיקון.">פותחים חלון טרמינל חדש ומנסים שוב</button>
+        <button type="button" data-why="אין צורך. בהתקנה הזאת Node.js לא נדרש בכלל.">מתקינים Node.js</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== תחנה 4 ========== -->
+<section class="spread" id="st4" style="--st:#5b2bb0" aria-labelledby="h4">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 04</span>
+    <p class="st-num" aria-hidden="true">4</p>
+    <h2 id="h4">השיחה הראשונה</h2>
+    <p class="lede">מתחברים, פותחים תיקיית תרגול, ומבקשים משהו אמיתי. בדרך כלל זה הרגע שבו זה נהיה ברור.</p>
+    <aside class="note"><p>התחילו ממשהו שקטן עליכם, וראו מה קורה. אחר כך תגדילו.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <div data-route="terminal">
+      <h3 style="margin-top:0">פותחים תיקיית תרגול ונכנסים</h3>
+      <div data-os="win"><div class="cmd"><pre><code>cd ([Environment]::GetFolderPath('Desktop'))
+mkdir claude-test
+cd claude-test
+claude</code></pre></div></div>
+      <div data-os="mac linux"><div class="cmd"><pre><code>mkdir -p ~/Desktop/claude-test
+cd ~/Desktop/claude-test
+claude</code></pre></div></div>
+      <p>בפעם הראשונה ייפתח דפדפן לכניסה לחשבון, ואחר כך הפרטים נשמרים. הדפדפן לא נפתח? לחצו <code>c</code> כדי להעתיק את הקישור, והדביקו אותו בדפדפן בעצמכם.</p>
+    </div>
+    <div data-route="app"><h3 style="margin-top:0">כבר מחוברים</h3><p>בלשונית Code בחרו את תיקיית התרגול, וכתבו בתיבה שלמטה.</p></div>
+    <div data-route="cloud"><h3 style="margin-top:0">כבר מחוברים</h3><p>בחרו פרויקט ב-claude.ai/code. אם המשימה דורשת קובץ שלא נמצא בפרויקט, בקשו מ-Claude ליצור קובץ לדוגמה.</p></div>
+
+    <h3>נוסחה לבקשה טובה</h3>
+    <div class="formula">
+      <div><b>מה</b><span>התוצאה שרוצים</span></div>
+      <div><b>למי</b><span>מי ישתמש בזה</span></div>
+      <div><b>איך</b><span>פורמט ושפה</span></div>
+      <div><b>גבול</b><span>מה לא לעשות</span></div>
+    </div>
+    <p>במקום ״תכין לי חידון״, כתבו ״חידון של 5 שאלות למחזור המים, לכיתה ו׳, כדף אינטרנט אחד בעברית. בלי להוסיף שאלות על נושאים אחרים״. וזו שיחה, אז אחרי התוצאה הראשונה פשוט ממשיכים: ״יפה, עכשיו הגדל את הכפתורים״.</p>
+
+    <h3>הבקשה הראשונה שלכם</h3>
+    <div class="tabs" role="tablist" aria-label="תחום">
+      <button type="button" role="tab" id="t-edu" aria-controls="p-edu" aria-selected="true">חינוך</button>
+      <button type="button" role="tab" id="t-mgr" aria-controls="p-mgr" aria-selected="false">ניהול</button>
+      <button type="button" role="tab" id="t-biz" aria-controls="p-biz" aria-selected="false">עסק קטן</button>
+      <button type="button" role="tab" id="t-con" aria-controls="p-con" aria-selected="false">תוכן</button>
+    </div>
+    <div role="tabpanel" id="p-edu" aria-labelledby="t-edu"><div class="cmd prompt"><pre><code>צור בתיקייה הזאת דף HTML אחד עם חידון של 5 שאלות על מחזור המים לכיתה ו׳. בעברית, מימין לשמאל, עם משוב מיידי ומעודד על כל תשובה וציון בסוף. כשתסיים, הסבר לי איך לפתוח אותו.</code></pre></div></div>
+    <div role="tabpanel" id="p-mgr" aria-labelledby="t-mgr" hidden><div class="cmd prompt"><pre><code>צור קובץ Excel לדוגמה עם נתוני מכירות של 4 רבעונים ב-3 מחלקות. אחר כך קרא אותו, וכתוב סיכום של עמוד אחד למנהלים: מה השתנה, מה מדאיג, ושלוש שאלות שכדאי לשאול בישיבה. שמור כקובץ Word.</code></pre></div></div>
+    <div role="tabpanel" id="p-biz" aria-labelledby="t-biz" hidden><div class="cmd prompt"><pre><code>אני מנהל/ת עסק קטן של [תחום]. בנה לי תבנית להצעת מחיר בעברית, עם מקומות ברורים לשם הלקוח, לפריטים ולמחיר, וחישוב מע״מ אוטומטי. שמור כקובץ שאפשר לפתוח ולהדפיס.</code></pre></div></div>
+    <div role="tabpanel" id="p-con" aria-labelledby="t-con" hidden><div class="cmd prompt"><pre><code>רשום לי 10 רעיונות לפוסטים על [נושא] לקהל של [מי]. בחר את השלושה החזקים, ולכל אחד כתוב טיוטה קצרה ושורת פתיחה חדה. שמור הכול בקובץ אחד מסודר, וסמן בו כל עובדה שאני צריך/ה לבדוק.</code></pre></div></div>
+
+    <div class="quiz" data-st="4">
+      <div class="slot" data-slot="4">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 04</span>
+      <p class="q">איזו בקשה תביא את התוצאה הכי טובה?</p>
+      <div class="opts">
+        <button type="button" data-why="מה זה ״יפה״ בשבילכם? בלי קהל ופורמט, Claude ינחש.">״תעשה לי מצגת יפה״</button>
+        <button type="button" data-why="נימוסי, אבל חסר בה הכול: נושא, קהל ופורמט.">״אתה יכול לעזור לי עם מצגת בבקשה?״</button>
+        <button type="button" data-ok data-why="בול. יש כאן מה, למי, איך וגבול.">״מצגת של 8 שקפים על בטיחות ברשת להורים, בעברית, בלי מונחים טכניים״</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== תחנה 5 ========== -->
+<section class="spread" id="st5" style="--st:#b3202c" aria-labelledby="h5">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 05</span>
+    <p class="st-num" aria-hidden="true">5</p>
+    <h2 id="h5">מי מאשר מה</h2>
+    <p class="lede">כמה חופש נותנים לנהג? זו ההחלטה הכי חשובה במסע, ואפשר לשנות אותה בכל רגע.</p>
+    <aside class="note"><p>בהתחלה עובדים בתיקיית תרגול. כשכבר יש אמון, מרחיבים את החופש.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">ארבעה שערים</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">מצב</th><th scope="col">קריאת קבצים</th><th scope="col">עריכת קבצים</th><th scope="col">הרצת פקודות</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Manual</th><td class="yes">לבד</td><td class="ask">שואל אתכם</td><td class="ask">שואל אתכם</td></tr>
+        <tr><th scope="row">Accept edits</th><td class="yes">לבד</td><td class="yes">לבד</td><td class="ask">שואל, מלבד פעולות קבצים בסיסיות</td></tr>
+        <tr><th scope="row">Plan</th><td class="yes">לבד</td><td class="no-go">חסום עד שמאשרים תוכנית</td><td class="ask">מוגבל, כדי לבדוק ולתכנן</td></tr>
+        <tr><th scope="row">Auto</th><td class="yes">לבד</td><td class="yes">לבד, עם בדיקת בטיחות ברקע</td><td class="yes">לבד, עם בדיקת בטיחות ברקע</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>במה תתחילו?</b> בגרסאות החדשות, Auto הוא מצב ההתחלה בטרמינל וב-VS Code: מודל נוסף בודק כל פעולה במקומכם, ועוצר פעולות מסוכנות. זה נוח, אבל לא תחליף לתשומת לב.</p>
+
+    <h3>מחליפים מצב</h3>
+    <p data-route="terminal"><code>Shift + Tab</code> עובר בין המצבים. המצב הנוכחי מוצג על המסך.</p>
+    <p data-route="app">המצב מופיע בשורה שמתחת לתיבת הכתיבה. לוחצים עליו ובוחרים אחר.</p>
+    <p data-route="cloud">בוחרים מצב מהתפריט הנפתח, גם כשיוצרים את המשימה וגם בזמן שהיא רצה. העבודה מבודדת מהמחשב שלכם, אבל עדיין קוראים מה השתנה לפני שמשתמשים בתוצאה.</p>
+
+    <h3>שלושה הרגלים ששומרים עליכם</h3>
+    <ul class="checks">
+      <li><b>Plan למשימה גדולה.</b> קודם קוראים תוכנית, אחר כך מאשרים שינויים.</li>
+      <li><b>יש חרטה?</b> <code>/rewind</code> מחזיר את השיחה ואת הקוד לנקודה קודמת.</li>
+      <li><b>גיבוי לדברים שחשובים לכם.</b> הכלל הפשוט: לא נותנים ל-Claude לעבוד על העותק היחיד של קובץ.</li>
+    </ul>
+    <div class="warn"><b>מצב שלא נוגעים בו:</b> הדגל <code>--dangerously-skip-permissions</code> מכבה את רוב הבדיקות. הוא מיועד לסביבות מבודדות, ולא למחשב האישי שלכם, גם אם מישהו ברשת ממליץ עליו בהתלהבות.</div>
+
+    <div class="quiz" data-st="5">
+      <div class="slot" data-slot="5">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 05</span>
+      <p class="q">רוצים לארגן מחדש תיקייה חשובה, אבל קודם לראות בדיוק מה הוא מתכוון לעשות. באיזה מצב תבחרו?</p>
+      <div class="opts">
+        <button type="button" data-why="בבדיקת הרקע יש ביטחון, אבל Auto פשוט יתחיל לעבוד.">Auto</button>
+        <button type="button" data-ok data-why="נכון. Plan מציג תוכנית, ושום קובץ לא משתנה עד שתאשרו.">Plan</button>
+        <button type="button" data-why="Accept edits מאשר עריכות מראש, וזה ההפך ממה שרציתם.">Accept edits</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== תחנה 6 ========== -->
+<section class="spread" id="st6" style="--st:#1f6f2a" aria-labelledby="h6">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 06</span>
+    <p class="st-num" aria-hidden="true">6</p>
+    <h2 id="h6">יומן מסע</h2>
+    <p class="lede">קובץ אחד שחוסך לכם להסביר את עצמכם מחדש בכל שיחה: <code>CLAUDE.md</code>.</p>
+    <aside class="note"><p>כל פעם שאתם מתקנים את Claude על אותו דבר בפעם השנייה, זו שורה ליומן.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">מה זה?</h3>
+    <p>קובץ טקסט רגיל ש-Claude קורא בתחילת כל שיחה. כותבים בו מי אתם, איך אתם אוהבים לעבוד ומה הכללים. כתיבה בעברית עובדת מצוין.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">איפה הקובץ</th><th scope="col">על מה הוא משפיע</th><th scope="col">מה כותבים בו</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><code>~/.claude/CLAUDE.md</code></th><td>כל הפרויקטים שלכם במחשב</td><td>מי אתם, ואיך לדבר איתכם</td></tr>
+        <tr><th scope="row"><code>./CLAUDE.md</code></th><td>הפרויקט הזה בלבד</td><td>הכללים של הפרויקט הזה</td></tr>
+      </tbody>
+    </table></div>
+    <h3>הדרך הקלה</h3>
+    <p>הקלידו בתוך Claude Code את הפקודה הבאה, והוא יסרוק את התיקייה ויכתוב טיוטה ראשונה. אם כבר יש קובץ, הוא יציע שיפורים במקום לדרוס אותו.</p>
+    <div class="cmd"><pre><code>/init</code></pre></div>
+    <h3>דוגמה לגנוב ולשנות</h3>
+    <div class="cmd prompt file"><pre><code># הפרויקט: אתר הסדנאות שלי
+
+## מי אני
+מנחה סדנאות, לא מתכנת/ת. הסבר לי כל דבר בעברית פשוטה.
+
+## כללים
+- כל טקסט לקהל: בעברית, מימין לשמאל.
+- לפני מחיקה או דריסה של קובץ: עצור ובקש אישור.
+- משימה גדולה: קודם תוכנית קצרה, ורק אז ביצוע.
+- בסיום: כתוב מה שינית ואיך אני בודק/ת את זה.</code></pre></div>
+    <div class="tip"><b>כמה שורות?</b> קצר עדיף. קובץ ארוך צורך מקום בכל שיחה, וכלל שנקבר בתוכו נוטה להיעלם. נוהל ארוך עובר לתחנה הבאה. <code>/memory</code> פותח את הקבצים לעריכה.</div>
+
+    <div class="quiz" data-st="6">
+      <div class="slot" data-slot="6">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 06</span>
+      <p class="q">אתם רוצים ש-Claude תמיד יענה לכם בעברית, בכל פרויקט. איפה כותבים את זה?</p>
+      <div class="opts">
+        <button type="button" data-ok data-why="נכון. הקובץ בתיקיית הבית חל על כל הפרויקטים במחשב.">ב-<bdi>~/.claude/CLAUDE.md</bdi></button>
+        <button type="button" data-why="זה יעבוד, אבל רק בפרויקט הזה. נסו שוב.">ב-<bdi>./CLAUDE.md</bdi> של הפרויקט</button>
+        <button type="button" data-why="אפשר, אבל תצטרכו לחזור על זה בכל שיחה חדשה.">פשוט מבקשים בכל שיחה מחדש</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== תחנה 7 ========== -->
+<section class="spread" id="st7" style="--st:#174ea6" aria-labelledby="h7">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 07</span>
+    <p class="st-num" aria-hidden="true">7</p>
+    <h2 id="h7">ספר הנהלים</h2>
+    <p class="lede">Skill הוא נוהל שכותבים פעם אחת. כמו קלסר שמקבל עובד חדש ביום הראשון, רק שהעובד באמת קורא אותו.</p>
+    <aside class="note"><p>עשיתם משהו טוב פעמיים? בפעם השלישית זה כבר צריך להיות Skill.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">הדרך הקלה: פשוט מבקשים</h3>
+    <p>סיימתם משימה ואתם מרוצים מהדרך? בקשו מ-Claude להפוך אותה לנוהל:</p>
+    <div class="cmd prompt"><pre><code>מה שעשינו עכשיו עבד מצוין. הפוך את זה ל-Skill אישי בשם meeting-summary, שאוכל להפעיל גם בפרויקטים אחרים. הצג לי את הקובץ לפני שאתה שומר אותו.</code></pre></div>
+    <h3>הדרך הידנית: 3 צעדים</h3>
+    <ol class="steps">
+      <li><b>יוצרים תיקייה</b> השם שלה יהפוך לפקודה, אז עדיף באנגלית.
+        <div data-os="win"><div class="cmd"><pre><code>mkdir "$env:USERPROFILE\.claude\skills\meeting-summary"</code></pre></div></div>
+        <div data-os="mac linux"><div class="cmd"><pre><code>mkdir -p ~/.claude/skills/meeting-summary</code></pre></div></div>
+      </li>
+      <li><b>שומרים בתוכה קובץ בשם SKILL.md</b> התיאור למעלה עוזר ל-Claude להבין מתי הנוהל רלוונטי.
+        <div class="cmd prompt file"><pre><code>---
+description: מסכם פגישה למסמך פעולה. השתמש כשמבקשים לסכם פגישה, תמלול או שיחה.
+---
+
+1. קרא את התמלול או את ההערות.
+2. כתוב בראש המסמך 3 משפטים: מה הוחלט.
+3. צור טבלה: משימה, אחראי, תאריך יעד.
+4. אם חסר אחראי או תאריך, כתוב "חסר". אל תנחש.
+5. שמור כקובץ Word באותה תיקייה.</code></pre></div>
+      </li>
+      <li><b>מפעילים</b> Claude יכול לזהות לבד שהנוהל מתאים, או שאתם מקלידים בשיחה חדשה:
+        <div class="cmd"><pre><code>/meeting-summary</code></pre></div>
+      </li>
+    </ol>
+    <h3>סקילים של אחרים</h3>
+    <p>דוגמה יפה מהקהילה הישראלית: <a href="https://github.com/shirazel/editable-design-skill" target="_blank" rel="noopener">editable-design</a> של שירה רוט זליקוביץ. כל עיצוב שמבקשים מ-Claude מגיע גם עם עורך בדפדפן, ואפשר לשנות טקסט ולגרור דברים בלי לחזור לשיחה. למאגר גדול יותר, יש את הרשימה <a href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener" dir="ltr">awesome-claude-code</a>.</p>
+    <div class="warn"><b>סקיל הוא קוד והוראות שרצים אצלכם.</b> לפני שמתקינים משהו מהרשת, הדביקו את זה:</div>
+    <div class="cmd prompt"><pre><code>אל תתקין עדיין. קרא את כל הקבצים ב-[קישור], ואמור לי בעברית פשוטה: מה זה עושה, לאילו קבצים וחשבונות זה ניגש, האם זה שולח מידע החוצה, ומה מדאיג אותך. אחכה לתשובה ואחליט.</code></pre></div>
+
+    <div class="quiz" data-st="7">
+      <div class="slot" data-slot="7">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 07</span>
+      <p class="q">יש לכם נוהל של 40 שורות להכנת דו״ח שבועי. איפה הוא צריך לגור?</p>
+      <div class="opts">
+        <button type="button" data-why="הוא ייטען בכל שיחה, גם כשלא מכינים דו״ח. בזבוז מקום.">ב-<bdi>CLAUDE.md</bdi></button>
+        <button type="button" data-ok data-why="נכון. Skill נטען רק כשצריך אותו, אז נוהל ארוך כמעט לא עולה לכם כלום עד שמשתמשים בו.">ב-Skill</button>
+        <button type="button" data-why="זה עובד, אבל זה בדיוק מה ש-Skill חוסך.">מדביק אותו בכל שבוע מחדש</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== תחנה 8 ========== -->
+<section class="spread" id="st8" style="--st:#8a5a00" aria-labelledby="h8">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 08</span>
+    <p class="st-num" aria-hidden="true">8</p>
+    <h2 id="h8">מתאם לחו״ל</h2>
+    <p class="lede">MCP הוא מתאם חשמל: תקע אחד שמחבר את Claude לשירותים שאתם כבר משתמשים בהם, כמו Notion, Drive ואחרים.</p>
+    <aside class="note"><p>מחברים רק מה שבאמת צריך. לכל חיבור יש מחיר של הרשאות וגם של מקום בשיחה.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">מחברים שירות</h3>
+    <div data-route="terminal">
+      <p>בטרמינל, מחוץ ל-Claude. למשל, חיבור ל-Notion:</p>
+      <div class="cmd"><pre><code>claude mcp add --transport http notion https://mcp.notion.com/mcp</code></pre></div>
+      <p>אחר כך, בתוך Claude Code, מקלידים <code>/mcp</code> ומתחברים לחשבון. חיבורים נוספים שעברו בדיקה נמצאים ב<a href="https://claude.ai/directory" target="_blank" rel="noopener">ספרייה הרשמית</a>.</p>
+    </div>
+    <div data-route="app cloud">
+      <p>מחפשים את השירות ב<a href="https://claude.ai/directory" target="_blank" rel="noopener">ספריית החיבורים של Anthropic</a>, מחברים אותו לחשבון, ומאשרים את ההרשאות שהוא מבקש.</p>
+    </div>
+
+    <h3>ומה זה Plugin?</h3>
+    <p>חבילה שיכולה לכלול כמה דברים ביחד: סקילים, סוכנים, חיבורי MCP ועוד. מתקינים אותה בפקודה אחת, ו-<code>/plugin</code> פותח את התפריט.</p>
+
+    <h3>אחרי שמחברים</h3>
+    <div class="cmd prompt"><pre><code>מצא ב-Notion את כל המשימות שפתוחות אצלי השבוע, סדר אותן לפי דחיפות, וכתוב לי טיוטת תוכנית לשבוע. אל תשנה כלום ב-Notion.</code></pre></div>
+    <div class="warn"><b>שתי זהירויות.</b> חיבור נותן ל-Claude גישה אמיתית לחשבון, אז התחילו בהרשאת קריאה בלבד אם יש אפשרות כזאת. ותוכן שמגיע מבחוץ, כמו מייל או דף אינטרנט, יכול להכיל הוראות שמישהו הטמין שם, אז עדיף לא לאשר פעולות רגישות על עיוור.</div>
+
+    <div class="quiz" data-st="8">
+      <div class="slot" data-slot="8">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 08</span>
+      <p class="q">מצאתם ברשת חיבור MCP מבטיח ממפתח לא מוכר. מה הצעד הראשון?</p>
+      <div class="opts">
+        <button type="button" data-why="נוח, אבל עכשיו יש לו גישה מלאה. קצת מוקדם.">מחברים לחשבון הראשי ורואים מה קורה</button>
+        <button type="button" data-ok data-why="בדיוק. קודם מבינים מה הוא עושה, ואז בוחרים הרשאה מינימלית.">מבקשים מ-Claude להסביר מה הוא עושה, ואז מחברים בהרשאה מינימלית</button>
+        <button type="button" data-why="הרבה כוכבים זה סימן טוב, אבל לא בדיקת אבטחה.">בודקים שיש לו הרבה כוכבים ב-GitHub, וזה מספיק</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== תחנה 9 ========== -->
+<section class="spread" id="st9" style="--st:#a01590" aria-labelledby="h9">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STATION 09</span>
+    <p class="st-num" aria-hidden="true">9</p>
+    <h2 id="h9">שלוש משימות אמיתיות</h2>
+    <p class="lede">מכאן לומדים רק מעבודה. בחרו משימה אחת, העתיקו את הבקשה, ואז המשיכו בשיחה עד שאתם מרוצים.</p>
+    <aside class="note"><p>התוצאה הראשונה היא טיוטה. הקסם קורה בבקשה השנייה והשלישית.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">עמוד אישי באינטרנט</h3>
+    <div class="cmd prompt"><pre><code>בנה לי דף אינטרנט אישי אחד בעברית, מימין לשמאל. אני [שם], ואני עוסק/ת ב[תחום]. שאל אותי קודם 3 שאלות על הקהל ועל הסגנון. הדף צריך להיראות טוב גם בטלפון, ובסוף תסביר לי איך לפתוח אותו.</code></pre></div>
+    <p><b>בודקים:</b> פותחים את הקובץ בדפדפן, מצמצמים את החלון לרוחב של טלפון, ומבקשים לשנות דבר אחד.</p>
+
+    <h3>סדר בהוצאות</h3>
+    <div class="cmd prompt"><pre><code>בתיקייה הזאת יש קבלות וחשבוניות. אל תשנה ואל תמחק את המקור. קרא אותן, בנה קובץ Excel חדש לפי תאריך, ספק, סכום וקטגוריה, והוסף גיליון סיכום לפי חודש. סמן כל קבלה שלא הצלחת לקרוא בוודאות.</code></pre></div>
+    <p><b>בודקים:</b> משווים שלוש שורות מול הקבלה עצמה. עובדים על עותק של הקבצים, לא על המקור.</p>
+
+    <h3>כלי קטן משלכם</h3>
+    <div class="cmd prompt"><pre><code>בנה לי אפליקציית משימות בקובץ HTML אחד, בעברית: הוספה, סימון ״בוצע״, מחיקה, וסינון לפי ״להיום״. המשימות יישמרו גם אחרי שסוגרים את הדפדפן. בלי שרת ובלי התקנות.</code></pre></div>
+    <p><b>בודקים:</b> מוסיפים משימה, סוגרים את הדפדפן, פותחים שוב, ורואים שהיא עדיין שם.</p>
+
+    <div class="quiz" data-st="9">
+      <div class="slot" data-slot="9">כאן תיכנס החותמת</div>
+      <span class="quiz-tag" dir="ltr">PUZZLE 09</span>
+      <p class="q">חידה אחרונה: מי אחראי על מה שיוצא מכאן לעולם?</p>
+      <div class="opts">
+        <button type="button" data-why="הוא ביצע, אבל הוא גם יכול לטעות בביטחון מלא.">Claude</button>
+        <button type="button" data-ok data-why="זה השיעור הכי חשוב במסע. Claude נוהג, ואתם עדיין קובעים לאן ובודקים שהגעתם.">אתם</button>
+        <button type="button" data-why="תודה על המחמאה, אבל לא.">עזי</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ========== דלפק עזרה ========== -->
+<section class="desk-sec" id="help" aria-labelledby="help-t">
+  <div class="desk-inner">
+    <h2 id="help-t">דלפק העזרה</h2>
+    <p>נתקעתם? כאן מפענחים הודעות שגיאה, מוצאים פקודות, ומתרגמים מילים מוזרות לעברית.</p>
+
+    <div class="desk-paper">
+      <h3>מפענח השגיאות</h3>
+      <label for="errQ">הדביקו את הודעת השגיאה, או מילה ממנה:</label>
+      <input class="search" id="errQ" type="search" placeholder="command not found: claude" spellcheck="false" autocomplete="off">
+      <ul class="err-list" id="errList"></ul>
+      <p class="err-none" id="errNone" hidden>לא מצאתי התאמה. בקשו מ-Claude באפליקציה או בצ׳אט להסביר את השגיאה, או בדקו <a href="https://code.claude.com/docs/en/troubleshoot-install" target="_blank" rel="noopener">בעמוד התקלות הרשמי</a>.</p>
+    </div>
+
+    <div class="two">
+      <div class="desk-paper">
+        <h3>פנקס כיס</h3>
+        <p class="where">בטרמינל, מחוץ ל-Claude</p>
+        <ul class="pocket">
+          <li><code>claude</code><span>מתחיל שיחה בתיקייה הנוכחית</span></li>
+          <li><code>claude -c</code><span>ממשיך את השיחה האחרונה</span></li>
+          <li><code>claude -r</code><span>בוחר שיחה קודמת</span></li>
+          <li><code>claude doctor</code><span>בודק שההתקנה תקינה</span></li>
+          <li><code>claude update</code><span>מעדכן גרסה</span></li>
+        </ul>
+        <p class="where">בתוך השיחה</p>
+        <ul class="pocket">
+          <li><code>/help</code><span>כל הפקודות</span></li>
+          <li><code>/init</code><span>יוצר <bdi>CLAUDE.md</bdi></span></li>
+          <li><code>/clear</code><span>מתחיל שיחה נקייה</span></li>
+          <li><code>/compact</code><span>מסכם את השיחה ומפנה מקום</span></li>
+          <li><code>/rewind</code><span>חוזר לנקודה קודמת</span></li>
+          <li><code>/model</code><span>מחליף מודל</span></li>
+          <li><code>/usage</code><span>כמה מהמנוי כבר נוצל</span></li>
+          <li><code>/skills</code><span>רשימת הסקילים</span></li>
+          <li><code>/doctor</code><span>בדיקה שגם מציעה תיקונים</span></li>
+          <li><code>Shift + Tab</code><span>החלפת מצב הרשאות</span></li>
+          <li><code>Esc</code><span>עוצר את Claude</span></li>
+        </ul>
+      </div>
+      <div class="desk-paper">
+        <h3>מילון שפת הילידים</h3>
+        <dl class="gloss" style="grid-template-columns:minmax(0,1fr)">
+          <div><dt>טרמינל</dt><dd>חלון שבו מדברים עם המחשב בטקסט במקום בלחיצות.</dd></div>
+          <div><dt>PowerShell / CMD</dt><dd>שני טרמינלים של Windows. הם דומים, אבל הפקודות שונות.</dd></div>
+          <div><dt>PATH</dt><dd>הרשימה של התיקיות שבהן המחשב מחפש תוכנות. ״not found״ אומר בדרך כלל שהתוכנה לא שם.</dd></div>
+          <div><dt>סשן</dt><dd>שיחה אחת עם Claude, עם ההקשר שלה.</dd></div>
+          <div><dt>קונטקסט</dt><dd>כל מה ש-Claude ״זוכר״ כרגע בשיחה. כשהוא מתמלא, איכות העבודה עלולה לרדת.</dd></div>
+          <div><dt>Git</dt><dd>מכונת זמן לקבצים: שומרת גרסאות, ואפשר לחזור אחורה.</dd></div>
+          <div><dt>GitHub</dt><dd>אתר ששומר פרויקטים של Git בענן.</dd></div>
+          <div><dt>Markdown</dt><dd>טקסט רגיל עם סימנים פשוטים לכותרות ורשימות. זה ה-md שבסוף <bdi>CLAUDE.md</bdi>.</dd></div>
+          <div><dt>MCP</dt><dd>השפה המשותפת שדרכה Claude מתחבר לשירותים חיצוניים.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="desk-paper faq">
+      <h3>שאלות נפוצות</h3>
+      <details><summary>אפשר לעבוד איתו בעברית?</summary><p>כן. כותבים בעברית רגילה והוא מבין ועונה. ההערה היחידה היא שבחלק מהטרמינלים התצוגה של עברית הפוכה או מבולגנת, ואז האפליקציה נוחה יותר.</p></details>
+      <details><summary>הוא יכול להרוס לי משהו?</summary><p>הוא עובד באמת על קבצים, אז טעות היא אפשרית. לכן מתחילים בתיקיית תרגול, עובדים על עותקים, משתמשים ב-Plan לדברים גדולים, ועוצרים עם Esc כשמשהו נראה לא נכון.</p></details>
+      <details><summary>כמה זה עולה בפועל?</summary><p>השימוש נכלל במנוי, עם מגבלות לכל 5 שעות ולכל שבוע. משימות גדולות מגיעות למגבלה מהר יותר, ואז ממתינים או משדרגים. <code>/usage</code> מראה איפה אתם עומדים. לפרטים: <a href="https://code.claude.com/docs/en/costs" target="_blank" rel="noopener">עלויות, בתיעוד הרשמי</a>.</p></details>
+      <details><summary>מה קורה עם הקבצים שלי מבחינת פרטיות?</summary><p>מה ש-Claude קורא נשלח לשרתים של Anthropic לצורך עיבוד. אל תפתחו אותו בתיקייה עם סיסמאות או מידע רגיש שאסור שיצא מהארגון, ובחשבון של עבודה בדקו קודם מה הנוהל. <a href="https://code.claude.com/docs/en/data-usage" target="_blank" rel="noopener">מדיניות השימוש בנתונים</a>.</p></details>
+      <details><summary>איך מעדכנים?</summary><p>התקנה רגילה בטרמינל מתעדכנת לבד ברקע. מי שהתקין דרך Homebrew או WinGet מעדכן ידנית.</p></details>
+      <details><summary>איך מסירים אותו?</summary><p>יש הוראות לכל מערכת הפעלה <a href="https://code.claude.com/docs/en/setup#uninstall-claude-code" target="_blank" rel="noopener">בעמוד ההתקנה הרשמי</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== סיום ========== -->
+<section class="finale" id="visa" aria-label="סיכום המסע והכרות עם עזי לוי">
+  <div class="visa" id="visaCard">
+    <h2 id="visaTitle">הדרכון שלכם</h2>
+    <p class="count" id="visaCount" role="status">עדיין אין חותמות. התחנה הראשונה מחכה.</p>
+    <div class="stamp-sheet" id="sheet"></div>
+    <div class="visa-go">
+      <p><b>אספתם את כולן.</b> עכשיו זה הזמן לבנות משהו אמיתי, ולספר לי מה יצא.</p>
+      <p style="margin-top:10px"><a class="btn wa" id="visaShare" href="https://wa.me/972544266802" target="_blank" rel="noopener">שלחו לעזי בוואטסאפ מה בניתם</a></p>
+    </div>
+    <button type="button" class="reset" id="resetBtn">איפוס הדרכון</button>
+  </div>
+
+  <div class="guide-bio">
+    <img src="assets/img/ezi.jpg" alt="עזי לוי" width="136" height="136" loading="lazy">
+    <h2>נעים מאוד, עזי</h2>
+    <p>אני יזם, מחנך ומנטור, ומרצה ויועץ לבינה מלאכותית. מ-2022 אני מעביר סדנאות, קורסים והרצאות לארגונים, למוסדות חינוך ולמנהלים. קודם לכן ניהלתי מרכז למחוננים. תמיד בגובה העיניים ועם חיוך.</p>
+    <ul class="clients" aria-label="בין לקוחותיי">
+      <li>אוניברסיטת תל אביב</li><li>משרד האוצר</li><li>רשות המיסים</li><li>משרד החינוך</li><li>רשות מקרקעי ישראל</li><li>נציבות שירות המדינה</li><li>הלמ״ס</li><li>מכללת ספיר</li><li>מכללת אורנים</li><li>מכון מגיד</li>
+    </ul>
+    <blockquote class="quote">
+      <p>״עזי הצליח לעורר את הסקרנות ואת חדוות היצירה של המורים, שנשארו לתרגל ולהתנסות גם בהפסקה ולאחר סיום המפגש.״</p>
+      <cite>יפעת אנטמן, רכזת ההתמקצעות בהוראת מחוננים ומצטיינים, מכללת חמדת הדרום</cite>
+    </blockquote>
+    <div class="cta-row">
+      <a class="btn gold" href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנה לצוות או לארגון</a>
+      <a class="btn line" href="https://www.ezylevy.com/ai-consultant" target="_blank" rel="noopener">ייעוץ אישי 1:1</a>
+      <a class="btn wa" href="https://wa.me/972544266802" target="_blank" rel="noopener">וואטסאפ</a>
+    </div>
+    <p style="margin-top:14px">לטיפים ועדכונים: <a href="https://chat.whatsapp.com/LcW2GxWIN3u0VDr8LdsnDD" target="_blank" rel="noopener" style="color:var(--gold-soft)">הצטרפו לקבוצת הוואטסאפ</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>© 2026 עזי לוי · <a href="tel:+972544266802" dir="ltr">054-4266802</a> · <a href="mailto:ezylevy@gmail.com">ezylevy@gmail.com</a></div>
+    <nav aria-label="קישורי תחתית">
+      <a href="https://www.ezylevy.com" target="_blank" rel="noopener">האתר של עזי</a>
+      <a href="https://www.instagram.com/ezylevy/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ezy.levy.1/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">התיעוד הרשמי של Claude Code</a>
+      <a href="https://www.ezylevy.com/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA" target="_blank" rel="noopener">מדיניות פרטיות</a>
+      <a href="https://www.ezylevy.com/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA" target="_blank" rel="noopener">הצהרת נגישות</a>
+    </nav>
+    <div style="flex-basis:100%;font-size:.88rem">מדריך עצמאי, ללא קשר רשמי ל-Anthropic. Claude ו-Claude Code הם סימנים מסחריים של Anthropic. נבדק מול התיעוד הרשמי ב-31.10.2026. המוצר מתעדכן מהר, אז כשיש פער, התיעוד הרשמי קובע.</div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="התחנות שלכם">
+  <span class="ct" id="dockCount">0 מתוך 9 חותמות</span>
+  <ol id="dockList">
+    <li><a href="#st1" data-d="1" aria-label="תחנה 1">1</a></li>
+    <li><a href="#st2" data-d="2" aria-label="תחנה 2">2</a></li>
+    <li><a href="#st3" data-d="3" aria-label="תחנה 3">3</a></li>
+    <li><a href="#st4" data-d="4" aria-label="תחנה 4">4</a></li>
+    <li><a href="#st5" data-d="5" aria-label="תחנה 5">5</a></li>
+    <li><a href="#st6" data-d="6" aria-label="תחנה 6">6</a></li>
+    <li><a href="#st7" data-d="7" aria-label="תחנה 7">7</a></li>
+    <li><a href="#st8" data-d="8" aria-label="תחנה 8">8</a></li>
+    <li><a href="#st9" data-d="9" aria-label="תחנה 9">9</a></li>
+  </ol>
+  <a class="help" href="#help">תקועים?</a>
+</nav>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
