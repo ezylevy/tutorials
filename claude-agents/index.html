@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>בית הספר לסוכנים: Claude Code למתקדמים | מדריך בעברית · עזי לוי</title>
-<meta name="description" content="מדריך אינטראקטיבי בעברית ל-Claude Code למתקדמים: בונים חמישה סוכנים מחמישה סוגים (שרשרת, ניתוב, מקביליות, מנצח ועובדים, כותב ומבקר), מחברים אותם לכלים עם MCP ומחברים, ובונים אפליקציה שלמה, בלי לכתוב קוד. מאת עזי לוי.">
+<meta name="description" content="מדריך אינטראקטיבי בעברית ל-Claude Code למתקדמים: בונים חמישה סוכנים מחמישה סוגים (שרשרת, ניתוב, מקביליות, מנצח ועובדים, כותב ומבקר), מחברים אותם לכלים עם MCP ומחברים, בונים סוכן וואטסאפ, ובונים אפליקציה שלמה, בלי לכתוב קוד. מאת עזי לוי.">
 <link rel="canonical" href="https://ezylevy.github.io/tutorials/claude-agents/">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="he_IL">
@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="assets/css/site.css">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HowTo","name":"איך בונים סוכני AI ואפליקציה עם Claude Code בלי לכתוב קוד","inLanguage":"he","dateModified":"2026-11-04","author":{"@type":"Person","name":"עזי לוי","url":"https://www.ezylevy.com"},"step":[{"@type":"HowToStep","name":"מבינים מה זה סוכן ומתי צריך אותו"},{"@type":"HowToStep","name":"מכינים מרחב עבודה עם CLAUDE.md ומצב תכנון"},{"@type":"HowToStep","name":"בונים חמישה סוגי סוכנים: שרשרת, ניתוב, מקביליות, מנצח ועובדים, כותב ומבקר"},{"@type":"HowToStep","name":"מחברים את הסוכנים לכלים חיצוניים עם MCP ומחברים"},{"@type":"HowToStep","name":"בונים ומעלים לאוויר אפליקציה ראשונה"}]}
+{"@context":"https://schema.org","@type":"HowTo","name":"איך בונים סוכני AI ואפליקציה עם Claude Code בלי לכתוב קוד","inLanguage":"he","dateModified":"2026-11-05","author":{"@type":"Person","name":"עזי לוי","url":"https://www.ezylevy.com"},"step":[{"@type":"HowToStep","name":"מבינים מה זה סוכן ומתי צריך אותו"},{"@type":"HowToStep","name":"מכינים מרחב עבודה עם CLAUDE.md ומצב תכנון"},{"@type":"HowToStep","name":"בונים חמישה סוגי סוכנים: שרשרת, ניתוב, מקביליות, מנצח ועובדים, כותב ומבקר"},{"@type":"HowToStep","name":"מחברים את הסוכנים לכלים חיצוניים עם MCP ומחברים"},{"@type":"HowToStep","name":"בונים סוכן וואטסאפ"},{"@type":"HowToStep","name":"בונים ומעלים לאוויר אפליקציה ראשונה"}]}
 </script>
 </head>
 <body>
@@ -42,9 +42,9 @@
 <div class="hero-wrap">
 <section class="hero" aria-labelledby="title">
   <div>
-    <p class="kicker"><bdi dir="ltr">Claude Code</bdi> למתקדמים · מדריך בעברית · מעודכן לפי המקורות ב-4.11.2026</p>
+    <p class="kicker"><bdi dir="ltr">Claude Code</bdi> למתקדמים · מדריך בעברית · מעודכן לפי המקורות ב-5.11.2026</p>
     <h1 id="title">בית הספר <span>לסוכנים</span></h1>
-    <p class="sub">כבר התקנתם את Claude Code ועשיתם איתו משימה ראשונה? עכשיו מתחילים לעבוד ברצינות. בעשר משימות קצרות תבנו חמישה סוכנים מחמישה סוגים שונים, תחברו אותם לכלים שאתם כבר עובדים איתם, ותבנו אפליקציה שלמה שעולה לאוויר. בלי לכתוב שורת קוד אחת. כל משימה נגמרת בחידה ובסמל סוכן.</p>
+    <p class="sub">כבר התקנתם את Claude Code ועשיתם איתו משימה ראשונה? עכשיו מתחילים לעבוד ברצינות. ב-11 משימות קצרות תבנו חמישה סוכנים מחמישה סוגים שונים, תחברו אותם לכלים שאתם כבר עובדים איתם, תעלו סוכן לוואטסאפ, ותבנו אפליקציה שלמה שעולה לאוויר. בלי לכתוב שורת קוד אחת. כל משימה נגמרת בחידה ובסמל סוכן.</p>
     <div class="byline">
       <img src="assets/img/ezi.jpg" alt="עזי לוי" width="62" height="62">
       <div><b>המדריך שלכם: עזי לוי</b><span>מנחה ויועץ לבינה מלאכותית, ומנהל מרכז למחוננים לשעבר</span></div>
@@ -64,7 +64,7 @@
     <fieldset class="field">
       <legend>איפה אתם עובדים עם Claude Code</legend>
       <div class="seg" role="group">
-        <button type="button" data-set-route="desktop" aria-pressed="false">אפליקציית Claude<small>לשונית Code</small></button>
+        <button type="button" data-set-route="desktop" aria-pressed="false">אפליקציית Claude<small>במחשב</small></button>
         <button type="button" data-set-route="vscode" aria-pressed="false">VS Code<small>עם התוסף</small></button>
         <button type="button" data-set-route="terminal" aria-pressed="false">טרמינל<small>שורת פקודה</small></button>
         <button type="button" data-set-route="unsure" aria-pressed="false">עוד לא בטוח/ה<small>אראה את הכול</small></button>
@@ -73,13 +73,13 @@
     <fieldset class="field">
       <legend>המשימה שלי</legend>
       <div class="seg" role="group">
-        <button type="button" data-set-goal="agents" aria-pressed="false">לבנות סוכנים<small>חמשת הסוגים ומחברים</small></button>
+        <button type="button" data-set-goal="agents" aria-pressed="false">לבנות סוכנים<small>חמשת הסוגים, מחברים ווואטסאפ</small></button>
         <button type="button" data-set-goal="app" aria-pressed="false">לבנות אפליקציה<small>מרעיון ועד כתובת באוויר</small></button>
-        <button type="button" data-set-goal="all" aria-pressed="false">הכול<small>כל עשר המשימות</small></button>
+        <button type="button" data-set-goal="all" aria-pressed="false">הכול<small>כל 11 המשימות</small></button>
       </div>
     </fieldset>
     <a class="go" href="#st1">יוצאים למשימה הראשונה ←</a>
-    <div class="lb-foot" id="lbFoot" aria-hidden="true">AGT&lt;TBD&lt;&lt;RECRUIT&lt;&lt;BADGES&lt;0&lt;OF&lt;10&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+    <div class="lb-foot" id="lbFoot" aria-hidden="true">AGT&lt;TBD&lt;&lt;RECRUIT&lt;&lt;BADGES&lt;0&lt;OF&lt;11&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
   </form>
 </section>
 </div>
@@ -87,7 +87,7 @@
 <section class="plan-wrap" id="plan" aria-labelledby="plan-t">
   <div class="plan-inner">
     <h2 class="plan-title" id="plan-t">לוח המשימות</h2>
-    <p class="plan-sub">קריאה של בערך 70 דקות, ועוד זמן בנייה כמה שתרצו. אפשר לעצור בכל משימה ולהמשיך מחר, הדפדפן זוכר. בחרתם משימה בתיק? המשימות שמתאימות לה מסומנות.</p>
+    <p class="plan-sub">קריאה של בערך 80 דקות, ועוד זמן בנייה כמה שתרצו. אפשר לעצור בכל משימה ולהמשיך מחר, הדפדפן זוכר. בחרתם משימה בתיק? המשימות שמתאימות לה מסומנות.</p>
     <ol class="plan" id="planList">
       <li data-st="1"><a href="#st1"><span class="no">01</span><span>תדריך: מה זה בכלל סוכן</span><span class="rec">מומלץ לכם</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
       <li data-st="2"><a href="#st2"><span class="no">02</span><span>המפקדה: מרחב עבודה, CLAUDE.md ומצב תכנון</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
@@ -98,7 +98,8 @@
       <li data-st="7"><a href="#st7"><span class="no">07</span><span>סוכן 4: המפקד והשטח (מנצח ועובדים)</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
       <li data-st="8"><a href="#st8"><span class="no">08</span><span>סוכן 5: המאמן (כותב ומבקר)</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
       <li data-st="9"><a href="#st9"><span class="no">09</span><span>קשר עם העולם: מחברים ו-MCP</span><span class="rec">מומלץ לכם</span><span class="time">8 דק׳</span><span class="status">ממתין</span></a></li>
-      <li data-st="10"><a href="#st10"><span class="no">10</span><span>המבצע הגדול: אפליקציה בלי קוד</span><span class="rec">מומלץ לכם</span><span class="time">10 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="10"><a href="#st10"><span class="no">10</span><span>סוכן 6: קו חם (סוכן בוואטסאפ)</span><span class="rec">מומלץ לכם</span><span class="time">9 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="11"><a href="#st11"><span class="no">11</span><span>המבצע הגדול: אפליקציה בלי קוד</span><span class="rec">מומלץ לכם</span><span class="time">12 דק׳</span><span class="status">ממתין</span></a></li>
     </ol>
   </div>
 </section>
@@ -121,17 +122,17 @@
     </div>
 
     <h3>שלוש רמות של עבודה עם AI</h3>
-    <p>שני הסרטונים שהמדריך מבוסס עליהם (Teacher's Tech ו-AI Master) מתחילים מאותה הבחנה, וכדאי לאמץ אותה:</p>
+    <p>מתחילים מהבחנה פשוטה, שכדאי לאמץ:</p>
     <ol class="steps">
       <li><b>רמה 1: צ׳אט</b> שואלים, מקבלים תשובה, וזהו. רוב האנשים נשארים כאן.</li>
       <li><b>רמה 2: בנייה</b> מבקשים מה-AI ליצור משהו (מסמך, סקריפט, אפליקציה) ומנהלים כל צעד בעצמכם. אתם הבמאים, הוא הבונה.</li>
       <li><b>רמה 3: סוכן</b> נותנים מטרה, לא הוראות. הוא מתכנן, בוחר כלים, משנה כיוון כשמשהו לא עובד, ושואל אתכם כשהוא לא בטוח. כמו ההבדל בין לנהל עובד חדש צעד אחר צעד, לבין לסמוך על עובד מנוסה.</li>
     </ol>
-    <p>מה הופך משהו ל״סוכני״ באמת? לפי שני הסרטונים, שלושה דברים:</p>
+    <p>מה הופך משהו ל״סוכני״ באמת? שלושה דברים:</p>
     <ul class="checks">
       <li><b>הוא עובד לפי תהליך.</b> לא תשובה אחת, אלא שלבים: איסוף הקשר, תוכנית, ביצוע, בדיקה עצמית.</li>
       <li><b>הוא מקבל החלטות.</b> אם כיוון אחד לא עובד, הוא משנה כיוון לפי מה שמצא.</li>
-      <li><b>הוא שואל לפני שהוא מניח.</b> שאלות הבהרה בהתחלה. לפי Teacher's Tech, השינוי הזה לבד משפר את התוצאה פי עשרה.</li>
+      <li><b>הוא שואל לפני שהוא מניח.</b> שאלות הבהרה בהתחלה. השינוי הקטן הזה לבד משפר את התוצאה מאוד.</li>
     </ul>
 
     <h3>איך Anthropic מגדירים את זה</h3>
@@ -151,8 +152,9 @@
       <a href="#st6" style="--c:#047857"><span class="n" dir="ltr">MISSION 06</span><b>צוות חקירה</b><span class="en">Parallelization</span><p>כמה חוקרים במקביל, ואז איחוד. סוכן מחקר שמגיש דוח.</p></a>
       <a href="#st7" style="--c:#9a3412"><span class="n" dir="ltr">MISSION 07</span><b>המפקד והשטח</b><span class="en">Orchestrator-workers</span><p>מנצח שמחליט תוך כדי מה צריך לעשות, ומחלק לעובדים. השוואת מתחרים.</p></a>
       <a href="#st8" style="--c:#be185d"><span class="n" dir="ltr">MISSION 08</span><b>המאמן</b><span class="en">Evaluator-optimizer</span><p>אחד כותב, אחד מבקר, בלולאה. תרגום לעברית טבעית.</p></a>
+      <a href="#st10" style="--c:#15803d"><span class="n" dir="ltr">MISSION 10</span><b>קו חם</b><span class="en">WhatsApp agent</span><p>לא תבנית חדשה, אלא ערוץ: אחד מהסוכנים שלכם, עונה ושולח בוואטסאפ.</p></a>
     </div>
-    <p>אחר כך תחברו אותם לעולם (משימה 9), ובמשימה 10 תבנו אפליקציה שלמה, מרעיון ועד כתובת באינטרנט.</p>
+    <p>אחר כך תחברו אותם לעולם (משימה 9), תעלו סוכן לוואטסאפ (משימה 10), ובמשימה 11 תבנו אפליקציה שלמה, מרעיון ועד כתובת באינטרנט.</p>
 
     <div class="clips">
       <div class="yt" data-id="gHB4JFG9i3k" data-t="60"><button type="button"><img src="https://i.ytimg.com/vi/gHB4JFG9i3k/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">מה זה תהליך סוכני, ושלוש הרמות<small>Teacher's Tech · מ-1:00 · אנגלית</small></span></button></div>
@@ -187,15 +189,15 @@
     <p>התיקייה היא המשרד של הסוכן. כל מה שהוא יוצר, מסדר ומשתמש בו יושב שם. כרגע היא ריקה, וזה בסדר גמור.</p>
 
     <div data-ws="desktop">
-      <p><span class="ws-flag">אפליקציית Claude</span>כמו ב-AI Master, בלי שום התקנה נוספת:</p>
+      <p><span class="ws-flag">אפליקציית Claude</span>בלי שום התקנה נוספת:</p>
       <ol class="steps">
-        <li><b>פותחים את אפליקציית Claude במחשב</b> ועוברים ללשונית <span class="ui">Code</span>.</li>
+        <li><b>פותחים את אפליקציית Claude במחשב</b> אין לשונית נפרדת ל-Claude Code: הכול קורה באותו מסך, שבו מתחילים שיחה ובוחרים תיקייה לעבודה.</li>
         <li><b>יוצרים תיקיית פרויקט חדשה</b> ונותנים לה שם, למשל <code>agent-workspace</code>.</li>
         <li><b>מתחילים שיחה חדשה</b> בתוך התיקייה. מכאן כל מה שתבקשו יקרה בתוכה.</li>
       </ol>
     </div>
     <div data-ws="vscode">
-      <p><span class="ws-flag">VS Code</span>כמו ב-Teacher's Tech. היתרון: רואים כל קובץ שהסוכן יוצר, ברגע שהוא נוצר.</p>
+      <p><span class="ws-flag">VS Code</span>היתרון: רואים כל קובץ שהסוכן יוצר, ברגע שהוא נוצר.</p>
       <ol class="steps">
         <li><b>מתקינים את התוסף</b> ב-VS Code לוחצים על <span class="ui">Extensions</span>, מחפשים <span class="ui">Claude Code</span> ולוחצים <span class="ui">Install</span>. התוסף משתמש באותה התקנה של Claude Code שכבר יש לכם.</li>
         <li><b>פותחים תיקייה</b> <span class="ui">File</span> ואז <span class="ui">Open Folder</span>, יוצרים תיקייה חדשה, למשל <code>my-first-agent</code>, ובוחרים אותה.</li>
@@ -219,7 +221,7 @@ claude</pre></div>
 └── .claude/agents/  ← סוכני משנה (משימה 7)</pre>
 
     <h3>CLAUDE.md: מסמך הקליטה של הסוכן</h3>
-    <p>שני הסרטונים מסכימים: זה הקובץ הכי חשוב בכל המערכת. Claude Code קורא אותו אוטומטית בכל פעם שהוא מתחיל לעבוד בתיקייה. תחשבו על מסמך קליטה לעובד חדש, רק שהעובד קורא אותו מחדש בכל בוקר. ארבעה חלקים: הקשר הפרויקט, עליכם, כללים, ומבנה התיקיות.</p>
+    <p>זה הקובץ הכי חשוב בכל המערכת. Claude Code קורא אותו אוטומטית בכל פעם שהוא מתחיל לעבוד בתיקייה. תחשבו על מסמך קליטה לעובד חדש, רק שהעובד קורא אותו מחדש בכל בוקר. ארבעה חלקים: הקשר הפרויקט, עליכם, כללים, ומבנה התיקיות.</p>
     <p>אפשר לכתוב אותו בעצמכם, או פשוט לבקש: <b>״צור קובץ בשם CLAUDE.md בתיקייה הראשית של הפרויקט״</b>, ואז להדביק לתוכו את מה שתבנו כאן:</p>
 
     <div class="tool" id="mdTool">
@@ -230,7 +232,7 @@ claude</pre></div>
           <label class="f"><span>עליכם: מי אתם ואיך אתם עובדים</span><textarea id="mdMe">אני [התפקיד שלכם]. אני מעדיף הסברים ברורים ומעשיים, בלי ז׳רגון.</textarea></label>
           <label class="f"><span>למי התוצרים מיועדים</span><input type="text" id="mdAudience" value="אנשים לא טכניים שרוצים תוצאה מעשית"></label>
           <label class="f"><span>הטון</span><select id="mdTone"><option>ידידותי וישיר, כמו עצה מחבר שמבין בתחום</option><option>מקצועי ותמציתי</option><option>חם ומעודד</option></select></label>
-          <div class="f"><span>כללים (מתוך שני הסרטונים, סמנו מה שמתאים)</span>
+          <div class="f"><span>כללים (סמנו מה שמתאים)</span>
             <div class="ticks" id="mdRules" style="flex-direction:column;align-items:stretch">
               <label><input type="checkbox" checked value="לפני כל משימה מורכבת, שאל אותי לפחות שלוש שאלות הבהרה.">לשאול 3 שאלות הבהרה לפני משימה מורכבת</label>
               <label><input type="checkbox" checked value="הצג תוכנית כתובה וחכה לאישור שלי לפני כל משימה מרובת שלבים.">להציג תוכנית ולחכות לאישור</label>
@@ -251,10 +253,10 @@ claude</pre></div>
         </div>
       </div>
     </div>
-    <div class="tip good"><b>ההוכחה של Teacher's Tech</b>אותו פרומפט, ״חקור מגמות בעבודה מרחוק״, בשתי תיקיות. בלי CLAUDE.md: קיר טקסט גנרי. עם CLAUDE.md: שאלות הבהרה, נקודות מסודרות, מקורות, והקובץ נשמר בדיוק איפה שביקשו.</div>
+    <div class="tip good"><b>ניסוי של דקה</b>הריצו את אותו פרומפט, למשל ״חקור מגמות בעבודה מרחוק״, בשתי תיקיות. בלי CLAUDE.md תקבלו בדרך כלל קיר טקסט גנרי. עם CLAUDE.md: שאלות הבהרה, נקודות מסודרות, מקורות, והקובץ נשמר בדיוק איפה שביקשתם.</div>
 
     <h3>מצב תכנון: לחשוב לפני שעושים</h3>
-    <p>במצב תכנון Claude Code חושב ומתכנן, אבל לא משנה אף קובץ. כמו חזרה גנרלית. רואים איך הוא הבין את המטרה, אילו צעדים הוא מתכנן ואילו קבצים ייצור, מתקנים, ורק אז מאשרים. לפי AI Master, שתי דקות של בדיקת תוכנית חוסכות עשר דקות של תיקונים.</p>
+    <p>במצב תכנון Claude Code חושב ומתכנן, אבל לא משנה אף קובץ. כמו חזרה גנרלית. רואים איך הוא הבין את המטרה, אילו צעדים הוא מתכנן ואילו קבצים ייצור, מתקנים, ורק אז מאשרים. שתי דקות של בדיקת תוכנית חוסכות עשר דקות של תיקונים.</p>
     <div data-ws="vscode terminal">
       <ol class="steps">
         <li><b>לוחצים <kbd>Shift</kbd>+<kbd>Tab</kbd> פעמיים</b> בתיבת הכתיבה. לחיצה ראשונה עוברת לאישור עריכות אוטומטי, השנייה למצב תכנון, והשלישית חוזרת להתחלה.</li>
@@ -263,12 +265,12 @@ claude</pre></div>
       </ol>
     </div>
     <div data-ws="desktop">
-      <p><span class="ws-flag">אפליקציית Claude</span>בוחרים את מצב התכנון בתפריט המצבים שליד תיבת הכתיבה. לא מוצאים? הדרך של AI Master עובדת בכל מקום: כלל ב-CLAUDE.md (הוא כבר מסומן במחולל למעלה) שאומר לו להציג תוכנית כתובה ולחכות לאישור.</p>
+      <p><span class="ws-flag">אפליקציית Claude</span>בוחרים את מצב התכנון בתפריט המצבים שליד תיבת הכתיבה. לא מוצאים? יש דרך שעובדת בכל מקום: כלל ב-CLAUDE.md (הוא כבר מסומן במחולל למעלה) שאומר לו להציג תוכנית כתובה ולחכות לאישור.</p>
     </div>
 
     <h3>עוד ארבעה דברים שכדאי להכיר</h3>
     <ul class="checks">
-      <li><b>זיכרון אוטומטי.</b> לפי Teacher's Tech, Claude Code רושם לעצמו דברים שהוא לומד על הפרויקט ונזכר בהם בשיחות הבאות. ככל שעובדים יותר בתיקייה, הוא מכיר אותה טוב יותר.</li>
+      <li><b>זיכרון אוטומטי.</b> Claude Code רושם לעצמו דברים שהוא לומד על הפרויקט ונזכר בהם בשיחות הבאות. ככל שעובדים יותר בתיקייה, הוא מכיר אותה טוב יותר.</li>
       <li><b>רשימת המשימות.</b> במשימה מרובת שלבים מופיעה רשימת to-do שמראה מה הוא מתכנן ואיפה הוא נמצא. קראו אותה, זו הדרך הכי טובה לתפוס טעות מוקדם.</li>
       <li data-ws="vscode"><b>חזרה אחורה.</b> ב-VS Code מרחפים מעל נקודה קודמת בשיחה ובוחרים לחזור אליה. זה מבטל גם את שינויי הקבצים שהסוכן עשה מאז. ולקריאה נוחה של קובצי md: <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> פותח תצוגה מעוצבת.</li>
       <li><b>רמת מאמץ.</b> הפקודה <code>/effort</code> עם <code>low</code>, <code>medium</code> או <code>high</code> קובעת כמה לעומק הוא חושב. נמוך לתיקונים קטנים, גבוה למחקר ולמשימות מרובות שלבים. לא בטוחים? השאירו ברירת מחדל.</li>
@@ -304,13 +306,13 @@ claude</pre></div>
   </div></div>
   <div class="leaf leaf-main">
     <h3 style="margin-top:0">שלוש שכבות</h3>
-    <p>שני הסרטונים מפרקים כל מערכת סוכנית לשלושה חלקים:</p>
+    <p>כל מערכת סוכנית מתפרקת לשלושה חלקים:</p>
     <div class="anatomy">
       <div><b>תהליך</b><span class="en">Workflow</span><p>קובץ בעברית פשוטה שמתאר את הצעדים, כמו מתכון. גר בתיקיית workflows. אתם כותבים אותו (או מבקשים מ-Claude לכתוב).</p></div>
       <div><b>הסוכן</b><span class="en">Agent</span><p>זה Claude Code עצמו. קורא את התהליך, חושב על הצעדים ומחליט. אתם לא מתכנתים אותו, אתם נותנים לו הוראות ברורות.</p></div>
       <div><b>כלים</b><span class="en">Tools</span><p>מה שהוא משתמש בו כדי לעשות: לקרוא ולכתוב קבצים, להריץ פקודות, לחפש ברשת. כל אלה מובנים. דרך MCP מוסיפים עוד (משימה 9).</p></div>
     </div>
-    <div class="tip"><b>התובנה שרוב האנשים מפספסים</b>לפי שני הסרטונים, תהליך כתוב היטב עם הכלים הבסיסיים ינצח פרומפט מרושל עם כל התוספים שבעולם. החוכמה נמצאת בהוראות, וזו חדשה טובה: הוראות כל אחד יכול לכתוב.</div>
+    <div class="tip"><b>התובנה שרוב האנשים מפספסים</b>תהליך כתוב היטב עם הכלים הבסיסיים ינצח פרומפט מרושל עם כל התוספים שבעולם. החוכמה נמצאת בהוראות, וזו חדשה טובה: הוראות כל אחד יכול לכתוב.</div>
 
     <h3>הלולאה</h3>
     <p>המדריך הרשמי של Anthropic, ״Build a tool-using agent״, בונה סוכן יומן בחמש טבעות. לא צריך לקרוא קוד כדי להבין את העיקרון:</p>
@@ -409,7 +411,7 @@ claude</pre></div>
       <span class="nd ai">3. חבילת רשתות<small>X, לינקדאין, אינסטגרם</small></span><span class="ar"></span>
       <span class="nd io">4 קובצי PDF<small>output/</small></span>
     </div>
-    <p class="flow-cap">הסוכן מ-AI Master. דוגמאות נוספות מהמאמר: קופי שיווקי ואז תרגום; ראשי פרקים, בדיקה שהם עומדים בקריטריונים, ואז כתיבה.</p>
+    <p class="flow-cap">דוגמאות נוספות מהמאמר של Anthropic: קופי שיווקי ואז תרגום; ראשי פרקים, בדיקה שהם עומדים בקריטריונים, ואז כתיבה.</p>
     <div class="when-card">
       <div><b>מתאים כש...</b><ul><li>המשימה מתפרקת בקלות לשלבים קבועים</li><li>אותו סדר עובד בכל פעם</li></ul></div>
       <div><b>פחות מתאים כש...</b><ul><li>הצעדים תלויים במה שמגלים בדרך</li><li>פנייה אחת עושה את העבודה מספיק טוב</li></ul></div>
@@ -434,7 +436,7 @@ claude</pre></div>
       <li><b>מריצים</b> בשיחה חדשה באותה תיקייה:
         <div class="copy"><span class="lbl">הרצה</span><pre>הרץ את תהליך הפיכת התוכן על התסריט שבתיקיית input.</pre></div></li>
     </ol>
-    <div class="tip"><b>על ה-PDF</b>כדי להמיר ל-PDF, Claude עשוי להציע להתקין כלי קטן. זה תקין. במצב הרשאות רגיל הוא ישאל אתכם לפני. ב-AI Master כל הפלט, שלושה שורטס וחבילת רשתות, נוצר בפחות משתי דקות.</div>
+    <div class="tip"><b>על ה-PDF</b>כדי להמיר ל-PDF, Claude עשוי להציע להתקין כלי קטן. זה תקין. במצב הרשאות רגיל הוא ישאל אתכם לפני.</div>
     <div class="tip good"><b>השער הוא מה שהופך את זה לסוכן אמין</b>בלי שער, אם אין בתסריט שלושה רגעים טובים, הסוכן ימציא. עם שער, הוא עוצר ומספר לכם. כל פס ייצור שתבנו צריך לפחות שער אחד.</div>
 
     <div class="clips">
@@ -554,7 +556,7 @@ Categories: general, refund, tech, unclear. If unsure, use unclear.</pre></div><
     </div>
 
     <h3>בונים אותו</h3>
-    <p>זה הסוכן ששני הסרטונים בונים, עם תוספת אחת מהתיעוד של Claude Code: חוקרים במקביל, כל אחד בסוכן משנה משלו.</p>
+    <p>סוכן מחקר שמגיש דוח, עם תוספת אחת מהתיעוד של Claude Code: חוקרים במקביל, כל אחד בסוכן משנה משלו.</p>
     <ol class="steps">
       <li><b>מתכננים את התהליך</b> במצב תכנון. מתארים מטרה, לא צעדים:
         <div class="copy"><span class="lbl">פרומפט לתכנון סוכן המחקר</span><pre>אני רוצה לבנות תהליך מחקר שאוכל להריץ על כל נושא.
@@ -567,7 +569,7 @@ Categories: general, refund, tech, unclear. If unsure, use unclear.</pre></div><
 6. ציין מקור לכל טענה, ושמור את הדוח בתיקיית output.
 אם הנושא רחב מדי למחקר רציני, אמור את זה ובקש לצמצם.
 הראה לי תוכנית לתהליך עצמו לפני שאתה בונה.</pre></div></li>
-      <li><b>קוראים את קובץ התהליך</b> Claude כותב משהו כמו <code>workflows/research-report.md</code>. ב-Teacher's Tech הקובץ כלל מטרה, שלב שאלות, אישור תוכנית, הנחיות מחקר (״להימנע מפוסטים של דעה בלבד״, ״להעדיף מקורות מ-12 החודשים האחרונים״), כללי כתיבה וטיפול בשגיאות.</li>
+      <li><b>קוראים את קובץ התהליך</b> Claude כותב משהו כמו <code>workflows/research-report.md</code>. קובץ טוב כולל מטרה, שלב שאלות, אישור תוכנית, הנחיות מחקר (״להימנע מפוסטים של דעה בלבד״, ״להעדיף מקורות מ-12 החודשים האחרונים״), כללי כתיבה וטיפול בשגיאות.</li>
       <li><b>שואלים ״אילו תהליכים יש לך?״</b> הוא אמור למנות את התהליך החדש ולתאר אותו. סימן שהכול במקום.</li>
       <li><b>מריצים על נושא אמיתי</b> ועונים על השאלות כמו לעמית:
         <div class="copy"><span class="lbl">הרצה, ותשובות לדוגמה</span><pre>תריץ את תהליך המחקר: מה המצב של סוכני AI ב-2026? במה אנשים באמת משתמשים, מה עובד, מה מוגזם, ולאן זה הולך.
@@ -579,7 +581,7 @@ Categories: general, refund, tech, unclear. If unsure, use unclear.</pre></div><
 הוסף טבלת השוואה של חמשת הכלים המובילים שהזכרת בדוח.</pre></div></li>
     </ol>
     <div class="tip warn"><b>מקביליות עולה טוקנים</b>לפי התיעוד של Claude Code, כל סוכן משנה צורך טוקנים משלו, וכשהרבה סוכני משנה מחזירים תוצאות מפורטות, זה ממלא את השיחה הראשית. זה עובד הכי טוב כשמסלולי המחקר באמת לא תלויים זה בזה. שלושה חוקרים זה מספר טוב להתחלה.</div>
-    <div class="tip"><b>מספר שכדאי לזכור</b>בדוח שהסוכן של Teacher's Tech הפיק מופיע נתון: גם המודלים הטובים ביותר מצליחים רק ב-45.7% מהמשימות בעולם האמיתי. ג׳יימי מסיק מזה שפיקוח אנושי עדיין לא אופציונלי. קראו את הדוח לפני שאתם שולחים אותו הלאה.</div>
+    <div class="tip"><b>בודקים לפני ששולחים</b>גם סוכן מחקר טוב טועה: מצטט מקור לא מדויק, מפספס הקשר, או מציג השערה כעובדה. הבדיקה העצמית שבתהליך עוזרת, אבל לא מחליפה אתכם. לפני שהדוח יוצא מהתיקייה, פתחו את המקורות של הטענות החשובות ביותר ובדקו בעצמכם.</div>
 
     <div class="clips">
       <div class="yt" data-id="gHB4JFG9i3k" data-t="765"><button type="button"><img src="https://i.ytimg.com/vi/gHB4JFG9i3k/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">בונים את סוכן המחקר במצב תכנון<small>Teacher's Tech · מ-12:45 · אנגלית</small></span></button></div>
@@ -743,10 +745,10 @@ Do not rewrite the text yourself.</pre></div></li>
 6. שמור ב-output את הגרסה הסופית ואת יומן השינויים.</pre></div></li>
     </ol>
     <div class="tip"><b>למה תנאי עצירה?</b>Anthropic ממליצים להוסיף לסוכנים תנאי עצירה, כמו מספר מקסימלי של סבבים, כדי לשמור על שליטה. סוכן אוטונומי פירושו גם עלויות גבוהות יותר וטעויות שמצטברות. בסוכן משנה אפשר להגביל גם עם השדה <code>maxTurns</code>.</div>
-    <p>אותה תבנית עובדת לכל דבר שיש לו קריטריונים ברורים: פוסטים ללינקדאין לפי מדריך סגנון, הצעות מחיר מול רשימת דרישות, מצגת מול מבנה קבוע. ותזכורת מהסרטונים: גם אתם יכולים להיות המבקר. משוב ממוקד (״הפתיחה ארוכה מדי, קצר לשני משפטים״) עובד הרבה יותר טוב מ״זה לא טוב״.</p>
+    <p>אותה תבנית עובדת לכל דבר שיש לו קריטריונים ברורים: פוסטים ללינקדאין לפי מדריך סגנון, הצעות מחיר מול רשימת דרישות, מצגת מול מבנה קבוע. ותזכורת: גם אתם יכולים להיות המבקר. משוב ממוקד (״הפתיחה ארוכה מדי, קצר לשני משפטים״) עובד הרבה יותר טוב מ״זה לא טוב״.</p>
 
     <h3>לפני שיוצאים לשטח: חמש הטעויות</h3>
-    <p>שני הסרטונים מסיימים עם אותה רשימה כמעט מילה במילה. זה כנראה אומר משהו:</p>
+    <p>חמש טעויות שחוזרות שוב ושוב אצל מי שמתחיל לבנות סוכנים:</p>
     <ol class="steps">
       <li><b>לדלג על CLAUDE.md</b> בלעדיו כל שיחה מתחילה מאפס, והאיכות לא עקבית.</li>
       <li><b>מטרה עמומה</b> ״תחקור על AI״ מוליד ערך ויקיפדיה. ״איך אנשי שיווק לא טכניים משתמשים בסוכנים ליצירת תוכן, עם כלים שיש להם גרסה חינמית״ מוליד משהו שאפשר לעבוד איתו.</li>
@@ -754,7 +756,7 @@ Do not rewrite the text yourself.</pre></div></li>
       <li><b>לא לדרוש שאלות הבהרה</b> בלי הוראה מפורשת, הסוכן מניח. וההנחות הן המקור לרוב התוצרים הבינוניים.</li>
       <li><b>לבנות הכול בבת אחת</b> חמש מערכות שעובדות חצי, שאף אחת מהן לא אמינה. סוכן אחד, עד שהוא עובד טוב, ואז הבא.</li>
     </ol>
-    <div class="tip good"><b>סדר הגדילה של AI Master</b>מתחילים ממשימות סגורות עם קלט ופלט ברורים (דוח, סיכום). עוברים לתהליכים עם כמה סבבי שיפור. ובסוף, שרשרת של תהליכים: סוכן המחקר מגיש דוח, וסוכן תכנון תוכן קורא אותו ומציע רעיונות לסרטונים.</div>
+    <div class="tip good"><b>סדר הגדילה הנכון</b>מתחילים ממשימות סגורות עם קלט ופלט ברורים (דוח, סיכום). עוברים לתהליכים עם כמה סבבי שיפור. ובסוף, שרשרת של תהליכים: סוכן המחקר מגיש דוח, וסוכן תכנון תוכן קורא אותו ומציע רעיונות לסרטונים.</div>
 
     <div class="clips">
       <div class="yt" data-id="bcM9dP_uXJU" data-t="1073"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">חמש הטעויות שהורגות סוכנים<small>AI Master · מ-17:53 · אנגלית</small></span></button></div>
@@ -875,17 +877,117 @@ claude mcp remove notion # remove
 </section>
 
 <!-- ========== משימה 10 ========== -->
-<section class="spread" id="st10" style="--st:#4d7c0f" aria-labelledby="h10">
+<section class="spread" id="st10" style="--st:#15803d" aria-labelledby="h10">
   <div class="leaf leaf-side"><div class="side-sticky">
     <span class="st-tag" dir="ltr">MISSION 10</span>
     <p class="st-num" aria-hidden="true">10</p>
-    <h2 id="h10">המבצע הגדול</h2>
+    <h2 id="h10">קו חם</h2>
+    <p class="lede">סוכן שישי: סוכן בוואטסאפ. איפה שהלקוחות, התלמידים והחברים שלכם כבר נמצאים. מה צריך, אילו דרכים יש, ואיך בונים אחד בלי לכתוב קוד.</p>
+    <aside class="note"><p>בוואטסאפ, טעות של סוכן נוחתת ישר בטלפון של מישהו. מתחילים מהמספר שלכם בלבד.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">ערוץ, לא תבנית</h3>
+    <p>סוכן וואטסאפ הוא לא סוג שישי של סוכן. הוא <b>ערוץ</b>: אחד הסוכנים שכבר בניתם, שמקבל ושולח הודעות דרך וואטסאפ במקום דרך קבצים. הכי נפוץ: המרכזייה ממשימה 5, שממיינת פניות של לקוחות ועונה על שאלות פשוטות. יש שני סוגים, והם שונים מאוד במה שהם דורשים:</p>
+    <div class="versus">
+      <div><b>סוכן ששולח</b><p>אתם מפעילים אותו מ-Claude Code, והוא שולח הודעה בסוף העבודה: סיכום בוקר, תזכורת, דוח המחקר ממשימה 6. רץ רק כשאתם מריצים. הכי פשוט להתחלה.</p></div>
+      <div><b>סוכן שעונה</b><p>בוט שמקבל הודעות ועונה בעצמו, גם כשהמחשב שלכם כבוי. צריך שרת שרץ כל הזמן, ומפתח API של Claude. זה כבר פרויקט קטן, ו-Claude Code יבנה אותו איתכם.</p></div>
+    </div>
+    <div class="flow" aria-label="תרשים: סוכן וואטסאפ שעונה">
+      <span class="nd io">הודעה נכנסת<small>וואטסאפ</small></span><span class="ar"></span>
+      <span class="nd">webhook<small>השרת שלכם</small></span><span class="ar"></span>
+      <span class="nd ai">Claude<small>מסווג ומנסח</small></span><span class="ar"></span>
+      <span class="stack">
+        <span class="nd">שאלה פשוטה<small>תשובה מקובץ הידע</small></span>
+        <span class="nd gate">רגיש או לא ברור<small>מעבירים לבן אדם</small></span>
+      </span><span class="ar"></span>
+      <span class="nd io">תשובה<small>חזרה לוואטסאפ</small></span>
+    </div>
+    <p class="flow-cap">webhook הוא כתובת אינטרנט שוואטסאפ שולח אליה כל הודעה חדשה. לכן בוט שעונה צריך שרת שזמין תמיד.</p>
+
+    <h3>מה צריך</h3>
+    <ul class="checks">
+      <li><b>מספר וואטסאפ.</b> עדיף מספר נפרד לבוט ולא המספר האישי שלכם, כדי שתקלה לא תפגע בחשבון שאתם חיים בו.</li>
+      <li><b>גישה לוואטסאפ דרך API.</b> אחת משלוש הדרכים בטבלה למטה. כאן מקבלים מזהה ומפתח (טוקן) שמאפשרים לשלוח ולקבל הודעות.</li>
+      <li><b>מפתח API של Claude</b> (רק לסוכן שעונה). בוט שרץ לבד פונה ל-Claude ישירות, ולא דרך המנוי שלכם. פותחים מפתח ב-<a href="https://platform.claude.com" target="_blank" rel="noopener">Claude Console</a>, ומשלמים לפי שימוש.</li>
+      <li><b>מקום שהשרת ירוץ בו</b> (רק לסוכן שעונה). שירות אחסון בענן. Claude Code יציע אפשרויות וידריך אתכם צעד אחר צעד.</li>
+      <li><b>קובץ ידע וכללים.</b> שאלות ותשובות, טון, ומה אסור: בלי הבטחות על מחירים, החזרים ומועדים, ומתי מעבירים לבן אדם. זה ה-CLAUDE.md של הבוט.</li>
+    </ul>
+
+    <h3>שלוש דרכים לחבר את וואטסאפ</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">דרך</th><th scope="col">איך זה עובד</th><th scope="col">מתאים ל</th><th scope="col">שימו לב</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">WhatsApp Cloud API<br><small>הדרך הרשמית של Meta</small></th><td>פותחים אפליקציה ב-Meta for Developers, מחברים חשבון עסקי ומספר, מקבלים טוקן, ומגדירים webhook לקבלת הודעות.</td><td>עסק שעונה ללקוחות שלו</td><td>רשמי ויציב, אבל יותר הגדרות. ולפי תנאי השימוש של Meta, החל מ-15.1.2026 אסור להפיץ דרכו עוזר AI כללי. בוט שירות של העסק שלכם מותר.</td></tr>
+        <tr><th scope="row">שער כמו Green API</th><td>מקשרים מספר קיים כ״מכשיר מקושר״, בסריקת QR, ומקבלים מזהה וטוקן. ההודעות עוברות דרך הטלפון.</td><td>אוטומציה אישית, התראות לעצמכם, קבוצה קטנה</td><td>מהיר להקמה, אבל זה לא ה-API הרשמי. תנאי השימוש של וואטסאפ אוסרים שימוש לא מורשה בשירות, גם באמצעים אוטומטיים, ולכן יש סיכון שהמספר ייחסם. הטלפון צריך להישאר טעון ומחובר.</td></tr>
+        <tr><th scope="row">שרת MCP קהילתי<br><small dir="ltr">whatsapp-mcp</small></th><td>Claude קורא ושולח מהחשבון האישי שלכם, דרך הממשק של WhatsApp Web, ישירות מתוך Claude Code.</td><td>ניסוי אישי בלבד</td><td>קוד פתוח, לא רשמי, על החשבון האישי. היוצר עצמו מזהיר שהודעה זדונית יכולה לגרום לסוכן לחשוף מידע פרטי.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip warn"><b>נכון ל-5.11.2026: הכלל של Meta על בוטים</b>בתנאי השימוש של WhatsApp Business נוסף סעיף שאוסר על ספקי AI להפיץ דרך הפלטפורמה עוזר כללי, כשה-AI הוא המוצר עצמו. Meta הבהירו ל-TechCrunch שעסק שמשתמש ב-AI כדי לשרת את הלקוחות שלו, כמו בוט שירות של חברת תיירות, לא נפגע. כלומר: בוט שעונה על שאלות על העסק שלכם, כן. ״ChatGPT משלכם בוואטסאפ״ לקהל הרחב, לא.</div>
+
+    <h3>בונים: סוכן ששולח (15 דקות)</h3>
+    <p>מתחילים מכאן. אין שרת ואין מפתח של Claude, רק חיבור לוואטסאפ, והכול רץ מ-Claude Code.</p>
+    <ol class="steps">
+      <li><b>מחברים את וואטסאפ</b> בדרך שבחרתם. ב-Green API, למשל: נרשמים לקונסולה, יוצרים instance, סורקים QR מהטלפון (<span class="ui">מכשירים מקושרים</span>), ומעתיקים את <code>idInstance</code> ואת <code>apiTokenInstance</code>.</li>
+      <li><b>שומרים את המפתחות בקובץ <code>.env</code></b> בתיקיית הפרויקט, ומבקשים מ-Claude לקרוא אותם משם. לא מדביקים מפתחות בשיחה, ולא מעלים את הקובץ ל-GitHub.</li>
+      <li><b>בונים תהליך</b> במצב תכנון:
+        <div class="copy"><span class="lbl">פרומפט לסוכן ששולח</span><pre>בנה תהליך בשם workflows/daily-brief.md:
+1. הרץ את תהליך המחקר על [נושא], בגרסה קצרה של 5 נקודות עם מקורות.
+2. שלח לי את הסיכום בוואטסאפ, דרך החיבור שהפרטים שלו בקובץ .env.
+3. שלח רק למספר שלי. לפני כל שליחה למספר אחר, עצור ובקש אישור.
+4. אם השליחה נכשלה, אל תנסה שוב בלולאה. הראה לי את השגיאה.
+הסבר לי כל צעד שאני צריך לעשות בעצמי, והראה לי תוכנית לפני שאתה בונה.</pre></div></li>
+      <li><b>מריצים ובודקים בטלפון</b> ״הרץ את daily-brief על סוכני AI בחינוך.״ ההודעה הגיעה? יש לכם סוכן ששולח.</li>
+    </ol>
+
+    <h3>בונים: סוכן שעונה (פרויקט של ערב)</h3>
+    <ol class="steps">
+      <li><b>פותחים גישה רשמית</b> לבוט שעונה ללקוחות, עדיף ה-API הרשמי. לפי המדריך של Meta: יוצרים אפליקציה ב-<a href="https://developers.facebook.com/apps" target="_blank" rel="noopener">Meta App Dashboard</a>, בוחרים <span class="ui">Connect with customers through WhatsApp</span>, בוחרים או יוצרים business portfolio, ובמסך <span class="ui">API Setup</span> מייצרים טוקן ושולחים הודעת בדיקה ממספר הבדיקה.</li>
+      <li><b>פותחים מפתח API של Claude</b> ושומרים אותו ב-<code>.env</code>, יחד עם הטוקן של וואטסאפ.</li>
+      <li><b>כותבים את קובץ הידע</b> <code>resources/faq.md</code>: שאלות ותשובות, שעות פעילות, טון. הבוט עונה רק לפיו.</li>
+      <li><b>מתכננים עם Claude</b> במצב תכנון:
+        <div class="copy"><span class="lbl">פרומפט לסוכן שעונה</span><pre>אני רוצה לבנות סוכן וואטסאפ לעסק שלי, שעונה ללקוחות.
+הערוץ: WhatsApp Cloud API של Meta. המוח: Claude דרך ה-API. כל המפתחות בקובץ .env.
+ההתנהגות:
+1. סווג כל הודעה נכנסת: שאלה כללית, תיאום, תלונה, אחר (כמו המרכזייה).
+2. שאלה כללית: ענה רק לפי resources/faq.md, קצר וחם, בעברית.
+3. תלונה, בקשת החזר, או כל דבר שאתה לא בטוח בו: אל תענה לבד. כתוב ללקוח שנציג יחזור אליו, ושלח לי התראה.
+4. לעולם אל תבטיח מחירים, החזרים או מועדים.
+5. שמור יומן של כל שיחה בתיקיית logs.
+קודם בנה גרסה שעובדת על מספר הבדיקה ועונה רק למספר שלי.
+הסבר לי בשפה פשוטה כל דבר שאני צריך לעשות בעצמי: חשבונות, הגדרת ה-webhook, ואיפה השרת ירוץ.
+הראה לי תוכנית לפני שאתה בונה.</pre></div></li>
+      <li><b>בודקים רק על עצמכם</b> שלחו לבוט 20 הודעות אמיתיות, כולל מעצבנות ומבלבלות. איפה הוא טעה? זה החומר לשיפור קובץ הידע.</li>
+      <li><b>מעלים לשרת</b> ומבקשים מ-Claude להדריך אתכם בהעלאה ובחיבור כתובת ה-webhook בלוח הבקרה של Meta. רק אחרי שהכול עובד, פותחים את הבוט ללקוחות.</li>
+    </ol>
+    <div class="tip warn"><b>בוט שעונה לזרים הוא דלת פתוחה</b>כל אחד יכול לשלוח לו הודעה, כולל הודעה שמנסה לתת לו הוראות (prompt injection, כמו במשימה 9). לכן: הבוט לא מריץ פקודות, לא ניגש לקבצים חוץ מקובץ הידע, לא שולח לאף מספר אחר, ופעולות כמו החזר כספי נשארות אצלכם.</div>
+    <div class="tip"><b>רוצים לדבר עם הסוכן מהטלפון?</b>Claude Code Channels (בתצוגה מקדימה) מאפשר לשלוח הודעה ל-Claude Code שרץ אצלכם, ולקבל תשובה. נכון ל-5.11.2026, הערוצים הנתמכים הם Telegram, Discord ו-iMessage, לא וואטסאפ. ב-Telegram יוצרים בוט אצל BotFather, מתקינים את הפלאגין ומפעילים מחדש עם <code>claude --channels</code>. הסשן צריך להמשיך לרוץ במחשב. הפרטים ב<a href="https://code.claude.com/docs/en/channels" target="_blank" rel="noopener">תיעוד הרשמי</a>.</div>
+
+    <div class="quiz" data-st="10">
+      <div class="slot" data-slot="10">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 10</span>
+      <p class="q">אתם רוצים בוט שעונה ללקוחות בוואטסאפ, גם כשהמחשב שלכם כבוי. מה חייב להיות?</p>
+      <div class="opts">
+        <button type="button" data-why="כשהמחשב כבוי, שום דבר לא רץ עליו. וחוץ מזה, Channels לא תומך בוואטסאפ. נסו שוב.">מספיק להשאיר את Claude Code פתוח</button>
+        <button type="button" data-ok data-why="נכון. שרת שזמין תמיד מקבל כל הודעה דרך ה-webhook, ופונה ל-Claude עם מפתח API.">שרת שזמין תמיד, עם webhook ומפתח API של Claude</button>
+        <button type="button" data-why="Gmail לא קשור לוואטסאפ. צריך גישה לוואטסאפ דרך API, ושרת שזמין תמיד. נסו שוב.">מחבר Gmail ב-claude.ai</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== משימה 11 ========== -->
+<section class="spread" id="st11" style="--st:#4d7c0f" aria-labelledby="h11">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">MISSION 11</span>
+    <p class="st-num" aria-hidden="true">11</p>
+    <h2 id="h11">המבצע הגדול</h2>
     <p class="lede">אפליקציה אמיתית, מרעיון ועד כתובת שנפתחת בטלפון. מעקב הרגלים, בשישה שלבים, בלי לכתוב קוד.</p>
     <aside class="note"><p>אתם לא ״משתמשים ב-AI כדי לתכנת״. אתם יוצרים תוכנה. החזון שלכם.</p><cite>עזי</cite></aside>
   </div></div>
   <div class="leaf leaf-main">
     <h3 style="margin-top:0">מה בונים</h3>
-    <p>לפי המדריך של Claude World: <b>מעקב הרגלים אישי</b>. מוסיפים הרגלים עם שם ואימוג׳י, מסמנים מה עשיתם היום, רואים רצף ימים (״🔥 7 ימים״), ותצוגה שבועית. בערך שעתיים, ובלי ידע מוקדם. השיטה נקראת vibe coding: מתארים <b>מה</b> רוצים ואיך זה צריך להרגיש, לא <b>איך</b> לבנות.</p>
+    <p><b>מעקב הרגלים אישי</b>. מוסיפים הרגלים עם שם ואימוג׳י, מסמנים מה עשיתם היום, רואים רצף ימים (״🔥 7 ימים״), ותצוגה שבועית. בערך שעתיים, ובלי ידע מוקדם. השיטה נקראת vibe coding: מתארים <b>מה</b> רוצים ואיך זה צריך להרגיש, לא <b>איך</b> לבנות.</p>
     <ul class="checks">
       <li><b>Claude Code מותקן</b> <a href="../claude-code/">מהמדריך הבסיסי</a>, עם מנוי או גישת API.</li>
       <li><b>Node.js</b> כדי להריץ את האפליקציה. לא בטוחים אם יש? שאלו את Claude: ״בדוק אם Node.js מותקן אצלי, ואם לא, הדרך אותי להתקין אותו.״</li>
@@ -947,6 +1049,42 @@ claude mcp remove notion # remove
 אחר כך תדריך אותי בפריסה ל-Vercel: אילו חשבונות אני צריך לפתוח, אילו פקודות בדיוק להריץ, ואיך אני מקבל כתובת ציבורית.</pre></div>
     <p>פותחים את הכתובת בטלפון ובודקים הכול: הוספה, סימון, תצוגה שבועית, ושהנתונים נשמרים. <b>מזל טוב, בניתם והעליתם אפליקציה.</b></p>
 
+    <h3>סיכום: לפרסם ולשמור נתונים</h3>
+    <p>כל אפליקציה שתבנו מכאן תעמוד מול אותן שתי שאלות: <b>איפה היא גרה</b>, ו<b>איפה הנתונים שלה נשמרים</b>.</p>
+    <h4>פרסום: מהמחשב לכתובת באינטרנט</h4>
+    <p>אפליקציית ווב שרצה רק אצלכם במחשב היא עדיין טיוטה. כדי שאחרים (או הטלפון שלכם) יגיעו אליה, צריך שלוש שכבות. את כולן Claude Code יכול להקים איתכם:</p>
+    <ol class="steps">
+      <li><b>Git: היסטוריית גרסאות</b> שומר כל שינוי, כך שתמיד אפשר לחזור לגרסה שעבדה. מבקשים: ״אתחל git בפרויקט ושמור גרסה ראשונה.״</li>
+      <li><b>GitHub: עותק בענן</b> מקום שהקוד יושב בו, והנקודה שממנה האחסון מושך את הגרסה העדכנית.</li>
+      <li><b>שירות אחסון: הכתובת הציבורית</b> מתחברים ל-GitHub, ומעכשיו כל שינוי ששמרתם עולה לאוויר לבד.</li>
+    </ol>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">שירות</th><th scope="col">מתאים ל</th><th scope="col">שימו לב</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Vercel</th><td>אפליקציות React ו-Next.js, כמו מעקב ההרגלים</td><td>מתחבר ל-GitHub ומעלה כל שינוי לבד. יש מסלול חינמי לפרויקטים אישיים.</td></tr>
+        <tr><th scope="row">Netlify</th><td>אתרים ואפליקציות ווב</td><td>דומה ל-Vercel. אפשר גם לגרור תיקייה בנויה לדפדפן ולקבל כתובת.</td></tr>
+        <tr><th scope="row">GitHub Pages</th><td>אתרים סטטיים, בלי שרת</td><td>חינמי, ישירות מה-repo. המדריך הזה, למשל, גר שם.</td></tr>
+        <tr><th scope="row">Render, Railway ודומיהם</th><td>אפליקציה עם שרת שרץ כל הזמן</td><td>למשל הבוט ממשימה 10. בדרך כלל בתשלום אחרי ניסיון או מכסה חינמית.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip warn"><b>מפתחות לא עולים לאוויר</b>כל מה שרץ בדפדפן גלוי לכל מי שנכנס לאתר. מפתח API שמופיע בקוד של האתר הוא מפתח שכל אחד יכול להעתיק. מפתחות נשמרים בקובץ <code>.env</code> שלא עולה ל-GitHub, ובהגדרות של שירות האחסון. בקשו מ-Claude לוודא את זה לפני כל פרסום.</div>
+
+    <h4>מסד נתונים: מתי צריך, ומה האפשרויות</h4>
+    <p>מעקב ההרגלים שומר ב-localStorage, כלומר בתוך הדפדפן. זה מצוין למשתמש אחד במכשיר אחד. אבל אם מנקים את הדפדפן, הנתונים נעלמים, והטלפון לא רואה את מה שסימנתם במחשב. צריך מסד נתונים כשיש <b>כמה משתמשים</b>, <b>סנכרון בין מכשירים</b>, <b>התחברות עם סיסמה</b>, או <b>נתונים שאסור לאבד</b>.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">אפשרות</th><th scope="col">מה זה</th><th scope="col">מתאים ל</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">localStorage</th><td>שמירה בתוך הדפדפן. בלי חשבון ובלי שרת.</td><td>אפליקציה אישית, מכשיר אחד</td></tr>
+        <tr><th scope="row">Supabase</th><td>מסד נתונים Postgres מנוהל, עם התחברות משתמשים ואחסון קבצים.</td><td>רוב האפליקציות הראשונות שצריכות משתמשים וסנכרון</td></tr>
+        <tr><th scope="row">Firebase</th><td>השירות של Google: מסד נתונים Firestore, התחברות, וסנכרון בזמן אמת.</td><td>אפליקציות שמתעדכנות מול כמה אנשים בו זמנית</td></tr>
+        <tr><th scope="row">Google Sheets</th><td>גיליון שמשמש כטבלה, דרך Apps Script.</td><td>טפסים ונתונים פשוטים שנוח לראות ולערוך בגיליון</td></tr>
+      </tbody>
+    </table></div>
+    <p>לרובם יש מסלול חינמי להתחלה. התנאים משתנים, אז בודקים בדף התמחור לפני שבוחרים. ולא צריך להחליט לבד:</p>
+    <div class="copy"><span class="lbl">שאלה ל-Claude לפני שבוחרים</span><pre>אני רוצה שההרגלים יסונכרנו בין הטלפון למחשב, ושאולי גם חברים יוכלו להשתמש.
+הסבר לי בפשטות את האפשרויות: להישאר עם localStorage, Supabase או Firebase. מה העלות, כמה עבודה, ומה אתה ממליץ.
+אם נבחר מסד נתונים: המפתחות הסודיים לא נכנסים לקוד שרץ בדפדפן, וכל משתמש רואה רק את הנתונים שלו (ב-Supabase: Row Level Security מופעל בכל טבלה).</pre></div>
+
     <h3>כשמשהו לא עובד</h3>
     <div class="copy"><span class="lbl">ארבע הודעות שפותרות כמעט הכול</span><pre>האפליקציה לא רצה. תראה לי את השגיאה ובוא נתקן אותה.
 
@@ -959,16 +1097,16 @@ claude mcp remove notion # remove
       <div><b>פחות טוב</b><p>״זה גרוע.״ ״אני צריך אפליקציית רשימות עם מסד נתונים SQL.״</p></div>
       <div><b>הרבה יותר טוב</b><p>״הכפתור קטן מדי בטלפון.״ ״אני רוצה אפליקציית רשימות שמרגישה כמו לכתוב במחברת יפה.״</p></div>
     </div>
-    <div class="tip"><b>שמרו את ההתקדמות</b>לפני הפסקה: ״תסכם מה בנינו עד עכשיו ומה המצב הנוכחי, אני רוצה לשמור את זה לפני שנמשיך.״ ועוד דבר מהמדריך: אם זה לא הולך, קומו, צאו להפסקה, תחזרו רעננים.</div>
-    <p>רעיונות לאפליקציה הבאה, מאותו מדריך: יומן אישי עם שאלות לכתיבה, מעקב הוצאות, ספר מתכונים, רשימת קריאה. ואם בא לכם לשלב: סוכן המחקר ממשימה 6 יכול לכתוב את התוכן, והאפליקציה להציג אותו.</p>
+    <div class="tip"><b>שמרו את ההתקדמות</b>לפני הפסקה: ״תסכם מה בנינו עד עכשיו ומה המצב הנוכחי, אני רוצה לשמור את זה לפני שנמשיך.״ ועוד דבר: אם זה לא הולך, קומו, צאו להפסקה, תחזרו רעננים.</div>
+    <p>רעיונות לאפליקציה הבאה: יומן אישי עם שאלות לכתיבה, מעקב הוצאות, ספר מתכונים, רשימת קריאה. ואם בא לכם לשלב: סוכן המחקר ממשימה 6 יכול לכתוב את התוכן, והאפליקציה להציג אותו.</p>
 
     <div class="clips">
       <div class="yt" data-id="bcM9dP_uXJU" data-t="1212"><button type="button"><img src="https://i.ytimg.com/vi/bcM9dP_uXJU/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">איך מגדילים את מערך הסוכנים לאורך זמן<small>AI Master · מ-20:12 · אנגלית</small></span></button></div>
     </div>
 
-    <div class="quiz" data-st="10">
-      <div class="slot" data-slot="10">כאן ייכנס סמל הסוכן</div>
-      <span class="quiz-tag" dir="ltr">DEBRIEF 10</span>
+    <div class="quiz" data-st="11">
+      <div class="slot" data-slot="11">כאן ייכנס סמל הסוכן</div>
+      <span class="quiz-tag" dir="ltr">DEBRIEF 11</span>
       <p class="q">משהו באפליקציה לא נראה טוב. איזו הודעה תביא את התוצאה הכי טובה?</p>
       <div class="opts">
         <button type="button" data-why="Claude לא יודע מה בדיוק מפריע לכם. בלי פרטים, הוא ינחש. נסו שוב.">״זה לא טוב, תתקן.״</button>
@@ -986,7 +1124,7 @@ claude mcp remove notion # remove
 <section class="final" id="license" aria-labelledby="lic-t">
   <div class="final-inner">
     <h2 id="lic-t">תעודת הסוכן שלכם</h2>
-    <p id="licIntro">כל סמל שאספתם מופיע כאן. אספו את כל העשרה, והתעודה מוכנה.</p>
+    <p id="licIntro">כל סמל שאספתם מופיע כאן. אספו את כולם, והתעודה מוכנה.</p>
     <div class="license idcard" aria-live="polite">
       <div>
         <span class="sub-en" dir="ltr">CLAUDE CODE · FIELD AGENT ID</span>
@@ -998,7 +1136,7 @@ claude mcp remove notion # remove
               <dt>שם קוד</dt><dd id="licName">עוד לא נבחר</dd>
               <dt>סביבה</dt><dd id="licType">לא נבחרה</dd>
               <dt>משימה</dt><dd id="licGoal">לא נבחרה</dd>
-              <dt>סמלים</dt><dd id="licCount">0 מתוך 10</dd>
+              <dt>סמלים</dt><dd id="licCount">0 מתוך 11</dd>
               <dt>תאריך</dt><dd id="licDate">-</dd>
             </dl>
           </div>
@@ -1035,7 +1173,10 @@ claude mcp remove notion # remove
       <li><b>Claude Code: Build Your First AI Agent</b><span>Teacher's Tech (ג׳יימי), מרץ 2026, 25 דקות, אנגלית. VS Code, CLAUDE.md, מצב תכנון וסוכן מחקר.</span><a href="https://www.youtube.com/watch?v=gHB4JFG9i3k" target="_blank" rel="noopener">לצפייה</a></li>
       <li><b>How to Build an AI Agent with Claude Code</b><span>AI Master, יוני 2026, 22 דקות, אנגלית (כולל קטעי חסות). אפליקציית Claude, סוכן מחקר וסוכן הפיכת תוכן.</span><a href="https://www.youtube.com/watch?v=bcM9dP_uXJU" target="_blank" rel="noopener">לצפייה</a></li>
       <li><b>What is Claude Managed Agents?</b><span>Claude Academy, סרטון של 4 דקות.</span><a href="https://academy.claude.com/tutorials/what-is-claude-managed-agents" target="_blank" rel="noopener">לצפייה</a></li>
-      <li><b>Your First App tutorial</b><span>Claude World. מעקב ההרגלים של משימה 10, שלב אחר שלב.</span><a href="https://claude-world.com/articles/first-app-tutorial/" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Your First App tutorial</b><span>Claude World. מעקב ההרגלים של משימה 11, שלב אחר שלב.</span><a href="https://claude-world.com/articles/first-app-tutorial/" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>WhatsApp Cloud API: Get Started</b><span>Meta for Developers. השלבים לפתיחת גישה רשמית לוואטסאפ, ממנו ההוראות במשימה 10.</span><a href="https://developers.facebook.com/docs/whatsapp/cloud-api/get-started" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>WhatsApp Business Solution Terms</b><span>Meta, סעיף 4.7 על ספקי AI, ודיווח של TechCrunch (18.10.2025, עודכן 15.1.2026).</span><a href="https://www.whatsapp.com/legal/business-solution-terms" target="_blank" rel="noopener">התנאים</a> · <a href="https://techcrunch.com/2025/10/18/whatssapp-changes-its-terms-to-bar-general-purpose-chatbots-from-its-platform/" target="_blank" rel="noopener">הדיווח</a></li>
+      <li><b>Green API, whatsapp-mcp ו-Claude Code Channels</b><span>הוראות ההקמה של Green API, ה-README של whatsapp-mcp, והתיעוד הרשמי של Channels.</span><a href="https://green-api.com/en/docs/before-start/" target="_blank" rel="noopener">Green API</a> · <a href="https://github.com/lharries/whatsapp-mcp" target="_blank" rel="noopener">whatsapp-mcp</a> · <a href="https://code.claude.com/docs/en/channels" target="_blank" rel="noopener">Channels</a></li>
       <li><b>התיעוד הרשמי של Claude Code</b><span>MCP ומחברים, וסוכני משנה. ממנו הפקודות, ההיקפים והשדות.</span><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP</a> · <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">סוכני משנה</a></li>
       <li><b>Claude Managed Agents overview</b><span>Claude Platform Docs. ארבעת המושגים, מתי להשתמש, ומצב הבטא.</span><a href="https://platform.claude.com/docs/en/managed-agents/overview" target="_blank" rel="noopener">לקריאה</a></li>
     </ul>
@@ -1071,12 +1212,12 @@ claude mcp remove notion # remove
       <a href="https://www.ezylevy.com/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA" target="_blank" rel="noopener">מדיניות פרטיות</a>
       <a href="https://www.ezylevy.com/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA" target="_blank" rel="noopener">הצהרת נגישות</a>
     </nav>
-    <div style="flex-basis:100%;font-size:.88rem">מדריך עצמאי, ללא קשר רשמי ל-Anthropic. Claude, Claude Code ו-Claude Managed Agents הם סימנים מסחריים של Anthropic. שמות שירותים אחרים (Notion, Gmail, Vercel, VS Code ועוד) שייכים לבעליהם. המדריך מבוסס על המקורות שלמעלה, ונבדק מולם ב-4.11.2026. הכלים מתעדכנים מהר, ולכן כשיש פער, התיעוד הרשמי קובע.</div>
+    <div style="flex-basis:100%;font-size:.88rem">מדריך עצמאי, ללא קשר רשמי ל-Anthropic. Claude, Claude Code ו-Claude Managed Agents הם סימנים מסחריים של Anthropic. שמות שירותים אחרים (WhatsApp, Meta, Notion, Gmail, Vercel, Supabase, VS Code ועוד) שייכים לבעליהם. המדריך מבוסס על המקורות שלמעלה, ונבדק מולם ב-5.11.2026. הכלים מתעדכנים מהר, ולכן כשיש פער, התיעוד הרשמי קובע.</div>
   </div>
 </footer>
 
 <nav class="dock" aria-label="המשימות שלכם">
-  <span class="ct" id="dockCount">0 מתוך 10 סמלים</span>
+  <span class="ct" id="dockCount">0 מתוך 11 סמלים</span>
   <ol id="dockList">
     <li><a href="#st1" data-d="1" aria-label="משימה 1">1</a></li>
     <li><a href="#st2" data-d="2" aria-label="משימה 2">2</a></li>
@@ -1088,6 +1229,7 @@ claude mcp remove notion # remove
     <li><a href="#st8" data-d="8" aria-label="משימה 8">8</a></li>
     <li><a href="#st9" data-d="9" aria-label="משימה 9">9</a></li>
     <li><a href="#st10" data-d="10" aria-label="משימה 10">10</a></li>
+    <li><a href="#st11" data-d="11" aria-label="משימה 11">11</a></li>
   </ol>
   <a class="help-link" href="#help">תקועים?</a>
 </nav>

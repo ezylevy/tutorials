@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>קווי Gemini: AI ב-Google Workspace | מדריך בעברית · עזי לוי</title>
+<meta name="description" content="מדריך אינטראקטיבי בעברית ל-Gemini ב-Google Workspace: אפליקציית Gemini (צ׳אט ומשימה), Gemini ב-Gmail, Docs, Drive, Sheets, Slides, Vids ו-Meet, Gemini Notebook, ובניית סוכנים ב-Workspace Studio. בלי קוד. מאת עזי לוי.">
+<link rel="canonical" href="https://ezylevy.github.io/tutorials/gemini-workspace/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="קווי Gemini: AI ב-Google Workspace">
+<meta property="og:description" content="עשר עצירות: מהצ׳אט, דרך כל אפליקציות Google, ועד סוכנים שעובדים בשבילכם. מדריך בעברית מאת עזי לוי.">
+<meta property="og:url" content="https://ezylevy.github.io/tutorials/gemini-workspace/">
+<meta property="og:locale" content="he_IL">
+<meta name="theme-color" content="#0d1b2a">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Assistant:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Karantina:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"איך עובדים עם Gemini ובונים סוכנים ב-Google Workspace בלי קוד","inLanguage":"he","dateModified":"2026-11-05","author":{"@type":"Person","name":"עזי לוי","url":"https://www.ezylevy.com"},"step":[{"@type":"HowToStep","name":"מכירים את מפת הכלים של Gemini"},{"@type":"HowToStep","name":"עובדים עם אפליקציית Gemini במצב צ׳אט"},{"@type":"HowToStep","name":"נותנים ל-Gemini משימות במצב Task"},{"@type":"HowToStep","name":"משתמשים ב-Gemini בתוך Gmail, Docs, Drive, Sheets, Slides, Vids ו-Meet"},{"@type":"HowToStep","name":"חוקרים עם Gemini Notebook"},{"@type":"HowToStep","name":"בונים סוכנים ב-Workspace Studio"}]}
+</script>
+</head>
+<body>
+<a class="skip" href="#plan">דילוג לתוכן הראשי</a>
+
+<header class="topbar">
+  <a class="brand" href="https://www.ezylevy.com" target="_blank" rel="noopener">
+    <img src="assets/img/logo.png" alt="" width="44" height="44">
+    <span><b>עזי לוי</b><small>בינה פוגשת מציאות</small></span>
+  </a>
+  <nav aria-label="קישורים">
+    <a href="../index.html">→ כל המדריכים</a>
+    <a href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנאות</a>
+    <a class="hide-sm" href="https://chat.whatsapp.com/LcW2GxWIN3u0VDr8LdsnDD" target="_blank" rel="noopener">קבוצת עדכונים</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero-wrap">
+<section class="hero" aria-labelledby="title">
+  <div>
+    <p class="kicker"><bdi dir="ltr">Google Workspace</bdi> עם <bdi dir="ltr">Gemini</bdi> · מדריך בעברית · מעודכן לפי המקורות ב-5.11.2026</p>
+    <h1 id="title">כל הקווים <span>עוברים ב-Gemini</span></h1>
+    <p class="sub">ה-AI של Google כבר יושב בתוך <bdi dir="ltr">Gmail, Docs, Sheets, Drive</bdi> ו-Meet, ועכשיו גם בונה סוכנים שעובדים בשבילכם. עשר עצירות קצרות על מפה אחת: מצ׳אט פשוט, דרך כל אפליקציה של Google, ועד משימות וסוכנים שרצים לבד. בלי לכתוב שורת קוד. כל עצירה נגמרת בבדיקת כרטיסים ובניקוב.</p>
+    <div class="byline">
+      <img src="assets/img/ezi.jpg" alt="עזי לוי" width="62" height="62">
+      <div><b>המדריך שלכם: עזי לוי</b><span>מנחה ויועץ לבינה מלאכותית, ומנהל מרכז למחוננים לשעבר</span></div>
+    </div>
+  </div>
+
+  <form class="ticket" id="ticket" aria-label="כרטיס הנסיעה שלכם" onsubmit="return false">
+    <div class="stripe" aria-hidden="true"></div>
+    <div class="tk-body">
+      <div class="lb-head">
+        <div><b>כרטיס נסיעה</b><br><span dir="ltr">GEMINI LINES · ALL ZONES</span></div>
+        <span class="tk-code" aria-hidden="true">NO. 04</span>
+      </div>
+      <div class="field">
+        <label for="pName">שם הנוסע/ת (לא חובה, נשמר רק בדפדפן שלכם)</label>
+        <input type="text" id="pName" autocomplete="nickname" maxlength="28" placeholder="למשל: נועה">
+      </div>
+      <fieldset class="field">
+        <legend>עם איזה חשבון Google אתם עובדים</legend>
+        <div class="seg" role="group">
+          <button type="button" data-set-acc="personal" aria-pressed="false">אישי<small>כתובת gmail.com</small></button>
+          <button type="button" data-set-acc="work" aria-pressed="false">עבודה<small>Workspace של העסק</small></button>
+          <button type="button" data-set-acc="edu" aria-pressed="false">חינוך<small>בית ספר או אקדמיה</small></button>
+          <button type="button" data-set-acc="unsure" aria-pressed="false">לא בטוח/ה<small>אראה את הכול</small></button>
+        </div>
+      </fieldset>
+      <fieldset class="field">
+        <legend>לאן אתם נוסעים</legend>
+        <div class="seg" role="group">
+          <button type="button" data-set-goal="apps" aria-pressed="false">להספיק יותר<small>Gemini בתוך האפליקציות</small></button>
+          <button type="button" data-set-goal="agents" aria-pressed="false">סוכנים<small>משימות ואוטומציות</small></button>
+          <button type="button" data-set-goal="all" aria-pressed="false">כל הקווים<small>כל עשר העצירות</small></button>
+        </div>
+      </fieldset>
+      <a class="go" href="#st1">עולים לרכבת ←</a>
+    </div>
+    <div class="tk-stub">
+      <span class="lbl">ניקובים</span>
+      <span class="holes" id="holes" aria-hidden="true"></span>
+      <span class="tk-code" id="tkFoot">PASSENGER · 0/10</span>
+    </div>
+  </form>
+</section>
+</div>
+
+<section class="plan-wrap" id="plan" aria-labelledby="plan-t">
+  <div class="plan-inner">
+    <h2 class="plan-title" id="plan-t">מפת הקו</h2>
+    <p class="plan-sub">קריאה של בערך 65 דקות, ועוד זמן תרגול כמה שתרצו. אפשר לרדת בכל עצירה ולהמשיך מחר, הדפדפן זוכר. בחרתם יעד בכרטיס? העצירות שמתאימות לו מסומנות.</p>
+    <ol class="plan" id="planList">
+      <li data-st="1"><a href="#st1"><span class="no">01</span><span>התחנה המרכזית: מפת הכלים, ומה השתנה</span><span class="rec">מומלץ לכם</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="2"><a href="#st2"><span class="no">02</span><span>אפליקציית Gemini: מצב צ׳אט</span><span class="rec">מומלץ לכם</span><span class="time">7 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="3"><a href="#st3"><span class="no">03</span><span>מצב Task: הסוכן האישי</span><span class="rec">מומלץ לכם</span><span class="time">8 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="4"><a href="#st4"><span class="no">04</span><span>Gmail: תיבת דואר שמסכמת את עצמה</span><span class="rec">מומלץ לכם</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="5"><a href="#st5"><span class="no">05</span><span>Docs ו-Drive: כתיבה וחיפוש בקבצים</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="6"><a href="#st6"><span class="no">06</span><span>Sheets: טבלאות, ניתוח וגרפים</span><span class="rec">מומלץ לכם</span><span class="time">5 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="7"><a href="#st7"><span class="no">07</span><span>Slides, Vids ו-Meet: להציג ולהיפגש</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="8"><a href="#st8"><span class="no">08</span><span>Gemini Notebook: מחקר על המקורות שלכם</span><span class="rec">מומלץ לכם</span><span class="time">6 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="9"><a href="#st9"><span class="no">09</span><span>Workspace Studio: בונים סוכן</span><span class="rec">מומלץ לכם</span><span class="time">9 דק׳</span><span class="status">ממתין</span></a></li>
+      <li data-st="10"><a href="#st10"><span class="no">10</span><span>תחנה סופית: מערכת שלמה</span><span class="rec">מומלץ לכם</span><span class="time">8 דק׳</span><span class="status">ממתין</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<div class="journey">
+
+<!-- ========== עצירה 1 ========== -->
+<section class="spread" id="st1" style="--st:#1a73e8" aria-labelledby="h1">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 01</span>
+    <p class="st-num" aria-hidden="true">1</p>
+    <h2 id="h1">התחנה המרכזית</h2>
+    <p class="lede">איפה Gemini גר בתוך Google, מה צריך כדי להשתמש בו, ואילו שמות השתנו לאחרונה. שווה לקרוא לפני שנוסעים.</p>
+    <aside class="note"><p>הכלים כבר פתוחים אצלכם בטאב אחר. חסר רק לדעת איפה ללחוץ.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">מפת הקווים</h3>
+    <p>ב-Google, ה-AI לא יושב באפליקציה אחת. הוא פרוש על פני כל הכלים, בחמש שכבות. מהשכבה העליונה, שבה פשוט שואלים, ועד השכבה התחתונה, שבה סוכנים עובדים בשבילכם:</p>
+    <ol class="metro">
+      <li style="--c:#7c3aed"><a href="#st2"><b>אפליקציית Gemini · צ׳אט<span class="en">gemini.google.com</span></b></a><p>שואלים, כותבים, חוקרים. עם גישה ל-Gmail, ליומן ולקבצים שלכם.</p></li>
+      <li style="--c:#c5221f"><a href="#st3"><b>אפליקציית Gemini · משימה<span class="en">Task</span></b></a><p>נותנים מטרה, והוא עובד עליה ברקע, גם לפי לוח זמנים. הסוכן האישי.</p></li>
+      <li style="--c:#b06000"><a href="#st4"><b>Gemini בתוך האפליקציות<span class="en">Side panel</span></b></a><p>החלונית בצד של Gmail, Docs, Sheets, Slides, Drive ו-Chat. עוזר שרואה את מה שפתוח מולכם.</p></li>
+      <li style="--c:#0e7490"><a href="#st8"><b>Gemini Notebook<span class="en">לשעבר NotebookLM</span></b></a><p>מחקר שמבוסס רק על המקורות שאתם נותנים לו. סיכומים, סקירות קוליות, מפות חשיבה.</p></li>
+      <li style="--c:#be185d"><a href="#st9"><b>Workspace Studio<span class="en">לשעבר Workspace Flows</span></b></a><p>בונים אוטומציות עם AI שמופעלות לבד: כשמגיע מייל, כשטופס מתמלא, כל בוקר ב-8:00.</p></li>
+    </ol>
+
+    <h3>מה השתנה, כדי שלא תחפשו כפתור שכבר לא קיים</h3>
+    <p>Google משנה שמות מהר. אם ראיתם סרטון מלפני כמה חודשים, הנה מה שזז (נכון ל-5.11.2026):</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">היה</th><th scope="col">עכשיו</th><th scope="col">מה זה אומר לכם</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Gemini Spark</th><td>מצב <b>Task</b> בתוך אפליקציית Gemini</td><td>הסוכן שהוצג ב-Google I/O במאי 2026 נקרא היום <span class="ui">tasks in Gemini</span>. אין לו מקום נפרד: מתחילים משימה באותו מקום שבו מתחילים צ׳אט, עם <span class="ui">Task</span> מתחת לתיבת הכתיבה.</td></tr>
+        <tr><th scope="row">NotebookLM</th><td><b>Gemini Notebook</b></td><td>אותו מוצר, שם חדש (מאז 16.7.2026). המחברות מסתנכרנות גם לאפליקציית Gemini.</td></tr>
+        <tr><th scope="row">Workspace Flows</th><td><b>Workspace Studio</b></td><td>המקום לבנות אוטומציות עם AI ב-Workspace. Google מציגה אותן כסוכנים (agents), ובמרכז העזרה ובממשק כל אחת נקראת <span class="ui">flow</span>.</td></tr>
+        <tr><th scope="row">Gems</th><td><b>Skills</b> (בתהליך)</td><td>הוראות קבועות שמפעילים עם <code>/</code> (בקרוב <code>@</code>). בחשבון אישי ה-Gems הופכים ל-skills ב-17.11.2026, ובחשבון עבודה במרץ 2027. כל התאריכים בעצירה 2.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>מה צריך</h3>
+    <div data-acc="personal">
+      <p><span class="acc-flag">חשבון אישי</span>אפליקציית Gemini פתוחה לכולם. מצב Task דורש מנוי <b>Google AI Pro</b> או <b>Ultra</b>, גיל 18 ומעלה, ושאר התנאים שבעצירה 3. Gemini בתוך Gmail, Docs ו-Drive בחשבון אישי דורש מנוי Google AI בתשלום: <span class="ui">Plus</span>, <span class="ui">Pro</span> או <span class="ui">Ultra</span>. בלי מנוי, רוב התכונות האלה זמינות כרגע רק בארה״ב. Workspace Studio בחשבון אישי פתוח רק למי שהצטרף לתוכנית הניסוי <b>Google Workspace Experiments</b>.</p>
+    </div>
+    <div data-acc="work">
+      <p><span class="acc-flag">חשבון עבודה</span>לפי מרכז הידע של Google Workspace, תוכניות Workspace כוללות את אפליקציית Gemini, את Gemini Notebook, ואת Gemini ב-Gmail, Docs, Meet ועוד. מה בדיוק זמין תלוי במהדורה שלכם (Business או Enterprise), וה-<b>אדמין</b> של הארגון צריך להפעיל את Gemini. מצב Task עדיין לא זמין בחשבון עבודה. את התפקיד שלו ממלא Workspace Studio.</p>
+    </div>
+    <div data-acc="edu">
+      <p><span class="acc-flag">חשבון חינוך</span>בחשבון של מוסד חינוכי, מה שזמין נקבע לפי התוכנית של המוסד (למשל התוסף Google AI Pro for Education) ולפי מה שהאדמין הפעיל. מצב Task לא זמין בחשבון של בית ספר. וב-Studio, תלמידים מתחת לגיל 18 לא יכולים להשתמש בצעדים מבוססי AI.</p>
+    </div>
+    <div class="tip"><b>ומה עם עברית?</b>לפי רשימת השפות של Google, רוב התכונות ב-Gmail, Docs, Sheets, Slides ו-Drive עובדות בעברית. יש שלושה יוצאים מן הכלל חשובים, נכון ל-5.11.2026: ״סיכום שיחה חכם״ ב-Meet, ה-AI של Workspace Studio, והמצב האינטראקטיבי בסקירות הקוליות של Gemini Notebook. בכל אחד מהם עדיף לכתוב או לדבר באנגלית.</div>
+    <div class="tip good"><b>הנתונים שלכם, בחשבון עבודה</b>לפי Google, בחשבונות Workspace הנתונים שאתם שולחים ל-Gemini לא משמשים לאימון מודלים ולא נבדקים על ידי בודקים אנושיים. זו אחת הסיבות הטובות לעבוד עם Gemini דווקא מתוך החשבון של הארגון.</div>
+
+    <div class="clips">
+      <div class="yt" data-id="erRPuV1EQ_c" data-t="0"><button type="button"><img src="https://i.ytimg.com/vi/erRPuV1EQ_c/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">סוכנים ו-Google Workspace: התמונה הגדולה<small>Google Cloud Tech · Google I/O 2026 · אנגלית</small></span></button></div>
+    </div>
+
+    <div class="quiz" data-st="1">
+      <div class="slot" data-slot="1">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 01</span>
+      <p class="q">ראיתם סרטון שמראה את Gemini Spark, ואתם לא מוצאים אותו. איפה הוא?</p>
+      <div class="opts">
+        <button type="button" data-why="הוא לא נעלם. הוא עבר למקום אחר בתוך אותה אפליקציה. נסו שוב.">Google הפסיקו אותו לגמרי</button>
+        <button type="button" data-ok data-why="נכון. Spark הפך למצב Task: מתג ליד תיבת הכתיבה באפליקציית Gemini, בין Chat ל-Task.">הוא הפך למצב Task, ליד תיבת הכתיבה באפליקציית Gemini</button>
+        <button type="button" data-why="Workspace Studio הוא כלי נפרד לבניית סוכנים בחשבון עבודה. Spark היה הסוכן של אפליקציית Gemini. נסו שוב.">הוא עבר ל-Workspace Studio</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 2 ========== -->
+<section class="spread" id="st2" style="--st:#7c3aed" aria-labelledby="h2">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 02</span>
+    <p class="st-num" aria-hidden="true">2</p>
+    <h2 id="h2">מצב צ׳אט</h2>
+    <p class="lede">אפליקציית Gemini כשמדברים איתה: שאלות, טיוטות, מחקר עומק, וגישה לאפליקציות שלכם כדי שהתשובות יהיו עליכם, לא על ״אנשים באופן כללי״.</p>
+    <aside class="note"><p>צ׳אט זה לשאלה. משימה זה לעבודה. מתחילים מהשאלה.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">פותחים</h3>
+    <ol class="steps">
+      <li><b>נכנסים ל-<a href="https://gemini.google.com" target="_blank" rel="noopener" dir="ltr">gemini.google.com</a></b> או לאפליקציה בטלפון, עם החשבון שבחרתם בכרטיס.</li>
+      <li><b>בודקים שאתם במצב <span class="ui">Chat</span></b> המתג ליד תיבת הכתיבה. Chat זה שיחה רגילה. על Task נדבר בעצירה הבאה.</li>
+      <li><b>כותבים כמו לעמית</b> מי אתם, מה המטרה, למי זה מיועד, ובאיזה פורמט אתם רוצים את התשובה. ככל שיש יותר פרטים, התוצאה טובה יותר.</li>
+    </ol>
+    <div class="copy"><span class="lbl">פרומפט ראשון לדוגמה</span><pre>אני מנהל/ת עסק קטן לעיצוב אתרים בתל אביב.
+תן לי 10 רעיונות לשמות לעסק, לכל אחד משפט אחד שמסביר למה הוא עובד.
+הקהל: בעלי עסקים קטנים שלא מבינים בטכנולוגיה.
+סמן את שלושת הטובים ביותר, ואמור למה.</pre></div>
+
+    <h3>מחברים את האפליקציות שלכם</h3>
+    <p>הקסם של Gemini מתחיל כשהוא רואה את <b>העולם שלכם</b>: המיילים, היומן, הקבצים. בתפריט השמאלי של אפליקציית Gemini לוחצים <span class="ui">Customize</span>, ושם מחברים אפליקציות ומוסיפים skills. החיבור החשוב הוא <span class="ui">Google Workspace</span>: הוא נותן ל-Gemini גישה ל-Gmail, Docs, Drive, Calendar, Tasks ו-Keep. צריך גם ש-Keep Activity יהיה מופעל. רוצים לכוון לשירות מסוים? מקלידים <code>@</code> ובוחרים אותו. ואז אפשר לבקש דברים כמו:</p>
+    <div class="copy"><span class="lbl">בקשות שעובדות עם האפליקציות</span><pre>סכם לי את המיילים מהשבוע האחרון ממשרד רואה החשבון, ומה מחכה לתשובה שלי.
+
+תוסיף משימה ליום חמישי הבא: להתקשר לדנה לגבי ההצעה ששלחנו היום.
+
+מה יש לי ביומן ביום שלישי, ואיפה יש חלון של שעה לפגישה?</pre></div>
+    <p>בטלפון זה עוד יותר נוח: לוחצים על המיקרופון, אומרים ״תוסיף תזכורת...״, והמשימה מופיעה ב-Google Tasks. ו-Google עצמה מזכירה: Gemini יכול לטעות, למשל להביא מייל ישן כשיש חדש יותר. בדקו את המקורות שמופיעים מתחת לתשובה.</p>
+
+    <h3>שלושה כלים בתוך הצ׳אט</h3>
+    <div class="anatomy">
+      <div><b>מחקר עומק</b><span class="en">Deep Research</span><p>לנושאים מורכבים. Gemini קורא מקורות רבים ומגיש דוח מקיף ומסודר.</p></div>
+      <div><b>Skills</b><span class="en">במקום Gems</span><p>הוראות קבועות שחוזרים עליהן: ״מנסח מיילים בטון שלי״, ״עורך פוסטים לפי המדריך שלנו״. מפעילים עם <code>/</code> (בקרוב <code>@</code>), או ש-Gemini מפעיל לבד כשה-skill מתאים. אפשר כמה יחד. כרגע לבני 18 ומעלה בחשבון אישי.</p></div>
+      <div><b>פעולות מתוזמנות</b><span class="en">Scheduled actions</span><p>״כל בוקר ב-7 תשלח לי סיכום חדשות על...״. זה פיצ׳ר של הצ׳אט, עד 10 פעילות בו זמנית, ולפי Google הוא נפרד מלוחות הזמנים של Task.</p></div>
+    </div>
+    <div class="tip"><b>Gems או Skills?</b>Gems היו ״גרסאות מותאמות של Gemini״ עם הוראות וקבצים. Google מחליפה אותם ב-Skills, ומעבירה אותם אוטומטית. בחשבון אישי, מ-17.11.2026 ה-Gems לקריאה בלבד, וב-17.12.2026 הם נמחקים. כדאי להוריד לפני כן את קובצי הידע שלהם: skill מוגבל ל-100MB, וחלק מסוגי הקבצים (אודיו, וידאו, קבצי Office ישנים) לא עוברים. ועוד דבר: skills עדיין לא עובדים עם Deep Research ו-Canvas. בחשבון עבודה ה-Gems נשארים עד מרץ 2027, ובחינוך עד יוני 2027.</div>
+
+
+    <div class="quiz" data-st="2">
+      <div class="slot" data-slot="2">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 02</span>
+      <p class="q">ביקשתם ״סכם את המיילים מהשבוע״, ו-Gemini עונה שאין לו גישה. מה הדבר הראשון לבדוק?</p>
+      <div class="opts">
+        <button type="button" data-ok data-why="נכון. בלי חיבור Google Workspace (ב-Customize), ובלי Keep Activity מופעל, Gemini לא רואה את המיילים שלכם.">שהאפליקציות (כמו Gmail) מחוברות בהגדרות של Gemini</button>
+        <button type="button" data-why="מחקר עומק סורק את הרשת, לא את תיבת הדואר שלכם. נסו שוב.">להפעיל מחקר עומק</button>
+        <button type="button" data-why="אפשר, אבל זה לא יעזור אם Gemini לא מחובר ל-Gmail. נסו שוב.">לכתוב את הבקשה באנגלית</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 3 ========== -->
+<section class="spread" id="st3" style="--st:#c5221f" aria-labelledby="h3">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 03</span>
+    <p class="st-num" aria-hidden="true">3</p>
+    <h2 id="h3">מצב Task</h2>
+    <p class="lede">הסוכן האישי של Gemini. נותנים מטרה, והוא עובד עליה ברקע: בודק, מתכנן, מבצע, ומעדכן. גם לפי לוח זמנים, וגם כשמגיע מייל.</p>
+    <aside class="note"><p>משימה טובה מתחילה ב״מה״, ממשיכה ב״מתי״, ונגמרת ב״איך״.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">צ׳אט מול משימה</h3>
+    <div class="versus">
+      <div><b>Chat</b><p>שואלים, מקבלים תשובה, ממשיכים לדבר. אתם מובילים כל צעד.</p></div>
+      <div><b>Task</b><p>נותנים מטרה. Gemini מפרק אותה לצעדים, עובד עליה ברקע, ומעדכן אתכם כשהיא מוכנה או כשהוא צריך אתכם. זה הסוכן.</p></div>
+    </div>
+    <p>במרכז העזרה של Google, שלושה מושגים מחזיקים את הכול. הם בעצם ה<b>מה</b>, ה<b>מתי</b> וה<b>איך</b>:</p>
+    <div class="anatomy">
+      <div><b>משימה</b><span class="en">Task · מה</span><p>המטרה הגדולה. ״תכנן ונהל את הנסיעה שלי ללונדון.״</p></div>
+      <div><b>לוח זמנים</b><span class="en">Schedule · מתי</span><p>מתי היא רצה לבד: כל יום ב-8:00, או כשקורה משהו, כמו מייל מסוים.</p></div>
+      <div><b>Skill</b><span class="en">איך</span><p>הוראות קבועות שמלמדות את Gemini איך לעשות משהו ובאילו כלים. אפשר לבחור, או לתת לו לבחור לבד.</p></div>
+    </div>
+
+    <div data-acc="work edu">
+      <div class="tip warn"><b>בחשבון עבודה או חינוך: עדיין לא</b>נכון ל-5.11.2026, לפי מרכז העזרה של Google, משימות ב-Gemini זמינות רק עם חשבון Google אישי. בחשבון של הארגון, את אותו סוג עבודה בונים ב-Workspace Studio (עצירה 9). כדאי לקרוא את העצירה הזאת בכל זאת: ההיגיון של ״מה, מתי, איך״ זהה.</div>
+    </div>
+
+    <h3>מה צריך</h3>
+    <ul class="checks">
+      <li><b>גיל 18 ומעלה, וחשבון Google אישי.</b> לא חשבון עבודה או בית ספר, לפחות כרגע.</li>
+      <li><b>מנוי Google AI Pro או Ultra.</b></li>
+      <li><b>Keep Activity מופעל</b>, והצטרפות ל-Personal Intelligence.</li>
+      <li><b>מדינה נתמכת.</b> זמין בכל מקום שבו אפליקציית Gemini נתמכת, חוץ מהאזור הכלכלי האירופי, בריטניה, שווייץ וניגריה. ישראל, נכון ל-5.11.2026, לא ברשימת ההחרגות.</li>
+      <li><b>איפה:</b> אפליקציית Gemini בנייד, אפליקציית Gemini ל-Mac, ו-gemini.google.com. לא באפליקציה ל-Windows, לפחות כרגע.</li>
+    </ul>
+
+    <h3>נותנים משימה</h3>
+    <ol class="steps">
+      <li><b>לוחצים <span class="ui">Task</span></b> מתחת לתיבת הכתיבה. פעם ראשונה? כתבו ״interview me״ או ״get started״, ו-Gemini יעזור לכם להגדיר משימות ו-skills ראשונים.</li>
+      <li><b>מתארים מה ומתי</b> במשפט אחד או שניים. רוצים skill מסוים? מקלידים <code>@</code> (בחלק מהמסכים עדיין <code>/</code>) ובוחרים.</li>
+      <li><b>עוקבים</b> המשימה מופיעה ברשימת השיחות, עם סינון לפי מוכן, דורש תשומת לב ובתהליך. לחיצה על תווית ההתקדמות בראש השרשור פותחת את לוח העבודה של המשימה.</li>
+      <li><b>מנהלים לוחות זמנים</b> בעמוד <span class="ui">Scheduled</span> בסרגל הצד: פעילים, מושהים והושלמו. לבדיקה: <span class="ui">More</span> ואז <span class="ui">Run now</span>.</li>
+    </ol>
+    <p>משימה יכולה גם לגלוש באתרים בשבילכם (בדפדפן Chrome שלכם או בדפדפן בענן), וליצור קבצים: PDF, Word, Excel, PowerPoint ועוד. לפני כל גלישה Gemini מבקש אישור.</p>
+    <div class="tip warn"><b>מה Google מבקשת לא לעשות</b>לא להקליד סיסמאות, פרטי תשלום או מידע רגיש בתוך שרשור של משימה. אם צריך, לוקחים שליטה על הדפדפן וממלאים ישר באתר. וגם: לא לתזמן משימות רגישות. אם לוח זמנים רץ כשאתם לא מחוברים, ייתכן שלא תוכלו לעצור פעולה לא רצויה.</div>
+
+    <div class="tool" id="tkTool">
+      <div class="tool-head"><b>בונה המשימה</b><span dir="ltr">TASK BUILDER</span></div>
+      <div class="tool-body">
+        <div>
+          <label class="f"><span>מה: המטרה</span><textarea id="tkWhat">תעבור על המיילים, היומן וה-Drive שלי, ותגיד לי על מה לעבוד היום, לפי סדר עדיפות.</textarea></label>
+          <label class="f"><span>מתי</span><select id="tkWhen">
+            <option value="time">לפי זמן (פעם אחת, כל שעה, יום, שבוע, חודש, שנה)</option>
+            <option value="gmail">כשמגיע מייל שמתאים לתנאי</option>
+            <option value="topic">כשקורה משהו בנושא שאני עוקב/ת אחריו</option>
+            <option value="now">עכשיו, פעם אחת</option>
+          </select></label>
+          <label class="f"><span id="tkDetailLbl">פרטי התזמון</span><input type="text" id="tkDetail" value="כל יום ב-7:00 בבוקר"></label>
+          <label class="f"><span>איך: skill (רשות)</span><input type="text" id="tkSkill" placeholder="למשל: daily-brief" dir="ltr"></label>
+          <label class="f"><span>מה לא לעשות</span><input type="text" id="tkLimit" value="אל תשלח שום מייל בשמי. רק טיוטות והמלצות."></label>
+        </div>
+        <div>
+          <div class="out" id="tkOut" aria-live="polite"></div>
+          <div class="row-btns"><button type="button" class="btn-s" id="tkCopy">העתקה</button></div>
+          <p class="verdict info" id="tkVerdict" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+
+    <h3>שלושה סוגי ״מתי״</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">סוג</th><th scope="col">דוגמה מ-Google, בעברית</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">לפי זמן</th><td>״כל יום ב-7 בבוקר, תעבור על המיילים, היומן וה-Drive שלי, ותגיד לי מה לתעדף היום.״</td></tr>
+        <tr><th scope="row">מעקב Gmail</th><td>״בכל פעם שמגיע מייל מהמנהלת שלי עם משימה בשבילי, תעזור לי לטפל בה ותנסח תשובה.״</td></tr>
+        <tr><th scope="row">מעקב נושא</th><td>״בכל פעם שמכריזים על פופ-אפ אוכל חדש בעיר שלי, תשלח לי את הפרטים ותציע זמן ביומן.״</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip warn"><b>מגבלות שכדאי להכיר</b>עד 50 לוחות זמנים פעילים, ועד 15 משימות שרצות בו זמנית. זמני הריצה משוערים, ולא מדויקים לשנייה. לכן Google ממליצים לא להשתמש במעקב לדברים דחופים, כמו ״תודיע לי ברגע שהכרטיסים יוצאים למכירה״. ואם נגמרה מכסת השימוש שלכם, לוח זמנים לא ירוץ.</div>
+
+    <div class="quiz" data-st="3">
+      <div class="slot" data-slot="3">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 03</span>
+      <p class="q">״בכל פעם שמגיע מייל מהמנהלת עם משימה, תנסח לי תשובה.״ איזה סוג לוח זמנים זה?</p>
+      <div class="opts">
+        <button type="button" data-why="אין כאן שעה קבועה. המשימה רצה כשקורה משהו. נסו שוב.">לפי זמן</button>
+        <button type="button" data-ok data-why="נכון. מעקב Gmail מפעיל את המשימה כשמגיע מייל שעונה על תנאי.">מעקב Gmail</button>
+        <button type="button" data-why="מעקב נושא עוקב אחרי חדשות, ספורט ואירועים בעולם, לא אחרי תיבת הדואר שלכם. נסו שוב.">מעקב נושא</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 4 ========== -->
+<section class="spread" id="st4" style="--st:#b06000" aria-labelledby="h4">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 04</span>
+    <p class="st-num" aria-hidden="true">4</p>
+    <h2 id="h4">Gmail</h2>
+    <p class="lede">שרשור ארוך הופך לשלוש שורות, תשובה נכתבת בטון שלכם, ופגישה נכנסת ליומן בלי לצאת מהמייל.</p>
+    <aside class="note"><p>Gemini מנסח. אתם לוחצים ״שלח״. תמיד.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">החלונית בצד</h3>
+    <p>ב-Gmail, הכפתור <span class="ui">Ask Gemini</span> בפינה הימנית העליונה פותח <b>חלונית צד</b>. היא רואה את מה שפתוח מולכם, ועוזרת לסכם, לנסח, לסדר ולחפש, בלי לעבור בין טאבים. לפי Google, חלונית כזאת יש גם ב-Docs, Sheets, Slides, Drive ו-Chat, והיא תומכת ביותר מ-25 שפות. בחשבון עבודה, ״סיכום וניסוח מיילים״ בחלונית עובד גם בעברית.</p>
+    <ol class="steps">
+      <li><b>פותחים מייל או שרשור</b> ולוחצים <span class="ui">Ask Gemini</span>. ההצעה <span class="ui">What's this email about?</span> נותנת סיכום מיד.</li>
+      <li><b>מבקשים מה שצריך</b> רשימת משימות מהמייל, טיוטת תשובה, או חיפוש של פרט במיילים ישנים (מספר טיסה, משלוח). את התשובה מעתיקים בלחיצה.</li>
+      <li><b>מבקשים פעולה</b> לקבוע פגישה ביומן, למצוא חלון פנוי, להוסיף תוויות. וכשיש במייל פרטים של אירוע, מופיע מעליו הכפתור <span class="ui">Add to calendar</span>.</li>
+    </ol>
+    <div class="copy"><span class="lbl">בקשות בחלונית של Gmail</span><pre>מה הנקודות שדורשות החלטה שלי בשרשור הזה?
+
+תנסח תשובה קצרה ואדיבה שמאשרת את המועד ומבקשת את ההצעה המעודכנת עד יום ראשון.
+
+תקבע לי ביומן חצי שעה ביום חמישי כדי לבדוק אם הכתבה התפרסמה.
+
+מצא את כל המיילים מהחודש האחרון מספקים שמחכים לתשובה שלי, וסכם כל אחד בשורה.</pre></div>
+    <h3>עזרה בכתיבה</h3>
+    <p>כשכותבים מייל חדש, <span class="ui">Help me write</span> מנסח טיוטה מתיאור קצר, ומשפר טיוטה קיימת: מקצר, מרחיב, הופך לרשמי יותר. דוגמה של Google: מייל ללקוחות על מוצר חדש, על בסיס הודעה פנימית על המוצר. לידו יש עוד שלושה כלים: <span class="ui">AI Overview</span> שמסכם שרשור ארוך כשפותחים אותו, <span class="ui">Suggested Replies</span> עם הצעות תשובה בתחתית השרשור, ו-<span class="ui">Proofread</span> שמציע שיפורי סגנון וטון.</p>
+    <div class="tip warn"><b>מה זמין אצלכם</b>לפי מרכז העזרה של Gmail, נכון ל-5.11.2026: עם מנוי Google AI בתשלום (<span class="ui">Plus</span>, <span class="ui">Pro</span> או <span class="ui">Ultra</span>) או Workspace מתאים, רוב התכונות זמינות בכל העולם. בחשבון gmail.com חינמי הן זמינות כרגע רק בארה״ב. וגם: <span class="ui">Help me write</span>, <span class="ui">AI Overview</span> וההצעות לתשובה עוד לא תומכים בעברית, אלא באנגלית ובכמה שפות אירופיות ואסייתיות.</div>
+    <div class="tip"><b>תשובה טובה מתחילה בהקשר</b>במקום ״תענה לו״, כתבו מה אתם רוצים שיקרה: ״תסרב בנימוס, תציע שבוע הבא, ותשאיר דלת פתוחה לשיתוף פעולה.״ Gemini יודע לכתוב. את ההחלטה הוא צריך מכם.</div>
+    <div class="quiz" data-st="4">
+      <div class="slot" data-slot="4">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 04</span>
+      <p class="q">Gemini ניסח תשובה מצוינת בחלונית. מה הצעד הנכון?</p>
+      <div class="opts">
+        <button type="button" data-why="Gemini לא שולח בחלונית. וגם אם היה, הייתם רוצים לקרוא קודם. נסו שוב.">לחכות שהוא ישלח אותה</button>
+        <button type="button" data-ok data-why="נכון. מעתיקים לטיוטה, קוראים, מתקנים מה שצריך, ורק אז שולחים בעצמכם.">להכניס לטיוטה, לקרוא, ולשלוח בעצמי</button>
+        <button type="button" data-why="ההעתקה עובדת, אבל המייל שייך ל-Gmail. מעתיקים לטיוטה, קוראים, ושולחים משם. נסו שוב.">להעתיק לוואטסאפ ולשלוח משם</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 5 ========== -->
+<section class="spread" id="st5" style="--st:#0b57d0" aria-labelledby="h5">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 05</span>
+    <p class="st-num" aria-hidden="true">5</p>
+    <h2 id="h5">Docs ו-Drive</h2>
+    <p class="lede">מסמך שלם מתיאור של שתי שורות, הגהה, ושאלות על תיקייה שלמה בלי לפתוח קובץ אחד.</p>
+    <aside class="note"><p>טיוטה ראשונה של Gemini היא נקודת התחלה, לא מסמך סופי.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">Docs: מתיאור למסמך</h3>
+    <ol class="steps">
+      <li><b>פותחים מסמך</b> וכותבים בשורת הפרומפט שבתחתית מה צריך. אפשר גם לבקש מ-Gemini להעתיק את המבנה של מסמך קיים, לכתוב בסגנון של מסמך אחר שלכם, או להיעזר בקבצים מ-Drive, במיילים ובאינטרנט.</li>
+      <li><b>משפרים קטע</b> מסמנים טקסט, ובוחרים לשכתב: להרחיב, לקצר, לשנות טון.</li>
+      <li><b>שואלים על המסמך</b> בחלונית הצד: ״מה חסר בתוכנית הזאת?״, ״תכין רשימת משימות מהמסמך״.</li>
+      <li><b>הגהה</b> בודקת דקדוק ואיות, ומציעה שיפורי סגנון.</li>
+    </ol>
+    <div class="copy"><span class="lbl">ליצירת מסמך</span><pre>תכתוב תוכנית השקה לסדנה חדשה שלי, ״AI לצוותי הוראה״.
+כלול: מטרות, קהל יעד, לוח זמנים של 6 שבועות בטבלה, ערוצי שיווק, תקציב משוער, ומדדי הצלחה.
+טון מקצועי וידידותי. מקום לשם אחראי ליד כל משימה.</pre></div>
+
+    <h3>Drive: לשאול את התיקייה</h3>
+    <p>ב-Drive, <span class="ui">Ask Gemini</span> עובד על הקבצים עצמם. נכנסים לתיקייה, או בוחרים כמה קבצים, תיקיות ואפילו מיילים כמקורות, ושואלים. התשובות מגיעות עם הפניות למסמכים המקוריים, כדי שתוכלו לבדוק. אפשר לשמור את המקורות כ-<b>Project</b> ולשתף אותו עם הצוות, ולהפוך תשובה למסמך, לגיליון או למצגת חדשים.</p>
+    <div class="copy"><span class="lbl">בקשות ב-Drive</span><pre>סכם את התיקייה ״הצעות מחיר 2026״: כמה הצעות, לאילו לקוחות, ומה הסכום הכולל.
+
+על סמך שלושת הקבצים שבחרתי, מה ההבדלים העיקריים בין ההצעות?
+
+על מה הקובץ הזה? (כשאין לו שם ברור)</pre></div>
+    <div class="tip warn"><b>Gemini רואה רק מה שאתם רואים</b>הוא עובד עם הקבצים שיש לכם גישה אליהם. וזה גם אומר: מסמך שמשותף איתכם ״לצפייה״ יכול להיכנס לתשובה. לפני שאתם מעבירים תשובה הלאה, בדקו שאין בה מידע שלא נועד לעיני הנמען.</div>
+    <div class="quiz" data-st="5">
+      <div class="slot" data-slot="5">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 05</span>
+      <p class="q">רוצים להשוות בין שלוש הצעות מחיר שיושבות ב-Drive. מה הכי מהיר?</p>
+      <div class="opts">
+        <button type="button" data-why="אפשר, אבל זו בדיוק העבודה ש-Gemini חוסך. נסו שוב.">לפתוח כל אחת ולהעתיק לטבלה</button>
+        <button type="button" data-ok data-why="נכון. בוחרים את שלושת הקבצים כמקורות ב-Ask Gemini של Drive ושואלים. התשובה מגיעה עם הפניות לקבצים, ואפשר להפוך אותה למסמך.">לבחור את שלושתן בחלונית של Gemini ב-Drive ולשאול</button>
+        <button type="button" data-why="הגהה בודקת כתיבה, לא משווה בין מסמכים. נסו שוב.">להפעיל הגהה על כל אחת</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 6 ========== -->
+<section class="spread" id="st6" style="--st:#137333" aria-labelledby="h6">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 06</span>
+    <p class="st-num" aria-hidden="true">6</p>
+    <h2 id="h6">Sheets</h2>
+    <p class="lede">טבלה מוכנה מתיאור, ניתוח של נתונים שכבר יש לכם, גרף בלחיצה, ומילוי חכם של עמודות.</p>
+    <aside class="note"><p>לא צריך לזכור נוסחאות. צריך לדעת לשאול שאלה טובה על הנתונים.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">ארבעה דברים לעשות היום</h3>
+    <p>פותחים את החלונית של Gemini בגיליון, ומבקשים:</p>
+    <div class="anatomy">
+      <div><b>ליצור טבלה</b><span class="en">Create a table</span><p>מתארים מה רוצים לארגן, ומקבלים טבלה עם עמודות ומקום לנתונים. אפשר לבקש תיבות סימון.</p></div>
+      <div><b>לנתח נתונים</b><span class="en">Analysis &amp; insights</span><p>״מה המגמות בטבלה הזאת?״. כשיש כמה טבלאות בגיליון, אפשר למקד את Gemini בטבלה אחת.</p></div>
+      <div><b>ליצור גרף</b><span class="en">Charts</span><p>״גרף עם התאריך בציר האופקי והסכום בציר האנכי.״</p></div>
+      <div><b>מילוי חכם</b><span class="en">Smart Fill</span><p>Gemini מזהה עמודה עם מידע חסר ומשלים לפי הנתונים הקיימים, למשל סיווג של משוב.</p></div>
+    </div>
+    <p>ועוד שני דברים ששווה להכיר: Gemini כותב <b>נוסחאות</b> מתיאור (״נוסחה שמחלקת שערים במשחקים״) ומסביר ומתקן נוסחה שמחזירה שגיאה. והפונקציה <code dir="ltr">=AI()</code> מריצה פרומפט בתוך תא, למשל כדי לסכם או לסווג טקסט בעמודה. היא רואה רק את מה שנתתם לה, לא את כל הגיליון.</p>
+    <div class="copy"><span class="lbl">בקשות ב-Sheets</span><pre>תיצור רשימת משימות עסקית לחודש דצמבר לחנות האונליין שלי: משימה, אחראי, תאריך יעד, עדיפות, ותיבת סימון ״בוצע״.
+
+(על טבלת מכירות מסומנת:)
+אילו מוצרים ירדו במכירות ברבעון האחרון, ובכמה? מה שלוש המסקנות החשובות?
+
+תיצור גרף שמשווה בין ההכנסות החודשיות של 2025 ל-2026.</pre></div>
+    <div class="tip warn"><b>בודקים את המספרים</b>ניתוח של Gemini הוא נקודת פתיחה מצוינת, אבל לפני שמספר נכנס למצגת להנהלה, בדקו אותו מול הגיליון. במיוחד סכומים ואחוזים.</div>
+    <div class="quiz" data-st="6">
+      <div class="slot" data-slot="6">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 06</span>
+      <p class="q">יש לכם עמודת משוב מלקוחות ועמודה ריקה ״חיובי או שלילי״. מה הכלי המתאים?</p>
+      <div class="opts">
+        <button type="button" data-ok data-why="נכון. מילוי חכם משלים עמודה חסרה לפי הנתונים הקיימים, כמו סיווג של משוב.">מילוי חכם</button>
+        <button type="button" data-why="גרף מציג נתונים קיימים, הוא לא ממלא עמודה. נסו שוב.">ליצור גרף</button>
+        <button type="button" data-why="טבלה חדשה לא תמלא את העמודה שכבר יש לכם. נסו שוב.">ליצור טבלה חדשה</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 7 ========== -->
+<section class="spread" id="st7" style="--st:#9a3412" aria-labelledby="h7">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 07</span>
+    <p class="st-num" aria-hidden="true">7</p>
+    <h2 id="h7">Slides, Vids ו-Meet</h2>
+    <p class="lede">שקפים ותמונות בלי מעצב, סרטון מתוך מצגת, ופגישה שמסכמת את עצמה.</p>
+    <aside class="note"><p>הכי שווה פה: סיכום הפגישה האוטומטי. מתמסרים לשיחה, לא לפרוטוקול.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">Slides</h3>
+    <ul class="checks">
+      <li><b>יוצרים תמונה</b> בוחרים שקף, כותבים פרומפט בחלונית הימנית, בוחרים צורה (ריבוע, רחב או גבוה), ומכניסים. לפי Google, תמונות, אינפוגרפיקות ושקפים נוצרים עם Nano Banana Pro.</li>
+      <li><b>יוצרים שקף</b> ״שקף על היתרונות של תשלום בכרטיס אשראי בעסק קטן״, ומכניסים.</li>
+      <li><b>עורכים תמונה</b> מבקשים מ-Gemini לשנות תמונה שיצר, או מסירים רקע בלחיצה.</li>
+    </ul>
+    <h3>Vids: סרטון מתוך רעיון</h3>
+    <p>ב-Google Vids פותחים סרטון ריק (הקיצור: <code dir="ltr">vids.new</code>) ובוחרים <span class="ui">Help me create</span>. כותבים פרומפט, ועם <code>@</code> מוסיפים קבצים מ-Drive, כמו PDF או מצגת. Gemini מציע תוכנית של סצנות, אתם מתקנים ובוחרים עיצוב, ומקבלים טיוטה עם טקסט, תמונות, מוזיקה, תסריט וקריינות. לפי מרכז העזרה, התכונה דורשת מנוי Workspace מתאים (או Workspace Experiments).</p>
+    <div class="copy"><span class="lbl">פרומפט ל-Vids</span><pre>תיצור סרטון של דקה וחצי לצוות: איך העסק שלנו עבר מ-0 ל-1,000 הזמנות השנה.
+שלושה פרקים: ההתחלה, נקודת המפנה, מה הלאה. טון חגיגי וקליל. בסוף תודה לצוות.</pre></div>
+    <h3>Meet</h3>
+    <div class="anatomy">
+      <div><b>סיכום שיחה חכם</b><span class="en">Take notes for me</span><p>Gemini רושם סיכום של הפגישה ושומר מסמך ב-Drive של מארגן הפגישה, בתיקייה <span class="ui">Google Meet</span>. המארגן מקבל מייל עם קישור, והקישור מופיע גם באירוע ביומן. מומלץ לפגישות של 15 דקות עד 8 שעות.</p></div>
+      <div><b>תרגום דיבור</b><span class="en">Speech translation</span><p>כתוביות מתורגמות, כשלא כולם מדברים באותה שפה.</p></div>
+      <div><b>תמונה, תאורה וקול</b><span class="en">Video &amp; audio</span><p>רקע שנוצר מתיאור, שיפור מצלמה חלשה, תאורה ואיכות קול.</p></div>
+    </div>
+    <div class="tip warn"><b>סיכום פגישה בעברית? עוד לא</b>נכון ל-5.11.2026, הסיכום עובד באנגלית, ובבטא גם בצרפתית, גרמנית, איטלקית, יפנית, קוריאנית, פורטוגזית וספרדית. עברית לא ברשימה, והוא מסכם שפה אחת בכל פגישה. ולפני שמפעילים: אמרו למשתתפים שהפגישה מסוכמת על ידי AI.</div>
+    <div class="quiz" data-st="7">
+      <div class="slot" data-slot="7">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 07</span>
+      <p class="q">איפה תמצאו את הסיכום שנוצר ב״סיכום שיחה חכם״?</p>
+      <div class="opts">
+        <button type="button" data-why="הוא לא נעלם בסוף הפגישה. הוא נשמר. נסו שוב.">הוא מוצג רק בזמן הפגישה</button>
+        <button type="button" data-why="Vids יוצר סרטונים. הסיכום נשמר כמסמך. נסו שוב.">כסרטון ב-Google Vids</button>
+        <button type="button" data-ok data-why="נכון. נוצר מסמך עם הסיכום, והוא נשמר ב-Drive של המארגן, בתיקייה Google Meet. הקישור מגיע גם במייל.">במסמך שנשמר ב-Drive</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 8 ========== -->
+<section class="spread" id="st8" style="--st:#0e7490" aria-labelledby="h8">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 08</span>
+    <p class="st-num" aria-hidden="true">8</p>
+    <h2 id="h8">Gemini Notebook</h2>
+    <p class="lede">מחברת מחקר שעונה רק מתוך המקורות שנתתם לה. דוחות, סרטונים, מסמכים פנימיים, ובסוף גם פודקאסט שאפשר להצטרף אליו.</p>
+    <aside class="note"><p>כשהתשובה חייבת להגיע מהחומר שלכם ולא מכל האינטרנט, זה הכלי.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">מה זה</h3>
+    <p>Gemini Notebook (עד יולי 2026: NotebookLM) הוא כלי AI שבסיס הידע שלו הוא מה שאתם מעלים. ההבדל מצ׳אט רגיל: הוא לא שולף ״מכל האינטרנט״, אלא עונה מתוך המקורות שבחרתם, עם הפניה למקור. לפי Google, יותר מ-30 מיליון אנשים ו-600 אלף ארגונים משתמשים בו.</p>
+    <ol class="steps">
+      <li><b>יוצרים מחברת</b> ב-Gemini Notebook, או ישר מתוך אפליקציית Gemini. המחברות מסתנכרנות בין השתיים.</li>
+      <li><b>מוסיפים מקורות</b> קבצים מ-Drive, קישורים לאתרים, סרטוני YouTube, או טקסט מודבק.</li>
+      <li><b>בוחרים מקורות ושואלים</b> אפשר לבחור את כולם או רק חלק, ולבקש דוח, השוואה או רשימה.</li>
+      <li><b>מייצרים תוצרים</b> סקירה קולית בסגנון פודקאסט, מפת חשיבה, אינפוגרפיקה ועוד.</li>
+    </ol>
+    <div class="copy"><span class="lbl">שאלות טובות למחברת</span><pre>על סמך כל המקורות: מה חמשת הטיפים שחוזרים אצל כמה כותבים? ציין את המקורות לכל אחד.
+
+איפה המקורות סותרים זה את זה? תציג את שני הצדדים.
+
+תכין מדריך קליטה של עמוד אחד לעובד חדש, רק לפי מסמכי הנהלים שהעליתי.</pre></div>
+    <h3>הפודקאסט שאפשר להיכנס אליו</h3>
+    <p>הסקירה הקולית נשמעת כמו שני מגישים שמדברים על החומר שלכם. יש כמה פורמטים: <span class="ui">Deep Dive</span> (ברירת המחדל), <span class="ui">The Brief</span>, <span class="ui">The Critique</span> ו-<span class="ui">The Debate</span>. במצב האינטראקטיבי (<span class="ui">Interactive mode</span>) לוחצים <span class="ui">Join</span>, שואלים שאלה בקול, והמגישים עונים לכם מתוך המקורות. נכון ל-5.11.2026, המצב האינטראקטיבי עובד רק באנגלית, ורק בסקירות חדשות.</p>
+    <div class="tip"><b>חדש: מחשב בענן לכל מחברת</b>מאז השינוי לשם החדש, כל מחברת מקבלת מחשב מאובטח בענן, ו-Gemini Notebook יכול לכתוב ולהריץ קוד לניתוח נתונים מהמקורות. לפי ההכרזה של Google ביולי 2026, היכולת להריץ קוד מתפרסת בהדרגה, ובקרוב תגיע לכל מנויי Pro.</div>
+    <div data-acc="work edu"><p><span class="acc-flag">בארגון</span>בגרסה של Workspace אפשר ליצור מחברות משותפות לצוות ולראות נתוני שימוש. לפי Google, המקורות, השאלות והתשובות נשארים בתוך הארגון.</p></div>
+    <div class="quiz" data-st="8">
+      <div class="slot" data-slot="8">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 08</span>
+      <p class="q">מה ההבדל המרכזי בין Gemini Notebook לבין שאלה רגילה בצ׳אט?</p>
+      <div class="opts">
+        <button type="button" data-ok data-why="נכון. התשובות מבוססות על המקורות שבחרתם, עם הפניה אליהם.">הוא עונה מתוך המקורות שבחרתם, ולא מכל האינטרנט</button>
+        <button type="button" data-why="שניהם משתמשים במודלים של Gemini. ההבדל הוא במקורות. נסו שוב.">הוא משתמש במודל ישן יותר</button>
+        <button type="button" data-why="אפשר לשאול ולקבל תשובות בעברית, וגם המקורות יכולים להיות בעברית. רק המצב האינטראקטיבי בסקירה הקולית עדיין באנגלית. נסו שוב.">הוא עובד רק באנגלית</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 9 ========== -->
+<section class="spread" id="st9" style="--st:#be185d" aria-labelledby="h9">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 09</span>
+    <p class="st-num" aria-hidden="true">9</p>
+    <h2 id="h9">Workspace Studio</h2>
+    <p class="lede">בונים סוכן (ב-Studio קוראים לו flow) שמופעל לבד: מייל נכנס, טופס מתמלא, או שעה קבועה. הוא קורא, מחליט, ומבצע ב-Gmail, Sheets, Chat ו-Docs.</p>
+    <aside class="note"><p>כל סוכן ב-Studio הוא שאלה אחת: ״כשקורה X, תעשה Y״. מתחילים משם.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <div data-acc="personal">
+      <div class="tip warn"><b>בחשבון אישי: רק דרך תוכנית ניסוי</b>לפי מרכז העזרה, בחשבון אישי Workspace Studio זמין רק למי שהצטרף ל-<a href="https://workspace.google.com/experiments/" target="_blank" rel="noopener">Google Workspace Experiments</a>, וחלק מהצעדים (כמו Asana, Jira ו-Slack) שמורים לחשבונות עבודה ובית ספר. לרוב, בחשבון אישי נוח יותר לבנות את אותו רעיון כמשימה עם לוח זמנים במצב Task (עצירה 3).</div>
+    </div>
+    <h3 style="margin-top:0">מה זה</h3>
+    <p>Workspace Studio (קודם: Workspace Flows) הוא המקום ליצור, לנהל ולשתף <b>אוטומציות עם AI בתוך Workspace</b>, בלי קוד. Google מציגה אותן כסוכנים, ובממשק כל אחת נקראת <span class="ui">flow</span>. כל flow בנוי משני חלקים:</p>
+    <div class="versus">
+      <div><b>Starter: מתי</b><p>הטריגר שמפעיל את הסוכן: לפי לוח זמנים, כשמגיע מייל מסוים, כשטופס מקבל תשובה, כשמזכירים אתכם ב-Chat, לפני או אחרי פגישה, או כשקובץ או גיליון משתנים.</p></div>
+      <div><b>Steps: מה</b><p>הצעדים, אחד אחרי השני. חלקם צעדי AI (לסכם, לחלץ, להחליט), וחלקם פעולות באפליקציות (לתייג מייל, להוסיף שורה ל-Sheet, לשלוח הודעה ב-Chat).</p></div>
+    </div>
+    <h3>נכנסים</h3>
+    <ol class="steps">
+      <li><b>פותחים את <a href="https://studio.workspace.google.com" target="_blank" rel="noopener" dir="ltr">studio.workspace.google.com</a></b> במחשב. בונים רק בדפדפן במחשב, אבל ה-flows רצים לבד אחרי שמפעילים אותם. ל-Studio יש גם חלונית צד בתוך אפליקציות כמו Gmail ו-Chat.</li>
+      <li><b>מכירים את התפריט</b> <span class="ui">Discover</span> לתבניות מוכנות, <span class="ui">My flows</span> ל-flows שלכם, ו-<span class="ui">New flow</span> ליצירת חדש.</li>
+      <li><b>לא רואים את זה?</b> בחשבון של ארגון צריך מהדורה מתאימה: כמעט כל הרמות של <span class="ui">Business</span>, <span class="ui">Enterprise</span> ו-<span class="ui">Education</span>, או התוסף <span class="ui">Google AI Pro for Education</span>. וה-אדמין צריך להפעיל את Gemini. תלמידים מתחת לגיל 18 לא יכולים להשתמש בצעדי AI.</li>
+    </ol>
+
+    <h3>שלוש דרכים לבנות</h3>
+    <div class="anatomy">
+      <div><b>מתבנית</b><span class="en">Discover</span><p>הכי קל למשימות נפוצות. למשל ״Get a daily summary of unread emails״: פותחים, מתאימים, בודקים ומפעילים.</p></div>
+      <div><b>מתיאור</b><span class="en">Describe it with AI</span><p>הכי מהיר. כותבים מה רוצים, ו-Gemini בונה את ה-flow. בודקים כל צעד לפני שמפעילים.</p></div>
+      <div><b>מאפס</b><span class="en">New flow</span><p>בוחרים starter ומוסיפים צעדים אחד אחד. הכי הרבה שליטה.</p></div>
+    </div>
+    <div class="copy"><span class="lbl">תיאור לדוגמה, ברוח הדוגמאות של Google</span><pre class="ltr">Whenever someone submits my "Contact us" Google Form, summarize the request and notify me in Google Chat.</pre></div>
+    <p style="font-size:.95rem;color:var(--ink-soft)">בעברית: בכל פעם שמישהו ממלא את טופס ״צור קשר״, תסכם את הפנייה ותשלח לי הודעה ב-Chat. <b>כתבו את התיאור באנגלית:</b> לפי רשימת השפות של Google, נכון ל-5.11.2026 ה-AI של Studio עוד לא תומך בעברית.</p>
+
+    <h3>הצעדים שתשתמשו בהם הכי הרבה</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th scope="col">צעד</th><th scope="col">מה הוא עושה</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Ask Gemini</th><td>שאלה חופשית. אפשר לבחור מקורות: תוכן מ-Workspace, האינטרנט, או אפליקציות מחוברות. יש גם <span class="ui">Ask Gemini Notebook</span> שעונה מתוך מחברת, ו-<span class="ui">Deep Research</span> לדוח מעמיק.</td></tr>
+        <tr><th scope="row">Extract</th><td>שולף פרטים מסוימים מטקסט: שם החברה, שם פרטי, מספר חשבונית.</td></tr>
+        <tr><th scope="row">Decide + Check if</th><td>Gemini עונה ״כן או לא״ על שאלה, ו-Check if מריץ את הצעדים הבאים רק אם התשובה כן.</td></tr>
+        <tr><th scope="row">Summarize / Recap</th><td>מסכם שרשור, מסמך או מיילים שלא נקראו בטווח זמן.</td></tr>
+        <tr><th scope="row">פעולות באפליקציות</th><td>טיוטת תשובה, תווית ב-Gmail, שורה ב-Sheets, מסמך ב-Docs, משימה, פגישה ביומן, שמירת קבצים מצורפים ב-Drive, הודעה ב-Chat, מייל.</td></tr>
+        <tr><th scope="row">Repeat for each</th><td>חוזר על הצעדים לכל פריט ברשימה, למשל לכל קובץ מצורף.</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>משתנים</b> הם הדבק שמחבר בין הצעדים: שם השולח מה-starter, הפרטים שחולצו ב-Extract, הסיכום שיצא ב-Summarize. לוחצים על המשתנה, והתוצאה של צעד קודם נכנסת לצעד הבא.</p>
+
+    <div class="tool" id="stTool">
+      <div class="tool-head"><b>בונה הסוכן</b><span dir="ltr">STUDIO AGENT BUILDER</span></div>
+      <div class="tool-body">
+        <div>
+          <label class="f"><span>Starter: מתי הסוכן מתעורר</span><select id="stStart">
+            <option value="email">כשמגיע מייל שמתאים לתנאי</option>
+            <option value="schedule">לפי לוח זמנים</option>
+            <option value="form">כשטופס Google מקבל תשובה</option>
+            <option value="chat">כשמזכירים אותי ב-Chat</option>
+            <option value="meeting">לפני פגישה ביומן</option>
+          </select></label>
+          <label class="f"><span id="stDetailLbl">התנאי (באנגלית)</span><input type="text" id="stDetail" dir="ltr" value="the subject contains &quot;quote&quot; or &quot;partnership&quot;"></label>
+          <div class="f"><span>הצעדים (לפי הסדר)</span>
+            <div class="ticks" id="stSteps">
+              <label><input type="checkbox" value="extract" checked>לחלץ פרטים</label>
+              <label><input type="checkbox" value="decide">להחליט כן או לא</label>
+              <label><input type="checkbox" value="summarize" checked>לסכם</label>
+              <label><input type="checkbox" value="ask">לשאול את Gemini</label>
+              <label><input type="checkbox" value="label">להוסיף תווית</label>
+              <label><input type="checkbox" value="sheet">להוסיף שורה ל-Sheets</label>
+              <label><input type="checkbox" value="draft" checked>טיוטת תשובה</label>
+              <label><input type="checkbox" value="chat" checked>הודעה לי ב-Chat</label>
+              <label><input type="checkbox" value="send">לשלוח מייל</label>
+            </div>
+          </div>
+          <label class="f"><span>מה לחלץ, לשאול או להחליט (באנגלית, רשות)</span><input type="text" id="stWhat" dir="ltr" value="the company name, the contact name and what they need"></label>
+        </div>
+        <div>
+          <ol class="fc" id="stFlow" aria-live="polite"></ol>
+          <p style="font-size:.9rem;font-weight:700;color:var(--ink-soft);margin:12px 0 4px">תיאור באנגלית, להדבקה בתיבה <span class="ui">Describe it with AI</span></p>
+          <div class="out ltr" id="stOut" dir="ltr" style="min-height:90px"></div>
+          <div class="row-btns"><button type="button" class="btn-s" id="stCopy">העתקה</button></div>
+          <p class="verdict info" id="stVerdict" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+
+    <h3>בונים: ממייל לטיוטה מותאמת אישית</h3>
+    <ol class="steps">
+      <li><b>Starter: מייל עם מילים מסוימות</b> למשל ״חסות״ או ״הצעת מחיר״. אפשר גם לסנן לפי שולח, ולהחריג מילים.</li>
+      <li><b>Extract</b> מהמייל: שם החברה ושם פרטי של הפונה.</li>
+      <li><b>טיוטת תשובה</b> מדביקים את התשובה הקבועה שלכם, ובמקום השם והחברה מכניסים את המשתנים מ-Extract. כל טיוטה יוצאת אישית.</li>
+      <li><b>Summarize + Chat</b> סיכום קצר אליכם ב-Chat: מי פנה, מה הוא רוצה, ויש תקציב?</li>
+      <li><b>Test run</b> לפני ההפעלה. ואז <span class="ui">Turn on</span>.</li>
+    </ol>
+    <div class="tip warn"><b>בדיקה היא פעולה אמיתית</b>כשמריצים בדיקה, הסוכן מבצע את הפעולות באמת: שולח הודעות, יוצר טיוטות, מוסיף שורות. בדקו על מייל לדוגמה שלכם, והעדיפו טיוטה על פני שליחה אוטומטית, לפחות בהתחלה.</div>
+    <p>ב-<span class="ui">My flows</span> אפשר לערוך, לכבות, ולראות בלשונית <span class="ui">Activity</span> מתי כל flow רץ ואם נכשל. ואפשר לשתף flow עם הצוות. אם האדמין הגדיר שצעדים מסוימים דורשים אישור, תתבקשו לאשר לפני שהם רצים.</p>
+    <div class="tip"><b>מעבר ל-Google, ומגבלות</b>לפי מרכז העזרה, יש צעדים לאפליקציות כמו Asana, Jira, Mailchimp, Salesforce ו-Slack (חלקם בבטא, ורק בחשבון עבודה או בית ספר). צעדים כאלה יכולים לשתף מידע מהחשבון שלכם עם השירות החיצוני, אז חברו רק שירותים שאתם סומכים עליהם. האדמין יכול גם לאפשר צעדים מותאמים. המגבלות, נכון ל-5.11.2026: עד 25 flows, עד 100 צעדים בכל flow, עד 25 flows פעילים שמופעלים מ-Gmail, ומכסת ריצות יומית לכל ה-flows יחד, שמתאפסת כל 24 שעות.</div>
+    <div class="clips">
+      <div class="yt" data-id="AiwpqPZOBLQ" data-t="195"><button type="button"><img src="https://i.ytimg.com/vi/AiwpqPZOBLQ/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">סוכן מתבנית: סיכום מיילים שלא נקראו<small>Stewart Gauld · מ-3:15 · אנגלית</small></span></button></div>
+      <div class="yt" data-id="AiwpqPZOBLQ" data-t="526"><button type="button"><img src="https://i.ytimg.com/vi/AiwpqPZOBLQ/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">סוכן מאפס: Extract, טיוטה ומשתנים<small>Stewart Gauld · מ-8:46 · אנגלית</small></span></button></div>
+    </div>
+    <div class="quiz" data-st="9">
+      <div class="slot" data-slot="9">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 09</span>
+      <p class="q">בניתם flow שעונה לפניות. מה נכון לעשות לפני <span class="ui">Turn on</span>?</p>
+      <div class="opts">
+        <button type="button" data-why="אם יש טעות בצעדים, היא תחזור על כל מייל. בודקים קודם. נסו שוב.">להפעיל מיד, ולתקן אם יהיו תלונות</button>
+        <button type="button" data-ok data-why="נכון. Test run על מייל לדוגמה שלכם, ולהתחיל עם טיוטות ולא עם שליחה. זכרו שהבדיקה מבצעת פעולות אמיתיות.">Test run על מייל לדוגמה, ולהתחיל עם טיוטות</button>
+        <button type="button" data-why="Extract רק שולף פרטים. אפשר להשאיר אותו, אבל זו לא הבדיקה שחסרה. נסו שוב.">למחוק את צעד ה-Extract</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== עצירה 10 ========== -->
+<section class="spread" id="st10" style="--st:#0f766e" aria-labelledby="h10">
+  <div class="leaf leaf-side"><div class="side-sticky">
+    <span class="st-tag" dir="ltr">STOP 10</span>
+    <p class="st-num" aria-hidden="true">10</p>
+    <h2 id="h10">תחנה סופית</h2>
+    <p class="lede">מחברים את כל הקווים: איזה כלי לאיזו עבודה, איך בונים מערכת קטנה ושלמה, ומה עושים כדי שה-AI יעבוד בשבילכם ולא להפך.</p>
+    <aside class="note"><p>האוטומציה הראשונה שלכם? המשימה שכולם שונאים בשקט.</p><cite>עזי</cite></aside>
+  </div></div>
+  <div class="leaf leaf-main">
+    <h3 style="margin-top:0">איזה קו לוקחים?</h3>
+    <div class="tool" id="pickTool">
+      <div class="tool-head"><b>בוחר הקו</b><span dir="ltr">LINE PICKER</span></div>
+      <div class="tool-body one">
+        <p style="font-size:.98rem;color:var(--ink-soft)">חשבו על עבודה אמיתית שחוזרת אצלכם, וענו על חמש שאלות.</p>
+        <ul class="decide">
+          <li><span>זו שאלה או יצירה חד פעמית (רעיונות, טיוטה, הסבר)?</span><span class="yn" data-q="1"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>העבודה היא על מייל, מסמך או גיליון שכבר פתוח מולכם?</span><span class="yn" data-q="2"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>התשובה חייבת להגיע רק מהחומרים שלכם, עם מקורות?</span><span class="yn" data-q="3"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>רוצים שזה ירוץ לבד, בזמן קבוע או כשמשהו קורה?</span><span class="yn" data-q="4"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+          <li><span>זה תהליך של הצוות, עם טפסים, גיליונות והודעות לאחרים?</span><span class="yn" data-q="5"><button type="button" data-v="1" aria-pressed="false">כן</button><button type="button" data-v="0" aria-pressed="false">לא</button></span></li>
+        </ul>
+        <div class="verdict" id="pickOut" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <h3>מערכת שלמה: מפנייה ועד דוח שבועי</h3>
+    <p>דוגמה לעסק קטן שמקבל פניות דרך טופס באתר. כל חלק הוא כלי שכבר הכרתם:</p>
+    <ol class="metro">
+      <li style="--c:#137333"><b>טופס Google<span class="en">Forms</span></b><p>הלקוח ממלא: שם, טלפון, מה הוא צריך.</p></li>
+      <li style="--c:#be185d"><b>flow ב-Studio<span class="en">Form response</span></b><p>Extract של הפרטים, Decide ״האם זו פנייה דחופה?״, שורה חדשה ב-Sheets, הודעה ב-Chat לאחראי, וטיוטת תשובה ללקוח.</p></li>
+      <li style="--c:#b06000"><b>אתם, ב-Gmail<span class="en">Human in the loop</span></b><p>קוראים את הטיוטה, מתקנים, שולחים.</p></li>
+      <li style="--c:#7c3aed"><b>דוח שבועי<span class="en">Schedule</span></b><p>כל יום ראשון ב-8:00: flow (או משימה, בחשבון אישי) מסכם את הגיליון: כמה פניות, מאיפה, מה נסגר.</p></li>
+      <li style="--c:#0e7490"><b>מחברת ידע<span class="en">Gemini Notebook</span></b><p>מחירון, שאלות נפוצות ונהלים. ממנה מנסחים תשובות מדויקות.</p></li>
+    </ol>
+
+    <h3>חמשת הכללים</h3>
+    <ol class="steps">
+      <li><b>קודם קריאה, אחר כך פעולה</b> מתחילים מסיכומים וחיפוש. רק כשסומכים על התוצאות, מוסיפים פעולות.</li>
+      <li><b>טיוטה, לא שליחה</b> כל דבר שמגיע ללקוח, לכסף או לחוזה, עובר דרך אדם. ה-AI מנסח, אתם מחליטים.</li>
+      <li><b>בודקים על עצמכם</b> מייל לדוגמה, טופס לדוגמה, המספר שלכם. רק אחר כך הצוות והלקוחות.</li>
+      <li><b>תהליך אחד בכל פעם</b> לא ״טרנספורמציה דיגיטלית״. דוח אחד של יום שני, ואז הבא.</li>
+      <li><b>בוחרים את המשימה הנכונה</b> משימה טובה לאוטומציה ראשונה היא חוזרת, בלי הרבה כללים, ושכולם שונאים בשקט. בדרך כלל: הדוח השבועי.</li>
+    </ol>
+
+    <h3>רוצים להמשיך הלאה?</h3>
+    <p>מכאן הדרך ממשיכה למי שרוצה לבנות יותר:</p>
+    <ul class="checks">
+      <li><b>AppSheet עם Gemini</b> אפליקציה מתוך תיאור של תהליך עסקי, בשפה רגילה.</li>
+      <li><b>Apps Script ותוספים</b> צעדים מותאמים ב-Studio, וחלוניות צד משלכם בתוך Gmail ו-Docs.</li>
+      <li><b>Gemini Enterprise ושרתי MCP של Workspace</b> לסוכנים ארגוניים, ולחיבור של סוכנים אחרים לנתונים ב-Workspace.</li>
+      <li><b>סוכן אחר שמחובר ל-Workspace</b> אפשר לחבר גם את Claude ל-Gmail, ל-Drive וליומן. ראו את <a href="../claude-agents/#st9">המדריך לסוכני Claude Code, עצירה 9</a>.</li>
+    </ul>
+    <div class="clips">
+      <div class="yt" data-id="AiwpqPZOBLQ" data-t="837"><button type="button"><img src="https://i.ytimg.com/vi/AiwpqPZOBLQ/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span><span class="cap">סיכומים ומשימות אחרי כל פגישה<small>Stewart Gauld · מ-13:57 · אנגלית</small></span></button></div>
+    </div>
+    <div class="quiz" data-st="10">
+      <div class="slot" data-slot="10">כאן ייכנס הניקוב</div>
+      <span class="quiz-tag" dir="ltr">TICKET CHECK 10</span>
+      <p class="q">מה האוטומציה הראשונה הכי מומלצת לעסק?</p>
+      <div class="opts">
+        <button type="button" data-why="תהליך עם הרבה כסף וסיכון הוא בדיוק המקום שלא מתחילים בו. נסו שוב.">אישור תשלומים לספקים</button>
+        <button type="button" data-ok data-why="נכון. חוזרת, בלי הרבה כללים, ושנואה בשקט. ההצלחה הראשונה בונה אמון ומומנטום.">הדוח השבועי שמישהו בונה ידנית כל יום ראשון</button>
+        <button type="button" data-why="לשלוח לכולם אוטומטית בלי לקרוא זה סיכון. מתחילים מטיוטות, ומהתהליך הכי פשוט. נסו שוב.">מענה אוטומטי לכל הלקוחות, בלי בדיקה</button>
+      </div>
+      <p class="fb" role="status"></p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /journey -->
+
+<!-- ========== חופשי חודשי ========== -->
+<section class="final" id="license" aria-labelledby="lic-t">
+  <div class="final-inner">
+    <h2 id="lic-t">חופשי-חודשי, כל הקווים</h2>
+    <p id="licIntro">כל ניקוב שצברתם מופיע כאן. נקבו את כל העשרה, והכרטיס מוכן.</p>
+    <div class="license" aria-live="polite">
+      <div>
+        <span class="sub-en" dir="ltr">GEMINI LINES · MONTHLY PASS · ALL ZONES</span>
+        <h3 id="licTitle">כרטיס בדרך</h3>
+        <dl>
+          <dt>שם</dt><dd id="licName">עוד לא נבחר</dd>
+          <dt>חשבון</dt><dd id="licType">לא נבחר</dd>
+          <dt>יעד</dt><dd id="licGoal">לא נבחר</dd>
+          <dt>ניקובים</dt><dd id="licCount">0 מתוך 10</dd>
+          <dt>תאריך</dt><dd id="licDate">-</dd>
+        </dl>
+        <div class="wingrow" id="wingRow" aria-hidden="true"></div>
+      </div>
+      <svg class="seal" id="licSeal" viewBox="0 0 150 150" aria-hidden="true"></svg>
+    </div>
+    <div class="final-cta">
+      <a class="btn wa" id="licShare" href="https://wa.me/972544266802" target="_blank" rel="noopener">ספרו לעזי בוואטסאפ איזה סוכן בניתם</a>
+      <a class="btn gold" href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנת Gemini לצוות</a>
+    </div>
+    <button type="button" class="reset" id="resetBtn">איפוס הכרטיס</button>
+  </div>
+</section>
+
+<!-- ========== תקועים ========== -->
+<section class="help" id="help" aria-labelledby="help-t">
+  <h2 id="help-t">תקועים? מודיעין הנוסעים</h2>
+  <p style="color:#cdd7e4">כתבו במילים שלכם מה קרה, או מה אתם לא מוצאים.</p>
+  <label for="errIn" class="sr-only">חיפוש בעיה</label>
+  <input id="errIn" type="search" placeholder="למשל: אין Task, או Studio לא מופיע" autocomplete="off">
+  <ul class="errs" id="errList"></ul>
+</section>
+
+<!-- ========== מקורות ========== -->
+<section class="sources" aria-labelledby="src-t">
+  <div class="sources-inner">
+    <h2 id="src-t">על מה המדריך מבוסס</h2>
+    <p>קראתי, צפיתי ועיבדתי את כל אלה לעברית. כל התודה ליוצרים. שווה לקרוא ולצפות במלואם:</p>
+    <ul class="src-list">
+      <li><b>Google Workspace עם Gemini</b><span>מרכז הידע של Google Workspace (בעברית), עודכן 28.10.2026. התכונות בכל אפליקציה, Gemini Notebook, Workspace Studio והגנת המידע.</span><a href="https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/google-workspace-with-gemini?hl=he" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Manage your tasks &amp; workflows in Gemini Apps</b><span>מרכז העזרה של Gemini. מצב Task: התנאים, הגלישה, הקבצים והאזהרות.</span><a href="https://support.google.com/gemini/answer/17094507?hl=en" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Create &amp; manage schedules for tasks in Gemini</b><span>מרכז העזרה של Gemini. סוגי לוחות הזמנים, המגבלות, והמשימה, לוח הזמנים וה-skill.</span><a href="https://support.google.com/gemini/answer/17094710?hl=en" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>About the transition from Gems to skills</b><span>מרכז העזרה של Gemini. התאריכים לכל סוג חשבון, ומה עובר ומה לא.</span><a href="https://support.google.com/gemini/answer/18560919?hl=en" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Gemini Apps release updates</b><span>עדכוני הגרסה הרשמיים: Spark (מאי 2026), Skills (30.9.2026) ו-Customize (13.10.2026).</span><a href="https://gemini.google/release-notes/" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Get started with Google Workspace Studio</b><span>מרכז העזרה של Workspace Studio: הדרישות, starters וצעדים, והדרכה ל-flow ראשון. יחד עם עמוד המגבלות.</span><a href="https://support.google.com/workspace-studio/answer/16444479?hl=en" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Learn about Gemini features in Gmail</b><span>מרכז העזרה של Gmail: איזו תכונה זמינה באיזו תוכנית ובאילו שפות.</span><a href="https://support.google.com/mail/answer/16831098?hl=en" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Supported languages for Google Workspace with Gemini</b><span>מרכז העזרה של Google: איפה יש עברית, ואיפה עדיין אין.</span><a href="https://support.google.com/docs/answer/14925782?hl=en" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Use Gemini in Drive · Take notes for me</b><span>מרכז העזרה של Drive ושל Meet.</span><a href="https://support.google.com/drive/answer/16963068?hl=en" target="_blank" rel="noopener">Drive</a> · <a href="https://support.google.com/meet/answer/14754931?hl=en" target="_blank" rel="noopener">Meet</a></li>
+      <li><b>NotebookLM is now Gemini Notebook</b><span>The Keyword של Google, 16.7.2026. יחד עם מרכז העזרה של Gemini Notebook על הסקירות הקוליות.</span><a href="https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/" target="_blank" rel="noopener">לקריאה</a></li>
+      <li><b>Develop and integrate AI agents with Google Workspace</b><span>Google Cloud Tech, Google I/O 2026 (21.5.2026), 13 דקות, אנגלית. השכבות, Studio, MCP ו-Gemini Enterprise.</span><a href="https://www.youtube.com/watch?v=erRPuV1EQ_c" target="_blank" rel="noopener">לצפייה</a></li>
+      <li><b>Google Workspace Studio Tutorial 2026</b><span>Stewart Gauld, מאי 2026, 16 דקות, אנגלית. תבניות, בנייה עם Gemini ובנייה מאפס. בסרטון ה-flows נקראים agents.</span><a href="https://www.youtube.com/watch?v=AiwpqPZOBLQ" target="_blank" rel="noopener">לצפייה</a></li>
+      <li><b>Google Workspace AI: Features, Integration &amp; What It Can Do</b><span>Elore Consulting, יולי 2026. ״קודם קריאה, אחר כך פעולה״, ואיך בוחרים אוטומציה ראשונה.</span><a href="https://eloreconsulting.com/blog/google-workspace-ai/" target="_blank" rel="noopener">לקריאה</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="guide-bio" aria-labelledby="bio-t">
+  <img src="assets/img/ezi.jpg" alt="עזי לוי" width="136" height="136" loading="lazy">
+  <h2 id="bio-t">נעים מאוד, עזי</h2>
+  <p>אני יזם, מחנך ומנטור, ומרצה ויועץ לבינה מלאכותית. מ-2022 אני מעביר סדנאות, קורסים והרצאות לארגונים, למוסדות חינוך ולמנהלים. קודם לכן ניהלתי מרכז למחוננים. תמיד בגובה העיניים ועם חיוך.</p>
+  <ul class="clients" aria-label="בין לקוחותיי">
+    <li>אוניברסיטת תל אביב</li><li>משרד האוצר</li><li>רשות המיסים</li><li>משרד החינוך</li><li>רשות מקרקעי ישראל</li><li>נציבות שירות המדינה</li><li>הלמ״ס</li><li>מכללת ספיר</li><li>מכללת אורנים</li><li>מכון מגיד</li>
+  </ul>
+  <blockquote class="quote">
+    <p>״עזי הצליח לעורר את הסקרנות ואת חדוות היצירה של המורים, שנשארו לתרגל ולהתנסות גם בהפסקה ולאחר סיום המפגש.״</p>
+    <cite>יפעת אנטמן, רכזת ההתמקצעות בהוראת מחוננים ומצטיינים, מכללת חמדת הדרום</cite>
+  </blockquote>
+  <div class="cta-row">
+    <a class="btn gold" href="https://www.ezylevy.com/courses" target="_blank" rel="noopener">סדנה לצוות או לארגון</a>
+    <a class="btn line" href="https://www.ezylevy.com/ai-consultant" target="_blank" rel="noopener">ייעוץ אישי 1:1</a>
+    <a class="btn wa" href="https://wa.me/972544266802" target="_blank" rel="noopener">וואטסאפ</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>© 2026 עזי לוי · <a href="tel:+972544266802" dir="ltr">054-4266802</a> · <a href="mailto:ezylevy@gmail.com">ezylevy@gmail.com</a></div>
+    <nav aria-label="קישורי תחתית">
+      <a href="https://www.ezylevy.com" target="_blank" rel="noopener">האתר של עזי</a>
+      <a href="https://www.instagram.com/ezylevy/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ezy.levy.1/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.ezylevy.com/%D7%9E%D7%93%D7%99%D7%A0%D7%99%D7%95%D7%AA-%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA" target="_blank" rel="noopener">מדיניות פרטיות</a>
+      <a href="https://www.ezylevy.com/%D7%94%D7%A6%D7%94%D7%A8%D7%AA-%D7%A0%D7%92%D7%99%D7%A9%D7%95%D7%AA" target="_blank" rel="noopener">הצהרת נגישות</a>
+    </nav>
+    <div style="flex-basis:100%;font-size:.88rem">מדריך עצמאי, ללא קשר רשמי ל-Google. Google, Gemini, Google Workspace, Gmail, Google Docs, Sheets, Slides, Drive, Meet, Vids, Gemini Notebook ו-Workspace Studio הם סימנים מסחריים של Google LLC. שמות שירותים אחרים שייכים לבעליהם. המדריך מבוסס על המקורות שלמעלה, ונבדק מולם ב-5.11.2026. Google משנה שמות וממשקים מהר, ולכן כשיש פער, מרכז העזרה של Google קובע.</div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="העצירות שלכם">
+  <span class="ct" id="dockCount">0 מתוך 10 ניקובים</span>
+  <ol id="dockList">
+    <li><a href="#st1" data-d="1" aria-label="עצירה 1">1</a></li>
+    <li><a href="#st2" data-d="2" aria-label="עצירה 2">2</a></li>
+    <li><a href="#st3" data-d="3" aria-label="עצירה 3">3</a></li>
+    <li><a href="#st4" data-d="4" aria-label="עצירה 4">4</a></li>
+    <li><a href="#st5" data-d="5" aria-label="עצירה 5">5</a></li>
+    <li><a href="#st6" data-d="6" aria-label="עצירה 6">6</a></li>
+    <li><a href="#st7" data-d="7" aria-label="עצירה 7">7</a></li>
+    <li><a href="#st8" data-d="8" aria-label="עצירה 8">8</a></li>
+    <li><a href="#st9" data-d="9" aria-label="עצירה 9">9</a></li>
+    <li><a href="#st10" data-d="10" aria-label="עצירה 10">10</a></li>
+  </ol>
+  <a class="help-link" href="#help">תקועים?</a>
+</nav>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

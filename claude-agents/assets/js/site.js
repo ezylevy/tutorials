@@ -4,10 +4,10 @@
   'use strict';
 
   var KEY = 'ezi-cc-agents-v1';
-  var TOTAL = 10;
-  var COLORS = { 1: '#0f766e', 2: '#b45309', 3: '#1d4ed8', 4: '#b4232c', 5: '#6d28d9', 6: '#047857', 7: '#9a3412', 8: '#be185d', 9: '#0e7490', 10: '#4d7c0f' };
-  var GOALS = { agents: [1, 2, 3, 4, 5, 6, 7, 8, 9], app: [1, 2, 9, 10], all: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] };
-  var WS_NAMES = { desktop: 'אפליקציית Claude (לשונית Code)', vscode: 'VS Code', terminal: 'טרמינל', unsure: 'עוד לא החלטתי' };
+  var TOTAL = 11;
+  var COLORS = { 1: '#0f766e', 2: '#b45309', 3: '#1d4ed8', 4: '#b4232c', 5: '#6d28d9', 6: '#047857', 7: '#9a3412', 8: '#be185d', 9: '#0e7490', 10: '#15803d', 11: '#4d7c0f' };
+  var GOALS = { agents: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], app: [1, 2, 9, 11], all: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] };
+  var WS_NAMES = { desktop: 'אפליקציית Claude', vscode: 'VS Code', terminal: 'טרמינל', unsure: 'עוד לא החלטתי' };
   var GOAL_NAMES = { agents: 'בניית סוכנים', app: 'בניית אפליקציה', all: 'סוכנים ואפליקציה' };
 
   function $(s, c) { return (c || document).querySelector(s); }
@@ -58,7 +58,7 @@
     var f = $('#lbFoot'); if (!f) return;
     var n = (state.name || 'RECRUIT').toUpperCase().replace(/[^A-Z0-9א-ת]/g, '<').slice(0, 14);
     var ws = { desktop: 'APP', vscode: 'VSC', terminal: 'CLI' }[state.ws] || 'TBD';
-    var s = 'AGT<' + ws + '<<' + n + '<<BADGES<' + Object.keys(state.badges).length + '<OF<10';
+    var s = 'AGT<' + ws + '<<' + n + '<<BADGES<' + Object.keys(state.badges).length + '<OF<' + TOTAL;
     while (s.length < 44) s += '<';
     f.textContent = s;
   }
@@ -367,7 +367,7 @@
       '<text x="75" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2" fill="' + c + '">CLAUDE CODE</text>' +
       '<text x="75" y="136" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" font-weight="700" fill="' + c + '">' + label + '</text>' +
       '<path d="M75 46 L96 54 V72 C96 86 87 95 75 101 C63 95 54 86 54 72 V54 Z" fill="none" stroke="' + c + '" stroke-width="3"/>' +
-      '<text x="75" y="81" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="' + c + '">' + Object.keys(state.badges).length + '/10</text>';
+      '<text x="75" y="81" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="' + c + '">' + Object.keys(state.badges).length + '/' + TOTAL + '</text>';
   }
   function renderCard() {
     var k = Object.keys(state.badges).length, done = k === TOTAL;
@@ -380,7 +380,7 @@
     var dates = Object.keys(state.badges).map(function (x) { return state.badges[x]; });
     set('licDate', done ? dates[dates.length - 1] : (k ? 'בדרך' : '-'));
     set('licPhoto', (state.name.trim() || '?').charAt(0));
-    set('licIntro', done ? 'אספתם את כל עשרת הסמלים. מזל טוב, אתם סוכני שטח מוסמכים: יודעים לבנות סוכן, לחבר אותו לעולם, ולבנות אפליקציה.' : 'כל סמל שאספתם מופיע כאן. אספו את כל העשרה, והתעודה מוכנה.');
+    set('licIntro', done ? 'אספתם את כל 11 הסמלים. מזל טוב, אתם סוכני שטח מוסמכים: יודעים לבנות סוכן, לחבר אותו לעולם ולוואטסאפ, ולבנות אפליקציה.' : 'כל סמל שאספתם מופיע כאן. אספו את כולם, והתעודה מוכנה.');
     var row = $('#wingRow');
     if (row) {
       var h = '';
@@ -390,7 +390,7 @@
     var seal = $('#licSeal'); if (seal) seal.innerHTML = sealSVG(done);
     var share = $('#licShare');
     if (share) {
-      var msg = 'היי עזי, ' + (done ? 'סיימתי את בית הספר לסוכנים של Claude Code! ' : 'אני באמצע בית הספר לסוכנים של Claude Code (' + k + '/10). ') + 'הסוכן שבניתי: ';
+      var msg = 'היי עזי, ' + (done ? 'סיימתי את בית הספר לסוכנים של Claude Code! ' : 'אני באמצע בית הספר לסוכנים של Claude Code (' + k + '/' + TOTAL + '). ') + 'הסוכן שבניתי: ';
       share.href = 'https://wa.me/972544266802?text=' + encodeURIComponent(msg);
     }
   }
@@ -428,9 +428,12 @@
     { k: 'mcp connector מחבר לא מתחבר needs authentication auth', t: 'מחבר (MCP) לא מתחבר או מבקש התחברות', a: 'בתוך Claude Code הקלידו /mcp, בחרו את השרת והתחברו בדפדפן. אם הדפדפן לא נפתח, העתיקו את הקישור שמופיע ופתחו ידנית.', l: 'st9' },
     { k: 'connector claude.ai לא מופיע ב claude code מחברים', t: 'הוספתי מחבר ב-claude.ai והוא לא מופיע ב-Claude Code', a: 'מחברים מ-claude.ai מגיעים רק אם התחברתם ל-Claude Code עם חשבון claude.ai. בדקו ב-/mcp. בתוכניות Team ו-Enterprise רק מנהל יכול להוסיף מחברים.', l: 'st9' },
     { k: 'already exists כבר קיים mcp add', t: 'MCP server ... already exists', a: 'כבר הוספתם שרת בשם הזה, באותו היקף. אין צורך להוסיף שוב. לבדיקה: claude mcp list. למחיקה: claude mcp remove ואז השם.', l: 'st9' },
-    { k: 'האפליקציה לא עולה לא רצה שגיאה won\'t start', t: 'האפליקציה לא עולה', a: 'כתבו ל-Claude: ״האפליקציה לא רצה. תראה לי את השגיאה ובוא נתקן אותה.״ אל תנסו לפענח לבד.', l: 'st10' },
-    { k: 'נתונים נמחקים רענון refresh נעלם', t: 'הנתונים נעלמים כשמרעננים את הדף', a: 'האפליקציה עוד לא שומרת. בקשו: ״שמור הכול ב-localStorage כך שאחרי סגירת הדפדפן ההרגלים וההתקדמות יישארו.״', l: 'st10' },
-    { k: 'vercel פריסה deploy להעלות לאינטרנט טלפון', t: 'איך מעלים את האפליקציה לאינטרנט', a: 'קודם בונים גרסת ייצור ובודקים מקומית, ואז מבקשים מ-Claude להדריך אתכם בפריסה ל-Vercel: אילו חשבונות צריך, אילו פקודות, ואיך מקבלים כתובת ציבורית.', l: 'st10' },
+    { k: 'האפליקציה לא עולה לא רצה שגיאה won\'t start', t: 'האפליקציה לא עולה', a: 'כתבו ל-Claude: ״האפליקציה לא רצה. תראה לי את השגיאה ובוא נתקן אותה.״ אל תנסו לפענח לבד.', l: 'st11' },
+    { k: 'נתונים נמחקים רענון refresh נעלם', t: 'הנתונים נעלמים כשמרעננים את הדף', a: 'האפליקציה עוד לא שומרת. בקשו: ״שמור הכול ב-localStorage כך שאחרי סגירת הדפדפן ההרגלים וההתקדמות יישארו.״ צריכים סנכרון בין מכשירים או כמה משתמשים? זה כבר מסד נתונים, כמו Supabase או Firebase.', l: 'st11' },
+    { k: 'vercel פריסה deploy להעלות לאינטרנט טלפון', t: 'איך מעלים את האפליקציה לאינטרנט', a: 'קודם בונים גרסת ייצור ובודקים מקומית, ואז מבקשים מ-Claude להדריך אתכם בפריסה ל-Vercel: אילו חשבונות צריך, אילו פקודות, ואיך מקבלים כתובת ציבורית. שומרים ב-Git, מעלים ל-GitHub, ומחברים שירות כמו Vercel, Netlify או GitHub Pages.', l: 'st11' },
+    { k: 'מפתח api key סוד חשוף github env', t: 'איפה שמים מפתחות API', a: 'בקובץ .env בתיקיית הפרויקט, שלא עולה ל-GitHub, ובהגדרות של שירות האחסון. אף פעם לא בקוד שרץ בדפדפן. בקשו מ-Claude לבדוק את זה לפני כל פרסום.', l: 'st11' },
+    { k: 'וואטסאפ whatsapp בוט bot לא עונה webhook', t: 'בוט הוואטסאפ לא עונה', a: 'בוט שעונה צריך שרת שזמין תמיד, וכתובת webhook מוגדרת אצל ספק הוואטסאפ. כתבו ל-Claude: ״הבוט לא עונה להודעות. בדוק איתי שלב אחר שלב את ה-webhook, את המפתחות ב-.env ואת היומן של השרת.״', l: 'st10' },
+    { k: 'וואטסאפ whatsapp חסימה נחסם ban מספר', t: 'חוששים שהמספר ייחסם בוואטסאפ', a: 'השתמשו במספר נפרד ולא באישי, התחילו מהמספר שלכם בלבד, ובלי הודעות המוניות. לבוט שעונה ללקוחות, עדיף ה-API הרשמי של Meta (WhatsApp Cloud API) על פני שער לא רשמי.', l: 'st10' },
     { k: 'הלך לכיוון לא נכון לבטל undo rollback חזרה', t: 'הסוכן הלך לכיוון לא נכון ושינה קבצים', a: 'ב-VS Code: מרחפים מעל נקודה קודמת בשיחה ובוחרים לחזור אליה. זה מבטל גם את שינויי הקבצים. ובפעם הבאה: מצב תכנון לפני ביצוע.', l: 'st2' },
     { k: 'managed agents ענן api בטא', t: 'איך מריצים סוכן בענן, בלי המחשב שלי', a: 'זה Claude Managed Agents: סביבה מנוהלת שמריצה את הסוכן בענן, כולל ריצות מתוזמנות. נכון ל-4.11.2026 הוא בבטא ודורש מפתח API, כלומר צעד למפתחים.', l: 'st9' }
   ];

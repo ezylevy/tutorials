@@ -8,7 +8,8 @@ Interactive Hebrew (RTL) step-by-step AI tutorials by Ezi Levy. Static site, no 
 |------|----------|--------|-----------------------------|
 | 01 | הדרכון ל-Claude Code | `claude-code/` | `cc-passport-v1` → `stamps`, 9 |
 | 02 | רישיון טיס ל-Copilot | `copilot/` | `ezi-copilot-license-v1` → `wings`, 10 |
-| 03 | בית הספר לסוכנים (Claude Code למתקדמים) | `claude-agents/` | `ezi-cc-agents-v1` → `badges`, 10 |
+| 03 | בית הספר לסוכנים (Claude Code למתקדמים) | `claude-agents/` | `ezi-cc-agents-v1` → `badges`, 11 |
+| 04 | קווי Gemini (Google Workspace עם Gemini) | `gemini-workspace/` | `ezi-gws-v1` → `badges`, 10 |
 
 ## Adding a tutorial
 

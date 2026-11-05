@@ -213,3 +213,11 @@ footer { background: #0a1226; color: #9fb0c6; padding: 28px 24px; font-size: .95
 .art-dossier .folder .code { font-family: var(--mono); font-size: .52rem; letter-spacing: .2em; }
 .art-dossier .stamp-s { position: absolute; top: 8px; left: 8px; font-family: var(--display); font-size: .95rem; line-height: 1; color: #b3202c; border: 2px double #b3202c; border-radius: 4px; padding: 2px 5px; transform: rotate(-10deg); text-align: center; }
 .art-dossier .stamp-s small { display: block; font-family: var(--mono); font-size: .42rem; letter-spacing: .12em; }
+.art-metro { background: radial-gradient(circle at 50% 40%, #1d3f73, #0d1b2a 75%); }
+.art-metro .ticket-s { position: relative; width: 190px; background: #fbfaf6; color: #172334; border-radius: 10px; padding: 18px 14px 12px; box-shadow: 0 14px 30px rgba(0, 0, 0, .45); transform: rotate(-4deg); display: grid; gap: 4px; overflow: hidden; }
+.art-metro .stripe-s { position: absolute; top: 0; left: 0; right: 0; height: 7px; background: linear-gradient(90deg, #4285f4 0 25%, #ea4335 25% 50%, #fbbc04 50% 75%, #34a853 75%); }
+.art-metro .ticket-s b { font-family: var(--display); font-size: 1.9rem; line-height: 1; }
+.art-metro .ticket-s .code { font-family: var(--mono); font-size: .52rem; letter-spacing: .2em; direction: ltr; text-align: start; }
+.art-metro .holes-s { display: flex; gap: 5px; border-top: 1.5px dashed #c9c3b2; padding-top: 7px; margin-top: 4px; }
+.art-metro .holes-s i { width: 13px; height: 13px; border-radius: 50%; border: 1.5px dashed #b9b2a0; }
+.art-metro .holes-s i.on { background: #13263a; border: 1.5px solid #13263a; }
